@@ -43,6 +43,8 @@ namespace PuzzleGame.Core.Battle
             ValidateEffect(trigger.Effect);
             if (trigger.Effect.Type != EnemyEffectType.Enrage)
                 throw new ArgumentException("Enemy threshold triggers must define an enrage effect.", "trigger");
+            if (trigger.Effect.Payload.TurnCount < 1)
+                throw new ArgumentException("Enemy threshold enrage duration must be at least one turn.", "trigger");
         }
 
         internal static void ValidateEffect(EnemyEffectData effect)

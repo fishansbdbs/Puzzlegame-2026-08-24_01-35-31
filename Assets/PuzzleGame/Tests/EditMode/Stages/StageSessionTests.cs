@@ -60,6 +60,15 @@ namespace PuzzleGame.Tests.EditMode.Stages
         }
 
         [Test]
+        public void Catalog_and_runtime_reject_zero_duration_threshold_enrage_before_it_can_be_consumed()
+        {
+            var invalid = StageFixtures.EnrageBossData(turns: 0);
+
+            Assert.That(() => new StageCatalog(new[] { StageFixtures.Stage("catalog", invalid.Id) }, new[] { invalid }), Throws.TypeOf<ArgumentException>());
+            Assert.That(() => new EnemyRuntime(invalid), Throws.TypeOf<ArgumentException>());
+        }
+
+        [Test]
         public void Catalog_rejects_malformed_payloads_for_every_enemy_effect_family()
         {
             var invalidEffects = new[]

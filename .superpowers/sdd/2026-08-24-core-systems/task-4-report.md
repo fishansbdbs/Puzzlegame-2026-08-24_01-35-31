@@ -292,3 +292,98 @@ SUMMARY total=115 passed=115 failed=0
 - A crossing evaluated by two fresh mechanics, a large jump, and initial-below inputs prove state belongs to the runtime and thresholds are inclusive.
 - Source/public-data trigger mutations do not alter runtime behavior; trigger IDs, percent bounds, duplicate IDs, generic enrage semantics, and all action-effect families are boundary-tested.
 - No deferred Task 4 minor was addressed.
+
+---
+
+## Fix round 2 — Threshold enrage duration boundary
+
+### RED
+
+Command:
+
+```powershell
+$unityMono = 'C:\Program Files\Unity\Hub\Editor\6000.5.8f1\Editor\Data\MonoBleedingEdge\bin\mcs.bat'
+$nunitPath = (Resolve-Path 'Library\PackageCache\com.unity.ext.nunit@*\net472\unity-custom\nunit.framework.dll').Path
+$coreFiles = Get-ChildItem 'Assets\PuzzleGame\Core\Contracts','Assets\PuzzleGame\Core\Board','Assets\PuzzleGame\Core\Battle','Assets\PuzzleGame\Core\Stages' -Filter '*.cs' | ForEach-Object { $_.FullName }
+& $unityMono -warn:4 -target:library -out:'Temp\PuzzleGame.Core.task4-fix2-red.dll' $coreFiles
+& $unityMono -warn:4 -target:library -out:'Temp\PuzzleGame.Tests.EditMode.Stage.task4-fix2-red.dll' -r:'Temp\PuzzleGame.Core.task4-fix2-red.dll' -r:$nunitPath 'Assets\PuzzleGame\Tests\EditMode\Stages\StageSessionTests.cs'
+[void][Reflection.Assembly]::LoadFrom($nunitPath)
+$assembly=[Reflection.Assembly]::LoadFrom((Join-Path (Get-Location) 'Temp\PuzzleGame.Tests.EditMode.Stage.task4-fix2-red.dll'))
+$type=$assembly.GetType('PuzzleGame.Tests.EditMode.Stages.StageSessionTests',$true)
+$method=$type.GetMethod('Catalog_and_runtime_reject_zero_duration_threshold_enrage_before_it_can_be_consumed')
+try{$method.Invoke([Activator]::CreateInstance($type),@());Write-Output 'UNEXPECTED PASS';exit 1}catch{Write-Output "EXPECTED RED: $($_.Exception.InnerException.Message)"}
+```
+
+Output:
+
+```text
+EXPECTED RED:   Expected: <System.ArgumentException>
+  But was:  no exception thrown
+```
+
+### Focused GREEN
+
+Command:
+
+```powershell
+$unityMono = 'C:\Program Files\Unity\Hub\Editor\6000.5.8f1\Editor\Data\MonoBleedingEdge\bin\mcs.bat'
+$nunitPath = (Resolve-Path 'Library\PackageCache\com.unity.ext.nunit@*\net472\unity-custom\nunit.framework.dll').Path
+$coreFiles = Get-ChildItem 'Assets\PuzzleGame\Core\Contracts','Assets\PuzzleGame\Core\Board','Assets\PuzzleGame\Core\Battle','Assets\PuzzleGame\Core\Stages' -Filter '*.cs' | ForEach-Object { $_.FullName }
+& $unityMono -warn:4 -target:library -out:'Temp\PuzzleGame.Core.task4-fix2.dll' $coreFiles
+if($LASTEXITCODE -ne 0){exit $LASTEXITCODE}
+& $unityMono -warn:4 -target:library -out:'Temp\PuzzleGame.Tests.EditMode.Stage.task4-fix2.dll' -r:'Temp\PuzzleGame.Core.task4-fix2.dll' -r:$nunitPath 'Assets\PuzzleGame\Tests\EditMode\Stages\StageSessionTests.cs'
+if($LASTEXITCODE -ne 0){exit $LASTEXITCODE}
+[void][Reflection.Assembly]::LoadFrom($nunitPath)
+$assembly=[Reflection.Assembly]::LoadFrom((Join-Path (Get-Location) 'Temp\PuzzleGame.Tests.EditMode.Stage.task4-fix2.dll'))
+$type=$assembly.GetType('PuzzleGame.Tests.EditMode.Stages.StageSessionTests',$true)
+$failed=0;$total=0
+foreach($method in $type.GetMethods()|Where-Object{$_.GetCustomAttributes($true)|Where-Object{$_.GetType().FullName -eq 'NUnit.Framework.TestAttribute' -or $_.GetType().FullName -eq 'NUnit.Framework.TestCaseAttribute'}}){$cases=$method.GetCustomAttributes($true)|Where-Object{$_.GetType().FullName -eq 'NUnit.Framework.TestCaseAttribute'};if($cases.Count -eq 0){$cases=@($null)};foreach($case in $cases){$total++;try{$args=if($null -eq $case){@()}else{@($case.Arguments)};$method.Invoke([Activator]::CreateInstance($type),$args)}catch{$failed++;Write-Output "FAIL $($method.Name): $($_.Exception.InnerException.Message)"}}}
+Write-Output "SUMMARY total=$total passed=$($total-$failed) failed=$failed"
+if($failed -gt 0){exit 1}
+```
+
+Output (exit 0, no compiler warnings/errors):
+
+```text
+SUMMARY total=26 passed=26 failed=0
+```
+
+### Full direct real-NUnit GREEN
+
+Command:
+
+```powershell
+$unityMono = 'C:\Program Files\Unity\Hub\Editor\6000.5.8f1\Editor\Data\MonoBleedingEdge\bin\mcs.bat'
+$nunitPath = (Resolve-Path 'Library\PackageCache\com.unity.ext.nunit@*\net472\unity-custom\nunit.framework.dll').Path
+$coreFiles = Get-ChildItem 'Assets\PuzzleGame\Core\Contracts','Assets\PuzzleGame\Core\Board','Assets\PuzzleGame\Core\Battle','Assets\PuzzleGame\Core\Stages' -Filter '*.cs' | ForEach-Object { $_.FullName }
+$testFiles = Get-ChildItem 'Assets\PuzzleGame\Tests\EditMode\Contracts','Assets\PuzzleGame\Tests\EditMode\Board','Assets\PuzzleGame\Tests\EditMode\Battle','Assets\PuzzleGame\Tests\EditMode\Stages' -Filter '*.cs' | ForEach-Object { $_.FullName }
+& $unityMono -warn:4 -target:library -out:'Temp\PuzzleGame.Core.full-task4-fix2.dll' $coreFiles
+if($LASTEXITCODE -ne 0){exit $LASTEXITCODE}
+& $unityMono -warn:4 -target:library -out:'Temp\PuzzleGame.Tests.EditMode.full-task4-fix2.dll' -r:'Temp\PuzzleGame.Core.full-task4-fix2.dll' -r:$nunitPath $testFiles
+if($LASTEXITCODE -ne 0){exit $LASTEXITCODE}
+[void][Reflection.Assembly]::LoadFrom($nunitPath)
+$assembly=[Reflection.Assembly]::LoadFrom((Join-Path (Get-Location) 'Temp\PuzzleGame.Tests.EditMode.full-task4-fix2.dll'))
+$failed=0;$total=0
+$typeNames=@('PuzzleGame.Tests.EditMode.Contracts.ContractValidationTests','PuzzleGame.Tests.EditMode.Board.BoardTests','PuzzleGame.Tests.EditMode.Board.BoardResolverTests','PuzzleGame.Tests.EditMode.Battle.CombatTests','PuzzleGame.Tests.EditMode.Battle.EnemyAndSkillTests','PuzzleGame.Tests.EditMode.Stages.StageSessionTests')
+foreach($typeName in $typeNames){$type=$assembly.GetType($typeName,$true);$typeTotal=0;$typeFailed=0;foreach($method in $type.GetMethods() | Where-Object { $_.GetCustomAttributes($true) | Where-Object { $_.GetType().FullName -eq 'NUnit.Framework.TestAttribute' -or $_.GetType().FullName -eq 'NUnit.Framework.TestCaseAttribute' } }){$cases=$method.GetCustomAttributes($true)|Where-Object{$_.GetType().FullName -eq 'NUnit.Framework.TestCaseAttribute'};if($cases.Count -eq 0){$cases=@($null)};foreach($case in $cases){$total++;$typeTotal++;try{$args=if($null -eq $case){@()}else{@($case.Arguments)};$method.Invoke([Activator]::CreateInstance($type),$args)}catch{$failed++;$typeFailed++;Write-Output "FAIL $($type.Name).$($method.Name): $($_.Exception.InnerException.Message)"}}};Write-Output "$($type.Name): passed=$($typeTotal-$typeFailed) failed=$typeFailed"}
+Write-Output "SUMMARY total=$total passed=$($total-$failed) failed=$failed"
+if($failed -gt 0){exit 1}
+```
+
+Output (exit 0, no compiler warnings/errors):
+
+```text
+ContractValidationTests: passed=25 failed=0
+BoardTests: passed=14 failed=0
+BoardResolverTests: passed=7 failed=0
+CombatTests: passed=15 failed=0
+EnemyAndSkillTests: passed=29 failed=0
+StageSessionTests: passed=26 failed=0
+SUMMARY total=116 passed=116 failed=0
+```
+
+### Fix-round self-review
+
+- The trigger-specific `TurnCount >= 1` rule is deliberately enforced after ordinary generic effect validation, preserving zero-duration ordinary countdown enrage behavior.
+- One real zero-duration threshold fixture is asserted at both catalog/session and direct-runtime construction boundaries; a duration-one threshold remains exercised by the once-only boss trigger tests.
+- No deferred minor or unrelated behavior was changed.
