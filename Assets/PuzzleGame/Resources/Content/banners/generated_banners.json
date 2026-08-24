@@ -20,7 +20,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -46,7 +46,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -72,7 +72,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -98,7 +98,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -124,7 +124,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -150,7 +150,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -176,7 +176,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -202,7 +202,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -228,7 +228,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -254,7 +254,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -280,7 +280,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -306,7 +306,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -491,7 +491,7 @@
         {
           "gemCost": 400,
           "pullCount": 5,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 600,
@@ -501,7 +501,7 @@
         {
           "gemCost": 900,
           "pullCount": 8,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 1500,
@@ -557,7 +557,7 @@
         {
           "gemCost": 400,
           "pullCount": 5,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 600,
@@ -567,7 +567,7 @@
         {
           "gemCost": 900,
           "pullCount": 8,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 1500,
@@ -623,7 +623,7 @@
         {
           "gemCost": 400,
           "pullCount": 5,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 600,
@@ -633,7 +633,7 @@
         {
           "gemCost": 900,
           "pullCount": 8,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 1500,
@@ -689,7 +689,7 @@
         {
           "gemCost": 400,
           "pullCount": 5,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 600,
@@ -699,7 +699,7 @@
         {
           "gemCost": 900,
           "pullCount": 8,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 1500,
@@ -743,12 +743,12 @@
         {
           "gemCost": 560,
           "pullCount": 6,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 1000,
           "pullCount": 10,
-          "guarantee": "Best available guaranteed"
+          "guarantee": ""
         }
       ],
       "rotationIndex": 0,
@@ -789,12 +789,12 @@
         {
           "gemCost": 630,
           "pullCount": 6,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 1200,
           "pullCount": 10,
-          "guarantee": "Best available guaranteed"
+          "guarantee": ""
         }
       ],
       "rotationIndex": 0,
@@ -838,7 +838,7 @@
         {
           "gemCost": 800,
           "pullCount": 6,
-          "guarantee": "4★ guaranteed"
+          "guarantee": ""
         },
         {
           "gemCost": 1500,
@@ -873,7 +873,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [
@@ -904,7 +904,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [
@@ -935,7 +935,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [
@@ -966,7 +966,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -1020,7 +1020,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★. Featured units take half of all 5★ results.",
+      "guarantee": "Featured units take half of all 5★ results.",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -1046,7 +1046,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★. Featured units take half of all 5★ results.",
+      "guarantee": "Featured units take half of all 5★ results.",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -1076,7 +1076,7 @@
         {
           "gemCost": 750,
           "pullCount": 10,
-          "guarantee": "4★ guaranteed (half price)"
+          "guarantee": "Half price"
         },
         {
           "gemCost": 1500,
@@ -1110,7 +1110,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 80
       },
-      "guarantee": "10-pulls always contain at least one 4★. Featured legends take 80% of 5★ results.",
+      "guarantee": "Featured legends take 80% of 5★ results.",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
@@ -1136,7 +1136,7 @@
         "oneStar": 15,
         "featuredShareOfFiveStar": 50
       },
-      "guarantee": "10-pulls always contain at least one 4★.",
+      "guarantee": "",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [

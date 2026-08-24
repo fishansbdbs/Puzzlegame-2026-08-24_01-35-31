@@ -358,7 +358,7 @@ function buildBanners() {
       rates: Object.assign(
         { fiveStar: 4, fourStar: 16, threeStar: 40, twoStar: 25, oneStar: 15, featuredShareOfFiveStar: b.featured && b.featured.length ? 50 : 0 },
         b.rates || {}),
-      guarantee: b.guarantee || '10-pulls always contain at least one 4★.',
+      guarantee: b.guarantee || '',
       steps: b.steps || [],
       rotationIndex: b.rotationIndex || 0,
       poolTags: b.poolTags || [],

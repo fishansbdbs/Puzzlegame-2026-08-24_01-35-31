@@ -1,110 +1,107 @@
-# Presentation layer — integration notes for core (Codex)
+# Presentation ↔ Core integration (COMPLETED)
 
-Branch: `claude/content-presentation`. Everything lives under
-`Assets/PuzzleGame/` plus `Tools/content-gen/`; no Codex-owned file was
-modified. This doc is the handoff: what exists, where the seams are, and
-how core systems replace the mocks.
+Branch `claude/content-presentation` now contains one cohesive game:
+Codex's core systems (`Assets/PuzzleGame/Core`, `Assets/PuzzleGame/Unity`)
+drive Claude's presentation and content
+(`Assets/PuzzleGame/Scripts`, `Assets/PuzzleGame/Resources/Content`)
+through the adapter layer in `Assets/PuzzleGame/Scripts/CoreIntegration`.
 
-## The seams (`Assets/PuzzleGame/Scripts/Integration/Sources.cs`)
+## Runtime composition
 
-Presentation code only talks to these interfaces, resolved through
-`PresentationServices.Get<T>()`:
+Scene map (all in build settings):
 
-| Interface | Consumed by | Core system that should implement it |
+| Scene | Entry | Purpose |
 |---|---|---|
-| `IBattleEventSource` | BattleScreen, OrbBoardView, VFX | board/match/cascade engine, combat, countdown/action engine |
-| `ISummonSource` | Summon hub, banner detail, pack opening | gacha probability/guarantee logic + pack summon flow hooks |
-| `IRosterSource` | Roster, character detail, awakening | character progression / Ascension / Awakening logic + save |
-| `IEconomySource` | header currency chips, summon costs | currencies/economy state |
-| `IScheduleSource` | events hub, banner timers | calendar/rotation scheduler (presentation does **no** date math) |
-| `IContentLibrary` | everywhere content is displayed | stage loader / content database |
+| `Game` (first) | `GameBootstrap` | The real game: GameServices + core adapters + full UI |
+| `SampleScene` | `VerticalSliceBootstrap` | Codex's deterministic vertical slice (unchanged) |
+| `PresentationDemo` (disabled) | `PresentationDemoBootstrap` | Mock-driven presentation demo only |
 
-**Binding:** call `PresentationServices.Register<T>(impl)` for each seam
-before UI boots, then open screens via `UiRouter` (see
-`PresentationDemoBootstrap.Launch` for panel setup). Any seam left
-unregistered gets a demo mock from `MockInstaller.InstallMissing()` —
-delete or bypass the mocks (`Integration/Mock/`) once real systems exist.
-The mocks are explicitly demo-only: the summon mock rolls RNG only
-because core gacha isn't merged; presentation itself never rolls.
+`GameServices` (composition root) owns exactly one instance of each core
+service: `Wallet`, `MaterialInventory`, `SummonCollection`,
+`StageCatalog`, `RotationScheduler` + `SystemLocalClock`, `SaveService`
+over `FileSaveStorage` (`persistentDataPath/puzzlegame_save.json`), and
+per-banner `SummonService`s with persisted `BannerRuntimeState`. All
+state mutation goes through public core APIs; profile restore replays
+experience/duplicates and awakens via grant-then-`Awaken` so no core
+invariants are bypassed.
 
-`MockBattleSimulator` doubles as a written spec of the event flow the HUD
-expects (ordering of `MatchResolved` → `AttackPerformed` → heals →
-countdown ticks → `EnemyActed`; board reads only on `BoardChanged`).
+Presentation seams → implementations:
 
-## Content
+| Seam | Real game | Demo |
+|---|---|---|
+| `IEconomySource` | `CoreEconomyAdapter` (Wallet) | MockEconomy |
+| `IRosterSource` | `CoreRosterAdapter` (CharacterProgress/ProgressionService) | MockRoster |
+| `ISummonSource` | `CoreSummonAdapter` (SummonService.PurchaseAndRoll + PackSummonFlow) | MockSummons |
+| `IScheduleSource` | `CoreScheduleAdapter` (RotationScheduler) | MockSchedule |
+| `IContentLibrary` | `CoreContentAdapter` (ContentDb display + save-backed stars/unlocks) | ContentDb |
+| `IBattleFactory` | `CoreBattleFactory` → `CoreBattleAdapter` | MockBattleFactory |
 
-JSON under `Assets/PuzzleGame/Resources/Content/` (see the README there
-for schemas): 60 characters, 194 enemies, 20 chapters × 25 stages, 159
-dialogue scenes, 40 banners, 29 events, 29 reward tables, 86 items, 16
-pack themes, 69 schedule entries. These are draft schemas mirroring the
-design spec's contract list — when core schemas land, migrate the files
-(mapping is ~1:1) rather than forking vocabulary. Chapters 2-20,
-generated banners/events and their schedule windows are produced by
-`node Tools/content-gen/generate.js` from authored tables; regenerate
-instead of hand-editing `*generated*`/`chapter_02+` files. `node
-Tools/content-gen/audit.js` runs a deep whole-bank audit (duplicates,
-references, empty files) without Unity.
+Mocks live only in `Scripts/Integration/Mock`, are registered only by the
+demo bootstrap, and never run in the `Game` scene.
 
-### Stage modifiers (core interpretation needed)
+## Battle integration
 
-Stages carry data-driven `modifiers` strings that presentation displays
-as chips but core must implement mechanically:
-`elite`, `start_locks:N`, `start_poison:N`, `start_blockers:N`,
-`move_time_minus:N`, `combo_shield:N`, `enemy_haste`, `no_heart_orbs`,
-`mono_element_only`, `element_bonus:<element>`, `healing_reduced`.
-The validator enforces this vocabulary; extend it in ContentValidator +
-ModifierDisplay together when adding new modifiers.
+`CoreBattleAdapter` is the "broader presentation controller" the core
+docs anticipated: multi-wave, multi-enemy stage sessions using
+`DragSession` (movement legality + 10s authority), `BoardResolver`
+(matching/cascades), `BattleEngine`/`StageSession` (combat commit),
+`SkillEngine` (skills), `StageObjectiveEvaluator` (stars). The core
+transaction always commits synchronously; the adapter then replays the
+immutable result as the paced `IBattleEventSource` stream the HUD
+consumes. Secondary wave enemies advance through `EnemyActionEngine`,
+with their board/context effects mirrored from the emitted snapshots.
+Combat targets the first living enemy (core's single-enemy context);
+victory/defeat, rewards, stars and save-out all flow through
+`GameServices.RecordStageCompletion`.
 
-### Enemy action types
+Stage modifiers (`start_locks`, `move_time_minus`, `combo_shield`,
+`enemy_haste`, `no_heart_orbs`, ...) are applied at battle start through
+core state APIs. `mono_element_only`, `element_bonus` and
+`healing_reduced` remain display-only pending core support.
 
-`damage, bigDamage, convert, lock, poison, block, bind, timerDown,
-absorb, comboShield, enrage, heal, summon, taunt` — bosses use
-absorb/comboShield/enrage/taunt/summon as signature behaviors. The demo
-simulator treats summon/taunt as display-only; core should implement
-them fully.
+## Content translation
 
-### Pack themes & items
+`ContentTranslator` is the canonical mapping from the authored JSON bank
+onto core contracts (validated record-by-record with
+`ContractValidation`, failing loudly): level curves + XP thresholds,
+five-rank Ascension shapes, Awakening requirements (level + gold +
+radiant/element cores), typed active/leader/passive effects synthesized
+from the authoring keyword vocabulary, enemy actions/threshold enrages,
+per-stage scaled enemy variants (`id~h1.35a1.35`, wave-unique), banner
+weight pools honoring authored rarity rates + featured five-star share,
+real Gather-In step guarantees, and scheduler windows/recurrence.
+Display strings (names, epithets, jokes, skill text) still come from
+`ContentDb`; numbers come from core.
 
-`Content/packs/` defines per-banner summon presentation metadata (foil,
-accent, base tier, tease style, fake-out permission, 5★ backdrop,
-`revealStingRef` audio hook — audio system not yet present, hook only).
-`Content/items/` is the item registry (names/categories/rarity/icons);
-all reward, drop and token ids validate against it. Chapters define
-`starMilestones` (25/50/75 stars) and a `mechanicNote`.
+Known approximations (documented, non-blocking):
+- Leader skills apply party-wide (core has no element-scoped boosts);
+  authored multipliers are capped at ×3.
+- "Below X% HP" leader conditions can't be expressed (core supports
+  minimum-HP floors only) and are treated as always-on.
+- Enemy `heal`/`summon`/`taunt` action types have no core equivalent and
+  translate away (names remain for flavor).
+- Non-final banner-step "4★ guaranteed" copy was removed from content —
+  core implements final-step Gather-In/Step-Up guarantees only.
 
-### Intentionally NOT implemented (avoid conflicts)
+## Verification (all green at integration completion)
 
-- Login/daily-bonus reward calendars (no schedule kind for it yet — add
-  to core scheduler if wanted; presentation will render it).
-- Stamina (story stages are stamina-free per spec; `staminaCost` field
-  exists for future paid-entry content).
-- Audio (sting refs are string hooks).
-- Real gacha pity counters beyond the documented guarantees.
+- Core EditMode: 335 passed. PlayMode (core + presentation + integration): 94 passed.
+- `ContentValidator.Run`: 60 characters / 194 enemies / 500 story stages
+  / 40 banners / 29 events / 86 items / 16 pack themes — 0 errors.
+- `CoreIntegrationSmokeTest.Run`: translation, scheduler with injected
+  date, real summons (single/ten/duplicates/overflow), both Gather-In
+  guarantees, core battle → victory → persisted stars/rewards, real
+  Awakening with visuals switch, full save round-trip.
+- `CoreGameUiTests` (PlayMode): boots the real `GameBootstrap`, performs
+  a real ten-pull through `PackSummonFlow` state transitions, drives a
+  core battle through the HUD loop to victory, and verifies the
+  serialized save.
 
-## Validation (all runnable headless)
+## Codex follow-ups (optional)
 
-```sh
-# schema + cross-reference validation of every content file
-Unity -batchmode -nographics -quit -projectPath . \
-  -executeMethod PuzzleGame.Presentation.EditorTools.ContentValidator.Run
-# summon/gather-in/duplicate/battle logic smoke (mock-driven)
-Unity -batchmode -nographics -quit -projectPath . \
-  -executeMethod PuzzleGame.Presentation.EditorTools.PresentationSmokeTest.Run
-# real UI walkthrough: menu → roster → summon → pack rip → battle
-Unity -runTests -batchmode -projectPath . -testPlatform PlayMode \
-  -testResults results.xml
-```
-
-## Presentation specifics worth knowing
-
-- **Naming:** the user-facing title comes from `GameInfo.Title` only.
-- **Art:** every art reference is a string key resolved through
-  `PlaceholderArt` (procedural). A real art pass swaps resolution, not keys.
-- **Reduced motion / intensity:** all juice funnels through
-  `MotionSettings` (PlayerPrefs-backed; UI in the main menu options box).
-- **Demo entry:** `PresentationDemoBootstrap` auto-runs only in
-  `PresentationDemo`/`SampleScene` scenes; core boot should register real
-  sources and drive `UiRouter` itself.
-- **Project settings:** landscape-only orientation is NOT yet enforced in
-  `ProjectSettings.asset` (Codex-owned); `defaultScreenOrientation` and
-  the autorotate flags still allow portrait. Please lock to landscape.
+- Core interpretation for `mono_element_only` party restriction,
+  `element_bonus`, `healing_reduced`, and an enemy self-heal effect type.
+- Non-final banner-step pity guarantees, if desired (copy was removed).
+- Audio: `revealStingRef` and pack-theme hooks are string keys awaiting a sound system.
+- The vertical-slice bootstrap now self-starts only in `SampleScene`
+  (one-line scene gate in `AutomaticBootstrapStartup.ShouldSuppress`).

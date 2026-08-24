@@ -10,7 +10,7 @@
       "singleCost": 150,
       "multiCost": 1500,
       "rates": { "fiveStar": 4, "fourStar": 16, "threeStar": 40, "twoStar": 25, "oneStar": 15, "featuredShareOfFiveStar": 0 },
-      "guarantee": "10-pulls always contain at least one 4★."
+      "guarantee": ""
     },
     {
       "id": "featured_gym_legends",
@@ -22,7 +22,7 @@
       "singleCost": 150,
       "multiCost": 1500,
       "rates": { "fiveStar": 4, "fourStar": 16, "threeStar": 40, "twoStar": 25, "oneStar": 15, "featuredShareOfFiveStar": 50 },
-      "guarantee": "10-pulls always contain at least one 4★. Featured units take half of all 5★ results."
+      "guarantee": "Featured units take half of all 5★ results."
     },
     {
       "id": "featured_night_court",
@@ -34,7 +34,7 @@
       "singleCost": 150,
       "multiCost": 1500,
       "rates": { "fiveStar": 4, "fourStar": 16, "threeStar": 40, "twoStar": 25, "oneStar": 15, "featuredShareOfFiveStar": 50 },
-      "guarantee": "10-pulls always contain at least one 4★. Featured units take half of all 5★ results."
+      "guarantee": "Featured units take half of all 5★ results."
     },
     {
       "id": "gatherin_glimmer_r1",
@@ -51,9 +51,9 @@
         { "gemCost": 100, "pullCount": 2, "guarantee": "" },
         { "gemCost": 150, "pullCount": 3, "guarantee": "" },
         { "gemCost": 250, "pullCount": 4, "guarantee": "" },
-        { "gemCost": 400, "pullCount": 5, "guarantee": "4★ guaranteed" },
+        { "gemCost": 400, "pullCount": 5, "guarantee": "" },
         { "gemCost": 600, "pullCount": 6, "guarantee": "" },
-        { "gemCost": 900, "pullCount": 8, "guarantee": "4★ guaranteed" },
+        { "gemCost": 900, "pullCount": 8, "guarantee": "" },
         { "gemCost": 1500, "pullCount": 10, "guarantee": "5★ GUARANTEED" }
       ]
     },
@@ -72,9 +72,9 @@
         { "gemCost": 100, "pullCount": 2, "guarantee": "" },
         { "gemCost": 150, "pullCount": 3, "guarantee": "" },
         { "gemCost": 250, "pullCount": 4, "guarantee": "" },
-        { "gemCost": 400, "pullCount": 5, "guarantee": "4★ guaranteed" },
+        { "gemCost": 400, "pullCount": 5, "guarantee": "" },
         { "gemCost": 600, "pullCount": 6, "guarantee": "" },
-        { "gemCost": 900, "pullCount": 8, "guarantee": "4★ guaranteed" },
+        { "gemCost": 900, "pullCount": 8, "guarantee": "" },
         { "gemCost": 1500, "pullCount": 10, "guarantee": "FEATURED 5★ GUARANTEED" }
       ]
     },
@@ -91,7 +91,7 @@
       "steps": [
         { "gemCost": 100, "pullCount": 1, "guarantee": "" },
         { "gemCost": 300, "pullCount": 3, "guarantee": "" },
-        { "gemCost": 700, "pullCount": 6, "guarantee": "4★ guaranteed" },
+        { "gemCost": 700, "pullCount": 6, "guarantee": "" },
         { "gemCost": 1400, "pullCount": 10, "guarantee": "5★ GUARANTEED" }
       ]
     }

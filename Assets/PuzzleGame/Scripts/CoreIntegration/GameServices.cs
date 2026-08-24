@@ -183,7 +183,11 @@ namespace PuzzleGame.Presentation.CoreIntegration
             {
                 if (!Content.Characters.ContainsKey(starters[index])) continue;
                 if (initialProgress.Any(p => p.CharacterId == starters[index])) continue;
-                initialProgress.Add(CreateProgress(starters[index]));
+                var progress = CreateProgress(starters[index]);
+                // Starters arrive combat-ready at level 10 so the first hour
+                // isn't a wall (2250 = the authored curve's level-10 total).
+                ProgressionService.ApplyExperience(progress, 2250);
+                initialProgress.Add(progress);
                 partyIds[index] = starters[index];
             }
         }

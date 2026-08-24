@@ -3,6 +3,8 @@
     "rootNamespace": "PuzzleGame",
     "references": [
         "PuzzleGame.Presentation",
+        "PuzzleGame.Core",
+        "PuzzleGame.Unity",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],
