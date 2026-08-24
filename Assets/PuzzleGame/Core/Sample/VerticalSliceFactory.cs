@@ -27,12 +27,16 @@ namespace PuzzleGame.Core.Sample
             var skills = CreateSkills();
             var characters = CreateCharacters(skills);
             var leader = CreateLeaderSkill();
-            var passive = new[]
+            var passive = new PassiveData
             {
-                new SkillEffectData
+                Id = "passive-ember-focus",
+                Effects = new[]
                 {
-                    Type = SkillEffectType.AttackBoost,
-                    Payload = new EffectPayloadData { Multiplier = 1.25f }
+                    new SkillEffectData
+                    {
+                        Type = SkillEffectType.AttackBoost,
+                        Payload = new EffectPayloadData { Multiplier = 1.25f }
+                    }
                 }
             };
             var enemyData = CreateEnemy();
@@ -43,14 +47,20 @@ namespace PuzzleGame.Core.Sample
             var eventData = CreateEvent();
             var schedules = CreateSchedules();
 
-            ValidateAll(characters, skills, leader, enemyData, stageData, standardBanner, gatherOne, gatherTwo,
+            ValidateAll(characters, skills, leader, passive, enemyData, stageData, standardBanner, gatherOne, gatherTwo,
                 eventData, schedules);
             var stageCatalog = new StageCatalog(new[] { stageData }, new[] { enemyData });
+            var ownedProgress = new CharacterProgress[characters.Length];
+            for (var index = 0; index < ownedProgress.Length; index++) ownedProgress[index] = new CharacterProgress(characters[index], skills[index]);
+            var ownedCollection = new SummonCollection(ownedProgress);
+            var ownedHero = ownedCollection.GetProgress(FeaturedCharacterId);
+            ProgressionService.ApplyExperience(ownedHero, 100);
+            ProgressionService.ApplyDuplicate(ownedHero, new Wallet());
 
             var generatedBoard = new BoardGenerator(new DeterministicRandom(seed ^ 0x243f6a88)).Generate();
 
             var board = CreateOpeningBoard();
-            var party = CreateParty(characters, skills, leader, passive);
+            var party = CreateParty(characters, skills, leader, passive, ownedCollection);
             party.ApplyDamage(100);
             var stageSession = stageCatalog.CreateSession(stageData.Id);
             var enemy = stageSession.CurrentEnemies[0];
@@ -58,7 +68,7 @@ namespace PuzzleGame.Core.Sample
             var activeSkillExample = ActivateLeaderSkill(party, battleContext);
             var orbSource = new SampleOrbSource(seed ^ 0x13198a2e);
 
-            var previewParty = CreateParty(characters, skills, leader, passive);
+            var previewParty = CreateParty(characters, skills, leader, passive, ownedCollection);
             previewParty.ApplyDamage(100);
             var previewSession = stageCatalog.CreateSession(stageData.Id);
             var previewEnemy = previewSession.CurrentEnemies[0];
@@ -114,7 +124,7 @@ namespace PuzzleGame.Core.Sample
             var scheduler = new RotationScheduler(new FixedClock(SampleScheduleTime));
             var activeContent = scheduler.GetActive(schedules);
 
-            return new VerticalSliceSample(seed, characters, skills, leader, passive, enemyData, stageData, stageCatalog,
+            return new VerticalSliceSample(seed, characters, skills, leader, passive, ownedCollection, enemyData, stageData, stageCatalog,
                 standardBanner, gatherOne, gatherTwo, eventData, schedules, new BoardSnapshot(generatedBoard),
                 board, orbSource, party, enemy, stageSession, battleContext, activeSkillExample,
                 openingResolution.CascadeLayers, openingTurn, ascensionProgress, ascensionExample,
@@ -423,11 +433,11 @@ namespace PuzzleGame.Core.Sample
         }
 
         private static PartyState CreateParty(CharacterData[] characters, SkillData[] skills,
-            LeaderSkillData leader, SkillEffectData[] passive)
+            LeaderSkillData leader, PassiveData passive, SummonCollection ownedCollection)
         {
             var members = new CharacterRuntime[characters.Length];
             for (var index = 0; index < members.Length; index++)
-                members[index] = CharacterBattleFactory.Create(new CharacterProgress(characters[index], skills[index]), skills[index],
+                members[index] = CharacterBattleFactory.Create(ownedCollection.GetProgress(characters[index].Id), skills[index],
                     index == 0 ? leader : null, index == 0 ? passive : null);
             return new PartyState(members);
         }
@@ -520,13 +530,14 @@ namespace PuzzleGame.Core.Sample
             };
         }
 
-        private static void ValidateAll(CharacterData[] characters, SkillData[] skills, LeaderSkillData leader,
+        private static void ValidateAll(CharacterData[] characters, SkillData[] skills, LeaderSkillData leader, PassiveData passive,
             EnemyData enemy, StageData stage, BannerData standard, BannerData gatherOne, BannerData gatherTwo,
             EventData eventData, RotationScheduleData[] schedules)
         {
             for (var index = 0; index < characters.Length; index++) RequireValid(characters[index]);
             for (var index = 0; index < skills.Length; index++) RequireValid(skills[index]);
             RequireValid(leader);
+            RequireValid(passive);
             RequireValid(enemy);
             RequireValid(stage);
             RequireValid(standard);
@@ -552,7 +563,7 @@ namespace PuzzleGame.Core.Sample
         private readonly CharacterData[] characters;
         private readonly SkillData[] skills;
         private readonly LeaderSkillData leader;
-        private readonly SkillEffectData[] passive;
+        private readonly PassiveData passive;
         private readonly EnemyData enemyDefinition;
         private readonly StageData stage;
         private readonly BannerData standardBanner;
@@ -566,7 +577,7 @@ namespace PuzzleGame.Core.Sample
         private readonly IReadOnlyList<ActiveContent> activeContent;
 
         internal VerticalSliceSample(int seed, CharacterData[] characters, SkillData[] skills,
-            LeaderSkillData leader, SkillEffectData[] passive, EnemyData enemyDefinition, StageData stage, StageCatalog stageCatalog,
+            LeaderSkillData leader, PassiveData passive, SummonCollection ownedCharacters, EnemyData enemyDefinition, StageData stage, StageCatalog stageCatalog,
             BannerData standardBanner, BannerData gatherOneBanner, BannerData gatherTwoBanner,
             EventData eventDefinition, RotationScheduleData[] schedules, BoardSnapshot generatedBoard,
             BoardState board, IOrbSource orbSource, PartyState party, EnemyRuntime enemy,
@@ -585,6 +596,7 @@ namespace PuzzleGame.Core.Sample
             this.skills = SampleSnapshot.Clone(skills);
             this.leader = SampleSnapshot.Clone(leader);
             this.passive = SampleSnapshot.Clone(passive);
+            OwnedCharacters = ownedCharacters ?? throw new ArgumentNullException("ownedCharacters");
             this.enemyDefinition = SampleSnapshot.Clone(enemyDefinition);
             this.stage = SampleSnapshot.Clone(stage);
             StageCatalog = stageCatalog ?? throw new ArgumentNullException("stageCatalog");
@@ -626,7 +638,8 @@ namespace PuzzleGame.Core.Sample
         public IReadOnlyList<CharacterData> CharacterCatalog { get { return Array.AsReadOnly(SampleSnapshot.Clone(characters)); } }
         public IReadOnlyList<SkillData> SkillCatalog { get { return Array.AsReadOnly(SampleSnapshot.Clone(skills)); } }
         public LeaderSkillData LeaderSkill { get { return SampleSnapshot.Clone(leader); } }
-        public IReadOnlyList<SkillEffectData> PassiveEffects { get { return Array.AsReadOnly(SampleSnapshot.Clone(passive)); } }
+        public PassiveData Passive { get { return SampleSnapshot.Clone(passive); } }
+        public IReadOnlyList<SkillEffectData> PassiveEffects { get { return Array.AsReadOnly(SampleSnapshot.Clone(passive.Effects)); } }
         public EnemyData EnemyDefinition { get { return SampleSnapshot.Clone(enemyDefinition); } }
         public StageData Stage { get { return SampleSnapshot.Clone(stage); } }
         public BannerData StandardBanner { get { return SampleSnapshot.Clone(standardBanner); } }
@@ -640,6 +653,7 @@ namespace PuzzleGame.Core.Sample
         public BoardState CurrentBoard { get { return BattleContext.Board; } }
         public IOrbSource OrbSource { get; private set; }
         public PartyState Party { get; private set; }
+        public SummonCollection OwnedCharacters { get; private set; }
         public EnemyRuntime Enemy { get; private set; }
         public StageSession StageSession { get; private set; }
         public StageCatalog StageCatalog { get; private set; }
@@ -775,6 +789,10 @@ namespace PuzzleGame.Core.Sample
                 RequiredTags = Clone(value.RequiredTags), MinimumComboCount = value.MinimumComboCount,
                 MinimumHpPercent = value.MinimumHpPercent, Effects = Clone(value.Effects)
             };
+        }
+        internal static PassiveData Clone(PassiveData value)
+        {
+            return value == null ? null : new PassiveData { Id = value.Id, Effects = Clone(value.Effects) };
         }
         internal static SkillEffectData[] Clone(SkillEffectData[] values)
         {

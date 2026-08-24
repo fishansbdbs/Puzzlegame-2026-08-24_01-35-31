@@ -54,6 +54,7 @@ namespace PuzzleGame.Core.Stages
         internal static void ValidateStage(StageData stage, IDictionary<string, EnemyData> knownEnemies)
         {
             if (stage == null) throw new ArgumentNullException("stage");
+            RequireContract(stage, "stage");
             if (string.IsNullOrWhiteSpace(stage.Id)) throw new ArgumentException("Stage ID is required.", "stage");
             if (stage.Waves == null || stage.Waves.Length == 0) throw new ArgumentException("Stage must define at least one wave.", "stage");
             if (stage.StarObjectives == null || stage.StarObjectives.Length != 3) throw new ArgumentException("Stage must define exactly three star objectives.", "stage");
@@ -90,7 +91,14 @@ namespace PuzzleGame.Core.Stages
 
         internal static void ValidateEnemy(EnemyData enemy)
         {
+            RequireContract(enemy, "enemy");
             EnemyDataValidation.Validate(enemy);
+        }
+
+        private static void RequireContract(IIdentifiedData data, string parameterName)
+        {
+            var errors = ContractValidation.Validate(data);
+            if (errors.Count > 0) throw new ArgumentException(errors[0], parameterName);
         }
     }
 

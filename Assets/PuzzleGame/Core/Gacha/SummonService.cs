@@ -14,6 +14,12 @@ namespace PuzzleGame.Core.Gacha
         {
             if (character == null) throw new ArgumentNullException("character");
             if (activeSkill == null) throw new ArgumentNullException("activeSkill");
+            var characterErrors = ContractValidation.Validate(character);
+            if (characterErrors.Count > 0) throw new ArgumentException(characterErrors[0], "character");
+            var skillErrors = ContractValidation.Validate(activeSkill);
+            if (skillErrors.Count > 0) throw new ArgumentException(skillErrors[0], "activeSkill");
+            if (!string.Equals(character.ActiveSkillId, activeSkill.Id, StringComparison.Ordinal))
+                throw new ArgumentException("Character active skill ID must match the supplied active skill.", "activeSkill");
             Character = character; ActiveSkill = activeSkill;
         }
         public CharacterData Character { get; private set; }

@@ -39,7 +39,14 @@ namespace PuzzleGame.Core.Contracts
             var leaderSkill = data as LeaderSkillData;
             if (leaderSkill != null)
             {
-                ValidateSkill(ElementType.Fire, 0, leaderSkill.Effects, errors);
+                ValidateLeader(leaderSkill, errors);
+                return errors;
+            }
+
+            var passive = data as PassiveData;
+            if (passive != null)
+            {
+                ValidateEffects(passive.Effects, errors);
                 return errors;
             }
 
@@ -54,6 +61,13 @@ namespace PuzzleGame.Core.Contracts
             if (stage != null)
             {
                 ValidateStage(stage, errors);
+                return errors;
+            }
+
+            var wave = data as WaveData;
+            if (wave != null)
+            {
+                ValidateWave(wave, errors);
                 return errors;
             }
 
@@ -89,6 +103,8 @@ namespace PuzzleGame.Core.Contracts
 
         private static void ValidateCharacter(CharacterData data, List<string> errors)
         {
+            if (data.Element < ElementType.Fire || data.Element > ElementType.Dark) errors.Add("Character element must be a defined non-Heart element.");
+            if (data.BaseStats == null || data.BaseStats.Hp < 0 || data.BaseStats.Attack < 0 || data.BaseStats.Recovery < 0) errors.Add("Character stats cannot be null or negative.");
             errors.AddRange(ProgressionValidation.Validate(data));
         }
 
@@ -104,7 +120,29 @@ namespace PuzzleGame.Core.Contracts
             {
                 errors.Add("Skill must define at least one effect.");
             }
-            else for (var index = 0; index < effects.Length; index++) ValidateSkillEffect(effects[index], errors);
+            else ValidateEffects(effects, errors);
+        }
+
+        private static void ValidateLeader(LeaderSkillData data, List<string> errors)
+        {
+            if (data.RequiredElements == null || data.RequiredTags == null) errors.Add("Leader requirements cannot be null.");
+            else
+            {
+                for (var index = 0; index < data.RequiredElements.Length; index++)
+                    if (data.RequiredElements[index] < ElementType.Fire || data.RequiredElements[index] > ElementType.Dark) errors.Add("Leader required element is invalid.");
+                var tags = new HashSet<string>(StringComparer.Ordinal);
+                for (var index = 0; index < data.RequiredTags.Length; index++)
+                    if (string.IsNullOrWhiteSpace(data.RequiredTags[index]) || !tags.Add(data.RequiredTags[index])) errors.Add("Leader required tags must be nonblank and unique.");
+            }
+            if (data.MinimumComboCount < 0) errors.Add("Leader minimum combo count cannot be negative.");
+            if (float.IsNaN(data.MinimumHpPercent) || float.IsInfinity(data.MinimumHpPercent) || data.MinimumHpPercent < 0f || data.MinimumHpPercent > 1f) errors.Add("Leader minimum HP percent must be between zero and one.");
+            ValidateEffects(data.Effects, errors);
+        }
+
+        private static void ValidateEffects(SkillEffectData[] effects, List<string> errors)
+        {
+            if (effects == null || effects.Length == 0) { errors.Add("Skill must define at least one effect."); return; }
+            for (var index = 0; index < effects.Length; index++) ValidateSkillEffect(effects[index], errors);
         }
 
         private static void ValidateEnemy(EnemyData data, List<string> errors)
@@ -130,8 +168,7 @@ namespace PuzzleGame.Core.Contracts
                         errors.Add("Wave ID is required.");
                     }
                     else if (!ids.Add(wave.Id)) errors.Add("Wave IDs must be unique within a stage.");
-                    if (wave != null && (wave.EnemyIds == null || wave.EnemyIds.Length == 0)) errors.Add("Wave must define at least one enemy.");
-                    else if (wave != null) for (var enemy = 0; enemy < wave.EnemyIds.Length; enemy++) if (string.IsNullOrWhiteSpace(wave.EnemyIds[enemy])) errors.Add("Wave enemy ID is required.");
+                    if (wave != null) ValidateWave(wave, errors);
                 }
             }
             if (data.StarObjectives == null || data.StarObjectives.Length != 3)
@@ -140,6 +177,19 @@ namespace PuzzleGame.Core.Contracts
             }
             else for (var index = 0; index < data.StarObjectives.Length; index++) ValidateObjective(data.StarObjectives[index], errors);
             ValidateRewards(data.ClearRewards, errors);
+        }
+
+        private static void ValidateWave(WaveData wave, List<string> errors)
+        {
+            if (wave.EnemyIds == null || wave.EnemyIds.Length == 0) errors.Add("Wave must define at least one enemy.");
+            else
+            {
+                var enemies = new HashSet<string>(StringComparer.Ordinal);
+                for (var enemy = 0; enemy < wave.EnemyIds.Length; enemy++)
+                    if (string.IsNullOrWhiteSpace(wave.EnemyIds[enemy])) errors.Add("Wave enemy ID is required.");
+                    else if (!enemies.Add(wave.EnemyIds[enemy])) errors.Add("Wave enemy IDs must be unique.");
+            }
+            ValidateRewards(wave.Rewards, errors);
         }
 
         private static void ValidateBanner(BannerData data, List<string> errors)
@@ -154,6 +204,7 @@ namespace PuzzleGame.Core.Contracts
             else
             {
                 var ids = new HashSet<string>(StringComparer.Ordinal);
+                long totalWeight = 0;
                 for (var index = 0; index < data.Characters.Length; index++)
                 {
                     var character = data.Characters[index];
@@ -166,7 +217,9 @@ namespace PuzzleGame.Core.Contracts
                         errors.Add("Banner character weight must be positive.");
                     }
                     else if (!ids.Add(character.CharacterId)) errors.Add("Banner character IDs must be unique.");
+                    if (character != null) totalWeight += character.Weight;
                 }
+                if (totalWeight > int.MaxValue) errors.Add("Banner character weights exceed Int32.");
             }
 
             if (data.SinglePullGemCost < 0 || data.TenPullGemCost < 0)
@@ -186,6 +239,8 @@ namespace PuzzleGame.Core.Contracts
                     ? "Gather-In banner must define at least one step."
                     : "Step-Up banner must define at least one step.");
             }
+
+            if (data.Type == BannerType.Standard && data.Steps.Length != 0) errors.Add("Standard banner steps must be empty.");
 
             for (var index = 0; index < data.Steps.Length; index++)
             {
@@ -327,11 +382,17 @@ namespace PuzzleGame.Core.Contracts
             if (!Enum.IsDefined(typeof(SkillEffectType), effect.Type)) { errors.Add("Skill effect type is invalid."); return; }
             var payload = effect.Payload;
             if (payload.TurnCount < 0) errors.Add("Skill effect turn count cannot be negative.");
-            if (float.IsNaN(payload.Multiplier) || float.IsInfinity(payload.Multiplier) || float.IsNaN(payload.DurationSeconds) || float.IsInfinity(payload.DurationSeconds)) errors.Add("Skill effect numeric payloads must be finite.");
+            if (float.IsNaN(payload.Multiplier) || float.IsInfinity(payload.Multiplier)) errors.Add("Skill effect multiplier must be finite.");
             if ((effect.Type == SkillEffectType.ConvertOrbs || effect.Type == SkillEffectType.RemoveOrbs) && (!Enum.IsDefined(typeof(OrbType), payload.SourceOrb) || !Enum.IsDefined(typeof(OrbType), payload.TargetOrb))) errors.Add("Skill effect orb type is invalid.");
             if (effect.Type == SkillEffectType.CreateOrbs && (!Enum.IsDefined(typeof(OrbType), payload.TargetOrb) || payload.Amount < 0)) errors.Add("Create orb effect is invalid.");
             if ((effect.Type == SkillEffectType.Heal || effect.Type == SkillEffectType.DirectDamage) && payload.Amount < 0) errors.Add("Skill effect amount cannot be negative.");
             if ((effect.Type == SkillEffectType.AttackBoost || effect.Type == SkillEffectType.Shield) && (payload.Multiplier < 0f || (effect.Type == SkillEffectType.Shield && payload.Multiplier > 1f))) errors.Add("Skill effect multiplier is invalid.");
+            if (effect.Type == SkillEffectType.ExtendMoveTime)
+            {
+                var seconds = payload.DurationSeconds != 0f ? payload.DurationSeconds : payload.Amount;
+                if (float.IsNaN(seconds) || float.IsInfinity(seconds) || seconds < 0f) errors.Add("Skill effect duration is invalid.");
+            }
+            if (effect.Type == SkillEffectType.DelayEnemies && (payload.Amount != 0 ? payload.Amount : payload.TurnCount) < 0) errors.Add("Skill effect delay is invalid.");
         }
     }
 }

@@ -28,6 +28,7 @@ namespace PuzzleGame.Core.Progression
         }
 
         public string CharacterId { get { return data.Id; } }
+        public CharacterData AuthoredData { get { return ProgressionDataSnapshot.Clone(data); } }
         public int Level { get { return level; } }
         public int TotalExperience { get { return totalExperience; } }
         public int Ascension { get { return ascension; } }
@@ -56,6 +57,7 @@ namespace PuzzleGame.Core.Progression
         public VisualSnapshot CurrentVisuals { get { return ProgressionDataSnapshot.Snapshot(awakened ? data.AwakenedVisuals : data.BaseVisuals); } }
 
         internal CharacterData Data { get { return data; } }
+        internal CharacterData CreateAuthoredSnapshot() { return ProgressionDataSnapshot.Clone(data); }
         internal CharacterProgress CreateTransactionSnapshot()
         {
             var snapshot = new CharacterProgress(ProgressionDataSnapshot.Clone(data), new SkillData
@@ -87,6 +89,8 @@ namespace PuzzleGame.Core.Progression
         private static void ValidateActiveSkill(CharacterData data, SkillData activeSkill)
         {
             if (activeSkill == null) throw new ArgumentNullException("activeSkill");
+            var errors = ContractValidation.Validate(activeSkill);
+            if (errors.Count > 0) throw new ArgumentException(errors[0], "activeSkill");
             if (!string.Equals(data.ActiveSkillId, activeSkill.Id, StringComparison.Ordinal))
                 throw new ArgumentException("Active skill ID must match the character active skill ID.", "activeSkill");
             if (activeSkill.ChargeRequired < 1) throw new ArgumentException("Active skill charge requirement must be at least one.", "activeSkill");

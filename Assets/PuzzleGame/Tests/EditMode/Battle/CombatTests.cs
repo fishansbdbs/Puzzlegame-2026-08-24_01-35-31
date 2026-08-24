@@ -225,8 +225,10 @@ namespace PuzzleGame.Tests.EditMode.Battle
                 Effects = new[] { BattleFixtures.Effect(SkillEffectType.Heal, amount: 5) }
             };
             var leader = BattleFixtures.Leader(2f);
+            characterData.PassiveId = "passive";
             var passive = BattleFixtures.Effect(SkillEffectType.AttackBoost, multiplier: 3f);
-            var runtime = new CharacterRuntime(characterData, skill, leader, new[] { passive });
+            var passiveData = new PassiveData { Id = "passive", Effects = new[] { passive } };
+            var runtime = new CharacterRuntime(characterData, skill, leader, passiveData);
 
             characterData.Element = ElementType.Water;
             characterData.BaseStats.Attack = 999;
@@ -237,13 +239,13 @@ namespace PuzzleGame.Tests.EditMode.Battle
             exposed.BaseStats.Attack = 777;
             runtime.ActiveSkill.Effects[0].Payload.Amount = 88;
             runtime.LeaderSkill.Effects[0].Payload.Multiplier = 8f;
-            runtime.PassiveEffects[0].Payload.Multiplier = 7f;
+            runtime.Passive.Effects[0].Payload.Multiplier = 7f;
 
             Assert.That(runtime.Data.Element, Is.EqualTo(ElementType.Fire));
             Assert.That(runtime.Data.BaseStats.Attack, Is.EqualTo(10));
             Assert.That(runtime.ActiveSkill.Effects[0].Payload.Amount, Is.EqualTo(5));
             Assert.That(runtime.LeaderSkill.Effects[0].Payload.Multiplier, Is.EqualTo(2f));
-            Assert.That(runtime.PassiveEffects[0].Payload.Multiplier, Is.EqualTo(3f));
+            Assert.That(runtime.Passive.Effects[0].Payload.Multiplier, Is.EqualTo(3f));
         }
     }
 
@@ -271,8 +273,9 @@ namespace PuzzleGame.Tests.EditMode.Battle
                 BaseRarity = 1,
                 BaseStats = new StatBlock { Hp = hp, Attack = attack, Recovery = recovery },
                 ActiveSkillId = skill == null ? string.Empty : skill.Id,
-                LeaderSkillId = leader == null ? string.Empty : leader.Id
-            }, skill, leader, passive);
+                LeaderSkillId = leader == null ? string.Empty : leader.Id,
+                PassiveId = passive == null ? string.Empty : id + "-passive"
+            }, skill, leader, passive == null ? null : new PassiveData { Id = id + "-passive", Effects = passive });
         }
 
         internal static PartyState Party(int hp = 10, int attack = 10, int recovery = 2)

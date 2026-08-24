@@ -9,24 +9,24 @@ namespace PuzzleGame.Core.Battle
         private readonly CharacterData data;
         private readonly SkillData activeSkill;
         private readonly LeaderSkillData leaderSkill;
-        private readonly SkillEffectData[] passiveEffects;
+        private readonly PassiveData passive;
         private readonly int effectiveRarity;
         private readonly VisualReferenceSet visuals;
         private object bindIdentity = new object();
 
         public CharacterRuntime(CharacterData data, SkillData activeSkill = null, LeaderSkillData leaderSkill = null,
-            SkillEffectData[] passiveEffects = null, int effectiveRarity = 0, VisualReferenceSet visuals = null)
+            PassiveData passive = null, int effectiveRarity = 0, VisualReferenceSet visuals = null)
         {
             if (data == null) throw new ArgumentNullException("data");
             ValidateCharacterData(data);
-            ValidateStableIds(data, activeSkill, leaderSkill);
-            if (activeSkill != null) ValidateSkill(activeSkill);
-            if (leaderSkill != null) ValidateEffects(leaderSkill.Effects, "leaderSkill");
-            ValidateEffects(passiveEffects ?? new SkillEffectData[0], "passiveEffects");
+            ValidateStableIds(data, activeSkill, leaderSkill, passive);
+            ValidateBound(activeSkill, "activeSkill");
+            ValidateBound(leaderSkill, "leaderSkill");
+            ValidateBound(passive, "passive");
             this.data = AuthoredDataSnapshot.Clone(data);
             this.activeSkill = AuthoredDataSnapshot.Clone(activeSkill);
             this.leaderSkill = AuthoredDataSnapshot.Clone(leaderSkill);
-            this.passiveEffects = AuthoredDataSnapshot.Clone(passiveEffects ?? new SkillEffectData[0]);
+            this.passive = AuthoredDataSnapshot.Clone(passive);
             this.effectiveRarity = effectiveRarity == 0 ? data.BaseRarity : effectiveRarity;
             if (this.effectiveRarity < (int)Rarity.One || this.effectiveRarity > (int)Rarity.Awakened)
                 throw new ArgumentOutOfRangeException("effectiveRarity");
@@ -36,7 +36,8 @@ namespace PuzzleGame.Core.Battle
         public CharacterData Data { get { return AuthoredDataSnapshot.Clone(data); } }
         public SkillData ActiveSkill { get { return AuthoredDataSnapshot.Clone(activeSkill); } }
         public LeaderSkillData LeaderSkill { get { return AuthoredDataSnapshot.Clone(leaderSkill); } }
-        public IReadOnlyList<SkillEffectData> PassiveEffects { get { return Array.AsReadOnly(AuthoredDataSnapshot.Clone(passiveEffects)); } }
+        public PassiveData Passive { get { return AuthoredDataSnapshot.Clone(passive); } }
+        public IReadOnlyList<SkillEffectData> PassiveEffects { get { return Array.AsReadOnly(AuthoredDataSnapshot.Clone(passive == null ? new SkillEffectData[0] : passive.Effects)); } }
         public int EffectiveRarity { get { return effectiveRarity; } }
         public VisualReferenceSet Visuals { get { return AuthoredDataSnapshot.Clone(visuals); } }
         public int CurrentCharge { get; private set; }
@@ -51,7 +52,7 @@ namespace PuzzleGame.Core.Battle
         internal string PassiveId { get { return data.PassiveId; } }
         internal SkillData ActiveSkillState { get { return activeSkill; } }
         internal LeaderSkillData LeaderSkillState { get { return leaderSkill; } }
-        internal SkillEffectData[] PassiveEffectState { get { return passiveEffects; } }
+        internal SkillEffectData[] PassiveEffectState { get { return passive == null ? new SkillEffectData[0] : passive.Effects; } }
 
         internal bool HasTag(string tag)
         {
@@ -111,7 +112,7 @@ namespace PuzzleGame.Core.Battle
                 throw new ArgumentException("Character stats cannot be null or negative.", "data");
         }
 
-        private static void ValidateStableIds(CharacterData data, SkillData activeSkill, LeaderSkillData leaderSkill)
+        private static void ValidateStableIds(CharacterData data, SkillData activeSkill, LeaderSkillData leaderSkill, PassiveData passive)
         {
             if (string.IsNullOrWhiteSpace(data.ActiveSkillId) != (activeSkill == null))
                 throw new ArgumentException("Character active skill ID and active skill must either both be present or both be absent.", "activeSkill");
@@ -121,6 +122,17 @@ namespace PuzzleGame.Core.Battle
                 throw new ArgumentException("Character leader skill ID and leader skill must either both be present or both be absent.", "leaderSkill");
             if (leaderSkill != null && !string.Equals(data.LeaderSkillId, leaderSkill.Id, StringComparison.Ordinal))
                 throw new ArgumentException("Leader skill ID must match the character leader skill ID.", "leaderSkill");
+            if (string.IsNullOrWhiteSpace(data.PassiveId) != (passive == null))
+                throw new ArgumentException("Character passive ID and passive must either both be present or both be absent.", "passive");
+            if (passive != null && !string.Equals(data.PassiveId, passive.Id, StringComparison.Ordinal))
+                throw new ArgumentException("Passive ID must match the character passive ID.", "passive");
+        }
+
+        private static void ValidateBound(IIdentifiedData data, string parameterName)
+        {
+            if (data == null) return;
+            var errors = ContractValidation.Validate(data);
+            if (errors.Count > 0) throw new ArgumentException(errors[0], parameterName);
         }
 
         private static void ValidateSkill(SkillData skill)
@@ -177,6 +189,11 @@ namespace PuzzleGame.Core.Battle
                 RequiredTags = Clone(source.RequiredTags), MinimumComboCount = source.MinimumComboCount,
                 MinimumHpPercent = source.MinimumHpPercent, Effects = Clone(source.Effects)
             };
+        }
+
+        internal static PassiveData Clone(PassiveData source)
+        {
+            return source == null ? null : new PassiveData { Id = source.Id, Effects = Clone(source.Effects) };
         }
 
         internal static SkillEffectData[] Clone(SkillEffectData[] source)

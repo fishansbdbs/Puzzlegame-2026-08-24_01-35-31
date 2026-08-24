@@ -132,6 +132,15 @@ namespace PuzzleGame.Core.Contracts
     }
 
     [Serializable]
+    public sealed class PassiveData : IIdentifiedData
+    {
+        public string Id;
+        public SkillEffectData[] Effects = Array.Empty<SkillEffectData>();
+
+        string IIdentifiedData.Id => Id;
+    }
+
+    [Serializable]
     public sealed class EnemyData : IIdentifiedData
     {
         public string Id;

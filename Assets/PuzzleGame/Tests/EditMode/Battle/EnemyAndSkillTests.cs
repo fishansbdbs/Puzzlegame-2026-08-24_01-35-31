@@ -132,7 +132,7 @@ namespace PuzzleGame.Tests.EditMode.Battle
         }
 
         [Test]
-        public void Multi_effect_skill_prevalidates_all_effects_before_any_mutation_or_charge_loss()
+        public void Runtime_rejects_an_invalid_effect_before_it_can_enter_a_multi_effect_skill()
         {
             var effects = new[]
             {
@@ -140,20 +140,7 @@ namespace PuzzleGame.Tests.EditMode.Battle
                 BattleFixtures.Effect(SkillEffectType.Heal, amount: 5),
                 BattleFixtures.Effect(SkillEffectType.Shield, multiplier: 2f, turns: 1)
             };
-            var caster = ChargedCaster(effects);
-            var party = PartyWithCaster(caster);
-            party.ApplyDamage(10);
-            var board = BattleFixtures.StableBoard();
-            board.Set(0, 0, OrbType.Fire);
-            var enemy = BattleFixtures.Enemy(ElementType.Fire);
-            var context = Context(board, party, enemy);
-
-            Assert.That(() => new SkillEngine().Activate(caster, context), Throws.Exception);
-            Assert.That(board.Get(0, 0), Is.EqualTo(OrbType.Fire));
-            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 10));
-            Assert.That(party.DamageTakenMultiplier, Is.EqualTo(1f));
-            Assert.That(enemy.CurrentHp, Is.EqualTo(enemy.MaxHp));
-            Assert.That(caster.CurrentCharge, Is.EqualTo(1));
+            Assert.That(() => ChargedCaster(effects), Throws.TypeOf<ArgumentException>());
         }
 
         [Test]

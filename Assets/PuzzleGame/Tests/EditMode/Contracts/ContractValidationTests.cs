@@ -349,6 +349,30 @@ namespace PuzzleGame.Tests.EditMode.Contracts
             Assert.That(ContractValidation.Validate(eventData), Is.Not.Empty);
         }
 
+        [Test]
+        public void Contract_validation_directly_validates_identified_waves_and_passives()
+        {
+            var wave = new WaveData { Id = "wave", EnemyIds = new[] { "enemy", "enemy" }, Rewards = new[] { new RewardData { Id = "reward", Type = (RewardType)99, Amount = 1 } } };
+            var passive = new PassiveData { Id = "passive", Effects = new[] { new SkillEffectData { Type = SkillEffectType.ExtendMoveTime, Payload = new EffectPayloadData { DurationSeconds = -1f } } } };
+
+            Assert.That(ContractValidation.Validate(wave), Is.Not.Empty);
+            Assert.That(ContractValidation.Validate(passive), Is.Not.Empty);
+        }
+
+        [Test]
+        public void Contract_validation_rejects_standard_banner_steps_and_weight_overflow()
+        {
+            var data = ValidBanner(BannerType.Standard);
+            data.Characters = new[]
+            {
+                new WeightedCharacterData { CharacterId = "unit-1", Weight = int.MaxValue },
+                new WeightedCharacterData { CharacterId = "unit-2", Weight = 1 }
+            };
+            data.Steps = new[] { new BannerStepData { PullCount = 1, GemCost = 1 } };
+
+            Assert.That(ContractValidation.Validate(data), Is.Not.Empty);
+        }
+
         private static StageData ValidStage()
         {
             return new StageData
