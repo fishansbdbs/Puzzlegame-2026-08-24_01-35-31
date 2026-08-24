@@ -52,6 +52,16 @@ namespace PuzzleGame.Tests.EditMode.Contracts
         }
 
         [Test]
+        public void Character_rejects_a_rarity_below_the_pullable_range()
+        {
+            var data = CharacterData.CreateForTests("zero-rarity", ElementType.Fire, 0);
+
+            CollectionAssert.Contains(
+                ContractValidation.Validate(data),
+                "Character base rarity must be between 1 and 5.");
+        }
+
+        [Test]
         public void Banner_rejects_a_non_positive_character_weight()
         {
             var data = new BannerData
@@ -59,6 +69,21 @@ namespace PuzzleGame.Tests.EditMode.Contracts
                 Id = "standard",
                 Type = BannerType.Standard,
                 Characters = new[] { new WeightedCharacterData { CharacterId = "unit-1", Weight = 0 } }
+            };
+
+            CollectionAssert.Contains(
+                ContractValidation.Validate(data),
+                "Banner character weight must be positive.");
+        }
+
+        [Test]
+        public void Banner_rejects_a_negative_character_weight()
+        {
+            var data = new BannerData
+            {
+                Id = "standard-negative-weight",
+                Type = BannerType.Standard,
+                Characters = new[] { new WeightedCharacterData { CharacterId = "unit-1", Weight = -1 } }
             };
 
             CollectionAssert.Contains(
@@ -92,6 +117,38 @@ namespace PuzzleGame.Tests.EditMode.Contracts
         }
 
         [Test]
+        public void Stage_rejects_two_star_objectives()
+        {
+            var data = ValidStage();
+            data.StarObjectives = new[]
+            {
+                new StarObjectiveData { Type = StarObjectiveType.Clear },
+                new StarObjectiveData { Type = StarObjectiveType.FinishAboveHpThreshold, HpThresholdPercent = 50f }
+            };
+
+            CollectionAssert.Contains(
+                ContractValidation.Validate(data),
+                "Stage must define exactly three star objectives.");
+        }
+
+        [Test]
+        public void Stage_rejects_four_star_objectives()
+        {
+            var data = ValidStage();
+            data.StarObjectives = new[]
+            {
+                new StarObjectiveData { Type = StarObjectiveType.Clear },
+                new StarObjectiveData { Type = StarObjectiveType.FinishAboveHpThreshold, HpThresholdPercent = 50f },
+                new StarObjectiveData { Type = StarObjectiveType.ClearWithinBoardResolutionCount, MaximumBoardResolutionCount = 5 },
+                new StarObjectiveData { Type = StarObjectiveType.Clear }
+            };
+
+            CollectionAssert.Contains(
+                ContractValidation.Validate(data),
+                "Stage must define exactly three star objectives.");
+        }
+
+        [Test]
         public void Schedule_rejects_an_end_that_is_not_after_its_start()
         {
             var start = new DateTimeOffset(2026, 8, 24, 9, 0, 0, TimeSpan.Zero);
@@ -107,6 +164,46 @@ namespace PuzzleGame.Tests.EditMode.Contracts
         }
 
         [Test]
+        public void Schedule_rejects_recurrence_minutes_below_zero()
+        {
+            var data = ValidSchedule();
+            data.StartMinuteOfDay = -1;
+
+            CollectionAssert.Contains(
+                ContractValidation.Validate(data),
+                "Schedule recurrence minutes must be between 0 and 1439.");
+        }
+
+        [Test]
+        public void Schedule_rejects_recurrence_minutes_above_1439()
+        {
+            var data = ValidSchedule();
+            data.EndMinuteOfDay = 1440;
+
+            CollectionAssert.Contains(
+                ContractValidation.Validate(data),
+                "Schedule recurrence minutes must be between 0 and 1439.");
+        }
+
+        [Test]
+        public void Schedule_rejects_a_recurrence_weekday_below_zero()
+        {
+            var data = ValidSchedule();
+            data.RecurringWeekdays = new[] { -1 };
+
+            CollectionAssert.Contains(ContractValidation.Validate(data), "Schedule weekday must be between 0 and 6.");
+        }
+
+        [Test]
+        public void Schedule_rejects_a_recurrence_weekday_above_six()
+        {
+            var data = ValidSchedule();
+            data.RecurringWeekdays = new[] { 7 };
+
+            CollectionAssert.Contains(ContractValidation.Validate(data), "Schedule weekday must be between 0 and 6.");
+        }
+
+        [Test]
         public void Gather_in_banner_requires_at_least_one_step()
         {
             var data = ValidBanner(BannerType.GatherIn);
@@ -114,6 +211,15 @@ namespace PuzzleGame.Tests.EditMode.Contracts
             CollectionAssert.Contains(
                 ContractValidation.Validate(data),
                 "Gather-In banner must define at least one step.");
+        }
+
+        [Test]
+        public void Stage_rejects_a_null_nested_wave()
+        {
+            var data = ValidStage();
+            data.Waves = new WaveData[] { null };
+
+            CollectionAssert.Contains(ContractValidation.Validate(data), "Wave ID is required.");
         }
 
         [Test]
@@ -218,6 +324,20 @@ namespace PuzzleGame.Tests.EditMode.Contracts
                 Id = "banner-1",
                 Type = type,
                 Characters = new[] { new WeightedCharacterData { CharacterId = "unit-1", Weight = 1 } }
+            };
+        }
+
+        private static RotationScheduleData ValidSchedule()
+        {
+            return new RotationScheduleData
+            {
+                Id = "schedule-1",
+                ContentId = "event-1",
+                Start = new DateTimeOffset(2026, 8, 24, 9, 0, 0, TimeSpan.Zero),
+                End = new DateTimeOffset(2026, 8, 24, 10, 0, 0, TimeSpan.Zero),
+                StartMinuteOfDay = 0,
+                EndMinuteOfDay = 1439,
+                RecurringWeekdays = new[] { 0 }
             };
         }
     }
