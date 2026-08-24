@@ -10,6 +10,7 @@ namespace PuzzleGame.Core.Battle
         private readonly SkillData activeSkill;
         private readonly LeaderSkillData leaderSkill;
         private readonly SkillEffectData[] passiveEffects;
+        private object bindIdentity = new object();
 
         public CharacterRuntime(CharacterData data, SkillData activeSkill = null, LeaderSkillData leaderSkill = null,
             SkillEffectData[] passiveEffects = null)
@@ -70,12 +71,27 @@ namespace PuzzleGame.Core.Battle
         public void Bind(int turns)
         {
             if (turns < 0) throw new ArgumentOutOfRangeException("turns");
-            if (turns > 0) BindTurns = Math.Max(BindTurns, turns);
+            if (turns > 0)
+            {
+                BindTurns = Math.Max(BindTurns, turns);
+                bindIdentity = new object();
+            }
         }
 
-        public void TickBind() { if (BindTurns > 0) BindTurns--; }
-        public void ClearBind() { BindTurns = 0; }
+        public void TickBind()
+        {
+            if (BindTurns > 0 && --BindTurns == 0) bindIdentity = new object();
+        }
+
+        public void ClearBind()
+        {
+            BindTurns = 0;
+            bindIdentity = new object();
+        }
+
         public void AdvanceBindTurn() { TickBind(); }
+        internal object CaptureBindIdentity() { return bindIdentity; }
+        internal void TickCapturedBind(object capturedIdentity) { if (object.ReferenceEquals(bindIdentity, capturedIdentity)) TickBind(); }
 
         private static void ValidateCharacterData(CharacterData data)
         {

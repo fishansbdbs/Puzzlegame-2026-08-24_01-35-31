@@ -73,6 +73,8 @@ namespace PuzzleGame.Core.Battle
             var events = new List<BattleEffectEvent>();
             if (enemy.IsDefeated) return new EnemyTurnResolution(actions, events);
 
+            var pendingAction = enemy.PeekNextAction();
+            ValidateAction(pendingAction);
             var nextCountdown = enemy.Countdown > 0 ? enemy.Countdown - 1 : 0;
             if (nextCountdown > 0)
             {
@@ -80,8 +82,6 @@ namespace PuzzleGame.Core.Battle
                 return new EnemyTurnResolution(actions, events);
             }
 
-            var pendingAction = enemy.PeekNextAction();
-            ValidateAction(pendingAction);
             var action = enemy.CommitNextAction();
             var actionSnapshot = new EnemyActionSnapshot(action);
             actions.Add(actionSnapshot);

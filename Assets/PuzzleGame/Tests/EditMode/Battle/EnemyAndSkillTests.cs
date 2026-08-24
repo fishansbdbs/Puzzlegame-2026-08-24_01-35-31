@@ -378,6 +378,22 @@ namespace PuzzleGame.Tests.EditMode.Battle
         }
 
         [Test]
+        public void Malformed_next_action_does_not_decrement_a_countdown_greater_than_one()
+        {
+            var malformed = Action("malformed", 3,
+                EnemyEffect(EnemyEffectType.Damage, amount: 7),
+                EnemyEffect(EnemyEffectType.Enrage, multiplier: float.NaN, turns: 2));
+            var enemy = BattleFixtures.Enemy(ElementType.Fire, countdown: 3, actions: new[] { malformed });
+            var party = BattleFixtures.Party();
+
+            Assert.That(() => new EnemyActionEngine().AdvanceAfterBoardResolution(enemy, Context(party: party, enemy: enemy)), Throws.Exception);
+            Assert.That(enemy.Countdown, Is.EqualTo(3));
+            Assert.That(enemy.CurrentActionIndex, Is.Zero);
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp));
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
+        }
+
+        [Test]
         public void Enemy_runtime_and_action_results_do_not_alias_mutable_authored_data()
         {
             var action = Action("snapshot-action", 3, EnemyEffect(EnemyEffectType.Damage, amount: 7));
@@ -431,6 +447,56 @@ namespace PuzzleGame.Tests.EditMode.Battle
             Assert.That(context.MoveTimeSeconds, Is.EqualTo(10f));
             Assert.That(context.BoardEffects.PoisonCount, Is.EqualTo(2));
             Assert.That(context.BoardEffects.PoisonTurns, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void One_turn_preexisting_shield_reduces_due_enemy_damage_then_expires()
+        {
+            var enemy = BattleFixtures.Enemy(ElementType.Light, countdown: 1,
+                actions: new[] { Action("hit", 3, EnemyEffect(EnemyEffectType.Damage, amount: 10)) });
+            var party = BattleFixtures.Party();
+            party.ApplyShield(0.5f, 1);
+
+            new BattleEngine().CompleteBoardResolution(BattleFixtures.OneGroup(OrbType.Fire, 3), Context(party: party, enemy: enemy));
+
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 5));
+            Assert.That(party.ShieldTurns, Is.Zero);
+            Assert.That(party.DamageTakenMultiplier, Is.EqualTo(1f));
+        }
+
+        [Test]
+        public void One_turn_preexisting_enrage_increases_due_enemy_damage_then_expires()
+        {
+            var enemy = BattleFixtures.Enemy(ElementType.Light, countdown: 1,
+                actions: new[] { Action("hit", 3, EnemyEffect(EnemyEffectType.Damage, amount: 10)) });
+            enemy.SetEnrage(2f, 1);
+            var party = BattleFixtures.Party();
+
+            new BattleEngine().CompleteBoardResolution(BattleFixtures.OneGroup(OrbType.Fire, 3), Context(party: party, enemy: enemy));
+
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 20));
+            Assert.That(enemy.EnrageTurns, Is.Zero);
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
+        }
+
+        [Test]
+        public void Same_action_reapplication_replaces_captured_enrage_and_keeps_full_duration()
+        {
+            var enemy = BattleFixtures.Enemy(ElementType.Light, countdown: 1,
+                actions: new[]
+                {
+                    Action("hit-and-reapply", 3,
+                        EnemyEffect(EnemyEffectType.Damage, amount: 10),
+                        EnemyEffect(EnemyEffectType.Enrage, multiplier: 3f, turns: 1))
+                });
+            enemy.SetEnrage(2f, 1);
+            var party = BattleFixtures.Party();
+
+            new BattleEngine().CompleteBoardResolution(BattleFixtures.OneGroup(OrbType.Fire, 3), Context(party: party, enemy: enemy));
+
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 20));
+            Assert.That(enemy.EnrageTurns, Is.EqualTo(1));
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(3f));
         }
 
         [Test]

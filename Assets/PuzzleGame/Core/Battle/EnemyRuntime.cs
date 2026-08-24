@@ -7,6 +7,9 @@ namespace PuzzleGame.Core.Battle
     {
         private readonly EnemyData data;
         private int nextActionIndex;
+        private object absorbIdentity = new object();
+        private object comboShieldIdentity = new object();
+        private object enrageIdentity = new object();
 
         public EnemyRuntime(EnemyData data)
         {
@@ -78,6 +81,7 @@ namespace PuzzleGame.Core.Battle
             if (turns == 0) return;
             AbsorbedElement = element;
             AbsorbTurns = turns;
+            absorbIdentity = new object();
         }
 
         public void SetComboShield(int minimumComboCount, int turns)
@@ -87,6 +91,7 @@ namespace PuzzleGame.Core.Battle
             if (turns == 0) return;
             ComboShieldMinimum = minimumComboCount;
             ComboShieldTurns = turns;
+            comboShieldIdentity = new object();
         }
 
         public void SetEnrage(float multiplier, int turns)
@@ -97,13 +102,14 @@ namespace PuzzleGame.Core.Battle
             if (turns == 0) return;
             AttackMultiplier = multiplier;
             EnrageTurns = turns;
+            enrageIdentity = new object();
         }
 
         public void TickTimedEffects()
         {
-            if (AbsorbTurns > 0 && --AbsorbTurns == 0) { AbsorbedElement = null; }
-            if (ComboShieldTurns > 0 && --ComboShieldTurns == 0) { ComboShieldMinimum = 0; }
-            if (EnrageTurns > 0 && --EnrageTurns == 0) { AttackMultiplier = 1f; }
+            TickAbsorb();
+            TickComboShield();
+            TickEnrage();
         }
 
         public void ClearTimedEffects()
@@ -114,6 +120,48 @@ namespace PuzzleGame.Core.Battle
             ComboShieldTurns = 0;
             AttackMultiplier = 1f;
             EnrageTurns = 0;
+            absorbIdentity = new object();
+            comboShieldIdentity = new object();
+            enrageIdentity = new object();
+        }
+
+        internal EnemyTimedEffectCapture CaptureTimedEffects()
+        {
+            return new EnemyTimedEffectCapture(absorbIdentity, comboShieldIdentity, enrageIdentity);
+        }
+
+        internal void TickCapturedTimedEffects(EnemyTimedEffectCapture capture)
+        {
+            if (object.ReferenceEquals(absorbIdentity, capture.AbsorbIdentity)) TickAbsorb();
+            if (object.ReferenceEquals(comboShieldIdentity, capture.ComboShieldIdentity)) TickComboShield();
+            if (object.ReferenceEquals(enrageIdentity, capture.EnrageIdentity)) TickEnrage();
+        }
+
+        private void TickAbsorb()
+        {
+            if (AbsorbTurns > 0 && --AbsorbTurns == 0)
+            {
+                AbsorbedElement = null;
+                absorbIdentity = new object();
+            }
+        }
+
+        private void TickComboShield()
+        {
+            if (ComboShieldTurns > 0 && --ComboShieldTurns == 0)
+            {
+                ComboShieldMinimum = 0;
+                comboShieldIdentity = new object();
+            }
+        }
+
+        private void TickEnrage()
+        {
+            if (EnrageTurns > 0 && --EnrageTurns == 0)
+            {
+                AttackMultiplier = 1f;
+                enrageIdentity = new object();
+            }
         }
 
         private static void Validate(EnemyData data)
@@ -143,5 +191,19 @@ namespace PuzzleGame.Core.Battle
             if (element < ElementType.Fire || element > ElementType.Dark)
                 throw new ArgumentException("Element must be a defined non-Heart element.", name);
         }
+    }
+
+    internal struct EnemyTimedEffectCapture
+    {
+        internal EnemyTimedEffectCapture(object absorbIdentity, object comboShieldIdentity, object enrageIdentity)
+        {
+            AbsorbIdentity = absorbIdentity;
+            ComboShieldIdentity = comboShieldIdentity;
+            EnrageIdentity = enrageIdentity;
+        }
+
+        internal readonly object AbsorbIdentity;
+        internal readonly object ComboShieldIdentity;
+        internal readonly object EnrageIdentity;
     }
 }

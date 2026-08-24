@@ -8,6 +8,8 @@ namespace PuzzleGame.Core.Battle
     {
         public const int RequiredMemberCount = 5;
         private readonly IReadOnlyList<CharacterRuntime> members;
+        private object attackBoostIdentity = new object();
+        private object shieldIdentity = new object();
 
         public PartyState(IEnumerable<CharacterRuntime> members)
         {
@@ -70,6 +72,7 @@ namespace PuzzleGame.Core.Battle
             AttackMultiplier = multiplier;
             AttackBoostTurns = turns;
             AttackBoostSourceId = sourceId ?? string.Empty;
+            attackBoostIdentity = new object();
         }
 
         public void ApplyShield(float damageTakenMultiplier, int turns)
@@ -80,6 +83,7 @@ namespace PuzzleGame.Core.Battle
             if (turns == 0) return;
             DamageTakenMultiplier = damageTakenMultiplier;
             ShieldTurns = turns;
+            shieldIdentity = new object();
         }
 
         public int BindLowestSlots(int count, int turns)
@@ -93,12 +97,8 @@ namespace PuzzleGame.Core.Battle
 
         public void TickTimedEffects()
         {
-            if (AttackBoostTurns > 0 && --AttackBoostTurns == 0)
-            {
-                AttackMultiplier = 1f;
-                AttackBoostSourceId = string.Empty;
-            }
-            if (ShieldTurns > 0 && --ShieldTurns == 0) DamageTakenMultiplier = 1f;
+            TickAttackBoost();
+            TickShield();
         }
 
         public void ClearTimedEffects()
@@ -108,6 +108,38 @@ namespace PuzzleGame.Core.Battle
             AttackBoostSourceId = string.Empty;
             DamageTakenMultiplier = 1f;
             ShieldTurns = 0;
+            attackBoostIdentity = new object();
+            shieldIdentity = new object();
+        }
+
+        internal PartyTimedEffectCapture CaptureTimedEffects()
+        {
+            return new PartyTimedEffectCapture(attackBoostIdentity, shieldIdentity);
+        }
+
+        internal void TickCapturedTimedEffects(PartyTimedEffectCapture capture)
+        {
+            if (object.ReferenceEquals(attackBoostIdentity, capture.AttackBoostIdentity)) TickAttackBoost();
+            if (object.ReferenceEquals(shieldIdentity, capture.ShieldIdentity)) TickShield();
+        }
+
+        private void TickAttackBoost()
+        {
+            if (AttackBoostTurns > 0 && --AttackBoostTurns == 0)
+            {
+                AttackMultiplier = 1f;
+                AttackBoostSourceId = string.Empty;
+                attackBoostIdentity = new object();
+            }
+        }
+
+        private void TickShield()
+        {
+            if (ShieldTurns > 0 && --ShieldTurns == 0)
+            {
+                DamageTakenMultiplier = 1f;
+                shieldIdentity = new object();
+            }
         }
 
         private static int Saturate(long value)
@@ -120,5 +152,17 @@ namespace PuzzleGame.Core.Battle
             if (float.IsNaN(value) || float.IsInfinity(value) || value < 0f)
                 throw new ArgumentOutOfRangeException(name);
         }
+    }
+
+    internal struct PartyTimedEffectCapture
+    {
+        internal PartyTimedEffectCapture(object attackBoostIdentity, object shieldIdentity)
+        {
+            AttackBoostIdentity = attackBoostIdentity;
+            ShieldIdentity = shieldIdentity;
+        }
+
+        internal readonly object AttackBoostIdentity;
+        internal readonly object ShieldIdentity;
     }
 }
