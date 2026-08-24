@@ -273,6 +273,77 @@ namespace PuzzleGame.Tests.PlayMode.Integration
             Assert.That(FindBootstraps(), Has.Length.EqualTo(1));
         }
 
+        [Test]
+        public void Flagless_init_test_scene_suppression_persists_after_sample_scene_replaces_it_until_reset()
+        {
+            var startup = new AutomaticBootstrapStartup();
+            var registrations = 0;
+            var bootstraps = 0;
+
+            var suppress = AutomaticBootstrapStartup.ShouldSuppress(new string[0], "InitTestScene-flagless");
+            Assert.That(suppress, Is.True);
+            Assert.That(AutomaticBootstrapStartup.ShouldSuppress(new[] { "-runTests" }, "SampleScene"), Is.True);
+            Assert.That(AutomaticBootstrapStartup.ShouldSuppress(new[] { "-testPlatform" }, "SampleScene"), Is.True);
+            startup.Begin(suppress, () => bootstraps++, () => registrations++);
+
+            Assert.That(startup.IsSuppressed, Is.True);
+            Assert.That(startup.CallbackRegistered, Is.False);
+            Assert.That(registrations, Is.Zero);
+            Assert.That(bootstraps, Is.Zero);
+
+            startup.Begin(AutomaticBootstrapStartup.ShouldSuppress(new string[0], "SampleScene"),
+                () => bootstraps++, () => registrations++);
+            startup.SceneLoaded(() => bootstraps++);
+
+            Assert.That(startup.IsSuppressed, Is.True);
+            Assert.That(startup.CallbackRegistered, Is.False);
+            Assert.That(registrations, Is.Zero);
+            Assert.That(bootstraps, Is.Zero);
+
+            startup.Reset();
+            startup.Begin(AutomaticBootstrapStartup.ShouldSuppress(new string[0], "SampleScene"),
+                () => bootstraps++, () => registrations++);
+
+            Assert.That(startup.IsSuppressed, Is.False);
+            Assert.That(startup.CallbackRegistered, Is.True);
+            Assert.That(registrations, Is.EqualTo(1));
+            Assert.That(bootstraps, Is.EqualTo(1));
+        }
+
+        [UnityTest]
+        public IEnumerator Normal_flagless_startup_registers_once_and_keeps_runtime_ensure_idempotent()
+        {
+            var startup = new AutomaticBootstrapStartup();
+            var registrations = 0;
+            System.Action sceneLoaded = null;
+            VerticalSliceBootstrap initial = null;
+            VerticalSliceBootstrap afterSceneLoad = null;
+
+            var suppressed = AutomaticBootstrapStartup.ShouldSuppress(new string[0], "SampleScene");
+            startup.Begin(suppressed,
+                () => initial = Track(VerticalSliceBootstrap.EnsureRuntimeBootstrap()),
+                () =>
+                {
+                    registrations++;
+                    sceneLoaded = () => startup.SceneLoaded(
+                        () => afterSceneLoad = VerticalSliceBootstrap.EnsureRuntimeBootstrap());
+                });
+            startup.Begin(suppressed, () => Assert.Fail("Startup was applied twice."),
+                () => Assert.Fail("The scene callback was registered twice."));
+
+            Assert.That(startup.IsSuppressed, Is.False);
+            Assert.That(startup.CallbackRegistered, Is.True);
+            Assert.That(registrations, Is.EqualTo(1));
+            Assert.That(initial, Is.Not.Null);
+            Assert.That(sceneLoaded, Is.Not.Null);
+
+            sceneLoaded();
+            yield return null;
+
+            Assert.That(afterSceneLoad, Is.SameAs(initial));
+            Assert.That(FindBootstraps(), Has.Length.EqualTo(1));
+        }
+
         private VerticalSliceBootstrap Track(VerticalSliceBootstrap bootstrap)
         {
             created.Add(bootstrap);

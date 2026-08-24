@@ -19,6 +19,7 @@ namespace PuzzleGame.Unity.Bootstrap
     public sealed class VerticalSliceBootstrap : MonoBehaviour
     {
         private const string RuntimeRootName = "PuzzleGame Vertical Slice";
+        private static readonly AutomaticBootstrapStartup automaticStartup = new AutomaticBootstrapStartup();
         private GameObject ownedRuntimeRoot;
         private bool initialized;
         private bool forwardingEvents;
@@ -50,19 +51,32 @@ namespace PuzzleGame.Unity.Bootstrap
         private static void ResetRuntimeHooks()
         {
             SceneManager.sceneLoaded -= OnRuntimeSceneLoaded;
+            automaticStartup.Reset();
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void AttachAfterSceneLoad()
         {
-            if (ShouldAutoBootstrap()) EnsureRuntimeBootstrap();
-            SceneManager.sceneLoaded -= OnRuntimeSceneLoaded;
-            SceneManager.sceneLoaded += OnRuntimeSceneLoaded;
+            if (!Application.isPlaying) return;
+            var suppress = AutomaticBootstrapStartup.ShouldSuppress(
+                Environment.GetCommandLineArgs(), SceneManager.GetActiveScene().name);
+            automaticStartup.Begin(suppress, EnsureAutomaticRuntimeBootstrap, RegisterRuntimeSceneCallback);
         }
 
         private static void OnRuntimeSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if (ShouldAutoBootstrap()) EnsureRuntimeBootstrap();
+            automaticStartup.SceneLoaded(EnsureAutomaticRuntimeBootstrap);
+        }
+
+        private static void RegisterRuntimeSceneCallback()
+        {
+            SceneManager.sceneLoaded -= OnRuntimeSceneLoaded;
+            SceneManager.sceneLoaded += OnRuntimeSceneLoaded;
+        }
+
+        private static void EnsureAutomaticRuntimeBootstrap()
+        {
+            EnsureRuntimeBootstrap();
         }
 
         /// <summary>Creates an explicitly driven instance for PlayMode automation.</summary>
@@ -308,17 +322,6 @@ namespace PuzzleGame.Unity.Bootstrap
             return values.Length == 0 ? null : values[0];
         }
 
-        private static bool ShouldAutoBootstrap()
-        {
-            if (!Application.isPlaying) return false;
-            var arguments = Environment.GetCommandLineArgs();
-            for (var index = 0; index < arguments.Length; index++)
-                if (string.Equals(arguments[index], "-runTests", StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(arguments[index], "-testPlatform", StringComparison.OrdinalIgnoreCase)) return false;
-            var activeScene = SceneManager.GetActiveScene();
-            return !activeScene.name.StartsWith("InitTestScene", StringComparison.Ordinal);
-        }
-
         private void ClearReferences()
         {
             ownedRuntimeRoot = null;
@@ -336,6 +339,54 @@ namespace PuzzleGame.Unity.Bootstrap
             if (value == null) return;
             if (Application.isPlaying) Destroy(value);
             else DestroyImmediate(value);
+        }
+    }
+
+    /// <summary>Keeps one automatic-startup decision until subsystem registration resets it.</summary>
+    internal sealed class AutomaticBootstrapStartup
+    {
+        private bool decisionMade;
+
+        internal bool IsSuppressed { get; private set; }
+        internal bool CallbackRegistered { get; private set; }
+
+        internal static bool ShouldSuppress(IReadOnlyList<string> arguments, string initialSceneName)
+        {
+            if (arguments == null) throw new ArgumentNullException(nameof(arguments));
+            for (var index = 0; index < arguments.Count; index++)
+                if (string.Equals(arguments[index], "-runTests", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(arguments[index], "-testPlatform", StringComparison.OrdinalIgnoreCase)) return true;
+            return initialSceneName != null &&
+                   initialSceneName.StartsWith("InitTestScene", StringComparison.Ordinal);
+        }
+
+        internal void Begin(bool suppress, Action autoBootstrap, Action registerSceneCallback)
+        {
+            if (autoBootstrap == null) throw new ArgumentNullException(nameof(autoBootstrap));
+            if (registerSceneCallback == null) throw new ArgumentNullException(nameof(registerSceneCallback));
+            if (decisionMade) return;
+
+            decisionMade = true;
+            IsSuppressed = suppress;
+            if (suppress) return;
+
+            autoBootstrap();
+            registerSceneCallback();
+            CallbackRegistered = true;
+        }
+
+        internal void SceneLoaded(Action autoBootstrap)
+        {
+            if (autoBootstrap == null) throw new ArgumentNullException(nameof(autoBootstrap));
+            if (!decisionMade || IsSuppressed || !CallbackRegistered) return;
+            autoBootstrap();
+        }
+
+        internal void Reset()
+        {
+            decisionMade = false;
+            IsSuppressed = false;
+            CallbackRegistered = false;
         }
     }
 

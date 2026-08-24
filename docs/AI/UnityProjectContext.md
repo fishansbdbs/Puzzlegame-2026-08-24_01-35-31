@@ -55,8 +55,8 @@ Dependency direction is `Contracts/Core <- Unity adapters/presentation`. Product
 - Enabled build scene: `Assets/Scenes/SampleScene.unity`
 - No Task 10 scene, prefab, or presentation asset was edited.
 - `VerticalSliceBootstrap` attaches after scene load through `RuntimeInitializeOnLoadMethod`, only if no bootstrap exists.
-- The runtime root is code-composed and persistent across scene loads. Discovery includes `DontSave` objects; explicit initialization remains idempotent across the tested additive scene reload. `SubsystemRegistration` resets the static scene callback, but the complete Editor Enter Play Mode Options/domain-reload-disabled matrix is not automated.
-- Automatic composition is suppressed in EditMode and command-line test runs. `EnsureRuntimeBootstrap` is the explicit idempotent entry point; `CreateForTests` creates isolated deterministic-pointer instances.
+- The runtime root is code-composed and persistent across scene loads. `AfterSceneLoad` decides automatic startup once from test command-line flags or an initial `InitTestScene*`; a suppressed run never registers a scene callback, so later scene replacement cannot enable it. `SubsystemRegistration` unhooks the callback and resets that decision, but the complete Editor Enter Play Mode Options/domain-reload-disabled matrix is not automated.
+- `EnsureRuntimeBootstrap` remains the explicit idempotent opt-in during suppressed runs; `CreateForTests` creates isolated deterministic-pointer instances.
 - `BoardPointerInput` remains the only production raw Input System reader.
 
 ## Architecture and ownership
@@ -72,8 +72,8 @@ Dependency direction is `Contracts/Core <- Unity adapters/presentation`. Product
 
 - Direct first-party EditMode baseline: 271/271 passing (prior 264 plus seven integrated sample cases).
 - Unity EditMode: 271/271 passing with Unity 6000.5.8f1.
-- Unity PlayMode: 38/38 passing (prior 29 plus nine integrated playable-smoke cases).
-- PlayMode smoke proves 30 cells, ten-second moves, adjacent traversal of fast crossed cells, release/timeout exactly once, two cascade layers ending on the authoritative board, separate attacks, Heart healing, countdown/action, boss threshold, stage completion/stars, command-line auto-creation suppression, scene-reload idempotence, composition-failure atomicity, and component/root render-event cleanup.
+- Unity PlayMode: 40/40 passing (prior 29 plus eleven integrated playable-smoke cases).
+- PlayMode smoke proves 30 cells, ten-second moves, adjacent traversal of fast crossed cells, release/timeout exactly once, two cascade layers ending on the authoritative board, separate attacks, Heart healing, countdown/action, boss threshold, stage completion/stars, command-line and flagless `InitTestScene` suppression, one-time normal callback registration, scene-reload idempotence, composition-failure atomicity, and component/root render-event cleanup.
 - Task 5 mouse/touch Input Test Framework cases remain the direct backend proof; Task 10 uses a deterministic pointer seam rather than OS cursor automation.
 - CI is not configured in this repository. Official Unity Test Framework batch commands for a clean checkout are documented in `docs/core-systems.md`.
 
