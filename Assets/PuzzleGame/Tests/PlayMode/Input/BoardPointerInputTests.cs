@@ -123,5 +123,29 @@ namespace PuzzleGame.Tests.PlayMode.Input
             Assert.That(pressCount, Is.EqualTo(2));
             Assert.That(releaseCount, Is.EqualTo(2));
         }
+
+        [UnityTest]
+        public IEnumerator Same_update_mouse_and_primary_touch_taps_emit_press_then_release()
+        {
+            var mouse = InputSystem.AddDevice<Mouse>();
+            InputSystem.AddDevice<Touchscreen>();
+            var events = new List<string>();
+            input.PointerPressed += position => events.Add("press:" + position);
+            input.PointerReleased += position => events.Add("release:" + position);
+
+            Move(mouse.position, new Vector2(40f, 50f));
+            Press(mouse.leftButton);
+            Release(mouse.leftButton);
+            yield return null;
+
+            CollectionAssert.AreEqual(new[] { "press:(40.00, 50.00)", "release:(40.00, 50.00)" }, events);
+            events.Clear();
+
+            BeginTouch(7, new Vector2(140f, 150f));
+            EndTouch(7, new Vector2(140f, 150f));
+            yield return null;
+
+            CollectionAssert.AreEqual(new[] { "press:(140.00, 150.00)", "release:(140.00, 150.00)" }, events);
+        }
     }
 }

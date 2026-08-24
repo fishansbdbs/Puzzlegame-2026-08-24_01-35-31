@@ -48,6 +48,15 @@ namespace PuzzleGame.Tests.PlayMode.Battle
             Assert.That(BoardLayout.ScreenToCell(Vector2.zero, new Rect(0f, 0f, 0f, 500f)), Is.Null);
             Assert.That(BoardLayout.ScreenToCell(Vector2.zero, new Rect(0f, 0f, 600f, -1f)), Is.Null);
         }
+
+        [Test]
+        public void Rectangles_with_nonfinite_derived_extents_are_rejected()
+        {
+            Assert.That(BoardLayout.ScreenToCell(new Vector2(float.MaxValue, .5f),
+                new Rect(float.MaxValue, 0f, float.MaxValue, 1f)), Is.Null);
+            Assert.That(BoardLayout.ScreenToCell(new Vector2(.5f, float.MaxValue),
+                new Rect(0f, float.MaxValue, 1f, float.MaxValue)), Is.Null);
+        }
     }
 
     public sealed class PlayableBattleControllerTests
@@ -96,7 +105,7 @@ namespace PuzzleGame.Tests.PlayMode.Battle
                 fixture.Input.Press(fixture.CellCenter(0, 0));
                 fixture.Input.Move(fixture.CellCenter(0, 0));
                 fixture.Input.Move(fixture.CellCenter(0, 0));
-                fixture.Input.Move(fixture.CellCenter(2, 0));
+                fixture.Input.Move(new Vector2(-1f, -1f));
 
                 Assert.That(fixture.Context.Board.Get(0, 0), Is.EqualTo(first));
                 Assert.That(fixture.Context.Board.Get(1, 0), Is.EqualTo(second));
@@ -105,6 +114,37 @@ namespace PuzzleGame.Tests.PlayMode.Battle
                 Assert.That(fixture.Context.Board.Get(0, 0), Is.EqualTo(second));
                 Assert.That(fixture.Context.Board.Get(1, 0), Is.EqualTo(first));
             }
+        }
+
+        [Test]
+        public void Fast_horizontal_vertical_and_diagonal_sweeps_traverse_every_crossed_adjacent_cell()
+        {
+            AssertSweep(new BoardPosition(0, 0), new BoardPosition(5, 0), new[]
+            {
+                new BoardPosition(1, 0), new BoardPosition(2, 0), new BoardPosition(3, 0),
+                new BoardPosition(4, 0), new BoardPosition(5, 0)
+            });
+            AssertSweep(new BoardPosition(0, 0), new BoardPosition(0, 4), new[]
+            {
+                new BoardPosition(0, 1), new BoardPosition(0, 2), new BoardPosition(0, 3), new BoardPosition(0, 4)
+            });
+            AssertSweep(new BoardPosition(0, 0), new BoardPosition(2, 2), new[]
+            {
+                new BoardPosition(1, 0), new BoardPosition(1, 1), new BoardPosition(2, 1), new BoardPosition(2, 2)
+            });
+            AssertSweep(new BoardPosition(5, 4), new BoardPosition(0, 4), new[]
+            {
+                new BoardPosition(4, 4), new BoardPosition(3, 4), new BoardPosition(2, 4),
+                new BoardPosition(1, 4), new BoardPosition(0, 4)
+            });
+            AssertSweep(new BoardPosition(5, 4), new BoardPosition(5, 0), new[]
+            {
+                new BoardPosition(5, 3), new BoardPosition(5, 2), new BoardPosition(5, 1), new BoardPosition(5, 0)
+            });
+            AssertSweep(new BoardPosition(5, 4), new BoardPosition(3, 2), new[]
+            {
+                new BoardPosition(4, 4), new BoardPosition(4, 3), new BoardPosition(3, 3), new BoardPosition(3, 2)
+            });
         }
 
         [Test]
@@ -121,6 +161,74 @@ namespace PuzzleGame.Tests.PlayMode.Battle
 
                 Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
                 Assert.That(fixture.Controller.IsDragging, Is.False);
+            }
+        }
+
+        [Test]
+        public void Zero_timer_callback_cannot_start_or_release_a_reentrant_drag()
+        {
+            using (var fixture = PlayableBattleFixture.Create())
+            {
+                var attemptedReentry = false;
+                fixture.Controller.TimerChanged += item =>
+                {
+                    if (item.RemainingSeconds != 0f || attemptedReentry) return;
+                    attemptedReentry = true;
+                    fixture.Input.Press(fixture.CellCenter(2, 0));
+                    fixture.Input.Release(fixture.CellCenter(2, 0));
+                };
+
+                fixture.Input.Press(fixture.CellCenter(0, 0));
+                fixture.Input.Release(fixture.CellCenter(1, 0));
+
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
+                Assert.That(fixture.Controller.IsDragging, Is.False);
+            }
+        }
+
+        [Test]
+        public void Multiwave_and_multienemy_sessions_are_rejected_before_controller_ownership()
+        {
+            var first = InitializerFixture.EnemyData("first");
+            var second = InitializerFixture.EnemyData("second");
+            var multiwave = InitializerFixture.Stage(new[]
+            {
+                new WaveData { Id = "wave-1", EnemyIds = new[] { first.Id } },
+                new WaveData { Id = "wave-2", EnemyIds = new[] { second.Id } }
+            });
+            using (var fixture = InitializerFixture.Create(multiwave, new[] { first, second }))
+            {
+                Assert.That(() => fixture.Initialize(fixture.Input), Throws.TypeOf<ArgumentException>());
+                Assert.That(fixture.Input.SubscriptionCount, Is.Zero);
+                Assert.That(fixture.Session.CurrentWaveIndex, Is.Zero);
+                Assert.That(fixture.Session.BoardResolutionCount, Is.Zero);
+            }
+
+            var multienemy = InitializerFixture.Stage(new[]
+            {
+                new WaveData { Id = "wave", EnemyIds = new[] { first.Id, second.Id } }
+            });
+            using (var fixture = InitializerFixture.Create(multienemy, new[] { first, second }))
+            {
+                Assert.That(() => fixture.Initialize(fixture.Input), Throws.TypeOf<ArgumentException>());
+                Assert.That(fixture.Input.SubscriptionCount, Is.Zero);
+                Assert.That(fixture.Session.BoardResolutionCount, Is.Zero);
+            }
+        }
+
+        [Test]
+        public void Failed_subscription_setup_rolls_back_and_initialization_can_be_retried()
+        {
+            var enemy = InitializerFixture.EnemyData("enemy");
+            var stage = InitializerFixture.Stage(new[] { new WaveData { Id = "wave", EnemyIds = new[] { enemy.Id } } });
+            using (var fixture = InitializerFixture.Create(stage, new[] { enemy }))
+            {
+                var failing = new ThrowingPointerSource();
+
+                Assert.That(() => fixture.Initialize(failing), Throws.TypeOf<InvalidOperationException>());
+                Assert.That(failing.SubscriptionCount, Is.Zero);
+                Assert.That(() => fixture.Initialize(fixture.Input), Throws.Nothing);
+                Assert.That(fixture.Input.SubscriptionCount, Is.EqualTo(3));
             }
         }
 
@@ -200,6 +308,37 @@ namespace PuzzleGame.Tests.PlayMode.Battle
                 Assert.That(attacks, Is.Not.Empty);
                 Assert.That(heals, Is.Not.Empty);
                 Assert.That(groups[0].Groups, Is.Not.Empty);
+            }
+        }
+
+        [Test]
+        public void Cascade_events_snapshot_each_transition_and_view_presents_layers_before_the_final_board()
+        {
+            using (var fixture = PlayableBattleFixture.Create(BoardPattern.WithFireAndHeartMatches(), enemyHp: 1000))
+            {
+                var layers = new List<CascadeLayerEvent>();
+                var presentations = new List<BoardSnapshot>();
+                fixture.Controller.CascadeLayerResolved += layers.Add;
+                fixture.View.BoardDisplayed += presentations.Add;
+
+                fixture.Input.Press(fixture.CellCenter(5, 4));
+                fixture.Input.Release(fixture.CellCenter(5, 4));
+
+                Assert.That(layers, Is.Not.Empty);
+                Assert.That(presentations, Has.Count.EqualTo(layers.Count * 2 + 1));
+                for (var index = 0; index < layers.Count; index++)
+                {
+                    Assert.That(presentations[index * 2], Is.SameAs(layers[index].PreClearBoard));
+                    Assert.That(presentations[index * 2 + 1], Is.SameAs(layers[index].PostRefillBoard));
+                    if (index + 1 < layers.Count)
+                        AssertSnapshotsEqual(layers[index].PostRefillBoard, layers[index + 1].PreClearBoard);
+                }
+                AssertSnapshotEqualsBoard(presentations[presentations.Count - 1], fixture.Context.Board);
+
+                var firstSnapshot = layers[0].PreClearBoard;
+                var captured = firstSnapshot.Get(0, 0);
+                fixture.Context.Board.Set(0, 0, captured == OrbType.Fire ? OrbType.Water : OrbType.Fire);
+                Assert.That(firstSnapshot.Get(0, 0), Is.EqualTo(captured));
             }
         }
 
@@ -306,6 +445,115 @@ namespace PuzzleGame.Tests.PlayMode.Battle
             Assert.That(fixture.Input.SubscriptionCount, Is.Zero);
             fixture.Dispose();
         }
+
+        private static void AssertSweep(BoardPosition start, BoardPosition end, BoardPosition[] path)
+        {
+            using (var fixture = PlayableBattleFixture.Create())
+            {
+                var expected = fixture.Context.Board.Clone();
+                var current = start;
+                for (var index = 0; index < path.Length; index++)
+                {
+                    expected.Swap(current, path[index]);
+                    current = path[index];
+                }
+
+                fixture.Input.Press(fixture.CellCenter(start.X, start.Y));
+                fixture.Input.Move(fixture.CellCenter(end.X, end.Y));
+
+                for (var y = 0; y < BoardState.Rows; y++)
+                for (var x = 0; x < BoardState.Columns; x++)
+                    Assert.That(fixture.Context.Board.Get(x, y), Is.EqualTo(expected.Get(x, y)),
+                        "sweep " + start.X + "," + start.Y + " to " + end.X + "," + end.Y + " at " + x + "," + y);
+            }
+        }
+
+        private static void AssertSnapshotsEqual(BoardSnapshot expected, BoardSnapshot actual)
+        {
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++)
+                Assert.That(actual.Get(x, y), Is.EqualTo(expected.Get(x, y)), "snapshot " + x + "," + y);
+        }
+
+        private static void AssertSnapshotEqualsBoard(BoardSnapshot snapshot, BoardState board)
+        {
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++)
+                Assert.That(snapshot.Get(x, y), Is.EqualTo(board.Get(x, y)), "final " + x + "," + y);
+        }
+    }
+
+    internal sealed class InitializerFixture : IDisposable
+    {
+        private readonly BoardState board;
+        private readonly PartyState party;
+        private readonly EnemyRuntime enemy;
+        private readonly BattleContext context;
+        private readonly StageData stage;
+
+        private InitializerFixture(StageData stageData, EnemyData[] enemyData)
+        {
+            Root = new GameObject("InitializerFixture");
+            Controller = Root.AddComponent<PlayableBattleController>();
+            View = Root.AddComponent<BoardView>();
+            Input = new FakePointerSource();
+            board = BoardPattern.Stable();
+            party = PlayableBattleFixture.CreateParty();
+            stage = stageData;
+            Session = new StageSession(stage, enemyData);
+            enemy = Session.CurrentEnemies[0];
+            context = new BattleContext(board, party, enemy);
+        }
+
+        internal GameObject Root { get; private set; }
+        internal PlayableBattleController Controller { get; private set; }
+        internal BoardView View { get; private set; }
+        internal FakePointerSource Input { get; private set; }
+        internal StageSession Session { get; private set; }
+
+        internal static InitializerFixture Create(StageData stage, EnemyData[] enemies)
+        {
+            return new InitializerFixture(stage, enemies);
+        }
+
+        internal void Initialize(IBoardPointerSource source)
+        {
+            Controller.Initialize(source, View, new Rect(0f, 0f, 600f, 500f), board, new CyclingOrbSource(),
+                party, enemy, Session, context, stage);
+        }
+
+        internal static EnemyData EnemyData(string id)
+        {
+            return new EnemyData
+            {
+                Id = id,
+                Element = ElementType.Nature,
+                BaseStats = new StatBlock { Hp = 100, Attack = 1 },
+                InitialCountdown = 2,
+                Actions = new[] { new EnemyActionData { Id = "wait", ResetCountdown = 2, Effects = new EnemyEffectData[0] } }
+            };
+        }
+
+        internal static StageData Stage(WaveData[] waves)
+        {
+            return new StageData
+            {
+                Id = "stage",
+                Waves = waves,
+                StarObjectives = new[]
+                {
+                    new StarObjectiveData { Type = StarObjectiveType.Clear },
+                    new StarObjectiveData { Type = StarObjectiveType.FinishAboveHpThreshold, HpThresholdPercent = .5f },
+                    new StarObjectiveData { Type = StarObjectiveType.ClearWithinBoardResolutionCount, MaximumBoardResolutionCount = 3 }
+                }
+            };
+        }
+
+        public void Dispose()
+        {
+            if (Root != null) UnityEngine.Object.DestroyImmediate(Root);
+            Root = null;
+        }
     }
 
     internal sealed class PlayableBattleFixture : IDisposable
@@ -374,7 +622,7 @@ namespace PuzzleGame.Tests.PlayMode.Battle
             Root = null;
         }
 
-        private static PartyState CreateParty()
+        internal static PartyState CreateParty()
         {
             var elements = new[] { ElementType.Fire, ElementType.Water, ElementType.Nature, ElementType.Light, ElementType.Dark };
             var members = new CharacterRuntime[5];
@@ -441,5 +689,14 @@ namespace PuzzleGame.Tests.PlayMode.Battle
         internal void Move(Vector2 position) { if (moved != null) moved(position); }
         internal void Release(Vector2 position) { if (released != null) released(position); }
         private static int Count(Delegate value) { return value == null ? 0 : value.GetInvocationList().Length; }
+    }
+
+    internal sealed class ThrowingPointerSource : IBoardPointerSource
+    {
+        private Action<Vector2> pressed;
+        public event Action<Vector2> PointerPressed { add { pressed += value; } remove { pressed -= value; } }
+        public event Action<Vector2> PointerMoved { add { throw new InvalidOperationException("setup failed"); } remove { } }
+        public event Action<Vector2> PointerReleased { add { } remove { } }
+        internal int SubscriptionCount { get { return pressed == null ? 0 : pressed.GetInvocationList().Length; } }
     }
 }

@@ -42,16 +42,21 @@ namespace PuzzleGame.Unity.Battle
 
     public sealed class CascadeLayerEvent
     {
-        internal CascadeLayerEvent(int cascadeLayerIndex, IReadOnlyList<MatchGroup> groups)
+        internal CascadeLayerEvent(int cascadeLayerIndex, IReadOnlyList<MatchGroup> groups,
+            BoardSnapshot preClearBoard, BoardSnapshot postRefillBoard)
         {
             CascadeLayerIndex = cascadeLayerIndex;
             var result = new List<MatchGroup>(groups.Count);
             for (var index = 0; index < groups.Count; index++) result.Add(groups[index]);
             Groups = result.AsReadOnly();
+            PreClearBoard = preClearBoard;
+            PostRefillBoard = postRefillBoard;
         }
 
         public int CascadeLayerIndex { get; private set; }
         public IReadOnlyList<MatchGroup> Groups { get; private set; }
+        public BoardSnapshot PreClearBoard { get; private set; }
+        public BoardSnapshot PostRefillBoard { get; private set; }
     }
 
     public struct EnemyCountdownEvent
@@ -90,6 +95,7 @@ namespace PuzzleGame.Unity.Battle
         private StageData objectiveStage;
         private DragSession dragSession;
         private BoardPosition dragPosition;
+        private Vector2 lastPointerScreenPosition;
         private float dragElapsedSeconds;
         private float dragDurationSeconds;
         private bool initialized;
@@ -126,11 +132,14 @@ namespace PuzzleGame.Unity.Battle
             if (session == null) throw new ArgumentNullException("session");
             if (context == null) throw new ArgumentNullException("context");
             if (stageData == null) throw new ArgumentNullException("stageData");
-            if (screenRect.width <= 0f || screenRect.height <= 0f || !IsFinite(screenRect.width) || !IsFinite(screenRect.height))
+            if (!BoardLayout.IsValidRect(screenRect))
                 throw new ArgumentOutOfRangeException("screenRect");
             if (!object.ReferenceEquals(context.Board, board)) throw new ArgumentException("Battle context must reference the supplied board.", "context");
             if (!object.ReferenceEquals(context.Party, partyState)) throw new ArgumentException("Battle context must reference the supplied party.", "context");
             if (!object.ReferenceEquals(context.Enemy, enemyState)) throw new ArgumentException("Battle context must reference the supplied enemy.", "context");
+            ValidateVerticalSlice(stageData, session, enemyState);
+
+            var stageSnapshot = SnapshotObjectives(stageData);
 
             pointerSource = input;
             boardView = view;
@@ -141,10 +150,18 @@ namespace PuzzleGame.Unity.Battle
             enemy = enemyState;
             stageSession = session;
             battleContext = context;
-            objectiveStage = SnapshotObjectives(stageData);
-            initialized = true;
-            boardView.Initialize(currentBoard);
-            if (isActiveAndEnabled) Subscribe();
+            objectiveStage = stageSnapshot;
+            try
+            {
+                boardView.Initialize(currentBoard);
+                if (isActiveAndEnabled) Subscribe();
+                initialized = true;
+            }
+            catch
+            {
+                ResetInitializationState();
+                throw;
+            }
         }
 
         public void AdvanceTime(float unscaledDeltaTime)
@@ -187,10 +204,27 @@ namespace PuzzleGame.Unity.Battle
         private void Subscribe()
         {
             if (subscribed) return;
-            pointerSource.PointerPressed += OnPointerPressed;
-            pointerSource.PointerMoved += OnPointerMoved;
-            pointerSource.PointerReleased += OnPointerReleased;
-            subscribed = true;
+            var pressedAdded = false;
+            var movedAdded = false;
+            var releasedAdded = false;
+            try
+            {
+                pointerSource.PointerPressed += OnPointerPressed;
+                pressedAdded = true;
+                pointerSource.PointerMoved += OnPointerMoved;
+                movedAdded = true;
+                pointerSource.PointerReleased += OnPointerReleased;
+                releasedAdded = true;
+                subscribed = true;
+            }
+            catch
+            {
+                if (releasedAdded) pointerSource.PointerReleased -= OnPointerReleased;
+                if (movedAdded) pointerSource.PointerMoved -= OnPointerMoved;
+                if (pressedAdded) pointerSource.PointerPressed -= OnPointerPressed;
+                subscribed = false;
+                throw;
+            }
         }
 
         private void Unsubscribe()
@@ -209,6 +243,7 @@ namespace PuzzleGame.Unity.Battle
             if (!cell.HasValue) return;
             currentBoard = battleContext.Board;
             dragPosition = cell.Value;
+            lastPointerScreenPosition = screenPosition;
             dragDurationSeconds = battleContext.MoveTimeSeconds;
             dragElapsedSeconds = 0f;
             dragSession = new DragSession(currentBoard, dragPosition, dragDurationSeconds);
@@ -220,10 +255,9 @@ namespace PuzzleGame.Unity.Battle
         {
             if (resolving || dragSession == null) return;
             var cell = BoardLayout.ScreenToCell(screenPosition, boardScreenRect);
-            if (!cell.HasValue || cell.Value == dragPosition) return;
-            if (!dragSession.TryMove(cell.Value, dragElapsedSeconds)) return;
-            dragPosition = cell.Value;
-            boardView.Refresh(currentBoard);
+            if (!cell.HasValue) return;
+            if (cell.Value != dragPosition) TraversePointerSegment(screenPosition, cell.Value);
+            lastPointerScreenPosition = screenPosition;
         }
 
         private void OnPointerReleased(Vector2 screenPosition)
@@ -236,17 +270,16 @@ namespace PuzzleGame.Unity.Battle
         private void CompleteDrag()
         {
             if (dragSession == null || resolving) return;
-            var completedDrag = dragSession;
-            dragSession = null;
-            completedDrag.End();
-            EmitTimer(0f);
             resolving = true;
             try
             {
+                var completedDrag = dragSession;
+                dragSession = null;
+                completedDrag.End();
+                EmitTimer(0f);
                 var boardResolution = boardResolver.Resolve(currentBoard, orbSource);
                 var turnResolution = stageSession.CompleteBoardResolution(battleEngine, boardResolution, battleContext);
                 currentBoard = battleContext.Board;
-                boardView.Refresh(currentBoard);
                 CompletedBoardResolutions++;
 
                 var completedStage = false;
@@ -280,16 +313,61 @@ namespace PuzzleGame.Unity.Battle
             }
         }
 
+        private void TraversePointerSegment(Vector2 screenPosition, BoardPosition endPosition)
+        {
+            var startGridX = (lastPointerScreenPosition.x - boardScreenRect.xMin) * BoardState.Columns / boardScreenRect.width;
+            var startGridY = (lastPointerScreenPosition.y - boardScreenRect.yMin) * BoardState.Rows / boardScreenRect.height;
+            var endGridX = (screenPosition.x - boardScreenRect.xMin) * BoardState.Columns / boardScreenRect.width;
+            var endGridY = (screenPosition.y - boardScreenRect.yMin) * BoardState.Rows / boardScreenRect.height;
+            var deltaX = endGridX - startGridX;
+            var deltaY = endGridY - startGridY;
+            var stepX = endPosition.X > dragPosition.X ? 1 : endPosition.X < dragPosition.X ? -1 : 0;
+            var stepY = endPosition.Y > dragPosition.Y ? 1 : endPosition.Y < dragPosition.Y ? -1 : 0;
+            var tDeltaX = stepX == 0 ? float.PositiveInfinity : 1f / Mathf.Abs(deltaX);
+            var tDeltaY = stepY == 0 ? float.PositiveInfinity : 1f / Mathf.Abs(deltaY);
+            var nextBoundaryX = stepX > 0 ? dragPosition.X + 1f : dragPosition.X;
+            var nextBoundaryY = stepY > 0 ? dragPosition.Y + 1f : dragPosition.Y;
+            var tMaxX = stepX == 0 ? float.PositiveInfinity : (nextBoundaryX - startGridX) / deltaX;
+            var tMaxY = stepY == 0 ? float.PositiveInfinity : (nextBoundaryY - startGridY) / deltaY;
+
+            while (dragPosition != endPosition)
+            {
+                BoardPosition next;
+                if (tMaxX <= tMaxY)
+                {
+                    next = new BoardPosition(dragPosition.X + stepX, dragPosition.Y);
+                    tMaxX += tDeltaX;
+                }
+                else
+                {
+                    next = new BoardPosition(dragPosition.X, dragPosition.Y + stepY);
+                    tMaxY += tDeltaY;
+                }
+
+                if (!dragSession.TryMove(next, dragElapsedSeconds)) return;
+                dragPosition = next;
+                boardView.Refresh(currentBoard);
+            }
+        }
+
         private void EmitResolutionEvents(BoardResolution boardResolution, BattleTurnResolution turnResolution)
         {
             for (var layerIndex = 0; layerIndex < boardResolution.CascadeLayers.Count; layerIndex++)
             {
-                var groups = boardResolution.CascadeLayers[layerIndex].Groups;
+                var layer = boardResolution.CascadeLayers[layerIndex];
+                var groups = layer.Groups;
+                boardView.Display(layer.PreClearBoard);
                 var groupsHandler = MatchGroupsResolved;
                 if (groupsHandler != null) groupsHandler(new MatchGroupsEvent(layerIndex, groups));
                 var layerHandler = CascadeLayerResolved;
-                if (layerHandler != null) layerHandler(new CascadeLayerEvent(layerIndex, groups));
+                if (layerHandler != null)
+                    layerHandler(new CascadeLayerEvent(layerIndex, groups, layer.PreClearBoard, layer.PostRefillBoard));
+                boardView.Display(layer.PostRefillBoard);
             }
+
+            // The synchronous layer presentation is advisory. Always settle on
+            // the authoritative board installed by BattleEngine afterwards.
+            boardView.Settle(currentBoard);
 
             for (var index = 0; index < turnResolution.Combat.Attacks.Count; index++)
             {
@@ -334,6 +412,34 @@ namespace PuzzleGame.Unity.Battle
                 }
             }
             return new StageData { Id = source.Id, StarObjectives = objectives };
+        }
+
+        private static void ValidateVerticalSlice(StageData stageData, StageSession session, EnemyRuntime enemyState)
+        {
+            if (stageData.Waves == null || stageData.Waves.Length != 1 || stageData.Waves[0] == null ||
+                stageData.Waves[0].EnemyIds == null || stageData.Waves[0].EnemyIds.Length != 1)
+                throw new ArgumentException("Playable battle requires exactly one wave with exactly one enemy.", "stageData");
+            if (!string.Equals(stageData.Waves[0].EnemyIds[0], enemyState.Data.Id, StringComparison.Ordinal))
+                throw new ArgumentException("Playable battle enemy must match the authored stage enemy.", "enemyState");
+            var currentEnemies = session.CurrentEnemies;
+            if (currentEnemies.Count != 1 || !object.ReferenceEquals(currentEnemies[0], enemyState))
+                throw new ArgumentException("Playable battle session must expose exactly the supplied enemy.", "session");
+        }
+
+        private void ResetInitializationState()
+        {
+            Unsubscribe();
+            pointerSource = null;
+            boardView = null;
+            currentBoard = null;
+            orbSource = null;
+            party = null;
+            enemy = null;
+            stageSession = null;
+            battleContext = null;
+            objectiveStage = null;
+            initialized = false;
+            subscribed = false;
         }
 
         private static bool IsFinite(float value)

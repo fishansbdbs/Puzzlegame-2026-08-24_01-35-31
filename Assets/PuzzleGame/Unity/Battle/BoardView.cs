@@ -28,6 +28,8 @@ namespace PuzzleGame.Unity.Battle
         private Material ownedMaterial;
         private bool initialized;
 
+        public event Action<BoardSnapshot> BoardDisplayed;
+
         public int CellCount { get { return initialized ? renderers.Length : 0; } }
 
         public void Initialize(BoardState board)
@@ -50,6 +52,30 @@ namespace PuzzleGame.Unity.Battle
                 renderers[index].color = OrbColors[(int)orb];
                 labels[index].text = OrbLabels[(int)orb];
             }
+        }
+
+        public void Settle(BoardState board)
+        {
+            Refresh(board);
+            var handler = BoardDisplayed;
+            if (handler != null) handler(new BoardSnapshot(board));
+        }
+
+        public void Display(BoardSnapshot snapshot)
+        {
+            if (snapshot == null) throw new ArgumentNullException("snapshot");
+            if (!initialized) throw new InvalidOperationException("BoardView must be initialized before display.");
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++)
+            {
+                var index = Index(x, y);
+                var orb = snapshot.Get(x, y);
+                displayedOrbs[index] = orb;
+                renderers[index].color = OrbColors[(int)orb];
+                labels[index].text = OrbLabels[(int)orb];
+            }
+            var handler = BoardDisplayed;
+            if (handler != null) handler(snapshot);
         }
 
         public OrbType GetDisplayedOrb(BoardPosition position)

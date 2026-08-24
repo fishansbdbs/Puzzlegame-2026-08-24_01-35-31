@@ -9,16 +9,50 @@ namespace PuzzleGame.Core.Board
         OrbType NextOrb();
     }
 
+    /// <summary>A fixed, read-only copy of all thirty board cells.</summary>
+    public sealed class BoardSnapshot
+    {
+        private readonly OrbType[] cells;
+
+        public BoardSnapshot(BoardState board)
+        {
+            if (board == null) throw new ArgumentNullException("board");
+            cells = new OrbType[BoardState.Columns * BoardState.Rows];
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++)
+                cells[y * BoardState.Columns + x] = board.Get(x, y);
+        }
+
+        public int Width { get { return BoardState.Columns; } }
+        public int Height { get { return BoardState.Rows; } }
+
+        public OrbType Get(int x, int y)
+        {
+            if (x < 0 || x >= BoardState.Columns || y < 0 || y >= BoardState.Rows)
+                throw new ArgumentOutOfRangeException("position", "Board position is outside the board.");
+            return cells[y * BoardState.Columns + x];
+        }
+
+        public OrbType Get(BoardPosition position)
+        {
+            return Get(position.X, position.Y);
+        }
+    }
+
     public sealed class CascadeLayer
     {
         private readonly IReadOnlyList<MatchGroup> groups;
 
-        internal CascadeLayer(IReadOnlyList<MatchGroup> groups)
+        internal CascadeLayer(IReadOnlyList<MatchGroup> groups, BoardSnapshot preClearBoard, BoardSnapshot postRefillBoard)
         {
             this.groups = groups;
+            PreClearBoard = preClearBoard;
+            PostRefillBoard = postRefillBoard;
         }
 
         public IReadOnlyList<MatchGroup> Groups { get { return groups; } }
+        public BoardSnapshot PreClearBoard { get; private set; }
+        public BoardSnapshot PostRefillBoard { get; private set; }
     }
 
     public sealed class BoardResolution
@@ -78,8 +112,9 @@ namespace PuzzleGame.Core.Board
                     throw new InvalidOperationException("Board resolution exceeded the maximum cascade layer count.");
                 }
 
-                layers.Add(new CascadeLayer(groups));
+                var preClearBoard = new BoardSnapshot(workingBoard);
                 ApplyGravityAndRefill(workingBoard, groups, orbSource);
+                layers.Add(new CascadeLayer(groups, preClearBoard, new BoardSnapshot(workingBoard)));
             }
         }
 
