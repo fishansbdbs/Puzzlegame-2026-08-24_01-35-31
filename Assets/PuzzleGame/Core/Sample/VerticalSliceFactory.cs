@@ -43,16 +43,16 @@ namespace PuzzleGame.Core.Sample
             var eventData = CreateEvent();
             var schedules = CreateSchedules();
 
-            ValidateAll(characters, skills, leader, enemyData, stageData, standardBanner, gatherOne, gatherTwo, schedules);
-            // This construction is also the strict semantic validation for the one-wave stage/enemy graph.
-            new StageCatalog(new[] { stageData }, new[] { enemyData });
+            ValidateAll(characters, skills, leader, enemyData, stageData, standardBanner, gatherOne, gatherTwo,
+                eventData, schedules);
+            var stageCatalog = new StageCatalog(new[] { stageData }, new[] { enemyData });
 
             var generatedBoard = new BoardGenerator(new DeterministicRandom(seed ^ 0x243f6a88)).Generate();
 
             var board = CreateOpeningBoard();
             var party = CreateParty(characters, skills, leader, passive);
             party.ApplyDamage(100);
-            var stageSession = new StageSession(stageData, new[] { enemyData });
+            var stageSession = stageCatalog.CreateSession(stageData.Id);
             var enemy = stageSession.CurrentEnemies[0];
             var battleContext = new BattleContext(board, party, enemy);
             var activeSkillExample = ActivateLeaderSkill(party, battleContext);
@@ -60,7 +60,7 @@ namespace PuzzleGame.Core.Sample
 
             var previewParty = CreateParty(characters, skills, leader, passive);
             previewParty.ApplyDamage(100);
-            var previewSession = new StageSession(stageData, new[] { enemyData });
+            var previewSession = stageCatalog.CreateSession(stageData.Id);
             var previewEnemy = previewSession.CurrentEnemies[0];
             var previewContext = new BattleContext(CreateOpeningBoard(), previewParty, previewEnemy);
             ActivateLeaderSkill(previewParty, previewContext);
@@ -114,7 +114,7 @@ namespace PuzzleGame.Core.Sample
             var scheduler = new RotationScheduler(new FixedClock(SampleScheduleTime));
             var activeContent = scheduler.GetActive(schedules);
 
-            return new VerticalSliceSample(seed, characters, skills, leader, passive, enemyData, stageData,
+            return new VerticalSliceSample(seed, characters, skills, leader, passive, enemyData, stageData, stageCatalog,
                 standardBanner, gatherOne, gatherTwo, eventData, schedules, new BoardSnapshot(generatedBoard),
                 board, orbSource, party, enemy, stageSession, battleContext, activeSkillExample,
                 openingResolution.CascadeLayers, openingTurn, ascensionProgress, ascensionExample,
@@ -522,7 +522,7 @@ namespace PuzzleGame.Core.Sample
 
         private static void ValidateAll(CharacterData[] characters, SkillData[] skills, LeaderSkillData leader,
             EnemyData enemy, StageData stage, BannerData standard, BannerData gatherOne, BannerData gatherTwo,
-            RotationScheduleData[] schedules)
+            EventData eventData, RotationScheduleData[] schedules)
         {
             for (var index = 0; index < characters.Length; index++) RequireValid(characters[index]);
             for (var index = 0; index < skills.Length; index++) RequireValid(skills[index]);
@@ -532,6 +532,7 @@ namespace PuzzleGame.Core.Sample
             RequireValid(standard);
             RequireValid(gatherOne);
             RequireValid(gatherTwo);
+            RequireValid(eventData);
             for (var index = 0; index < schedules.Length; index++) RequireValid(schedules[index]);
         }
 
@@ -565,7 +566,7 @@ namespace PuzzleGame.Core.Sample
         private readonly IReadOnlyList<ActiveContent> activeContent;
 
         internal VerticalSliceSample(int seed, CharacterData[] characters, SkillData[] skills,
-            LeaderSkillData leader, SkillEffectData[] passive, EnemyData enemyDefinition, StageData stage,
+            LeaderSkillData leader, SkillEffectData[] passive, EnemyData enemyDefinition, StageData stage, StageCatalog stageCatalog,
             BannerData standardBanner, BannerData gatherOneBanner, BannerData gatherTwoBanner,
             EventData eventDefinition, RotationScheduleData[] schedules, BoardSnapshot generatedBoard,
             BoardState board, IOrbSource orbSource, PartyState party, EnemyRuntime enemy,
@@ -586,13 +587,14 @@ namespace PuzzleGame.Core.Sample
             this.passive = SampleSnapshot.Clone(passive);
             this.enemyDefinition = SampleSnapshot.Clone(enemyDefinition);
             this.stage = SampleSnapshot.Clone(stage);
+            StageCatalog = stageCatalog ?? throw new ArgumentNullException("stageCatalog");
             this.standardBanner = SampleSnapshot.Clone(standardBanner);
             this.gatherOneBanner = SampleSnapshot.Clone(gatherOneBanner);
             this.gatherTwoBanner = SampleSnapshot.Clone(gatherTwoBanner);
             this.eventDefinition = SampleSnapshot.Clone(eventDefinition);
             this.schedules = SampleSnapshot.Clone(schedules);
             GeneratedBoard = generatedBoard;
-            Board = board;
+            OpeningBoard = new BoardSnapshot(board);
             OrbSource = orbSource;
             Party = party;
             Enemy = enemy;
@@ -634,11 +636,13 @@ namespace PuzzleGame.Core.Sample
         public IReadOnlyList<RotationScheduleData> ScheduleDefinitions { get { return Array.AsReadOnly(SampleSnapshot.Clone(schedules)); } }
         public DateTimeOffset ScheduleNow { get { return VerticalSliceFactory.SampleScheduleTime; } }
         public BoardSnapshot GeneratedBoard { get; private set; }
-        public BoardState Board { get; private set; }
+        public BoardSnapshot OpeningBoard { get; private set; }
+        public BoardState CurrentBoard { get { return BattleContext.Board; } }
         public IOrbSource OrbSource { get; private set; }
         public PartyState Party { get; private set; }
         public EnemyRuntime Enemy { get; private set; }
         public StageSession StageSession { get; private set; }
+        public StageCatalog StageCatalog { get; private set; }
         public BattleContext BattleContext { get; private set; }
         public SkillResolution ActiveSkillExample { get; private set; }
         public IReadOnlyList<CascadeLayer> OpeningCascadeLayers { get { return openingCascades; } }

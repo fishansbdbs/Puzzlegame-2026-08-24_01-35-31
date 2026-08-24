@@ -45,6 +45,34 @@ namespace PuzzleGame.Tests.EditMode.Integration
             Assert.That(ContractValidation.Validate(sample.LeaderSkill), Is.Empty);
             Assert.That(ContractValidation.Validate(sample.EnemyDefinition), Is.Empty);
             Assert.That(ContractValidation.Validate(sample.Stage), Is.Empty);
+            Assert.That(ContractValidation.Validate(sample.StandardBanner), Is.Empty);
+            Assert.That(ContractValidation.Validate(sample.GatherInRotationOneBanner), Is.Empty);
+            Assert.That(ContractValidation.Validate(sample.GatherInRotationTwoBanner), Is.Empty);
+            Assert.That(ContractValidation.Validate(sample.EventDefinition), Is.Empty);
+            foreach (var schedule in sample.ScheduleDefinitions)
+                Assert.That(ContractValidation.Validate(schedule), Is.Empty, schedule.Id);
+        }
+
+        [Test]
+        public void Factory_keeps_the_opening_board_immutable_and_tracks_the_authoritative_board_after_resolution()
+        {
+            var sample = VerticalSliceFactory.Create(24082026);
+            var opening = sample.OpeningBoard;
+            var previousCurrent = sample.CurrentBoard;
+            AssertSnapshotEqualsBoard(opening, previousCurrent);
+
+            var resolution = new BoardResolver().Resolve(previousCurrent, sample.OrbSource);
+            sample.StageSession.CompleteBoardResolution(new BattleEngine(), resolution, sample.BattleContext);
+
+            Assert.That(sample.CurrentBoard, Is.SameAs(sample.BattleContext.Board));
+            Assert.That(sample.CurrentBoard, Is.Not.SameAs(previousCurrent));
+            AssertSnapshotEqualsBoard(new BoardSnapshot(resolution.FinalBoard), sample.CurrentBoard);
+            AssertSnapshotEqualsBoard(opening, previousCurrent);
+
+            var catalogSession = sample.StageCatalog.CreateSession(sample.Stage.Id);
+            Assert.That(catalogSession, Is.Not.SameAs(sample.StageSession));
+            Assert.That(catalogSession.AuthoredStructure.WaveCount, Is.EqualTo(1));
+            Assert.That(catalogSession.AuthoredStructure.GetEnemyId(0, 0), Is.EqualTo(sample.EnemyDefinition.Id));
         }
 
         [Test]
@@ -161,13 +189,13 @@ namespace PuzzleGame.Tests.EditMode.Integration
             Assert.That(first.StandardSummonExample.Results.Select(item => item.CharacterId),
                 Is.EqualTo(second.StandardSummonExample.Results.Select(item => item.CharacterId)));
 
-            var originalSecondOrb = second.Board.Get(0, 0);
-            first.Board.Set(0, 0, originalSecondOrb == OrbType.Fire ? OrbType.Water : OrbType.Fire);
+            var originalSecondOrb = second.CurrentBoard.Get(0, 0);
+            first.CurrentBoard.Set(0, 0, originalSecondOrb == OrbType.Fire ? OrbType.Water : OrbType.Fire);
             first.Party.ApplyDamage(1);
             var returnedCharacters = first.CharacterCatalog;
             returnedCharacters[0].DisplayName = "tampered";
 
-            Assert.That(second.Board.Get(0, 0), Is.EqualTo(originalSecondOrb));
+            Assert.That(second.CurrentBoard.Get(0, 0), Is.EqualTo(originalSecondOrb));
             Assert.That(second.Party.CurrentHp, Is.Not.EqualTo(first.Party.CurrentHp));
             Assert.That(first.CharacterCatalog[0].DisplayName, Is.Not.EqualTo("tampered"));
             Assert.That(VerticalSliceFactory.Create(24082027).CharacterCatalog.Select(item => item.Id),
@@ -179,6 +207,13 @@ namespace PuzzleGame.Tests.EditMode.Integration
             for (var y = 0; y < BoardState.Rows; y++)
             for (var x = 0; x < BoardState.Columns; x++)
                 Assert.That(second.Get(x, y), Is.EqualTo(first.Get(x, y)), "cell " + x + "," + y);
+        }
+
+        private static void AssertSnapshotEqualsBoard(BoardSnapshot snapshot, BoardState board)
+        {
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++)
+                Assert.That(board.Get(x, y), Is.EqualTo(snapshot.Get(x, y)), "cell " + x + "," + y);
         }
     }
 }

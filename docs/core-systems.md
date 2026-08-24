@@ -13,7 +13,7 @@ The dependency rule is `Contracts/Core <- Unity adapters/presentation`: code in 
 | `PuzzleGame.Tests.EditMode` | Core and persistence adapter tests | Core, Unity adapter, NUnit/Test Framework |
 | `PuzzleGame.Tests.PlayMode` | Input backend, lifecycle, rendering ownership, and playable-smoke tests | Runtime assemblies, Input System test framework |
 
-The owner that creates mutable state destroys or disposes it. `VerticalSliceBootstrap` owns its child runtime root, controller, view, and pointer source. `PlayableBattleController` owns its input subscriptions. `BoardView` owns and destroys its generated cells, texture, sprite, and material. Core result collections are read-only snapshots; authored sample getters return deep copies. Runtime state (`Board`, `Party`, `Enemy`, `StageSession`, and `BattleContext`) is deliberately mutable and isolated per factory call.
+The owner that creates mutable state destroys or disposes it. `VerticalSliceBootstrap` owns its child runtime root, controller, view, and pointer source. `PlayableBattleController` owns its input subscriptions. `BoardView` owns and destroys its generated cells, texture, sprite, and material. Core result collections are read-only snapshots; authored sample getters return deep copies. Sample `OpeningBoard` is an immutable snapshot, while `CurrentBoard` always returns the authoritative `BattleContext.Board`. Runtime state (`CurrentBoard`, `Party`, `Enemy`, `StageSession`, and `BattleContext`) is deliberately mutable and isolated per factory call.
 
 ## Public subsystems and extension points
 
@@ -99,47 +99,66 @@ Recurring weekdays and minute-of-day values are evaluated at the fixed UTC offse
 
 ## Integrated sample and bootstrap controls
 
-`VerticalSliceFactory.Create()` defaults to seed `24082026`. It creates five validated elemental characters, a five-member party, generated and crafted boards, skills, a threshold boss, the permanent one-wave stage, progression examples, Standard and two Gather-In examples, fixed summon batches, full save roundtrip, and active examples for every `ContentType`. Same-seed calls are deterministic and share no mutable authored or runtime state. The crafted playable board and refill sequence intentionally produce disconnected Fire groups, Heart healing, and a second cascade.
+`VerticalSliceFactory.Create()` defaults to seed `24082026`. It creates and validates five elemental characters, their skills and leader skill, a five-member party, generated and crafted boards, a threshold boss, the permanent one-wave stage, progression examples, Standard and two Gather-In examples, an event plus schedules for every content type, fixed summon batches, a full save roundtrip, and active examples for every `ContentType`. The retained `StageCatalog` is the source of both the playable and preview `StageSession` instances and remains available for further isolated sessions. Same-seed calls are deterministic and share no mutable authored or runtime state. The crafted playable board and refill sequence intentionally produce disconnected Fire groups, Heart healing, and a second cascade. `OpeningBoard` preserves that initial layout; after resolution, `CurrentBoard` follows the replacement installed in `BattleContext.Board`.
 
-`VerticalSliceBootstrap` is code-only composition; `SampleScene.unity` has no serialized bootstrap edits. Runtime initialization runs after scene load, finds an existing `DontSave` bootstrap (including across disabled domain reload), or creates one persistent root. It suppresses automatic creation in EditMode and command-line test runs. `EnsureRuntimeBootstrap()` is an explicit idempotent request; `CreateForTests(seed)` explicitly creates an isolated instance with `VerticalSlicePointerDriver` instead of raw Input System reads.
+`VerticalSliceBootstrap` is code-only composition; `SampleScene.unity` has no serialized bootstrap edits. Runtime initialization runs after scene load, finds an existing `DontSave` bootstrap, or creates one persistent root. It suppresses automatic creation in EditMode and command-line test runs. `EnsureRuntimeBootstrap()` is an explicit idempotent request; `CreateForTests(seed)` explicitly creates an isolated instance with `VerticalSlicePointerDriver` instead of raw Input System reads. Test coverage verifies suppression during additive `SampleScene` loads and explicit idempotence across a scene reload. `SubsystemRegistration` removes the static scene callback before it is reattached, but the Editor's complete Enter Play Mode Options/domain-reload-disabled matrix is not automated here.
 
-The bootstrap exposes `Sample`, `Controller`, `View`, `PointerInput`/`PointerDriver`, board rectangle, timer limit, gameplay/presentation events, deterministic cell press/move/release, explicit unscaled-time advancement, and boss evaluation. Destroying its root unsubscribes forwarded events, disposes the deterministic driver, and lets the owned child/view release all generated Unity resources.
+The bootstrap exposes `Sample`, `Controller`, `View`, `PointerInput`/`PointerDriver`, board rectangle, timer limit, gameplay/presentation events, deterministic cell press/move/release, explicit unscaled-time advancement, and boss evaluation. Destroying either the bootstrap component or its outer root unsubscribes forwarded events, disposes the deterministic driver, and destroys the owned child/view graph and generated Unity resources. Composition failure also destroys both the partially created child graph and the factory-owned outer root.
 
 ## Reproducible verification
 
-The main project may be open in Unity and hold its generated `Library`. In that case, copy `Assets/PuzzleGame` into an isolated project using the same `ProjectVersion.txt` and package versions, then compare SHA-256 hashes before running batch mode. Do not close or mutate the unrelated live editor.
-
-Direct core/EditMode baseline (PowerShell, from the repository root):
-
-```powershell
-$compiler = 'C:\Program Files\Unity\Hub\Editor\6000.5.8f1\Editor\Data\MonoBleedingEdge\bin\mcs.bat'
-$mono = 'C:\Program Files\Unity\Hub\Editor\6000.5.8f1\Editor\Data\MonoBleedingEdge\bin\mono.exe'
-$nunit = (Resolve-Path 'Library\PackageCache\com.unity.ext.nunit@*\net472\unity-custom\nunit.framework.dll').Path
-$out = 'Temp\core-systems-direct'
-New-Item -ItemType Directory -Force $out | Out-Null
-$core = Get-ChildItem 'Assets\PuzzleGame\Core' -Recurse -Filter '*.cs' | Sort-Object FullName | ForEach-Object FullName
-$unityPersistence = Get-ChildItem 'Assets\PuzzleGame\Unity\Persistence' -Filter '*.cs' | Sort-Object FullName | ForEach-Object FullName
-$tests = Get-ChildItem 'Assets\PuzzleGame\Tests\EditMode' -Recurse -Filter '*.cs' | Sort-Object FullName | ForEach-Object FullName
-& $compiler -sdk:4.8 -warn:4 -target:library -out:"$out\PuzzleGame.Core.dll" $core
-& $compiler -sdk:4.8 -warn:4 -target:library -out:"$out\PuzzleGame.Unity.dll" -r:"$out\PuzzleGame.Core.dll" $unityPersistence
-& $compiler -sdk:4.8 -warn:4 -target:library -out:"$out\PuzzleGame.Tests.EditMode.dll" -r:"$out\PuzzleGame.Core.dll" -r:"$out\PuzzleGame.Unity.dll" -r:$nunit $tests
-# Task9ReflectionRunner.exe is the repository's ignored deterministic attribute runner used by task reports.
-Copy-Item 'Temp\Task9ReflectionRunner.exe' "$out\Task9ReflectionRunner.exe" -Force
-& $mono "$out\Task9ReflectionRunner.exe" $nunit "$out\PuzzleGame.Tests.EditMode.dll" 'PuzzleGame.Tests.EditMode'
-```
-
-Unity Test Framework, using an exact isolated project path:
+Run the official Unity Test Framework from a clean checkout of this repository. Unity allows only one editor process to own a project's generated `Library`; if this checkout is locked by an open editor, close that editor or create another clean checkout/worktree and run the same commands from that checkout. No copied harness, precompiled reflection runner, or pre-existing ignored artifact is required.
 
 ```powershell
 $unity = 'C:\Program Files\Unity\Hub\Editor\6000.5.8f1\Editor\Unity.exe'
-$project = (Resolve-Path 'Temp\task5-harness').Path
-& $unity -batchmode -nographics -projectPath $project -runTests -testPlatform EditMode `
-  -testFilter PuzzleGame.Tests.EditMode -testResults Temp\core-editmode.xml -logFile Temp\core-editmode.log
-& $unity -batchmode -nographics -projectPath $project -runTests -testPlatform PlayMode `
-  -testFilter PuzzleGame.Tests.PlayMode -testResults Temp\core-playmode.xml -logFile Temp\core-playmode.log
+$project = (Resolve-Path '.').Path
+$artifacts = Join-Path ([IO.Path]::GetTempPath()) ('puzzlegame-tests-' + [Guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $artifacts | Out-Null
+
+function Invoke-PuzzleGameTests([string] $platform, [string] $filter) {
+    $stem = $platform.ToLowerInvariant()
+    $results = Join-Path $artifacts "$stem-results.xml"
+    $log = Join-Path $artifacts "$stem-unity.log"
+    $arguments = @(
+        '-batchmode', '-nographics',
+        '-projectPath', ('"' + $project + '"'),
+        '-runTests', '-testPlatform', $platform,
+        '-testFilter', $filter,
+        '-testResults', ('"' + $results + '"'),
+        '-logFile', ('"' + $log + '"')
+    )
+    $process = Start-Process -FilePath $unity -ArgumentList $arguments -WindowStyle Hidden -Wait -PassThru
+    if ($process.ExitCode -ne 0) {
+        Get-Content -LiteralPath $log -Tail 200
+        throw "Unity $platform exited with code $($process.ExitCode). Full log: $log"
+    }
+    if (-not (Test-Path -LiteralPath $results)) {
+        throw "Unity $platform produced no result XML. Full log: $log"
+    }
+
+    [xml] $xml = Get-Content -LiteralPath $results -Raw
+    $run = $xml.'test-run'
+    if ($run.result -ne 'Passed' -or [int] $run.failed -ne 0) {
+        Get-Content -LiteralPath $log -Tail 200
+        throw "Unity $platform tests failed. Results: $results; full log: $log"
+    }
+
+    [pscustomobject]@{
+        Platform = $platform
+        Result = $run.result
+        Total = [int] $run.total
+        Passed = [int] $run.passed
+        Failed = [int] $run.failed
+        Results = $results
+        Log = $log
+    }
+}
+
+Invoke-PuzzleGameTests EditMode 'PuzzleGame.Tests.EditMode'
+Invoke-PuzzleGameTests PlayMode 'PuzzleGame.Tests.PlayMode'
 ```
 
-At Task 10 completion the direct and Unity EditMode suites contain 270 passing cases; PlayMode contains 35 passing cases. Scan the full logs for first-party compiler errors, exceptions, failed assertions, and unexpected `Debug.Log*` output in addition to checking XML totals.
+At Task 10 review-fix completion the direct and Unity EditMode suites contain 271 passing cases; PlayMode contains 38 passing cases. The command reports the process exit code through failure, validates that result XML exists, and rejects a non-passing XML result. Retain and inspect the printed log paths when diagnosing compiler errors, exceptions, failed assertions, or unexpected `Debug.Log*` output.
 
 ## Known limitations
 

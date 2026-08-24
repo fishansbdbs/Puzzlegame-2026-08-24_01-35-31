@@ -55,34 +55,33 @@ Dependency direction is `Contracts/Core <- Unity adapters/presentation`. Product
 - Enabled build scene: `Assets/Scenes/SampleScene.unity`
 - No Task 10 scene, prefab, or presentation asset was edited.
 - `VerticalSliceBootstrap` attaches after scene load through `RuntimeInitializeOnLoadMethod`, only if no bootstrap exists.
-- The runtime root is code-composed and persistent across scene loads. Discovery includes `DontSave` objects, making repeated initialization safe with domain reload disabled.
+- The runtime root is code-composed and persistent across scene loads. Discovery includes `DontSave` objects; explicit initialization remains idempotent across the tested additive scene reload. `SubsystemRegistration` resets the static scene callback, but the complete Editor Enter Play Mode Options/domain-reload-disabled matrix is not automated.
 - Automatic composition is suppressed in EditMode and command-line test runs. `EnsureRuntimeBootstrap` is the explicit idempotent entry point; `CreateForTests` creates isolated deterministic-pointer instances.
 - `BoardPointerInput` remains the only production raw Input System reader.
 
 ## Architecture and ownership
 
 - Core services are synchronous plain C# with injected RNG, clock, refill, and storage boundaries.
-- Authored inputs and public results are validated snapshots. Each `VerticalSliceFactory.Create(seed)` call owns isolated mutable runtime state.
+- Authored inputs and public results are validated snapshots. Each `VerticalSliceFactory.Create(seed)` call owns isolated mutable runtime state. `OpeningBoard` is the immutable initial snapshot, and `CurrentBoard` dynamically follows `BattleContext.Board` after replacement.
 - Unity adapters translate lifecycle and input to domain commands/events; UI/VFX is an event consumer and does not own gameplay outcomes.
-- `VerticalSliceBootstrap` owns its child runtime graph and event forwarding. `PlayableBattleController` owns pointer subscriptions. `BoardView` owns generated GameObjects and render resources and releases them on destruction.
+- `VerticalSliceBootstrap` owns its child runtime graph and event forwarding, destroys that graph even when only the component is removed, and cleans factory-owned roots after composition failure. `PlayableBattleController` owns pointer subscriptions. `BoardView` owns generated GameObjects and render resources and releases them on destruction.
 - Summon purchase, rolls, guarantees, ownership/duplicate effects, wallet spend, and banner-step advancement are planned before commit. Pack reveal receives a fixed batch.
 - Persistence isolates deterministic serialization/service policy from the Unity file path and atomic file-system boundary.
 
 ## Testing and validation
 
-- Direct Mono/NUnit-reflection EditMode baseline: 270/270 passing (prior 264 plus six integrated sample cases).
-- Unity EditMode: 270/270 passing in an isolated Unity 6000.5.8f1 harness.
-- Unity PlayMode: 35/35 passing (prior 29 plus six integrated playable-smoke cases).
-- PlayMode smoke proves 30 cells, ten-second moves, adjacent traversal of fast crossed cells, release/timeout exactly once, two cascade layers ending on the authoritative board, separate attacks, Heart healing, countdown/action, boss threshold, stage completion/stars, idempotent runtime composition, and render/event cleanup.
+- Direct first-party EditMode baseline: 271/271 passing (prior 264 plus seven integrated sample cases).
+- Unity EditMode: 271/271 passing with Unity 6000.5.8f1.
+- Unity PlayMode: 38/38 passing (prior 29 plus nine integrated playable-smoke cases).
+- PlayMode smoke proves 30 cells, ten-second moves, adjacent traversal of fast crossed cells, release/timeout exactly once, two cascade layers ending on the authoritative board, separate attacks, Heart healing, countdown/action, boss threshold, stage completion/stars, command-line auto-creation suppression, scene-reload idempotence, composition-failure atomicity, and component/root render-event cleanup.
 - Task 5 mouse/touch Input Test Framework cases remain the direct backend proof; Task 10 uses a deterministic pointer seam rather than OS cursor automation.
-- CI is not configured in this repository. Batch commands and the direct runner workflow are documented in `docs/core-systems.md`.
+- CI is not configured in this repository. Official Unity Test Framework batch commands for a clean checkout are documented in `docs/core-systems.md`.
 
 ## Tooling and lock caveat
 
 - Unity batch executable: `C:/Program Files/Unity/Hub/Editor/6000.5.8f1/Editor/Unity.exe`.
 - No Unity MCP tools were exposed to this Codex session.
-- The unrelated live Unity project at `D:/puzzlegame/puzzle game` continues to own/lock its generated `Library`; it was not closed or modified.
-- Validation used `Temp/task5-harness` with Unity/version equality, SHA-256 equality for `Assets/PuzzleGame`, and matching relevant package versions: Input System 1.20.0, Test Framework 1.7.0, ext.nunit 2.1.0.
+- Unity batch mode cannot open a checkout while another editor owns its generated `Library`. The documented reproducible workflow runs the official Test Framework against the repository from a clean checkout; use another clean checkout/worktree if the first is locked.
 
 ## Product constraints and known limitations
 

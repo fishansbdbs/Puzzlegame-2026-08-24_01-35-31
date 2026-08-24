@@ -22,6 +22,7 @@ namespace PuzzleGame.Unity.Bootstrap
         private GameObject ownedRuntimeRoot;
         private bool initialized;
         private bool forwardingEvents;
+        private Func<int, VerticalSliceSample> sampleFactory;
         private readonly BossMechanicEngine bossMechanics = new BossMechanicEngine();
 
         public event Action<MoveTimerEvent> TimerChanged;
@@ -67,11 +68,28 @@ namespace PuzzleGame.Unity.Bootstrap
         /// <summary>Creates an explicitly driven instance for PlayMode automation.</summary>
         public static VerticalSliceBootstrap CreateForTests(int seed = VerticalSliceFactory.DefaultSeed)
         {
+            return CreateForTests(seed, VerticalSliceFactory.Create);
+        }
+
+        internal static VerticalSliceBootstrap CreateForTests(
+            int seed,
+            Func<int, VerticalSliceSample> sampleFactory)
+        {
+            if (sampleFactory == null) throw new ArgumentNullException(nameof(sampleFactory));
             var root = new GameObject(RuntimeRootName + " (Test)");
-            root.hideFlags = HideFlags.DontSave;
-            var bootstrap = root.AddComponent<VerticalSliceBootstrap>();
-            bootstrap.Compose(seed, true);
-            return bootstrap;
+            try
+            {
+                root.hideFlags = HideFlags.DontSave;
+                var bootstrap = root.AddComponent<VerticalSliceBootstrap>();
+                bootstrap.sampleFactory = sampleFactory;
+                bootstrap.Compose(seed, true);
+                return bootstrap;
+            }
+            catch
+            {
+                DestroyOwned(root);
+                throw;
+            }
         }
 
         /// <summary>
@@ -80,19 +98,33 @@ namespace PuzzleGame.Unity.Bootstrap
         /// </summary>
         public static VerticalSliceBootstrap EnsureRuntimeBootstrap()
         {
+            return EnsureRuntimeBootstrap(VerticalSliceFactory.Create);
+        }
+
+        internal static VerticalSliceBootstrap EnsureRuntimeBootstrap(Func<int, VerticalSliceSample> sampleFactory)
+        {
+            if (sampleFactory == null) throw new ArgumentNullException(nameof(sampleFactory));
             var existing = FindExisting();
             if (existing != null)
             {
-                existing.EnsureRuntimeComposed();
+                existing.EnsureRuntimeComposed(sampleFactory);
                 return existing;
             }
 
             var root = new GameObject(RuntimeRootName);
-            root.hideFlags = HideFlags.DontSave;
-            DontDestroyOnLoad(root);
-            var bootstrap = root.AddComponent<VerticalSliceBootstrap>();
-            bootstrap.EnsureRuntimeComposed();
-            return bootstrap;
+            try
+            {
+                root.hideFlags = HideFlags.DontSave;
+                DontDestroyOnLoad(root);
+                var bootstrap = root.AddComponent<VerticalSliceBootstrap>();
+                bootstrap.EnsureRuntimeComposed(sampleFactory);
+                return bootstrap;
+            }
+            catch
+            {
+                DestroyOwned(root);
+                throw;
+            }
         }
 
         public void PressCell(BoardPosition position)
@@ -131,12 +163,15 @@ namespace PuzzleGame.Unity.Bootstrap
 
         private void Start()
         {
-            if (!initialized) EnsureRuntimeComposed();
+            if (!initialized) EnsureRuntimeComposed(VerticalSliceFactory.Create);
         }
 
-        private void EnsureRuntimeComposed()
+        private void EnsureRuntimeComposed(Func<int, VerticalSliceSample> factory)
         {
-            if (!initialized) Compose(VerticalSliceFactory.DefaultSeed, false);
+            if (initialized) return;
+            if (factory == null) throw new ArgumentNullException(nameof(factory));
+            sampleFactory = factory;
+            Compose(VerticalSliceFactory.DefaultSeed, false);
         }
 
         private void Compose(int seed, bool useDeterministicPointer)
@@ -148,7 +183,9 @@ namespace PuzzleGame.Unity.Bootstrap
             ownedRuntimeRoot = runtimeRoot;
             try
             {
-                Sample = VerticalSliceFactory.Create(seed);
+                Sample = sampleFactory(seed);
+                if (Sample == null)
+                    throw new InvalidOperationException("The vertical-slice sample factory returned null.");
                 View = runtimeRoot.AddComponent<BoardView>();
                 Controller = runtimeRoot.AddComponent<PlayableBattleController>();
                 IBoardPointerSource pointerSource;
@@ -164,7 +201,7 @@ namespace PuzzleGame.Unity.Bootstrap
                 }
 
                 BoardScreenRect = CreateScreenRect();
-                Controller.Initialize(pointerSource, View, BoardScreenRect, Sample.Board, Sample.OrbSource,
+                Controller.Initialize(pointerSource, View, BoardScreenRect, Sample.CurrentBoard, Sample.OrbSource,
                     Sample.Party, Sample.Enemy, Sample.StageSession, Sample.BattleContext, Sample.Stage);
                 StartForwardingEvents();
                 initialized = true;
@@ -185,7 +222,7 @@ namespace PuzzleGame.Unity.Bootstrap
             if (PointerDriver != null) PointerDriver.Dispose();
             var root = ownedRuntimeRoot;
             ClearReferences();
-            if (root != null && root.transform.parent != transform) DestroyOwned(root);
+            DestroyOwned(root);
         }
 
         private void StartForwardingEvents()
@@ -252,7 +289,7 @@ namespace PuzzleGame.Unity.Bootstrap
         private Vector2 CellCenter(BoardPosition position)
         {
             if (Sample == null) throw new InvalidOperationException("The vertical slice is not initialized.");
-            Sample.Board.Get(position);
+            Sample.CurrentBoard.Get(position);
             return new Vector2(
                 BoardScreenRect.xMin + (position.X + .5f) * BoardScreenRect.width / BoardState.Columns,
                 BoardScreenRect.yMin + (position.Y + .5f) * BoardScreenRect.height / BoardState.Rows);
@@ -290,6 +327,7 @@ namespace PuzzleGame.Unity.Bootstrap
             View = null;
             PointerInput = null;
             PointerDriver = null;
+            sampleFactory = null;
             initialized = false;
         }
 
