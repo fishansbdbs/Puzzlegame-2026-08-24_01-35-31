@@ -101,6 +101,8 @@ namespace PuzzleGame.Unity.Battle
         private bool initialized;
         private bool subscribed;
         private bool resolving;
+        private bool hasPendingBoardScreenRect;
+        private Rect pendingBoardScreenRect;
 
         public event Action<MoveTimerEvent> TimerChanged;
         public event Action<MatchGroupsEvent> MatchGroupsResolved;
@@ -118,6 +120,7 @@ namespace PuzzleGame.Unity.Battle
         public bool IsDragging { get { return dragSession != null; } }
         public bool IsResolving { get { return resolving; } }
         public BoardState CurrentBoard { get { return currentBoard; } }
+        public Rect BoardScreenRect { get { return boardScreenRect; } }
 
         public void Initialize(IBoardPointerSource input, BoardView view, Rect screenRect, BoardState board,
             IOrbSource source, PartyState partyState, EnemyRuntime enemyState, StageSession session,
@@ -177,6 +180,25 @@ namespace PuzzleGame.Unity.Battle
                 return;
             }
             EmitTimer(dragDurationSeconds - dragElapsedSeconds);
+        }
+
+        /// <summary>
+        /// Updates hit testing immediately while idle. During a drag the validated
+        /// rectangle is deferred until completion so the locked pointer keeps one mapping.
+        /// </summary>
+        public void UpdateBoardScreenRect(Rect screenRect)
+        {
+            if (!initialized) throw new InvalidOperationException("PlayableBattleController is not initialized.");
+            if (!BoardLayout.IsValidRect(screenRect)) throw new ArgumentOutOfRangeException("screenRect");
+            if (dragSession != null || resolving)
+            {
+                pendingBoardScreenRect = screenRect;
+                hasPendingBoardScreenRect = true;
+                return;
+            }
+
+            boardScreenRect = screenRect;
+            hasPendingBoardScreenRect = false;
         }
 
         private void Update()
@@ -315,7 +337,15 @@ namespace PuzzleGame.Unity.Battle
             finally
             {
                 resolving = false;
+                ApplyPendingBoardScreenRect();
             }
+        }
+
+        private void ApplyPendingBoardScreenRect()
+        {
+            if (!hasPendingBoardScreenRect || dragSession != null || resolving) return;
+            boardScreenRect = pendingBoardScreenRect;
+            hasPendingBoardScreenRect = false;
         }
 
         private void TraversePointerSegment(Vector2 screenPosition, BoardPosition endPosition)
@@ -453,6 +483,8 @@ namespace PuzzleGame.Unity.Battle
             stageSession = null;
             battleContext = null;
             objectiveStage = null;
+            hasPendingBoardScreenRect = false;
+            pendingBoardScreenRect = default(Rect);
             initialized = false;
             subscribed = false;
         }

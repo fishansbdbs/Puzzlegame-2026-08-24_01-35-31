@@ -58,6 +58,8 @@ Dependency direction is `Contracts/Core <- Unity adapters/presentation`. Product
 - The runtime root is code-composed and persistent across scene loads. `AfterSceneLoad` decides automatic startup once from test command-line flags or an initial `InitTestScene*`; a suppressed run never registers a scene callback, so later scene replacement cannot enable it. `SubsystemRegistration` unhooks the callback and resets that decision, but the complete Editor Enter Play Mode Options/domain-reload-disabled matrix is not automated.
 - `EnsureRuntimeBootstrap` remains the explicit idempotent opt-in during suppressed runs; `CreateForTests` creates isolated deterministic-pointer instances.
 - `BoardPointerInput` remains the only production raw Input System reader.
+- Production composition requires an active `Camera.main`. Board hit testing uses the screen projection of `BoardView.WorldBounds`; viewport, projection, camera-transform, screen-size, and view-bounds changes refresh that mapping. Explicit test composition may instead supply a camera or own a deterministic fallback.
+- Player settings commit a fixed landscape-left default, allow both landscape directions, and disable portrait and upside-down autorotation.
 
 ## Architecture and ownership
 
@@ -72,9 +74,9 @@ Dependency direction is `Contracts/Core <- Unity adapters/presentation`. Product
 
 ## Testing and validation
 
-- Unity EditMode: 294/294 passing with Unity 6000.5.8f1.
-- Unity PlayMode: 48/48 passing.
-- PlayMode smoke proves 30 cells, ten-second moves, adjacent traversal of fast crossed cells, release/timeout exactly once, one post-core terminal timer zero (including zero-duration moves), two cascade layers ending on the authoritative board, separate attacks, Heart healing, core-owned once-only boss thresholds before due actions, stable mechanic event forwarding, release/timeout/zero-duration observer-exception state safety, stage completion/stars, command-line and flagless `InitTestScene` suppression, one-time normal callback registration, scene-reload idempotence, composition-failure atomicity, and component/root render-event cleanup.
+- Unity EditMode: 295/295 passing with Unity 6000.5.8f1.
+- Unity PlayMode: 56/56 passing.
+- PlayMode smoke proves 30 cells, camera-projected round trips at 16:9, 4:3, and ultrawide, live viewport/projection/view-bounds remapping, production camera requirements and ownership, ten-second moves, adjacent traversal of fast crossed cells, release/timeout exactly once, one post-core terminal timer zero (including zero-duration moves), two cascade layers ending on the authoritative board, separate attacks, Heart healing, core-owned once-only boss thresholds before due actions, stable mechanic event forwarding, release/timeout/zero-duration observer-exception state safety, stage completion/stars, command-line and flagless `InitTestScene` suppression, one-time normal callback registration, scene-reload idempotence, composition-failure atomicity, and component/root render-event cleanup.
 - Task 5 mouse/touch Input Test Framework cases remain the direct backend proof; Task 10 uses a deterministic pointer seam rather than OS cursor automation.
 - CI is not configured in this repository. Official Unity Test Framework batch commands for a clean checkout are documented in `docs/core-systems.md`.
 

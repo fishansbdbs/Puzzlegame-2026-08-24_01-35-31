@@ -31,6 +31,16 @@ namespace PuzzleGame.Unity.Battle
         public event Action<BoardSnapshot> BoardDisplayed;
 
         public int CellCount { get { return initialized ? renderers.Length : 0; } }
+        public Bounds WorldBounds
+        {
+            get
+            {
+                EnsureInitialized();
+                var result = renderers[0].bounds;
+                for (var index = 1; index < renderers.Length; index++) result.Encapsulate(renderers[index].bounds);
+                return result;
+            }
+        }
 
         public void Initialize(BoardState board)
         {
@@ -91,6 +101,12 @@ namespace PuzzleGame.Unity.Battle
         public Color GetColor(BoardPosition position)
         {
             return renderers[Index(position.X, position.Y)].color;
+        }
+
+        public Vector3 GetCellWorldCenter(BoardPosition position)
+        {
+            EnsureInitialized();
+            return renderers[Index(position.X, position.Y)].bounds.center;
         }
 
         private void ComposeCells()
@@ -160,6 +176,11 @@ namespace PuzzleGame.Unity.Battle
             if (x < 0 || x >= BoardState.Columns || y < 0 || y >= BoardState.Rows)
                 throw new ArgumentOutOfRangeException("position", "Board position is outside the board.");
             return y * BoardState.Columns + x;
+        }
+
+        private void EnsureInitialized()
+        {
+            if (!initialized) throw new InvalidOperationException("BoardView must be initialized before querying geometry.");
         }
 
         private static void DestroyOwned(UnityEngine.Object value)

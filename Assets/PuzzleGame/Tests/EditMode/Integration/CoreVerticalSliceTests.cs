@@ -7,6 +7,7 @@ using PuzzleGame.Core.Gacha;
 using PuzzleGame.Core.Persistence;
 using PuzzleGame.Core.Sample;
 using PuzzleGame.Core.Progression;
+using UnityEditor;
 
 namespace PuzzleGame.Tests.EditMode.Integration
 {
@@ -261,6 +262,20 @@ namespace PuzzleGame.Tests.EditMode.Integration
             for (var y = 0; y < BoardState.Rows; y++)
             for (var x = 0; x < BoardState.Columns; x++)
                 Assert.That(board.Get(x, y), Is.EqualTo(snapshot.Get(x, y)), "cell " + x + "," + y);
+        }
+    }
+
+    public sealed class PlayerSettingsConfigurationTests
+    {
+        [Test]
+        public void Player_settings_commit_fixed_landscape_with_portrait_rotation_disabled()
+        {
+            Assert.That(PlayerSettings.defaultInterfaceOrientation, Is.EqualTo(UIOrientation.LandscapeLeft),
+                "Unity 6000 LandscapeLeft enum value is " + (int)UIOrientation.LandscapeLeft + ".");
+            Assert.That(PlayerSettings.allowedAutorotateToPortrait, Is.False);
+            Assert.That(PlayerSettings.allowedAutorotateToPortraitUpsideDown, Is.False);
+            Assert.That(PlayerSettings.allowedAutorotateToLandscapeLeft, Is.True);
+            Assert.That(PlayerSettings.allowedAutorotateToLandscapeRight, Is.True);
         }
     }
 }

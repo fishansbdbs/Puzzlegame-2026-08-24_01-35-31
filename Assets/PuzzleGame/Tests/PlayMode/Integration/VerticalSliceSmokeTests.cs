@@ -7,6 +7,7 @@ using PuzzleGame.Core.Board;
 using PuzzleGame.Core.Contracts;
 using PuzzleGame.Core.Sample;
 using PuzzleGame.Core.Stages;
+using PuzzleGame.Unity.Battle;
 using PuzzleGame.Unity.Bootstrap;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,13 @@ namespace PuzzleGame.Tests.PlayMode.Integration
     {
         private readonly List<VerticalSliceBootstrap> created = new List<VerticalSliceBootstrap>();
         private readonly List<Scene> loadedScenes = new List<Scene>();
+        private readonly List<GameObject> createdCameras = new List<GameObject>();
+
+        [SetUp]
+        public void SetUp()
+        {
+            if (Camera.main == null) CreateCamera(new Rect(0f, 0f, 1600f, 900f), true);
+        }
 
         [UnityTearDown]
         public IEnumerator TearDown()
@@ -36,6 +44,108 @@ namespace PuzzleGame.Tests.PlayMode.Integration
                 if (unload != null) while (!unload.isDone) yield return null;
             }
             loadedScenes.Clear();
+            for (var index = createdCameras.Count - 1; index >= 0; index--)
+                if (createdCameras[index] != null) Object.DestroyImmediate(createdCameras[index]);
+            createdCameras.Clear();
+        }
+
+        [TestCase(1600f, 900f)]
+        [TestCase(1200f, 900f)]
+        [TestCase(2400f, 900f)]
+        public void Orthographic_camera_projects_all_rendered_centers_back_to_their_cells_and_rejects_margins(
+            float width, float height)
+        {
+            var camera = CreateCamera(new Rect(0f, 0f, width, height), false);
+            var bootstrap = Track(VerticalSliceBootstrap.CreateForTests(24082026, camera));
+            var bounds = bootstrap.View.WorldBounds;
+
+            Assert.That(bounds.size.x, Is.EqualTo(6f).Within(.0001f));
+            Assert.That(bounds.size.y, Is.EqualTo(5f).Within(.0001f));
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++)
+            {
+                var position = new BoardPosition(x, y);
+                var world = bootstrap.View.GetCellWorldCenter(position);
+                var projected = camera.WorldToScreenPoint(world);
+                Assert.That(BoardLayout.ScreenToCell(new Vector2(projected.x, projected.y), bootstrap.BoardScreenRect),
+                    Is.EqualTo(position), "cell " + x + "," + y);
+            }
+
+            var leftMargin = new Vector2(bootstrap.BoardScreenRect.xMin - 1f, bootstrap.BoardScreenRect.center.y);
+            var rightMargin = new Vector2(bootstrap.BoardScreenRect.xMax + 1f, bootstrap.BoardScreenRect.center.y);
+            Assert.That(leftMargin.x, Is.GreaterThan(camera.pixelRect.xMin));
+            Assert.That(rightMargin.x, Is.LessThan(camera.pixelRect.xMax));
+            Assert.That(BoardLayout.ScreenToCell(leftMargin, bootstrap.BoardScreenRect), Is.Null);
+            Assert.That(BoardLayout.ScreenToCell(rightMargin, bootstrap.BoardScreenRect), Is.Null);
+        }
+
+        [UnityTest]
+        public IEnumerator Projected_press_and_drag_swap_the_intended_rendered_cells()
+        {
+            var camera = CreateCamera(new Rect(20f, 30f, 1280f, 720f), false);
+            var bootstrap = Track(VerticalSliceBootstrap.CreateForTests(24082026, camera));
+            var first = bootstrap.Controller.CurrentBoard.Get(0, 0);
+            var second = bootstrap.Controller.CurrentBoard.Get(1, 0);
+
+            bootstrap.PressCell(new BoardPosition(0, 0));
+            bootstrap.MoveToCell(new BoardPosition(1, 0));
+
+            Assert.That(bootstrap.Controller.CurrentBoard.Get(0, 0), Is.EqualTo(second));
+            Assert.That(bootstrap.Controller.CurrentBoard.Get(1, 0), Is.EqualTo(first));
+            bootstrap.ReleaseCell(new BoardPosition(1, 0));
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator Viewport_and_projection_changes_refresh_mapping_without_stale_centers()
+        {
+            var camera = CreateCamera(new Rect(0f, 0f, 1600f, 900f), false);
+            var bootstrap = Track(VerticalSliceBootstrap.CreateForTests(24082026, camera));
+            var firstRect = bootstrap.BoardScreenRect;
+
+            camera.pixelRect = new Rect(100f, 50f, 800f, 600f);
+            yield return null;
+
+            var viewportRect = bootstrap.BoardScreenRect;
+            Assert.That(viewportRect, Is.Not.EqualTo(firstRect));
+            AssertEveryProjectedCenterMaps(camera, bootstrap);
+
+            camera.orthographicSize = 5f;
+            yield return null;
+
+            var projectionRect = bootstrap.BoardScreenRect;
+            Assert.That(projectionRect, Is.Not.EqualTo(viewportRect));
+            AssertEveryProjectedCenterMaps(camera, bootstrap);
+
+            bootstrap.View.transform.position += Vector3.right;
+            yield return null;
+
+            Assert.That(bootstrap.BoardScreenRect, Is.Not.EqualTo(projectionRect));
+            AssertEveryProjectedCenterMaps(camera, bootstrap);
+        }
+
+        [UnityTest]
+        public IEnumerator Bootstrap_owns_only_its_explicit_test_fallback_camera()
+        {
+            var cameraCount = Resources.FindObjectsOfTypeAll<Camera>().Length;
+            var fallbackBootstrap = Track(VerticalSliceBootstrap.CreateForTests(24082026));
+            var fallbackCamera = fallbackBootstrap.GameplayCamera;
+            Assert.That(fallbackCamera, Is.Not.Null);
+
+            created.Remove(fallbackBootstrap);
+            Object.Destroy(fallbackBootstrap.gameObject);
+            yield return null;
+
+            Assert.That(fallbackCamera == null, Is.True);
+            Assert.That(Resources.FindObjectsOfTypeAll<Camera>(), Has.Length.EqualTo(cameraCount));
+
+            var externalCamera = CreateCamera(new Rect(0f, 0f, 1024f, 768f), false);
+            var providedBootstrap = Track(VerticalSliceBootstrap.CreateForTests(24082026, externalCamera));
+            created.Remove(providedBootstrap);
+            Object.Destroy(providedBootstrap.gameObject);
+            yield return null;
+
+            Assert.That(externalCamera, Is.Not.Null);
         }
 
         [UnityTest]
@@ -211,6 +321,7 @@ namespace PuzzleGame.Tests.PlayMode.Integration
             var driver = first.PointerDriver;
             Assert.That(driver, Is.Null, "Runtime composition owns the real Input System adapter.");
             Assert.That(first.PointerInput, Is.Not.Null);
+            Assert.That(first.GameplayCamera, Is.SameAs(Camera.main));
             Assert.That(FindBootstraps(), Has.Length.EqualTo(1));
 
             created.Remove(first);
@@ -236,6 +347,27 @@ namespace PuzzleGame.Tests.PlayMode.Integration
             Assert.That(CountRuntimeBoardMaterials(), Is.EqualTo(beforeMaterials));
             Assert.That(CountRuntimeBoardViews(), Is.EqualTo(beforeViews));
             Assert.That(CountOwnedRuntimeRoots(), Is.EqualTo(beforeOwnedRoots));
+        }
+
+        [UnityTest]
+        public IEnumerator Runtime_composition_requires_an_active_main_camera_and_cleans_failed_root()
+        {
+            var mainCamera = Camera.main;
+            Assert.That(mainCamera, Is.Not.Null);
+            mainCamera.gameObject.SetActive(false);
+
+            try
+            {
+                Assert.That(() => VerticalSliceBootstrap.EnsureRuntimeBootstrap(),
+                    Throws.TypeOf<System.InvalidOperationException>());
+            }
+            finally
+            {
+                mainCamera.gameObject.SetActive(true);
+            }
+
+            yield return null;
+            Assert.That(FindBootstraps(), Is.Empty);
         }
 
         [UnityTest]
@@ -383,6 +515,31 @@ namespace PuzzleGame.Tests.PlayMode.Integration
         {
             created.Add(bootstrap);
             return bootstrap;
+        }
+
+        private Camera CreateCamera(Rect pixelRect, bool main)
+        {
+            var root = new GameObject(main ? "Main Camera" : "Mapped Board Camera");
+            createdCameras.Add(root);
+            if (main) root.tag = "MainCamera";
+            var camera = root.AddComponent<Camera>();
+            camera.orthographic = true;
+            camera.orthographicSize = 4f;
+            camera.pixelRect = pixelRect;
+            camera.transform.position = new Vector3(0f, 0f, -10f);
+            return camera;
+        }
+
+        private static void AssertEveryProjectedCenterMaps(Camera camera, VerticalSliceBootstrap bootstrap)
+        {
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++)
+            {
+                var position = new BoardPosition(x, y);
+                var projected = camera.WorldToScreenPoint(bootstrap.View.GetCellWorldCenter(position));
+                Assert.That(BoardLayout.ScreenToCell(new Vector2(projected.x, projected.y), bootstrap.BoardScreenRect),
+                    Is.EqualTo(position), "cell " + x + "," + y);
+            }
         }
 
         private static VerticalSliceBootstrap[] FindBootstraps()

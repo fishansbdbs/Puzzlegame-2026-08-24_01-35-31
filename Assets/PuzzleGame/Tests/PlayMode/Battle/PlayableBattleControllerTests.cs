@@ -57,6 +57,27 @@ namespace PuzzleGame.Tests.PlayMode.Battle
             Assert.That(BoardLayout.ScreenToCell(new Vector2(.5f, float.MaxValue),
                 new Rect(0f, float.MaxValue, 1f, float.MaxValue)), Is.Null);
         }
+
+        [Test]
+        public void Layout_updates_validate_and_defer_until_the_active_drag_finishes()
+        {
+            using (var fixture = PlayableBattleFixture.Create())
+            {
+                var original = fixture.Controller.BoardScreenRect;
+                var updated = new Rect(100f, 200f, 1200f, 1000f);
+
+                Assert.That(() => fixture.Controller.UpdateBoardScreenRect(new Rect(0f, 0f, 0f, 1f)),
+                    Throws.TypeOf<ArgumentOutOfRangeException>());
+                Assert.That(fixture.Controller.BoardScreenRect, Is.EqualTo(original));
+
+                fixture.Input.Press(fixture.CellCenter(0, 0));
+                fixture.Controller.UpdateBoardScreenRect(updated);
+
+                Assert.That(fixture.Controller.BoardScreenRect, Is.EqualTo(original));
+                fixture.Input.Release(fixture.CellCenter(0, 0));
+                Assert.That(fixture.Controller.BoardScreenRect, Is.EqualTo(updated));
+            }
+        }
     }
 
     public sealed class PlayableBattleControllerTests
