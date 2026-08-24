@@ -247,6 +247,79 @@ namespace PuzzleGame.Tests.EditMode.Gacha
             Assert.That(existing.Ascension, Is.EqualTo(5));
             Assert.That(service.State.NextStepIndex, Is.EqualTo(0));
         }
+
+        [Test]
+        public void Configured_featured_steps_purchase_authored_counts_costs_and_complete_the_rotation()
+        {
+            var banner = SummonFixtures.Banner(BannerType.Featured, new[] { SummonFixtures.Entry("one", 1) });
+            banner.Steps = new[] { new BannerStepData { PullCount = 1, GemCost = 17 }, new BannerStepData { PullCount = 2, GemCost = 29 } };
+            var service = SummonFixtures.CreateService(banner, new ScriptedRandom(0, 0, 0));
+            service.Wallet.Add(WalletCurrencies.Gems, 46);
+
+            var first = service.PurchaseAndRoll();
+            var second = service.PurchaseAndRoll();
+
+            Assert.That(first.GemCost, Is.EqualTo(17)); Assert.That(first.Results, Has.Count.EqualTo(1));
+            Assert.That(second.GemCost, Is.EqualTo(29)); Assert.That(second.Results, Has.Count.EqualTo(2));
+            Assert.That(service.State.NextStepIndex, Is.EqualTo(2)); Assert.That(service.State.IsComplete, Is.True);
+            Assert.That(service.Wallet.GetBalance(WalletCurrencies.Gems), Is.EqualTo(0));
+            Assert.That(() => service.PurchaseAndRoll(), Throws.TypeOf<InvalidOperationException>());
+        }
+
+        [Test]
+        public void Step_up_purchase_advances_each_authored_step_then_rejects_completed_rotation()
+        {
+            var banner = SummonFixtures.Banner(BannerType.StepUp, new[] { SummonFixtures.Entry("one", 1) });
+            banner.Steps = new[] { new BannerStepData { PullCount = 1, GemCost = 5 }, new BannerStepData { PullCount = 2, GemCost = 9 } };
+            var service = SummonFixtures.CreateService(banner, new ScriptedRandom(0, 0, 0));
+            service.Wallet.Add(WalletCurrencies.Gems, 14);
+
+            Assert.That(service.PurchaseAndRoll().Results, Has.Count.EqualTo(1));
+            Assert.That(service.State.NextStepIndex, Is.EqualTo(1));
+            Assert.That(service.PurchaseAndRoll().Results, Has.Count.EqualTo(2));
+            Assert.That(service.State.IsComplete, Is.True);
+            Assert.That(() => service.PurchaseAndRoll(), Throws.TypeOf<InvalidOperationException>());
+        }
+
+        [Test]
+        public void Owned_overflow_configuration_not_catalog_configuration_controls_atomic_rollback()
+        {
+            var ownedDefinition = SummonFixtures.Definition("one", 1);
+            ownedDefinition.Character.Ascension.OverflowUniversalResourceAmount = 2;
+            var owned = new CharacterProgress(ownedDefinition.Character, ownedDefinition.ActiveSkill);
+            var setupWallet = new Wallet(); for (var index = 0; index < 5; index++) ProgressionService.ApplyDuplicate(owned, setupWallet);
+            var wallet = new Wallet(); wallet.Add(WalletCurrencies.Gems, 150); wallet.Add(WalletCurrencies.UniversalDuplicateResource, int.MaxValue - 1);
+            var service = SummonFixtures.CreateService(BannerType.Featured, new[] { SummonFixtures.Entry("one", 1) }, new ScriptedRandom(0), wallet, new[] { owned });
+
+            Assert.That(() => service.PurchaseAndRoll(1), Throws.TypeOf<OverflowException>());
+            Assert.That(wallet.GetBalance(WalletCurrencies.Gems), Is.EqualTo(150));
+            Assert.That(wallet.GetBalance(WalletCurrencies.UniversalDuplicateResource), Is.EqualTo(int.MaxValue - 1));
+            Assert.That(owned.Ascension, Is.EqualTo(5));
+        }
+
+        [Test]
+        public void Negative_rng_invalid_guarantee_candidates_and_guarantee_overflow_do_not_mutate_a_purchase()
+        {
+            var negative = SummonFixtures.CreateService(BannerType.Featured, new[] { SummonFixtures.Entry("one", 1) }, new ScriptedRandom(-1));
+            negative.Wallet.Add(WalletCurrencies.Gems, 150);
+            Assert.That(() => negative.PurchaseAndRoll(1), Throws.TypeOf<InvalidOperationException>());
+            Assert.That(negative.Wallet.GetBalance(WalletCurrencies.Gems), Is.EqualTo(150));
+
+            var noFive = SummonFixtures.Banner(BannerType.GatherIn, new[] { SummonFixtures.Entry("one", 1) });
+            noFive.Steps = new[] { new BannerStepData { PullCount = 1, GemCost = 1, GuaranteedFiveStarFeaturedBoost = true } };
+            Assert.That(() => SummonFixtures.CreateService(noFive), Throws.TypeOf<ArgumentException>());
+            var noFeaturedFive = SummonFixtures.Banner(BannerType.GatherIn, new[] { SummonFixtures.Entry("five-normal", 1) });
+            noFeaturedFive.Steps = new[] { new BannerStepData { PullCount = 1, GemCost = 1, GuaranteedFeaturedFiveStar = true } };
+            Assert.That(() => SummonFixtures.CreateService(noFeaturedFive), Throws.TypeOf<ArgumentException>());
+
+            var overflowGuarantee = SummonFixtures.Banner(BannerType.StepUp, new[] { SummonFixtures.Entry("five-featured", int.MaxValue, true) });
+            overflowGuarantee.Steps = new[] { new BannerStepData { PullCount = 1, GemCost = 10, GuaranteedFiveStarFeaturedBoost = true } };
+            var service = SummonFixtures.CreateService(overflowGuarantee, new ScriptedRandom(0, 0));
+            service.Wallet.Add(WalletCurrencies.Gems, 10);
+            Assert.That(() => service.PurchaseAndRoll(), Throws.TypeOf<ArgumentException>());
+            Assert.That(service.Wallet.GetBalance(WalletCurrencies.Gems), Is.EqualTo(10));
+            Assert.That(service.State.NextStepIndex, Is.EqualTo(0));
+        }
     }
 
     internal static class SummonFixtures
