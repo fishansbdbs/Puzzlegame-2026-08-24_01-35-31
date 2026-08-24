@@ -25,8 +25,10 @@ namespace PuzzleGame.Presentation
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void AutoStart()
         {
+            // Demo-only: "Game" runs the core-backed GameBootstrap and
+            // "SampleScene" belongs to Codex's vertical slice.
             var scene = SceneManager.GetActiveScene().name;
-            if (scene != "PresentationDemo" && scene != "SampleScene") return;
+            if (scene != "PresentationDemo") return;
             if (Object.FindFirstObjectByType<PresentationDemoBootstrap>() != null) return;
             var go = new GameObject("PresentationDemo");
             go.AddComponent<PresentationDemoBootstrap>();

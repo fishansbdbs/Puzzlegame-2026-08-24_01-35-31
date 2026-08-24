@@ -1,7 +1,10 @@
 {
     "name": "PuzzleGame.Presentation",
     "rootNamespace": "PuzzleGame",
-    "references": [],
+    "references": [
+        "PuzzleGame.Core",
+        "PuzzleGame.Unity"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

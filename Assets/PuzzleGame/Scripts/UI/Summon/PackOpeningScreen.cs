@@ -49,10 +49,16 @@ namespace PuzzleGame.Presentation.UI.Summon
         }
 
         readonly PackThemeDto _theme;
+        readonly Core.Gacha.PackSummonFlow _flow;
+        bool _ripFlowStarted;
 
         public PackOpeningScreen(SummonSession session)
         {
             _session = session;
+            // Real summons carry core's pack-flow state machine; the screen
+            // drives its ordered transitions (presentation observes, never
+            // changes results). Demo sessions have none.
+            _flow = session.CorePackFlow as Core.Gacha.PackSummonFlow;
             // Theme metadata is data-driven per banner (Content/packs); the
             // fallback keeps unknown keys presentable.
             string themeId = session.Banner != null ? session.Banner.PackArtRef : "pack_standard";
@@ -182,6 +188,11 @@ namespace PuzzleGame.Presentation.UI.Summon
             _pack.RegisterCallback<PointerDownEvent>(OnRipStart);
             _pack.RegisterCallback<PointerMoveEvent>(OnRipDrag);
             _pack.RegisterCallback<PointerUpEvent>(OnRipEnd);
+
+            if (_flow != null && _flow.State == Core.Gacha.PackSummonState.PurchaseValidated)
+            {
+                _flow.PresentPack();
+            }
         }
 
         void ApplyPackVisual()
@@ -239,6 +250,14 @@ namespace PuzzleGame.Presentation.UI.Summon
             _ripping = true;
             _pack.CapturePointer(evt.pointerId);
             _hint.text = "Riiiip!";
+            MarkRipStarted();
+        }
+
+        void MarkRipStarted()
+        {
+            if (_ripFlowStarted) return;
+            _ripFlowStarted = true;
+            if (_flow != null) _flow.StartPackRip();
         }
 
         void OnRipDrag(PointerMoveEvent evt)
@@ -309,6 +328,8 @@ namespace PuzzleGame.Presentation.UI.Summon
         void TearOpen()
         {
             _hint.text = "";
+            MarkRipStarted();
+            if (_flow != null) _flow.OpenPack();
             var center = _fxLayer.WorldToLocal(_pack.worldBound.center);
             Color glow = ShownTier >= 2 ? Theme.Rarity5 : AccentColor;
             UiFx.Burst(_fxLayer, center, glow, 26, 140f);
@@ -387,7 +408,14 @@ namespace PuzzleGame.Presentation.UI.Summon
             footer.Add(_revealAllBtn);
             _summary = UiKit.Dim("Tap a card to reveal it", 12f);
             footer.Add(_summary);
-            _doneBtn = UiKit.WarmButton("Done", () => Router.Pop());
+            _doneBtn = UiKit.WarmButton("Done", () =>
+            {
+                if (_flow != null && _flow.State == Core.Gacha.PackSummonState.AllCardsRevealed)
+                {
+                    _flow.CompleteResults();
+                }
+                Router.Pop();
+            });
             _doneBtn.style.display = DisplayStyle.None;
             footer.Add(_doneBtn);
             column.Add(footer);
@@ -593,10 +621,19 @@ namespace PuzzleGame.Presentation.UI.Summon
         {
             slot.Revealed = true;
             slot.Revealing = false;
+            if (_flow != null && _flow.State != Core.Gacha.PackSummonState.AllCardsRevealed)
+            {
+                _flow.PrepareNextCard();
+                _flow.RevealReadyCard();
+            }
             UiFx.Punch(slot.Root, slot.Result.Character != null && slot.Result.Character.BaseRarity >= 5 ? 1.22f : 1.1f, 220);
             _revealedCount++;
             if (_revealedCount >= _cards.Count)
             {
+                if (_flow != null && _flow.State != Core.Gacha.PackSummonState.AllCardsRevealed)
+                {
+                    _flow.MarkAllCardsRevealed();
+                }
                 int newCount = 0, fiveStars = 0;
                 foreach (var c in _cards)
                 {

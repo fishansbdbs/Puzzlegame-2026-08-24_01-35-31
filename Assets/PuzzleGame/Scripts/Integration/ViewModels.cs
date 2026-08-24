@@ -127,6 +127,13 @@ namespace PuzzleGame.Presentation
         public int GemCost;
         /// <summary>Step index consumed if this was a Gather-In / Step-Up pull.</summary>
         public int StepIndex = -1;
+
+        /// <summary>
+        /// Core pack-flow state machine (PuzzleGame.Core.Gacha.PackSummonFlow)
+        /// when the session came from the real gacha; the pack-opening screen
+        /// drives its ordered transitions. Null for demo mock sessions.
+        /// </summary>
+        public object CorePackFlow;
     }
 
     [Serializable]

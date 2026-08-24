@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using PuzzleGame.Presentation.Content;
-using PuzzleGame.Presentation.Mock;
+
 using PuzzleGame.Presentation.UI.Battle;
 
 namespace PuzzleGame.Presentation.UI.Story
@@ -115,14 +115,21 @@ namespace PuzzleGame.Presentation.UI.Story
                 _stageList.Add(strip);
             }
 
+            // Real progression state: stars, cleared and unlock gating.
+            var library = PresentationServices.Get<IContentLibrary>();
+            var summaries = library.GetChapterStages(_chapterNumber)
+                .ToDictionary(s => s.Id, s => s);
             foreach (var stage in chapter.stages.OrderBy(s => s.stageNumber))
             {
-                _stageList.Add(StageCard(chapter, stage));
+                StageSummaryVm summary;
+                summaries.TryGetValue(stage.id, out summary);
+                _stageList.Add(StageCard(chapter, stage, summary));
             }
         }
 
-        VisualElement StageCard(ChapterDto chapter, StageDto stage)
+        VisualElement StageCard(ChapterDto chapter, StageDto stage, StageSummaryVm summary)
         {
+            bool unlocked = summary == null || summary.Unlocked;
             var card = UiKit.Panel(stage.kind == "boss");
             card.style.width = 172f;
             card.style.marginRight = 10f;
@@ -142,6 +149,17 @@ namespace PuzzleGame.Presentation.UI.Story
             {
                 head.Add(UiKit.Text(marker, 10f, true,
                     stage.kind == "boss" ? Theme.Danger : Theme.AccentWarm));
+            }
+            if (summary != null && (summary.Cleared || summary.StarsEarned > 0))
+            {
+                var starRow = UiKit.Row(1f);
+                for (var index = 0; index < 3; index++)
+                {
+                    starRow.Add(UiKit.Text("★", 11f, true,
+                        index < summary.StarsEarned ? Theme.Rarity5 : Theme.PanelLine));
+                }
+                head.Add(UiKit.Spacer());
+                head.Add(starRow);
             }
             card.Add(head);
             var name = UiKit.Text(stage.name, 12f, true);
@@ -163,16 +181,23 @@ namespace PuzzleGame.Presentation.UI.Story
                 card.Add(UiKit.Dim("◆" + stage.rewards.gold + (stage.rewards.gems > 0 ? "  ❖" + stage.rewards.gems : ""), 10f));
             }
 
+            if (!unlocked)
+            {
+                card.style.opacity = 0.45f;
+                var lockNote = UiKit.Dim("🔒 Clear the previous stage", 10f);
+                card.Add(lockNote);
+                return card;
+            }
             card.RegisterCallback<PointerDownEvent>(_ => Launch(chapter, stage));
             return card;
         }
 
         void Launch(ChapterDto chapter, StageDto stage)
         {
-            var party = BuildParty();
-            if (party.Count == 0) return;
-            var sim = new MockBattleSimulator(ContentDb.Instance, chapter, stage, party);
-            Router.Push(new BattleScreen(sim, sim.Update, chapter, stage));
+            var factory = PresentationServices.Get<IBattleFactory>();
+            System.Action<float> pump;
+            var source = factory.Create(chapter, stage, out pump);
+            Router.Push(new BattleScreen(source, pump, chapter, stage));
         }
 
         public static List<CharacterView> BuildParty()

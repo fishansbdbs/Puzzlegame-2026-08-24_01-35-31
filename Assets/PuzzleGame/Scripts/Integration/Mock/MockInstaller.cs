@@ -42,6 +42,32 @@ namespace PuzzleGame.Presentation.Mock
             {
                 PresentationServices.Register<ISummonSource>(new MockSummons(db, economy, roster, schedule));
             }
+
+            if (!PresentationServices.Has<IBattleFactory>())
+            {
+                PresentationServices.Register<IBattleFactory>(new MockBattleFactory(db));
+            }
+        }
+    }
+
+    /// <summary>DEMO ONLY battle factory: builds the mock simulator.</summary>
+    public sealed class MockBattleFactory : IBattleFactory
+    {
+        readonly ContentDb db;
+        public MockBattleFactory(ContentDb db) { this.db = db; }
+
+        public IBattleEventSource Create(Content.ChapterDto chapter, Content.StageDto stage, out System.Action<float> pump)
+        {
+            var roster = PresentationServices.Get<IRosterSource>();
+            var party = new System.Collections.Generic.List<CharacterView>();
+            foreach (var view in roster.GetOwned())
+            {
+                if (party.Count >= 5) break;
+                party.Add(view);
+            }
+            var simulator = new MockBattleSimulator(db, chapter, stage, party);
+            pump = simulator.Update;
+            return simulator;
         }
     }
 }

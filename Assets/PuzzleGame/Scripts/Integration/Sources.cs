@@ -97,6 +97,19 @@ namespace PuzzleGame.Presentation
         DateTime NowUtc { get; }
     }
 
+    /// <summary>
+    /// Creates a battle event source for a stage. The real implementation
+    /// builds a core-driven battle; the demo installs a mock simulator.
+    /// </summary>
+    public interface IBattleFactory
+    {
+        /// <summary>
+        /// Returns the battle source plus the per-frame pump the battle
+        /// screen must tick.
+        /// </summary>
+        IBattleEventSource Create(Content.ChapterDto chapter, Content.StageDto stage, out Action<float> pump);
+    }
+
     /// <summary>Static content definitions (characters, stages, dialogue...).</summary>
     public interface IContentLibrary
     {

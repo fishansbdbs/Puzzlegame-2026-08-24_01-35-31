@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using PuzzleGame.Presentation.Content;
-using PuzzleGame.Presentation.Mock;
+
 using PuzzleGame.Presentation.UI.Battle;
 using PuzzleGame.Presentation.UI.Story;
 
@@ -109,11 +109,11 @@ namespace PuzzleGame.Presentation.UI.Events
 
         void Launch(EventDto eventDto, StageDto stage)
         {
-            var party = StageSelectScreen.BuildParty();
-            if (party.Count == 0) return;
             var chapter = new ChapterDto { title = eventDto.name, theme = eventDto.theme };
-            var sim = new MockBattleSimulator(ContentDb.Instance, chapter, stage, party);
-            Router.Push(new BattleScreen(sim, sim.Update, chapter, stage));
+            var factory = PresentationServices.Get<IBattleFactory>();
+            System.Action<float> pump;
+            var source = factory.Create(chapter, stage, out pump);
+            Router.Push(new BattleScreen(source, pump, chapter, stage));
         }
 
         public static VisualElement KindBadge(ScheduledContentKind kind)
