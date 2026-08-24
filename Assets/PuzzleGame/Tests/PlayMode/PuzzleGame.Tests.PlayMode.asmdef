@@ -1,0 +1,22 @@
+{
+  "name": "PuzzleGame.Tests.PlayMode",
+  "rootNamespace": "PuzzleGame.Tests.PlayMode",
+  "references": [
+    "PuzzleGame.Core",
+    "PuzzleGame.Unity",
+    "Unity.InputSystem",
+    "Unity.InputSystem.TestFramework"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}
