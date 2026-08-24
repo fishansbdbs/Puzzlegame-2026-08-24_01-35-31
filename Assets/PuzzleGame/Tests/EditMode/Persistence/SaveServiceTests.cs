@@ -194,6 +194,30 @@ namespace PuzzleGame.Tests.EditMode.Persistence
         }
 
         [Test]
+        public void Parser_accepts_exact_array_element_limit_and_rejects_one_more()
+        {
+            var acceptedStorage = new MemorySaveStorage(BuildUnknownArraySave(10000));
+
+            var accepted = new SaveService(acceptedStorage).LoadOrCreate();
+
+            Assert.That(accepted.Status, Is.EqualTo(SaveLoadStatus.Loaded));
+            Assert.That(acceptedStorage.BackupCalls, Is.EqualTo(0));
+            AssertRecoveredFromCorrupt(BuildUnknownArraySave(10001));
+        }
+
+        [Test]
+        public void Parser_accepts_exact_object_member_limit_and_rejects_one_more()
+        {
+            var acceptedStorage = new MemorySaveStorage(BuildUnknownObjectSave(256));
+
+            var accepted = new SaveService(acceptedStorage).LoadOrCreate();
+
+            Assert.That(accepted.Status, Is.EqualTo(SaveLoadStatus.Loaded));
+            Assert.That(acceptedStorage.BackupCalls, Is.EqualTo(0));
+            AssertRecoveredFromCorrupt(BuildUnknownObjectSave(257));
+        }
+
+        [Test]
         public void Empty_present_storage_and_invalid_text_are_corrupt_not_missing()
         {
             AssertRecoveredFromCorrupt("");
@@ -282,6 +306,28 @@ namespace PuzzleGame.Tests.EditMode.Persistence
             Assert.That(storage.Backups[0], Is.EqualTo(corrupt));
             Assert.That(storage.WriteCalls, Is.EqualTo(0));
             Assert.That(storage.OriginalText, Is.EqualTo(corrupt));
+        }
+
+        private static string BuildUnknownArraySave(int elementCount)
+        {
+            var builder = new StringBuilder("{\"Version\":2,\"Future\":[");
+            for (var index = 0; index < elementCount; index++)
+            {
+                if (index > 0) builder.Append(',');
+                builder.Append('0');
+            }
+            return builder.Append("]}").ToString();
+        }
+
+        private static string BuildUnknownObjectSave(int memberCount)
+        {
+            var builder = new StringBuilder("{\"Version\":2,\"Future\":{");
+            for (var index = 0; index < memberCount; index++)
+            {
+                if (index > 0) builder.Append(',');
+                builder.Append('"').Append('p').Append(index).Append("\":0");
+            }
+            return builder.Append("}}").ToString();
         }
 
         private static SaveData CompleteSave()
@@ -469,6 +515,100 @@ namespace PuzzleGame.Tests.EditMode.Persistence
         }
 
         [Test]
+        public void Caller_paths_with_directory_terminal_markers_are_rejected_without_creating_anything()
+        {
+            using (var fixture = new TaskOwnedTempDirectory())
+            {
+                var terminalCurrentDirectory = Path.Combine(fixture.Root, "nonexistent-directory", ".");
+                var terminalParentDirectory = Path.Combine(fixture.Root, "sub", "..");
+                var trailingSeparator = Path.Combine(fixture.Root, "trailing") + Path.DirectorySeparatorChar;
+
+                Assert.That(() => new FileSaveStorage(terminalCurrentDirectory), Throws.TypeOf<ArgumentException>());
+                Assert.That(() => new FileSaveStorage(terminalParentDirectory), Throws.TypeOf<ArgumentException>());
+                Assert.That(() => new FileSaveStorage(trailingSeparator), Throws.TypeOf<ArgumentException>());
+                Assert.That(Directory.GetFileSystemEntries(fixture.Root), Is.Empty);
+            }
+        }
+
+        [Test]
+        public void Atomic_write_collision_preserves_unowned_sentinel_and_retries_with_a_fresh_name()
+        {
+            using (var fixture = new TaskOwnedTempDirectory())
+            {
+                const string collidedToken = "11111111111111111111111111111111";
+                const string freshToken = "22222222222222222222222222222222";
+                var target = Path.Combine(fixture.Root, "save.json");
+                var collidedPath = target + ".tmp-" + collidedToken;
+                var sentinel = new byte[] { 4, 2, 4, 2 };
+                File.WriteAllBytes(collidedPath, sentinel);
+                var names = new SequenceFileSaveNameSource(DateTime.UtcNow, collidedToken, freshToken);
+                var storage = new FileSaveStorage(target, names);
+
+                storage.WriteAtomic("new-save");
+
+                CollectionAssert.AreEqual(sentinel, File.ReadAllBytes(collidedPath));
+                Assert.That(File.ReadAllText(target), Is.EqualTo("new-save"));
+                CollectionAssert.AreEquivalent(
+                    new[] { collidedPath },
+                    Directory.GetFiles(fixture.Root, "save.json.tmp-*"));
+            }
+        }
+
+        [Test]
+        public void Backup_collision_preserves_unowned_sentinel_and_retries_without_changing_source()
+        {
+            using (var fixture = new TaskOwnedTempDirectory())
+            {
+                const string collidedToken = "33333333333333333333333333333333";
+                const string freshToken = "44444444444444444444444444444444";
+                var timestamp = new DateTime(2031, 2, 3, 4, 5, 6, 7, DateTimeKind.Utc);
+                var target = Path.Combine(fixture.Root, "save.json");
+                var source = new byte[] { 0x7B, 0xFF, 0x7D };
+                var sentinel = new byte[] { 9, 8, 7 };
+                var collidedPath = target + ".corrupt-20310203-040506007-" + collidedToken + ".bak";
+                var freshPath = target + ".corrupt-20310203-040506007-" + freshToken + ".bak";
+                File.WriteAllBytes(target, source);
+                File.WriteAllBytes(collidedPath, sentinel);
+                var storage = new FileSaveStorage(
+                    target,
+                    new SequenceFileSaveNameSource(timestamp, collidedToken, freshToken));
+
+                storage.BackupCorrupt();
+
+                CollectionAssert.AreEqual(source, File.ReadAllBytes(target));
+                CollectionAssert.AreEqual(sentinel, File.ReadAllBytes(collidedPath));
+                CollectionAssert.AreEqual(source, File.ReadAllBytes(freshPath));
+                CollectionAssert.AreEquivalent(
+                    new[] { collidedPath, freshPath },
+                    Directory.GetFiles(fixture.Root, "save.json.corrupt-*.bak"));
+            }
+        }
+
+        [Test]
+        public void Failed_existing_file_commit_preserves_source_bytes_and_cleans_only_owned_temp()
+        {
+            using (var fixture = new TaskOwnedTempDirectory())
+            {
+                const string freshToken = "55555555555555555555555555555555";
+                var target = Path.Combine(fixture.Root, "save.json");
+                var source = new byte[] { 0x7B, 0x22, 0x78, 0x22, 0x3A, 0xFF, 0x7D };
+                File.WriteAllBytes(target, source);
+                var committer = new ThrowingFileSaveCommitter();
+                var storage = new FileSaveStorage(
+                    target,
+                    new SequenceFileSaveNameSource(DateTime.UtcNow, freshToken),
+                    committer);
+
+                Assert.That(() => storage.WriteAtomic("replacement"), Throws.TypeOf<IOException>());
+                Assert.That(committer.Calls, Is.EqualTo(1));
+                Assert.That(committer.TargetExisted, Is.True);
+                Assert.That(committer.TemporaryExistedAtCommit, Is.True);
+                CollectionAssert.AreEqual(source, File.ReadAllBytes(target));
+                Assert.That(Directory.GetFiles(fixture.Root, "save.json.tmp-*"), Is.Empty);
+            }
+        }
+
+        [Test]
         public void Constructor_rejects_blank_broad_and_existing_directory_paths_without_creating_anything()
         {
             using (var fixture = new TaskOwnedTempDirectory())
@@ -519,6 +659,40 @@ namespace PuzzleGame.Tests.EditMode.Persistence
             BackupCalls++;
             if (ThrowOnBackup) throw new IOException("backup failed");
             Backups.Add(OriginalText);
+        }
+    }
+
+    internal sealed class SequenceFileSaveNameSource : IFileSaveNameSource
+    {
+        private readonly Queue<string> tokens;
+
+        internal SequenceFileSaveNameSource(DateTime utcNow, params string[] tokens)
+        {
+            UtcNow = utcNow;
+            this.tokens = new Queue<string>(tokens);
+        }
+
+        public DateTime UtcNow { get; private set; }
+
+        public string NextToken()
+        {
+            if (tokens.Count == 0) throw new InvalidOperationException("The deterministic name sequence was exhausted.");
+            return tokens.Dequeue();
+        }
+    }
+
+    internal sealed class ThrowingFileSaveCommitter : IFileSaveCommitter
+    {
+        internal int Calls;
+        internal bool TargetExisted;
+        internal bool TemporaryExistedAtCommit;
+
+        public void Commit(string temporaryPath, string targetPath, bool targetExists)
+        {
+            Calls++;
+            TargetExisted = targetExists;
+            TemporaryExistedAtCommit = File.Exists(temporaryPath);
+            throw new IOException("Injected atomic commit failure.");
         }
     }
 

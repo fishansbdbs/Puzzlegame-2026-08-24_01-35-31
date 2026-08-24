@@ -6,16 +6,42 @@ using PuzzleGame.Core.Persistence;
 
 namespace PuzzleGame.Unity.Persistence
 {
+    internal interface IFileSaveNameSource
+    {
+        DateTime UtcNow { get; }
+        string NextToken();
+    }
+
+    internal interface IFileSaveCommitter
+    {
+        void Commit(string temporaryPath, string targetPath, bool targetExists);
+    }
+
     public sealed class FileSaveStorage : ISaveStorage
     {
         private static readonly UTF8Encoding StrictUtf8 = new UTF8Encoding(false, true);
         private const long MaximumUtf8Bytes = (long)SaveSerializer.MaximumInputCharacters * 4L;
+        private const int MaximumSiblingNameAttempts = 16;
         private readonly string filePath;
         private readonly string parentPath;
+        private readonly IFileSaveNameSource nameSource;
+        private readonly IFileSaveCommitter committer;
 
         public FileSaveStorage(string path)
+            : this(path, new GuidFileSaveNameSource(), new AtomicFileSaveCommitter())
         {
-            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentException("Save file path is required.", "path");
+        }
+
+        internal FileSaveStorage(string path, IFileSaveNameSource nameSource)
+            : this(path, nameSource, new AtomicFileSaveCommitter())
+        {
+        }
+
+        internal FileSaveStorage(string path, IFileSaveNameSource nameSource, IFileSaveCommitter committer)
+        {
+            ValidateCallerPathIntent(path);
+            if (nameSource == null) throw new ArgumentNullException("nameSource");
+            if (committer == null) throw new ArgumentNullException("committer");
             string resolved;
             try { resolved = Path.GetFullPath(path); }
             catch (Exception exception) when (exception is ArgumentException || exception is NotSupportedException || exception is PathTooLongException)
@@ -32,6 +58,8 @@ namespace PuzzleGame.Unity.Persistence
 
             filePath = resolved;
             parentPath = parent;
+            this.nameSource = nameSource;
+            this.committer = committer;
         }
 
         public SaveStorageReadResult Read()
@@ -58,45 +86,144 @@ namespace PuzzleGame.Unity.Persistence
         {
             if (content == null) throw new ArgumentNullException("content");
             Directory.CreateDirectory(parentPath);
-            var temporaryPath = filePath + ".tmp-" + Guid.NewGuid().ToString("N");
-            try
+            for (var attempt = 0; attempt < MaximumSiblingNameAttempts; attempt++)
             {
-                using (var stream = new FileStream(temporaryPath, FileMode.CreateNew, FileAccess.Write, FileShare.None, 4096, FileOptions.WriteThrough))
-                using (var writer = new StreamWriter(stream, StrictUtf8, 4096, true))
+                var temporaryPath = filePath + ".tmp-" + NextValidatedToken();
+                FileStream stream;
+                if (!TryCreateOwnedSibling(temporaryPath, out stream)) continue;
+                var ownsTemporaryPath = true;
+                try
                 {
-                    writer.Write(content);
-                    writer.Flush();
-                    stream.Flush(true);
-                }
+                    using (stream)
+                    using (var writer = new StreamWriter(stream, StrictUtf8, 4096, true))
+                    {
+                        writer.Write(content);
+                        writer.Flush();
+                        stream.Flush(true);
+                    }
 
-                if (File.Exists(filePath)) File.Replace(temporaryPath, filePath, null);
-                else File.Move(temporaryPath, filePath);
+                    var targetExists = File.Exists(filePath);
+                    committer.Commit(temporaryPath, filePath, targetExists);
+                    ownsTemporaryPath = false;
+                    return;
+                }
+                finally
+                {
+                    if (ownsTemporaryPath && File.Exists(temporaryPath)) File.Delete(temporaryPath);
+                }
             }
-            finally
-            {
-                if (File.Exists(temporaryPath)) File.Delete(temporaryPath);
-            }
+
+            throw new IOException("Could not allocate a unique temporary save sibling.");
         }
 
         public void BackupCorrupt()
         {
             if (!File.Exists(filePath)) throw new FileNotFoundException("The corrupt save source no longer exists.", filePath);
             Directory.CreateDirectory(parentPath);
-            var timestamp = DateTime.UtcNow.ToString("yyyyMMdd-HHmmssfff", CultureInfo.InvariantCulture);
-            var backupPath = filePath + ".corrupt-" + timestamp + "-" + Guid.NewGuid().ToString("N") + ".bak";
-            try
+            var timestamp = GetUtcTimestamp().ToString("yyyyMMdd-HHmmssfff", CultureInfo.InvariantCulture);
+            for (var attempt = 0; attempt < MaximumSiblingNameAttempts; attempt++)
             {
-                using (var source = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
-                using (var backup = new FileStream(backupPath, FileMode.CreateNew, FileAccess.Write, FileShare.None, 4096, FileOptions.WriteThrough))
+                var backupPath = filePath + ".corrupt-" + timestamp + "-" + NextValidatedToken() + ".bak";
+                FileStream backup;
+                if (!TryCreateOwnedSibling(backupPath, out backup)) continue;
+                var ownsBackupPath = true;
+                try
                 {
-                    source.CopyTo(backup);
-                    backup.Flush(true);
+                    using (backup)
+                    using (var source = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                    {
+                        source.CopyTo(backup);
+                        backup.Flush(true);
+                    }
+
+                    ownsBackupPath = false;
+                    return;
+                }
+                finally
+                {
+                    if (ownsBackupPath && File.Exists(backupPath)) File.Delete(backupPath);
                 }
             }
-            catch
+
+            throw new IOException("Could not allocate a unique corrupt-save backup sibling.");
+        }
+
+        private static void ValidateCallerPathIntent(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentException("Save file path is required.", "path");
+            if (IsDirectorySeparator(path[path.Length - 1]))
+                throw new ArgumentException("Save file path cannot end with a directory separator.", "path");
+
+            var separatorIndex = Math.Max(path.LastIndexOf(Path.DirectorySeparatorChar), path.LastIndexOf(Path.AltDirectorySeparatorChar));
+            var terminalComponent = path.Substring(separatorIndex + 1);
+            if (terminalComponent == "." || terminalComponent == "..")
+                throw new ArgumentException("Save file path cannot end with a directory marker.", "path");
+
+            try
             {
-                if (File.Exists(backupPath)) File.Delete(backupPath);
+                var callerRoot = Path.GetPathRoot(path);
+                if (!string.IsNullOrEmpty(callerRoot) && string.Equals(path, callerRoot, StringComparison.OrdinalIgnoreCase))
+                    throw new ArgumentException("Save file path must identify a file, not a broad root.", "path");
+            }
+            catch (Exception exception) when (exception is NotSupportedException || exception is PathTooLongException)
+            {
+                throw new ArgumentException("Save file path is invalid.", "path", exception);
+            }
+        }
+
+        private static bool IsDirectorySeparator(char character)
+        {
+            return character == Path.DirectorySeparatorChar || character == Path.AltDirectorySeparatorChar;
+        }
+
+        private static bool TryCreateOwnedSibling(string path, out FileStream stream)
+        {
+            try
+            {
+                stream = new FileStream(path, FileMode.CreateNew, FileAccess.Write, FileShare.None, 4096, FileOptions.WriteThrough);
+                return true;
+            }
+            catch (IOException)
+            {
+                stream = null;
+                if (File.Exists(path) || Directory.Exists(path)) return false;
                 throw;
+            }
+        }
+
+        private string NextValidatedToken()
+        {
+            var token = nameSource.NextToken();
+            Guid parsed;
+            if (string.IsNullOrEmpty(token) || !Guid.TryParseExact(token, "N", out parsed))
+                throw new InvalidOperationException("The save sibling name source returned an invalid token.");
+            return token;
+        }
+
+        private DateTime GetUtcTimestamp()
+        {
+            var timestamp = nameSource.UtcNow;
+            if (timestamp.Kind != DateTimeKind.Utc)
+                throw new InvalidOperationException("The save sibling name source must return a UTC timestamp.");
+            return timestamp;
+        }
+
+        private sealed class GuidFileSaveNameSource : IFileSaveNameSource
+        {
+            public DateTime UtcNow { get { return DateTime.UtcNow; } }
+
+            public string NextToken()
+            {
+                return Guid.NewGuid().ToString("N");
+            }
+        }
+
+        private sealed class AtomicFileSaveCommitter : IFileSaveCommitter
+        {
+            public void Commit(string temporaryPath, string targetPath, bool targetExists)
+            {
+                if (targetExists) File.Replace(temporaryPath, targetPath, null);
+                else File.Move(temporaryPath, targetPath);
             }
         }
     }
