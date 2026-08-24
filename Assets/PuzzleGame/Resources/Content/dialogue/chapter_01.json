@@ -1,6 +1,49 @@
 {
   "scenes": [
     {
+      "id": "ch01_tut_cascades",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Quick tip before the slimes arrive: when matched orbs vanish, new ones fall from above. If THOSE line up too — that's a cascade, and your combo keeps climbing!" },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "And remember: two separate Fire matches means your Fire heroes attack TWICE. Separate matches, separate attacks. It's the law. I checked." }
+      ]
+    },
+    {
+      "id": "ch01_tut_hearts",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "See those pink Heart orbs? Match three and the party heals. No hero uses Heart as an element — it belongs to everyone. Very egalitarian. Very pink." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "right", "text": "Match hearts when hurt. Understood." }
+      ]
+    },
+    {
+      "id": "ch01_tut_elements",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Element chart, hero! Fire scorches Nature, Nature drinks Water, Water douses Fire. Light and Dark? Ancient rivals — they hit each OTHER harder." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "That damp slime ahead is Water. Bring Nature matches and watch the numbers get bigger. Bigger numbers are morale." }
+      ]
+    },
+    {
+      "id": "ch01_tut_leader",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Your slot-one hero is your LEADER. Their Leader Skill is always on — team-wide, no charging, no button. Build your party around it!" },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "right", "text": "So the crown icon isn't decorative." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Nothing in this kingdom is decorative, hero. Everything is load-bearing." }
+      ]
+    },
+    {
+      "id": "ch01_tut_active",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Watch the little bars under your heroes! Matching a hero's element charges their Active Skill. When it says READY, tap their portrait and unleash it!" },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Orb conversions, heals, delays — every skill is different. Reading them is free. Using them wisely is priceless. Using them randomly is also fine honestly." }
+      ]
+    },
+    {
+      "id": "ch01_tut_countdown",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Last lesson, and it's the big one: the NUMBER on each enemy. Every move you finish ticks it down. At zero — they act. Attacks, orb locks, worse." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Watch the 'Next:' hint under tough enemies to see what's coming. Manage those countdowns, hero. Dave is beyond this field, and Dave SCHEDULES his violence." }
+      ]
+    },
+    {
       "id": "ch01_s01_before",
       "lines": [
         { "speaker": "", "text": "The Kingdom of Glimmerdale. A land of heroes, magic, and remarkably thorough paperwork." },

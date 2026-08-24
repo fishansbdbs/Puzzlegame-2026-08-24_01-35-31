@@ -5,7 +5,7 @@
       "name": "Meadow Veterans",
       "kind": "featured",
       "desc": "Sir Reginald and Grandpa Oakbeard: the frontline that never dries out and never hurries.",
-      "packArt": "pack_standard",
+      "packArt": "pack_water",
       "featured": [
         "water_reginald",
         "nature_oakbeard"
@@ -31,7 +31,7 @@
       "name": "Disco Dawn",
       "kind": "featured",
       "desc": "Disco Oracle Yolanda saw this banner coming. It was, of course, a Friday.",
-      "packArt": "pack_standard",
+      "packArt": "pack_light",
       "featured": [
         "light_yolanda",
         "fire_cindra"
@@ -57,7 +57,7 @@
       "name": "Two Swords, One Banner",
       "kind": "featured",
       "desc": "Edgelord Kevin II and Admiral Bathtub. One broods. One floats. Both carry.",
-      "packArt": "pack_standard",
+      "packArt": "pack_dark",
       "featured": [
         "dark_kevin2",
         "water_bathtub"
@@ -83,7 +83,7 @@
       "name": "Garden Party (Armed)",
       "kind": "featured",
       "desc": "Barbara Thornwood and Queen Cindra host. RSVP is mandatory and so is the violence.",
-      "packArt": "pack_standard",
+      "packArt": "pack_nature",
       "featured": [
         "nature_barbara",
         "fire_cindra"
@@ -109,7 +109,7 @@
       "name": "Midwinter Keys",
       "kind": "featured",
       "desc": "Saint Brightbeard finds your keys, your hope, and the featured 5★ slot.",
-      "packArt": "pack_standard",
+      "packArt": "pack_light",
       "featured": [
         "light_brightbeard",
         "dark_bedtime"
@@ -135,7 +135,7 @@
       "name": "New Year, New Gains",
       "kind": "featured",
       "desc": "Chad Emberstorm's resolution: everyone gets swole. Including you. Especially you.",
-      "packArt": "pack_standard",
+      "packArt": "pack_fire",
       "featured": [
         "fire_chad",
         "water_reginald"
@@ -161,7 +161,7 @@
       "name": "Nap Appreciation Week",
       "kind": "featured",
       "desc": "Baron Von Bedtime declares a realm-wide lie-down. Attendance horizontal.",
-      "packArt": "pack_standard",
+      "packArt": "pack_dark",
       "featured": [
         "dark_bedtime",
         "nature_oakbeard"
@@ -187,7 +187,7 @@
       "name": "Spring Tide",
       "kind": "featured",
       "desc": "Admiral Bathtub leads the spring flotilla. All ducks on deck.",
-      "packArt": "pack_standard",
+      "packArt": "pack_water",
       "featured": [
         "water_bathtub",
         "nature_barbara"
@@ -213,7 +213,7 @@
       "name": "A Very Royal Banner",
       "kind": "featured",
       "desc": "Queen Cindra and Baron Von Bedtime. Two crowns, zero shared agenda.",
-      "packArt": "pack_standard",
+      "packArt": "pack_fire",
       "featured": [
         "fire_cindra",
         "dark_bedtime"
@@ -239,7 +239,7 @@
       "name": "Lights Out",
       "kind": "featured",
       "desc": "Yolanda and Kevin II: the brightest light, the edgiest dark, one confusing playlist.",
-      "packArt": "pack_standard",
+      "packArt": "pack_light",
       "featured": [
         "light_yolanda",
         "dark_kevin2"
@@ -265,7 +265,7 @@
       "name": "Old Growth Festival",
       "kind": "featured",
       "desc": "Grandpa Oakbeard's birthday (est. age: 4,000). Gifts accepted in summons.",
-      "packArt": "pack_standard",
+      "packArt": "pack_nature",
       "featured": [
         "nature_oakbeard",
         "light_brightbeard"
@@ -291,7 +291,7 @@
       "name": "Rites of the Order of Moist",
       "kind": "featured",
       "desc": "Sir Reginald's knighting anniversary. The ceremony is damp and DEEPLY moving.",
-      "packArt": "pack_standard",
+      "packArt": "pack_water",
       "featured": [
         "water_reginald",
         "light_brightbeard"
@@ -967,6 +967,86 @@
         "featuredShareOfFiveStar": 50
       },
       "guarantee": "10-pulls always contain at least one 4★.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "fac_meadow_watch",
+      "name": "The Meadow Watch Musters",
+      "kind": "featured",
+      "desc": "Captain Bramblebeard and Grandma Cinders recruit for the meadow's volunteer defense force. Somebody has to.",
+      "packArt": "pack_nature",
+      "featured": [
+        "nature_bramblebeard",
+        "fire_grandma_cinders"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "10-pulls guarantee a Meadow Watch member.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Meadow Watch"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_new_blood",
+      "name": "New Blood: Crowns and Verdicts",
+      "kind": "featured",
+      "desc": "Her Dampness steps out of the puddle. Judge Lumen calls the court to order. The roster grows.",
+      "packArt": "pack_water",
+      "featured": [
+        "water_puddle_queen",
+        "light_judge_lumen"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "10-pulls always contain at least one 4★. Featured units take half of all 5★ results.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_void_hospitality",
+      "name": "Void Hospitality",
+      "kind": "featured",
+      "desc": "Auntie Umbra opens the void for guests. Dinner is served. Attendance is not optional.",
+      "packArt": "pack_dark",
+      "featured": [
+        "dark_auntie_umbra",
+        "dark_bedtime"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "10-pulls always contain at least one 4★. Featured units take half of all 5★ results.",
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],

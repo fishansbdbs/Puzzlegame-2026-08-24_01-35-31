@@ -337,6 +337,42 @@
       "weekday": 0
     },
     {
+      "id": "sched_fac_meadow_watch",
+      "kind": "banner",
+      "targetId": "fac_meadow_watch",
+      "name": "The Meadow Watch Musters",
+      "desc": "Limited banner.",
+      "permanent": false,
+      "startUtc": "2026-09-14T00:00:00Z",
+      "endUtc": "2026-10-05T00:00:00Z",
+      "recurrence": "none",
+      "weekday": 0
+    },
+    {
+      "id": "sched_feat_new_blood",
+      "kind": "banner",
+      "targetId": "feat_new_blood",
+      "name": "New Blood: Crowns and Verdicts",
+      "desc": "Limited banner.",
+      "permanent": false,
+      "startUtc": "2026-10-26T00:00:00Z",
+      "endUtc": "2026-11-16T00:00:00Z",
+      "recurrence": "none",
+      "weekday": 0
+    },
+    {
+      "id": "sched_feat_void_hospitality",
+      "kind": "banner",
+      "targetId": "feat_void_hospitality",
+      "name": "Void Hospitality",
+      "desc": "Limited banner.",
+      "permanent": false,
+      "startUtc": "2026-12-07T00:00:00Z",
+      "endUtc": "2026-12-28T00:00:00Z",
+      "recurrence": "none",
+      "weekday": 0
+    },
+    {
       "id": "sched_newplayer_first_steps",
       "kind": "banner",
       "targetId": "newplayer_first_steps",

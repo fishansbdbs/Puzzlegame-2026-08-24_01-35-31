@@ -330,6 +330,12 @@ function packFor(b) {
   if (PACK_MAP[b.id]) return PACK_MAP[b.id];
   if (b.kind === 'gatherIn') return 'pack_gatherin';
   if (b.kind === 'stepUp') return 'pack_standard';
+  // Featured banners default to the first featured unit's element pack
+  // (character ids are element-prefixed by convention).
+  if (b.featured && b.featured.length > 0) {
+    const element = b.featured[0].split('_')[0];
+    if (['fire', 'water', 'nature', 'light', 'dark'].includes(element)) return 'pack_' + element;
+  }
   return 'pack_standard';
 }
 

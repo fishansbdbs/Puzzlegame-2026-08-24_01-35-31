@@ -6,252 +6,1055 @@
     "blurb": "A perfectly ordinary meadow with perfectly ordinary slimes. And their manager. And HIS manager.",
     "stages": [
       {
-        "id": "ch01_st01", "stageNumber": 1, "name": "First Steps (Insured)", "kind": "story",
-        "background": "meadow_morning",
-        "waves": [ { "enemies": [ { "enemyId": "slime_green" } ] } ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 6,
-        "dialogueBefore": "ch01_s01_before", "dialogueAfter": "ch01_s01_after",
-        "rewards": { "gold": 300, "gems": 5, "items": [ { "id": "meadow_clover", "count": 1 } ], "firstClearBonus": "50 Gems" }
-      },
-      {
-        "id": "ch01_st02", "stageNumber": 2, "name": "Two Slimes, One Meadow", "kind": "normal",
-        "background": "meadow_morning",
-        "waves": [ { "enemies": [ { "enemyId": "slime_green" }, { "enemyId": "slime_green" } ] } ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 7,
-        "rewards": { "gold": 320, "items": [ { "id": "meadow_clover", "count": 1 } ] }
-      },
-      {
-        "id": "ch01_st03", "stageNumber": 3, "name": "Spice Intolerance", "kind": "normal",
+        "id": "ch01_st01",
+        "stageNumber": 1,
+        "name": "First Steps (Insured)",
+        "kind": "story",
         "background": "meadow_morning",
         "waves": [
-          { "enemies": [ { "enemyId": "slime_green" } ] },
-          { "enemies": [ { "enemyId": "slime_red" } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_green"
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 9,
-        "rewards": { "gold": 350, "items": [ { "id": "ember_shard", "count": 1 } ] }
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 10,
+        "dialogueBefore": "ch01_s01_before",
+        "dialogueAfter": "ch01_s01_after",
+        "rewards": {
+          "gold": 300,
+          "gems": 5,
+          "items": [
+            {
+              "id": "meadow_clover",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st04", "stageNumber": 4, "name": "Moist Encounters", "kind": "normal",
+        "id": "ch01_st02",
+        "stageNumber": 2,
+        "name": "Two Slimes, One Meadow",
+        "kind": "normal",
+        "background": "meadow_morning",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_green"
+              },
+              {
+                "enemyId": "slime_green"
+              }
+            ]
+          }
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 11,
+        "rewards": {
+          "gold": 320,
+          "items": [
+            {
+              "id": "meadow_clover",
+              "count": 1
+            }
+          ]
+        },
+        "dialogueBefore": "ch01_tut_cascades",
+        "modifiers": []
+      },
+      {
+        "id": "ch01_st03",
+        "stageNumber": 3,
+        "name": "Spice Intolerance",
+        "kind": "normal",
+        "background": "meadow_morning",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_green"
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_red"
+              }
+            ]
+          }
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 13,
+        "rewards": {
+          "gold": 350,
+          "items": [
+            {
+              "id": "ember_shard",
+              "count": 1
+            }
+          ]
+        },
+        "dialogueBefore": "ch01_tut_hearts",
+        "modifiers": []
+      },
+      {
+        "id": "ch01_st04",
+        "stageNumber": 4,
+        "name": "Moist Encounters",
+        "kind": "normal",
         "background": "meadow_creek",
         "waves": [
-          { "enemies": [ { "enemyId": "slime_blue" }, { "enemyId": "slime_green" } ] },
-          { "enemies": [ { "enemyId": "slime_blue" } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_blue"
+              },
+              {
+                "enemyId": "slime_green"
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_blue"
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 10,
-        "rewards": { "gold": 380, "items": [ { "id": "dew_drop", "count": 1 } ] }
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 14,
+        "rewards": {
+          "gold": 380,
+          "items": [
+            {
+              "id": "dew_drop",
+              "count": 1
+            }
+          ]
+        },
+        "dialogueBefore": "ch01_tut_elements",
+        "modifiers": []
       },
       {
-        "id": "ch01_st05", "stageNumber": 5, "name": "The Goblin With The Clipboard", "kind": "story",
+        "id": "ch01_st05",
+        "stageNumber": 5,
+        "name": "The Goblin With The Clipboard",
+        "kind": "story",
         "background": "meadow_creek",
         "waves": [
-          { "enemies": [ { "enemyId": "slime_green", "hpMult": 1.1 } ] },
-          { "enemies": [ { "enemyId": "clipboard_goblin" } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_green",
+                "hpMult": 1.1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "clipboard_goblin"
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 10,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 14,
         "dialogueBefore": "ch01_s05_before",
-        "rewards": { "gold": 420, "gems": 5, "items": [ { "id": "meadow_clover", "count": 2 } ] }
+        "rewards": {
+          "gold": 420,
+          "gems": 5,
+          "items": [
+            {
+              "id": "meadow_clover",
+              "count": 2
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st06", "stageNumber": 6, "name": "Probationary Fangs", "kind": "normal",
+        "id": "ch01_st06",
+        "stageNumber": 6,
+        "name": "Probationary Fangs",
+        "kind": "normal",
         "background": "meadow_hills",
         "waves": [
-          { "enemies": [ { "enemyId": "meadow_wolf" } ] },
-          { "enemies": [ { "enemyId": "meadow_wolf" }, { "enemyId": "slime_green", "hpMult": 1.1 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_wolf"
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_wolf"
+              },
+              {
+                "enemyId": "slime_green",
+                "hpMult": 1.1
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 11,
-        "rewards": { "gold": 450, "items": [ { "id": "wolf_biscuit", "count": 1 } ] }
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 15,
+        "rewards": {
+          "gold": 450,
+          "items": [
+            {
+              "id": "wolf_biscuit",
+              "count": 1
+            }
+          ]
+        },
+        "dialogueBefore": "ch01_tut_leader",
+        "modifiers": []
       },
       {
-        "id": "ch01_st07", "stageNumber": 7, "name": "Unauthorized Apiary", "kind": "normal",
+        "id": "ch01_st07",
+        "stageNumber": 7,
+        "name": "Unauthorized Apiary",
+        "kind": "normal",
         "background": "meadow_hills",
         "waves": [
-          { "enemies": [ { "enemyId": "bee_swarm" } ] },
-          { "enemies": [ { "enemyId": "bee_swarm" }, { "enemyId": "slime_red", "hpMult": 1.1 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "bee_swarm"
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "bee_swarm"
+              },
+              {
+                "enemyId": "slime_red",
+                "hpMult": 1.1
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 11,
-        "rewards": { "gold": 470, "items": [ { "id": "rogue_honey", "count": 1 } ] }
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 15,
+        "rewards": {
+          "gold": 470,
+          "items": [
+            {
+              "id": "rogue_honey",
+              "count": 1
+            }
+          ]
+        },
+        "dialogueBefore": "ch01_tut_active",
+        "modifiers": []
       },
       {
-        "id": "ch01_st08", "stageNumber": 8, "name": "Fungal Feelings", "kind": "normal",
+        "id": "ch01_st08",
+        "stageNumber": 8,
+        "name": "Fungal Feelings",
+        "kind": "normal",
         "background": "meadow_shade",
         "waves": [
-          { "enemies": [ { "enemyId": "angry_mushroom" } ] },
-          { "enemies": [ { "enemyId": "angry_mushroom" }, { "enemyId": "slime_blue", "hpMult": 1.2 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "angry_mushroom"
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "angry_mushroom"
+              },
+              {
+                "enemyId": "slime_blue",
+                "hpMult": 1.2
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 12,
-        "rewards": { "gold": 500, "items": [ { "id": "sad_spore", "count": 1 } ] }
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 16,
+        "rewards": {
+          "gold": 500,
+          "items": [
+            {
+              "id": "sad_spore",
+              "count": 1
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st09", "stageNumber": 9, "name": "Performance Metrics", "kind": "normal",
+        "id": "ch01_st09",
+        "stageNumber": 9,
+        "name": "Performance Metrics",
+        "kind": "normal",
         "background": "meadow_shade",
         "waves": [
-          { "enemies": [ { "enemyId": "clipboard_goblin", "hpMult": 1.2 } ] },
-          { "enemies": [ { "enemyId": "slime_green", "hpMult": 1.3 }, { "enemyId": "slime_red", "hpMult": 1.2 } ] },
-          { "enemies": [ { "enemyId": "clipboard_goblin", "hpMult": 1.2 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "clipboard_goblin",
+                "hpMult": 1.2
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_green",
+                "hpMult": 1.3
+              },
+              {
+                "enemyId": "slime_red",
+                "hpMult": 1.2
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "clipboard_goblin",
+                "hpMult": 1.2
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 13,
-        "rewards": { "gold": 550, "items": [ { "id": "meadow_clover", "count": 2 } ] }
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 17,
+        "rewards": {
+          "gold": 550,
+          "items": [
+            {
+              "id": "meadow_clover",
+              "count": 2
+            }
+          ]
+        },
+        "dialogueBefore": "ch01_tut_countdown",
+        "modifiers": []
       },
       {
-        "id": "ch01_st10", "stageNumber": 10, "name": "MEETING WITH DAVE", "kind": "miniboss",
+        "id": "ch01_st10",
+        "stageNumber": 10,
+        "name": "MEETING WITH DAVE",
+        "kind": "miniboss",
         "background": "meadow_office",
         "waves": [
-          { "enemies": [ { "enemyId": "slime_green", "hpMult": 1.3 }, { "enemyId": "slime_blue", "hpMult": 1.3 } ] },
-          { "enemies": [ { "enemyId": "boss_slime_dave" } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_green",
+                "hpMult": 1.3
+              },
+              {
+                "enemyId": "slime_blue",
+                "hpMult": 1.3
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_slime_dave"
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 14,
-        "dialogueBefore": "ch01_s10_before", "dialogueAfter": "ch01_s10_after",
-        "rewards": { "gold": 800, "gems": 10, "items": [ { "id": "tie_fragment", "count": 1 } ], "firstClearBonus": "100 Gems" }
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 16,
+        "dialogueBefore": "ch01_s10_before",
+        "dialogueAfter": "ch01_s10_after",
+        "rewards": {
+          "gold": 800,
+          "gems": 10,
+          "items": [
+            {
+              "id": "tie_fragment",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st11", "stageNumber": 11, "name": "Escape From Middle Meadow", "kind": "normal",
+        "id": "ch01_st11",
+        "stageNumber": 11,
+        "name": "Escape From Middle Meadow",
+        "kind": "normal",
         "background": "meadow_hills",
         "waves": [
-          { "enemies": [ { "enemyId": "meadow_wolf", "hpMult": 1.2 }, { "enemyId": "bee_swarm", "hpMult": 1.2 } ] },
-          { "enemies": [ { "enemyId": "slime_red", "hpMult": 1.4 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_wolf",
+                "hpMult": 1.2
+              },
+              {
+                "enemyId": "bee_swarm",
+                "hpMult": 1.2
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_red",
+                "hpMult": 1.4
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 12,
-        "rewards": { "gold": 600, "items": [ { "id": "ember_shard", "count": 1 } ] }
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 14,
+        "rewards": {
+          "gold": 600,
+          "items": [
+            {
+              "id": "ember_shard",
+              "count": 1
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st12", "stageNumber": 12, "name": "The Snail Lesson", "kind": "normal",
+        "id": "ch01_st12",
+        "stageNumber": 12,
+        "name": "The Snail Lesson",
+        "kind": "normal",
         "background": "meadow_creek",
-        "waves": [ { "enemies": [ { "enemyId": "meadow_snail" } ] } ],
-        "hpThresholdStar": 0.6, "resolutionsStar": 8,
-        "rewards": { "gold": 620, "items": [ { "id": "speed_shell", "count": 1 } ] }
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_snail"
+              }
+            ]
+          }
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 10,
+        "rewards": {
+          "gold": 620,
+          "items": [
+            {
+              "id": "speed_shell",
+              "count": 1
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st13", "stageNumber": 13, "name": "Cross-Departmental Chaos", "kind": "normal",
+        "id": "ch01_st13",
+        "stageNumber": 13,
+        "name": "Cross-Departmental Chaos",
+        "kind": "normal",
         "background": "meadow_office",
         "waves": [
-          { "enemies": [ { "enemyId": "hr_butterfly" } ] },
-          { "enemies": [ { "enemyId": "clipboard_goblin", "hpMult": 1.3 }, { "enemyId": "bee_swarm", "hpMult": 1.3 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "hr_butterfly"
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "clipboard_goblin",
+                "hpMult": 1.3
+              },
+              {
+                "enemyId": "bee_swarm",
+                "hpMult": 1.3
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 13,
-        "rewards": { "gold": 650, "items": [ { "id": "meeting_minutes", "count": 1 } ] }
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 15,
+        "rewards": {
+          "gold": 650,
+          "items": [
+            {
+              "id": "meeting_minutes",
+              "count": 1
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st14", "stageNumber": 14, "name": "Two Snails (We're Sorry)", "kind": "normal",
+        "id": "ch01_st14",
+        "stageNumber": 14,
+        "name": "Two Snails (We're Sorry)",
+        "kind": "normal",
         "background": "meadow_creek",
         "waves": [
-          { "enemies": [ { "enemyId": "meadow_snail", "hpMult": 1.1 }, { "enemyId": "meadow_snail", "hpMult": 1.1 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_snail",
+                "hpMult": 1.1
+              },
+              {
+                "enemyId": "meadow_snail",
+                "hpMult": 1.1
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.6, "resolutionsStar": 10,
-        "rewards": { "gold": 680, "items": [ { "id": "speed_shell", "count": 1 } ] }
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 12,
+        "rewards": {
+          "gold": 680,
+          "items": [
+            {
+              "id": "speed_shell",
+              "count": 1
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st15", "stageNumber": 15, "name": "The Wolves Unionize", "kind": "story",
+        "id": "ch01_st15",
+        "stageNumber": 15,
+        "name": "The Wolves Unionize",
+        "kind": "story",
         "background": "meadow_dusk",
         "waves": [
-          { "enemies": [ { "enemyId": "meadow_wolf", "hpMult": 1.4 }, { "enemyId": "meadow_wolf", "hpMult": 1.4 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_wolf",
+                "hpMult": 1.4
+              },
+              {
+                "enemyId": "meadow_wolf",
+                "hpMult": 1.4
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 11,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 13,
         "dialogueBefore": "ch01_s15_before",
-        "rewards": { "gold": 700, "gems": 5, "items": [ { "id": "wolf_biscuit", "count": 2 } ] }
+        "rewards": {
+          "gold": 700,
+          "gems": 5,
+          "items": [
+            {
+              "id": "wolf_biscuit",
+              "count": 2
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st16", "stageNumber": 16, "name": "Picket Line Panic", "kind": "normal",
+        "id": "ch01_st16",
+        "stageNumber": 16,
+        "name": "Picket Line Panic",
+        "kind": "normal",
         "background": "meadow_dusk",
         "waves": [
-          { "enemies": [ { "enemyId": "meadow_wolf", "hpMult": 1.5 }, { "enemyId": "bee_swarm", "hpMult": 1.4 } ] },
-          { "enemies": [ { "enemyId": "angry_mushroom", "hpMult": 1.4 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_wolf",
+                "hpMult": 1.5
+              },
+              {
+                "enemyId": "bee_swarm",
+                "hpMult": 1.4
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "angry_mushroom",
+                "hpMult": 1.4
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 13,
-        "rewards": { "gold": 720, "items": [ { "id": "sad_spore", "count": 1 } ] }
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 15,
+        "rewards": {
+          "gold": 720,
+          "items": [
+            {
+              "id": "sad_spore",
+              "count": 1
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st17", "stageNumber": 17, "name": "Mandatory Fun Run", "kind": "normal",
+        "id": "ch01_st17",
+        "stageNumber": 17,
+        "name": "Mandatory Fun Run",
+        "kind": "normal",
         "background": "meadow_dusk",
         "waves": [
-          { "enemies": [ { "enemyId": "hr_butterfly", "hpMult": 1.3 }, { "enemyId": "meadow_snail", "hpMult": 1.2 } ] },
-          { "enemies": [ { "enemyId": "slime_red", "hpMult": 1.6 }, { "enemyId": "slime_blue", "hpMult": 1.6 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "hr_butterfly",
+                "hpMult": 1.3
+              },
+              {
+                "enemyId": "meadow_snail",
+                "hpMult": 1.2
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_red",
+                "hpMult": 1.6
+              },
+              {
+                "enemyId": "slime_blue",
+                "hpMult": 1.6
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 14,
-        "rewards": { "gold": 750, "items": [ { "id": "meeting_minutes", "count": 1 } ] }
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 16,
+        "rewards": {
+          "gold": 750,
+          "items": [
+            {
+              "id": "meeting_minutes",
+              "count": 1
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st18", "stageNumber": 18, "name": "NEGOTIATIONS WITH FENRIS", "kind": "miniboss",
+        "id": "ch01_st18",
+        "stageNumber": 18,
+        "name": "NEGOTIATIONS WITH FENRIS",
+        "kind": "miniboss",
         "background": "meadow_moonlit",
         "waves": [
-          { "enemies": [ { "enemyId": "meadow_wolf", "hpMult": 1.5 }, { "enemyId": "meadow_wolf", "hpMult": 1.5 } ] },
-          { "enemies": [ { "enemyId": "boss_wolf_rep" } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_wolf",
+                "hpMult": 1.5
+              },
+              {
+                "enemyId": "meadow_wolf",
+                "hpMult": 1.5
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_wolf_rep"
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 15,
-        "dialogueBefore": "ch01_s18_before", "dialogueAfter": "ch01_s18_after",
-        "rewards": { "gold": 1000, "gems": 10, "items": [ { "id": "union_card", "count": 1 } ], "firstClearBonus": "100 Gems" }
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 15,
+        "dialogueBefore": "ch01_s18_before",
+        "dialogueAfter": "ch01_s18_after",
+        "rewards": {
+          "gold": 1000,
+          "gems": 10,
+          "items": [
+            {
+              "id": "union_card",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st19", "stageNumber": 19, "name": "Gerald's Waiting Room", "kind": "normal",
+        "id": "ch01_st19",
+        "stageNumber": 19,
+        "name": "Gerald's Waiting Room",
+        "kind": "normal",
         "background": "meadow_office",
         "waves": [
-          { "enemies": [ { "enemyId": "clipboard_goblin", "hpMult": 1.5 }, { "enemyId": "hr_butterfly", "hpMult": 1.4 } ] },
-          { "enemies": [ { "enemyId": "angry_mushroom", "hpMult": 1.6 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "clipboard_goblin",
+                "hpMult": 1.5
+              },
+              {
+                "enemyId": "hr_butterfly",
+                "hpMult": 1.4
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "angry_mushroom",
+                "hpMult": 1.6
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 14,
-        "rewards": { "gold": 800, "items": [ { "id": "meadow_clover", "count": 3 } ] }
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 14,
+        "rewards": {
+          "gold": 800,
+          "items": [
+            {
+              "id": "meadow_clover",
+              "count": 3
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st20", "stageNumber": 20, "name": "Please Hold", "kind": "normal",
+        "id": "ch01_st20",
+        "stageNumber": 20,
+        "name": "Please Hold",
+        "kind": "normal",
         "background": "meadow_office",
         "waves": [
-          { "enemies": [ { "enemyId": "meadow_snail", "hpMult": 1.4 } ] },
-          { "enemies": [ { "enemyId": "meadow_snail", "hpMult": 1.4 }, { "enemyId": "hr_butterfly", "hpMult": 1.5 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_snail",
+                "hpMult": 1.4
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_snail",
+                "hpMult": 1.4
+              },
+              {
+                "enemyId": "hr_butterfly",
+                "hpMult": 1.5
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.6, "resolutionsStar": 13,
-        "rewards": { "gold": 820, "items": [ { "id": "speed_shell", "count": 2 } ] }
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 13,
+        "rewards": {
+          "gold": 820,
+          "items": [
+            {
+              "id": "speed_shell",
+              "count": 2
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st21", "stageNumber": 21, "name": "The Slime Org Chart", "kind": "normal",
+        "id": "ch01_st21",
+        "stageNumber": 21,
+        "name": "The Slime Org Chart",
+        "kind": "normal",
         "background": "meadow_office",
         "waves": [
-          { "enemies": [ { "enemyId": "slime_green", "hpMult": 1.8 }, { "enemyId": "slime_red", "hpMult": 1.8 } ] },
-          { "enemies": [ { "enemyId": "slime_blue", "hpMult": 1.8 }, { "enemyId": "slime_green", "hpMult": 1.8 } ] },
-          { "enemies": [ { "enemyId": "clipboard_goblin", "hpMult": 1.7 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_green",
+                "hpMult": 1.8
+              },
+              {
+                "enemyId": "slime_red",
+                "hpMult": 1.8
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_blue",
+                "hpMult": 1.8
+              },
+              {
+                "enemyId": "slime_green",
+                "hpMult": 1.8
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "clipboard_goblin",
+                "hpMult": 1.7
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 16,
-        "rewards": { "gold": 850, "items": [ { "id": "tie_fragment", "count": 1 } ] }
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "rewards": {
+          "gold": 850,
+          "items": [
+            {
+              "id": "tie_fragment",
+              "count": 1
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st22", "stageNumber": 22, "name": "Quarterly Review Gauntlet", "kind": "normal",
+        "id": "ch01_st22",
+        "stageNumber": 22,
+        "name": "Quarterly Review Gauntlet",
+        "kind": "normal",
         "background": "meadow_office",
         "waves": [
-          { "enemies": [ { "enemyId": "meadow_wolf", "hpMult": 1.8 }, { "enemyId": "bee_swarm", "hpMult": 1.7 } ] },
-          { "enemies": [ { "enemyId": "angry_mushroom", "hpMult": 1.8 }, { "enemyId": "hr_butterfly", "hpMult": 1.6 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_wolf",
+                "hpMult": 1.8
+              },
+              {
+                "enemyId": "bee_swarm",
+                "hpMult": 1.7
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "angry_mushroom",
+                "hpMult": 1.8
+              },
+              {
+                "enemyId": "hr_butterfly",
+                "hpMult": 1.6
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 15,
-        "rewards": { "gold": 880, "items": [ { "id": "meeting_minutes", "count": 2 } ] }
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 15,
+        "rewards": {
+          "gold": 880,
+          "items": [
+            {
+              "id": "meeting_minutes",
+              "count": 2
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st23", "stageNumber": 23, "name": "Overtime in the Meadow", "kind": "normal",
+        "id": "ch01_st23",
+        "stageNumber": 23,
+        "name": "Overtime in the Meadow",
+        "kind": "normal",
         "background": "meadow_moonlit",
         "waves": [
-          { "enemies": [ { "enemyId": "clipboard_goblin", "hpMult": 1.8 }, { "enemyId": "clipboard_goblin", "hpMult": 1.8 } ] },
-          { "enemies": [ { "enemyId": "meadow_snail", "hpMult": 1.6 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "clipboard_goblin",
+                "hpMult": 1.8
+              },
+              {
+                "enemyId": "clipboard_goblin",
+                "hpMult": 1.8
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_snail",
+                "hpMult": 1.6
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 15,
-        "rewards": { "gold": 920, "items": [ { "id": "meadow_clover", "count": 3 } ] }
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 15,
+        "rewards": {
+          "gold": 920,
+          "items": [
+            {
+              "id": "meadow_clover",
+              "count": 3
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st24", "stageNumber": 24, "name": "The Door Marked 'MANAGER'", "kind": "normal",
+        "id": "ch01_st24",
+        "stageNumber": 24,
+        "name": "The Door Marked 'MANAGER'",
+        "kind": "normal",
         "background": "meadow_moonlit",
         "waves": [
-          { "enemies": [ { "enemyId": "slime_red", "hpMult": 2.0 }, { "enemyId": "slime_blue", "hpMult": 2.0 } ] },
-          { "enemies": [ { "enemyId": "meadow_wolf", "hpMult": 2.0 }, { "enemyId": "angry_mushroom", "hpMult": 1.9 } ] },
-          { "enemies": [ { "enemyId": "hr_butterfly", "hpMult": 1.8 }, { "enemyId": "clipboard_goblin", "hpMult": 1.9 } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "slime_red",
+                "hpMult": 2
+              },
+              {
+                "enemyId": "slime_blue",
+                "hpMult": 2
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "meadow_wolf",
+                "hpMult": 2
+              },
+              {
+                "enemyId": "angry_mushroom",
+                "hpMult": 1.9
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "hr_butterfly",
+                "hpMult": 1.8
+              },
+              {
+                "enemyId": "clipboard_goblin",
+                "hpMult": 1.9
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.5, "resolutionsStar": 18,
-        "rewards": { "gold": 960, "items": [ { "id": "tie_fragment", "count": 2 } ] }
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "rewards": {
+          "gold": 960,
+          "items": [
+            {
+              "id": "tie_fragment",
+              "count": 2
+            }
+          ]
+        },
+        "modifiers": []
       },
       {
-        "id": "ch01_st25", "stageNumber": 25, "name": "GERALD: FINAL PERFORMANCE REVIEW", "kind": "boss",
+        "id": "ch01_st25",
+        "stageNumber": 25,
+        "name": "GERALD: FINAL PERFORMANCE REVIEW",
+        "kind": "boss",
         "background": "meadow_boss_office",
         "waves": [
-          { "enemies": [ { "enemyId": "clipboard_goblin", "hpMult": 2.0 }, { "enemyId": "hr_butterfly", "hpMult": 1.9 } ] },
-          { "enemies": [ { "enemyId": "boss_gerald" } ] }
+          {
+            "enemies": [
+              {
+                "enemyId": "clipboard_goblin",
+                "hpMult": 2
+              },
+              {
+                "enemyId": "hr_butterfly",
+                "hpMult": 1.9
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_gerald"
+              }
+            ]
+          }
         ],
-        "hpThresholdStar": 0.4, "resolutionsStar": 20,
-        "dialogueBefore": "ch01_s25_before", "dialogueAfter": "ch01_s25_after",
-        "rewards": { "gold": 2000, "gems": 30, "items": [ { "id": "radiant_core", "count": 2 }, { "id": "gerald_nametag", "count": 1 } ], "firstClearBonus": "300 Gems + Title: 'Meadow Certified'" }
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch01_s25_before",
+        "dialogueAfter": "ch01_s25_after",
+        "rewards": {
+          "gold": 2000,
+          "gems": 30,
+          "items": [
+            {
+              "id": "radiant_core",
+              "count": 2
+            },
+            {
+              "id": "gerald_nametag",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": "300 Gems + Title: 'Meadow Certified'"
+        },
+        "modifiers": []
+      }
+    ],
+    "mechanicNote": "Gentle introduction: every core mechanic taught one stage at a time.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 50,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 100,
+        "items": [
+          {
+            "id": "meadow_clover",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 200,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 2
+          }
+        ]
       }
     ]
   }

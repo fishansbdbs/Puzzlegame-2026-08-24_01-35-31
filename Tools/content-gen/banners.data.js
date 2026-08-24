@@ -162,6 +162,23 @@ module.exports = {
       featured: ['water_bathtub', 'fire_cindra'],
       guarantee: '10-pulls always contain at least one 4★.', window: ['2027-02-05T00:00:00Z', '2027-02-19T00:00:00Z'] },
 
+    // ------------------------- Wave 2 banners -----------------------------
+    { id: 'fac_meadow_watch', name: 'The Meadow Watch Musters', kind: 'featured',
+      desc: 'Captain Bramblebeard and Grandma Cinders recruit for the meadow\'s volunteer defense force. Somebody has to.',
+      featured: ['nature_bramblebeard', 'fire_grandma_cinders'], poolTags: ['Meadow Watch'],
+      guarantee: '10-pulls guarantee a Meadow Watch member.',
+      window: ['2026-09-14T00:00:00Z', '2026-10-05T00:00:00Z'] },
+    { id: 'feat_new_blood', name: 'New Blood: Crowns and Verdicts', kind: 'featured',
+      desc: 'Her Dampness steps out of the puddle. Judge Lumen calls the court to order. The roster grows.',
+      featured: ['water_puddle_queen', 'light_judge_lumen'],
+      guarantee: '10-pulls always contain at least one 4★. Featured units take half of all 5★ results.',
+      window: ['2026-10-26T00:00:00Z', '2026-11-16T00:00:00Z'] },
+    { id: 'feat_void_hospitality', name: 'Void Hospitality', kind: 'featured',
+      desc: 'Auntie Umbra opens the void for guests. Dinner is served. Attendance is not optional.',
+      featured: ['dark_auntie_umbra', 'dark_bedtime'],
+      guarantee: '10-pulls always contain at least one 4★. Featured units take half of all 5★ results.',
+      window: ['2026-12-07T00:00:00Z', '2026-12-28T00:00:00Z'] },
+
     // ------------------------- Special banners ----------------------------
     { id: 'newplayer_first_steps', name: 'First Steps Summon', kind: 'stepUp',
       desc: 'A one-time welcome for new adventurers. Two discounted steps, then you\'re one of us.',
