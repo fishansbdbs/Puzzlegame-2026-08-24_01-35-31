@@ -132,15 +132,31 @@ namespace PuzzleGame.Core.Scheduling
             var localNow = now.ToOffset(schedule.Start.Offset);
             for (var dayOffset = -1; dayOffset <= 0; dayOffset++)
             {
-                var startDate = localNow.Date.AddDays(dayOffset);
+                DateTime startDate;
+                if (!TryAddDays(localNow.Date, dayOffset, out startDate))
+                {
+                    continue;
+                }
+
                 if (!ContainsWeekday(schedule.RecurringWeekdays, (int)startDate.DayOfWeek))
                 {
                     continue;
                 }
 
                 var candidateStart = AtMinute(startDate, schedule.StartMinuteOfDay, schedule.Start.Offset);
-                var candidateEnd = CandidateEnd(startDate, schedule.StartMinuteOfDay, schedule.EndMinuteOfDay, schedule.Start.Offset);
-                if (now < candidateStart || now >= candidateEnd)
+                if (now < candidateStart)
+                {
+                    continue;
+                }
+
+                DateTimeOffset candidateEnd;
+                if (!TryCandidateEnd(
+                    startDate,
+                    schedule.StartMinuteOfDay,
+                    schedule.EndMinuteOfDay,
+                    schedule.Start.Offset,
+                    schedule.End,
+                    out candidateEnd) || now >= candidateEnd)
                 {
                     continue;
                 }
@@ -188,14 +204,43 @@ namespace PuzzleGame.Core.Scheduling
             return new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, offset).AddMinutes(minuteOfDay);
         }
 
-        private static DateTimeOffset CandidateEnd(DateTime startDate, int startMinute, int endMinute, TimeSpan offset)
+        private static bool TryCandidateEnd(
+            DateTime startDate,
+            int startMinute,
+            int endMinute,
+            TimeSpan offset,
+            DateTimeOffset outerEnd,
+            out DateTimeOffset candidateEnd)
         {
-            if (startMinute >= endMinute)
+            if (startMinute < endMinute)
             {
-                return AtMinute(startDate.AddDays(1), endMinute, offset);
+                candidateEnd = AtMinute(startDate, endMinute, offset);
+                return true;
             }
 
-            return AtMinute(startDate, endMinute, offset);
+            DateTime endDate;
+            if (TryAddDays(startDate, 1, out endDate))
+            {
+                candidateEnd = AtMinute(endDate, endMinute, offset);
+                return true;
+            }
+
+            // The intended end lies beyond DateTime.MaxValue. The absolute outer
+            // window is representable and therefore supplies the exact usable cap.
+            candidateEnd = outerEnd;
+            return true;
+        }
+
+        private static bool TryAddDays(DateTime date, int days, out DateTime result)
+        {
+            if ((days < 0 && date == DateTime.MinValue) || (days > 0 && date == DateTime.MaxValue.Date))
+            {
+                result = default(DateTime);
+                return false;
+            }
+
+            result = date.AddDays(days);
+            return true;
         }
 
         private static int CompareActiveContent(ActiveContent left, ActiveContent right)
