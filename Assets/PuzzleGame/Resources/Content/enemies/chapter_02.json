@@ -1,0 +1,250 @@
+{
+  "enemies": [
+    {
+      "id": "treant_clerk",
+      "name": "Treant Desk Clerk",
+      "element": "nature",
+      "boss": false,
+      "hp": 4800,
+      "atk": 770,
+      "countdown": 3,
+      "artRef": "enemy_treant_clerk",
+      "flavor": "Four hundred years old. Two hundred spent at this desk.",
+      "actions": [
+        {
+          "name": "Branch Stamp",
+          "desc": "A woody wallop.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Regrow Paperwork",
+          "desc": "Converts 3 orbs to Nature.",
+          "type": "convert",
+          "count": 3,
+          "color": "nature"
+        }
+      ]
+    },
+    {
+      "id": "permit_sprite",
+      "name": "Permit Sprite",
+      "element": "light",
+      "boss": false,
+      "hp": 3840,
+      "atk": 693,
+      "countdown": 3,
+      "artRef": "enemy_permit_sprite",
+      "flavor": "Grants wishes, pending approval. Approval takes 6-8 weeks.",
+      "actions": [
+        {
+          "name": "Pending Review",
+          "desc": "Locks 3 orbs until processed.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Glitter Jab",
+          "desc": "Sparkly and rude.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "bramble_lawyer",
+      "name": "Bramble Paralegal",
+      "element": "nature",
+      "boss": false,
+      "hp": 5280,
+      "atk": 770,
+      "countdown": 3,
+      "artRef": "enemy_bramble_lawyer",
+      "flavor": "Bills in thorns. Reads the fine print out loud, slowly.",
+      "actions": [
+        {
+          "name": "Thorny Clause",
+          "desc": "Poisons 2 orbs with legalese.",
+          "type": "poison",
+          "count": 2
+        },
+        {
+          "name": "Objection",
+          "desc": "A stinging rebuttal.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "owl_auditor",
+      "name": "Night Owl Auditor",
+      "element": "dark",
+      "boss": false,
+      "hp": 4320,
+      "atk": 847,
+      "countdown": 3,
+      "artRef": "enemy_owl_auditor",
+      "flavor": "Who? YOU. That is who. Your receipts, please.",
+      "actions": [
+        {
+          "name": "Late Review",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        },
+        {
+          "name": "Talon Deduction",
+          "desc": "Painfully itemized.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "stamp_beetle",
+      "name": "Rubber Stamp Beetle",
+      "element": "fire",
+      "boss": false,
+      "hp": 4320,
+      "atk": 924,
+      "countdown": 3,
+      "artRef": "enemy_stamp_beetle",
+      "flavor": "DENIED. DENIED. DENIED. It only knows one word.",
+      "actions": [
+        {
+          "name": "DENIED",
+          "desc": "A crushing red stamp.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "file_fungus",
+      "name": "Fungal Filing Clerk",
+      "element": "dark",
+      "boss": false,
+      "hp": 4800,
+      "atk": 693,
+      "countdown": 3,
+      "artRef": "enemy_file_fungus",
+      "flavor": "Grows through the archives. Alphabetized by spore.",
+      "actions": [
+        {
+          "name": "Misfile",
+          "desc": "Poisons 3 orbs. Lost in the system.",
+          "type": "poison",
+          "count": 3
+        },
+        {
+          "name": "Cabinet Slam",
+          "desc": "Drawer to the face.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_ranger_doreen",
+      "name": "Ranger Supervisor Doreen",
+      "element": "nature",
+      "boss": true,
+      "hp": 48000,
+      "atk": 1078,
+      "countdown": 3,
+      "artRef": "enemy_boss_ranger_doreen",
+      "flavor": "Protects the forest from you, specifically. Has a whistle and the authority to use it.",
+      "actions": [
+        {
+          "name": "Citation Storm",
+          "desc": "A flurry of fines.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Trail Closure",
+          "desc": "Places a blocker on the board.",
+          "type": "block",
+          "count": 1
+        },
+        {
+          "name": "The Whistle",
+          "desc": "A big, shrill hit.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_laminator",
+      "name": "The Laminator",
+      "element": "fire",
+      "boss": true,
+      "hp": 52800,
+      "atk": 1001,
+      "countdown": 2,
+      "artRef": "enemy_boss_laminator",
+      "flavor": "Once it laminates you, you are PERMANENT. It considers this a kindness.",
+      "actions": [
+        {
+          "name": "Heat Seal",
+          "desc": "Locks 4 orbs in glossy plastic.",
+          "type": "lock",
+          "count": 4
+        },
+        {
+          "name": "Hot Press",
+          "desc": "A scalding flatten.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Fresh Sheet",
+          "desc": "Converts 3 orbs to Fire.",
+          "type": "convert",
+          "count": 3,
+          "color": "fire"
+        }
+      ]
+    },
+    {
+      "id": "boss_barkimedes",
+      "name": "Barkimedes, Director of Permits",
+      "element": "nature",
+      "boss": true,
+      "hp": 124800,
+      "atk": 1232,
+      "countdown": 3,
+      "artRef": "enemy_boss_barkimedes",
+      "flavor": "The oldest tree in the wood. Every ring is a fiscal year. He remembers ALL of them.",
+      "actions": [
+        {
+          "name": "Root Canal",
+          "desc": "Massive damage from below.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Archive Everything",
+          "desc": "Locks 5 orbs in living wood.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Photosynthesize",
+          "desc": "Heals himself. The sun approves his request.",
+          "type": "heal",
+          "amount": 9000
+        },
+        {
+          "name": "Falling Backlog",
+          "desc": "Converts 3 orbs to Nature.",
+          "type": "convert",
+          "count": 3,
+          "color": "nature"
+        }
+      ]
+    }
+  ]
+}

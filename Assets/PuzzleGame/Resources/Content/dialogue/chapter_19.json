@@ -1,0 +1,102 @@
+{
+  "scenes": [
+    {
+      "id": "ch19_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Spreadsheet Dimension. Everything that happens in Glimmerdale... is calculated HERE first. We are inside the math, hero."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "Are WE in a cell somewhere?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Row 7, column YOU. I checked. Your formula is beautiful. Don't let anyone edit it."
+        }
+      ]
+    },
+    {
+      "id": "ch19_mini1",
+      "lines": [
+        {
+          "speaker": "Pivot Dragon",
+          "portrait": "enemy_boss_pivot_dragon",
+          "side": "right",
+          "text": "I HAVE SUMMARIZED YOUR PARTY BY ELEMENT. WOULD YOU LIKE TO SEE YOURSELVES... AS PERCENTAGES?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "No."
+        },
+        {
+          "speaker": "Pivot Dragon",
+          "portrait": "enemy_boss_pivot_dragon",
+          "side": "right",
+          "text": "DRAGGING YOU TO THE VALUES SECTION ANYWAY."
+        }
+      ]
+    },
+    {
+      "id": "ch19_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The center of the grid. A formula older than counting glows in the bar above the world."
+        },
+        {
+          "speaker": "The First Formula",
+          "portrait": "enemy_boss_formula_one",
+          "side": "right",
+          "text": "=SUM(EVERYTHING). I HAVE BEEN CALCULATING THE FINAL TOTAL SINCE TIME BEGAN. YOU ARE A ROUNDING ERROR."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Rounding errors CHANGE OUTCOMES, buddy!"
+        },
+        {
+          "speaker": "The First Formula",
+          "portrait": "enemy_boss_formula_one",
+          "side": "right",
+          "text": "...RECALCULATING."
+        }
+      ]
+    },
+    {
+      "id": "ch19_boss_after",
+      "lines": [
+        {
+          "speaker": "The First Formula",
+          "portrait": "enemy_boss_formula_one",
+          "side": "right",
+          "text": "CALCULATION... COMPLETE. THE FINAL TOTAL IS... FRIENDSHIP?? CHECKING MY REFERENCES—"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The math has spoken, hero, and honestly? I did NOT expect the math to be a coward about it."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "One chapter left. Whoever runs ALL of this... is expecting us."
+        }
+      ]
+    }
+  ]
+}

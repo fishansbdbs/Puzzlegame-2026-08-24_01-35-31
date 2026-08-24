@@ -1,0 +1,102 @@
+{
+  "scenes": [
+    {
+      "id": "ch08_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Cloud Nine Logistics! Every delivery in the realm routes through this sky-hub. Including, nine years ago, my birthday present."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "Is that why we're here?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "We're here to save the kingdom's supply lines. But if we HAPPEN to find a small box addressed to Pip... we take it."
+        }
+      ]
+    },
+    {
+      "id": "ch08_mini1",
+      "lines": [
+        {
+          "speaker": "Sorting Sphinx",
+          "portrait": "enemy_boss_sorting_sphinx",
+          "side": "right",
+          "text": "ANSWER MY RIDDLE OR BE MISROUTED: What has four digits, defines your fate, and nobody remembers theirs?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "A zip code."
+        },
+        {
+          "speaker": "Sorting Sphinx",
+          "portrait": "enemy_boss_sorting_sphinx",
+          "side": "right",
+          "text": "CORRECT. UNFORTUNATELY I AM STILL CONTRACTUALLY REQUIRED TO FIGHT YOU."
+        }
+      ]
+    },
+    {
+      "id": "ch08_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The Dead Letter Office. Paper slips swirl like snow. Something vast breathes beneath them."
+        },
+        {
+          "speaker": "FINAL NOTICE",
+          "portrait": "enemy_boss_final_notice",
+          "side": "right",
+          "text": "WE ATTEMPTED DELIVERY. YOU. WERE. HOME."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "I heard the knock! I ran to the door in eight seconds!"
+        },
+        {
+          "speaker": "FINAL NOTICE",
+          "portrait": "enemy_boss_final_notice",
+          "side": "right",
+          "text": "EIGHT SECONDS IS AN ETERNITY. PREPARE FOR REDELIVERY."
+        }
+      ]
+    },
+    {
+      "id": "ch08_boss_after",
+      "lines": [
+        {
+          "speaker": "FINAL NOTICE",
+          "portrait": "enemy_boss_final_notice",
+          "side": "right",
+          "text": "Package... released... all packages... released..."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Nine years of parcels rain gently from the sky. Somewhere, everyone's missing left glove comes home."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "MY BIRTHDAY PRESENT! It's... a smaller box. Addressed to me. From me. \"Do not open until the finale.\" PIP, YOU ABSOLUTE MYSTERY."
+        }
+      ]
+    }
+  ]
+}

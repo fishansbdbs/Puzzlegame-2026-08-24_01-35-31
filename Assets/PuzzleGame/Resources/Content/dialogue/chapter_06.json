@@ -1,0 +1,102 @@
+{
+  "scenes": [
+    {
+      "id": "ch06_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Wraithwood Estates! Every resident died centuries ago, but the HOA dues are collected MONTHLY."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "What happens if a ghost doesn't pay?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "They get haunted. Yes, ghosts haunting ghosts. It's haunting all the way down, hero."
+        }
+      ]
+    },
+    {
+      "id": "ch06_mini1",
+      "lines": [
+        {
+          "speaker": "HOA Banshee",
+          "portrait": "enemy_boss_hoa_banshee",
+          "side": "right",
+          "text": "YOOOOUR FEEEENCE... IS FOUR INCHES... TOO TAAAAALL."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We don't have a fence. We don't live here."
+        },
+        {
+          "speaker": "HOA Banshee",
+          "portrait": "enemy_boss_hoa_banshee",
+          "side": "right",
+          "text": "NONRESIDENT VIOLATIONS... ARE DOUBLE."
+        }
+      ]
+    },
+    {
+      "id": "ch06_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The community clubhouse. Candles float. The minutes from 1744 are still being read."
+        },
+        {
+          "speaker": "Chairman Poltergeist",
+          "portrait": "enemy_boss_chairman_polt",
+          "side": "right",
+          "text": "NEW BUSINESS: the living have entered the neighborhood. All in favor of destroying them?"
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A thousand spectral hands rise."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Point of order! POINT OF ORDER!! Oh no, he has the gavel—"
+        }
+      ]
+    },
+    {
+      "id": "ch06_boss_after",
+      "lines": [
+        {
+          "speaker": "Chairman Poltergeist",
+          "portrait": "enemy_boss_chairman_polt",
+          "side": "right",
+          "text": "Motion... to adjourn... FOREVER..."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The ghosts are FREE! They're painting their doors WHATEVER COLOR THEY WANT! That one's doing a mural! It's hideous! It's BEAUTIFUL!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Somewhere out there, a shed is finally being built."
+        }
+      ]
+    }
+  ]
+}

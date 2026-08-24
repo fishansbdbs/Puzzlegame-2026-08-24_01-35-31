@@ -1,0 +1,102 @@
+{
+  "scenes": [
+    {
+      "id": "ch07_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Great Dessert! A wizard misspelled \"desert\" on an official map in 1502 and the terrain COMPLIED."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "That's not how maps work."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "That's not how maps USED to work. He was a very senior wizard. Hydrate and watch for scones."
+        }
+      ]
+    },
+    {
+      "id": "ch07_mini1",
+      "lines": [
+        {
+          "speaker": "Tiramisu",
+          "portrait": "enemy_boss_tiramisu",
+          "side": "right",
+          "text": "They called me \"unrisen\". Said I was \"just a trifle\". NOW WHO IS LAYERED BEYOND COMPREHENSION?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Still you. That's still... that's what tiramisu is."
+        },
+        {
+          "speaker": "Tiramisu",
+          "portrait": "enemy_boss_tiramisu",
+          "side": "right",
+          "text": "FLATTERY. DETECTED. DEPLOYING ESPRESSO."
+        }
+      ]
+    },
+    {
+      "id": "ch07_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "It blots out the sun. Seven tiers. Ten thousand candles. All of them lit."
+        },
+        {
+          "speaker": "The Grand Gateau",
+          "portrait": "enemy_boss_grand_gateau",
+          "side": "right",
+          "text": "WHO APPROACHES THE CAKE?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Um. Party of six? We don't have a reservation. Or a wedding."
+        },
+        {
+          "speaker": "The Grand Gateau",
+          "portrait": "enemy_boss_grand_gateau",
+          "side": "right",
+          "text": "THEN YOU SHALL BE THE FILLING."
+        }
+      ]
+    },
+    {
+      "id": "ch07_boss_after",
+      "lines": [
+        {
+          "speaker": "The Grand Gateau",
+          "portrait": "enemy_boss_grand_gateau",
+          "side": "right",
+          "text": "I only wanted... someone... to celebrate..."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Oh no. Oh no, now I feel terrible. HAPPY BIRTHDAY, GATEAU. Everyone sing. SING, HERO."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The party sings. The cake weeps buttercream. Somewhere, a wizard fixes a typo, four hundred years too late."
+        }
+      ]
+    }
+  ]
+}

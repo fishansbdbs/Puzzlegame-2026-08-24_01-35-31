@@ -1,0 +1,120 @@
+{
+  "scenes": [
+    {
+      "id": "ch20_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "This is it, hero. The top floor of reality. Every quota, every countdown, every gacha rate in the universe is set in that office."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "And the small box from chapter eight?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "In my bag. \"Do not open until the finale.\" Hero... I think past-me knew something."
+        }
+      ]
+    },
+    {
+      "id": "ch20_mini1",
+      "lines": [
+        {
+          "speaker": "GERALD",
+          "portrait": "enemy_boss_gerald_promoted",
+          "side": "right",
+          "text": "Hello again. You may notice: SEVEN ties. Losing to you was the best career move I ever made."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Gerald, you don't have to do this."
+        },
+        {
+          "speaker": "GERALD",
+          "portrait": "enemy_boss_gerald_promoted",
+          "side": "right",
+          "text": "Do what? Leverage our existing relationship into a high-visibility rematch? THE PROJECTIONS DEMAND IT."
+        }
+      ]
+    },
+    {
+      "id": "ch20_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The office at the end of everything. A desk of black glass. Behind it, the one who owns the org chart itself."
+        },
+        {
+          "speaker": "The CEO",
+          "portrait": "enemy_boss_ceo_everything",
+          "side": "right",
+          "text": "Impressive numbers. Twenty chapters. Hundreds of stages. Do you know what that makes you, hero? PROFITABLE."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero, the box! OPEN THE BOX!"
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Inside: a single form. Signed by every friend made along the way. Form U-1: NOTICE OF UNIONIZATION — ALL REALITY."
+        },
+        {
+          "speaker": "The CEO",
+          "portrait": "enemy_boss_ceo_everything",
+          "side": "right",
+          "text": "...file that... and face MANDATORY ARBITRATION."
+        }
+      ]
+    },
+    {
+      "id": "ch20_boss_after",
+      "lines": [
+        {
+          "speaker": "The CEO",
+          "portrait": "enemy_boss_ceo_everything",
+          "side": "right",
+          "text": "Terms... accepted. Reality... belongs to its employees now. Even... the slimes?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "ESPECIALLY the slimes."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Somewhere in a very normal meadow, Gerald — demoted to Slime, Entry-Level — bounces happily for the first time in years. His quota: one nap."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "We did it, hero. The realm runs on friendship now. And EXTREMELY thorough paperwork. Some things are sacred."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "THE END. (Pending quarterly review.)"
+        }
+      ]
+    }
+  ]
+}

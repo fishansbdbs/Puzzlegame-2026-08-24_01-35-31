@@ -1,0 +1,243 @@
+{
+  "enemies": [
+    {
+      "id": "hold_jelly",
+      "name": "Hold Music Jellyfish",
+      "element": "water",
+      "boss": false,
+      "hp": 7200,
+      "atk": 1089,
+      "countdown": 3,
+      "artRef": "enemy_hold_jelly",
+      "flavor": "Its tentacles play smooth jazz. Forever. FOREVER.",
+      "actions": [
+        {
+          "name": "Smooth Jazz",
+          "desc": "Reduces move time by 2 seconds. Please continue to hold.",
+          "type": "timerDown",
+          "amount": 2
+        },
+        {
+          "name": "Sting Chord",
+          "desc": "A jazzy zap.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "squid_operator",
+      "name": "Switchboard Squid",
+      "element": "water",
+      "boss": false,
+      "hp": 8000,
+      "atk": 1210,
+      "countdown": 3,
+      "artRef": "enemy_squid_operator",
+      "flavor": "Handles eight calls at once. Transfers all of them to the wrong department.",
+      "actions": [
+        {
+          "name": "Transfer",
+          "desc": "Converts 3 orbs to Water.",
+          "type": "convert",
+          "count": 3,
+          "color": "water"
+        },
+        {
+          "name": "Ink Memo",
+          "desc": "A dark, smudgy blast.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "crab_supervisor",
+      "name": "Crab Shift Supervisor",
+      "element": "fire",
+      "boss": false,
+      "hp": 9600,
+      "atk": 1210,
+      "countdown": 3,
+      "artRef": "enemy_crab_supervisor",
+      "flavor": "Sideways promotion after sideways promotion. Now permanently sideways.",
+      "actions": [
+        {
+          "name": "Pinch Performance",
+          "desc": "Locks 3 orbs in a firm claw.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Shell Slam",
+          "desc": "A crusty blow.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "phone_eel",
+      "name": "Landline Eel",
+      "element": "light",
+      "boss": false,
+      "hp": 7200,
+      "atk": 1452,
+      "countdown": 3,
+      "artRef": "enemy_phone_eel",
+      "flavor": "Lives in the cables. IS the cables. Your call may be monitored.",
+      "actions": [
+        {
+          "name": "Static Shock",
+          "desc": "ZZZZAP. Bad connection.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "complaint_clam",
+      "name": "Complaint Clam",
+      "element": "nature",
+      "boss": false,
+      "hp": 10400,
+      "atk": 968,
+      "countdown": 3,
+      "artRef": "enemy_complaint_clam",
+      "flavor": "Contains ten thousand unread complaints and one (1) pearl of pure grievance.",
+      "actions": [
+        {
+          "name": "Clam Up",
+          "desc": "Places a blocker. Feedback rejected.",
+          "type": "block",
+          "count": 1
+        },
+        {
+          "name": "Grievance Pearl",
+          "desc": "Fires a compressed complaint.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "bubble_intern",
+      "name": "Bubble Intern",
+      "element": "water",
+      "boss": false,
+      "hp": 5600,
+      "atk": 968,
+      "countdown": 3,
+      "artRef": "enemy_bubble_intern",
+      "flavor": "A bubble with a lanyard. Pops with enthusiasm. Reforms with less.",
+      "actions": [
+        {
+          "name": "Eager Pop",
+          "desc": "A tiny, hopeful attack.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_support_shark",
+      "name": "Tier 2 Support Shark",
+      "element": "water",
+      "boss": true,
+      "hp": 80000,
+      "atk": 1815,
+      "countdown": 2,
+      "artRef": "enemy_boss_support_shark",
+      "flavor": "You have been escalated. He can smell an unresolved ticket from three miles away.",
+      "actions": [
+        {
+          "name": "Escalation Bite",
+          "desc": "Your ticket has been CHOMPED.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Chum the Queue",
+          "desc": "Converts 3 orbs to Water.",
+          "type": "convert",
+          "count": 3,
+          "color": "water"
+        },
+        {
+          "name": "Known Issue",
+          "desc": "Locks 3 orbs. A fix is coming in a future release.",
+          "type": "lock",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_deep_karen",
+      "name": "The Abyssal Complainant",
+      "element": "dark",
+      "boss": true,
+      "hp": 88000,
+      "atk": 1694,
+      "countdown": 3,
+      "artRef": "enemy_boss_deep_karen",
+      "flavor": "An elder horror who has asked to speak to every manager in the ocean. All of them resigned.",
+      "actions": [
+        {
+          "name": "Speak To The Manager",
+          "desc": "Binds your leader in a conversation.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Review Bomb",
+          "desc": "One star. Massive damage.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Tentacled Testimony",
+          "desc": "Poisons 3 orbs with anecdotes.",
+          "type": "poison",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_hold_queen",
+      "name": "The Hold Queen",
+      "element": "water",
+      "boss": true,
+      "hp": 208000,
+      "atk": 1936,
+      "countdown": 3,
+      "artRef": "enemy_boss_hold_queen",
+      "flavor": "A jellyfish the size of a cathedral. Every soul on hold, ever, drifts in her glow.",
+      "actions": [
+        {
+          "name": "Your Call Is Important",
+          "desc": "Massive damage. It is not important.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Estimated Wait: Eternity",
+          "desc": "Reduces move time by 3 seconds.",
+          "type": "timerDown",
+          "amount": 3
+        },
+        {
+          "name": "Tentacle Queue",
+          "desc": "Locks 5 orbs in line.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Soothing Chime",
+          "desc": "Heals herself. Thank you for your patience.",
+          "type": "heal",
+          "amount": 10000
+        }
+      ]
+    }
+  ]
+}

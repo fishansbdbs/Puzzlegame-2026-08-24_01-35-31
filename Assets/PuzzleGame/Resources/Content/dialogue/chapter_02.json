@@ -1,0 +1,108 @@
+{
+  "scenes": [
+    {
+      "id": "ch02_intro",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The Darkwood. Ancient. Mysterious. Fully permitted."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Remember: we need a hiking permit, a camping permit, and a permit permit. I have NONE of them."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "What happens if we just walk in?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The trees file a complaint. And hero... the trees ARE the complaint department."
+        }
+      ]
+    },
+    {
+      "id": "ch02_mini1",
+      "lines": [
+        {
+          "speaker": "Doreen",
+          "portrait": "enemy_boss_ranger_doreen",
+          "side": "right",
+          "text": "Sir. SIR. This is a protected bureaucracy. Do you have your MT-7?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We have an MT-6 and a dream."
+        },
+        {
+          "speaker": "Doreen",
+          "portrait": "enemy_boss_ranger_doreen",
+          "side": "right",
+          "text": "...I'm reaching for my whistle now. I want you to know this hurts me more than it hurts you. It won't, though."
+        }
+      ]
+    },
+    {
+      "id": "ch02_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "In the heart of the wood stands Barkimedes. His branches hold forty thousand pending applications."
+        },
+        {
+          "speaker": "Barkimedes",
+          "portrait": "enemy_boss_barkimedes",
+          "side": "right",
+          "text": "AH. THE APPLICANTS. I HAVE REVIEWED YOUR FILE. IT IS... INCOMPLETE."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "We attached everything! Even the optional section!"
+        },
+        {
+          "speaker": "Barkimedes",
+          "portrait": "enemy_boss_barkimedes",
+          "side": "right",
+          "text": "THE OPTIONAL SECTION IS MANDATORY. IT SAYS SO IN THE OPTIONAL SECTION. PREPARE FOR ARBORTRATION."
+        }
+      ]
+    },
+    {
+      "id": "ch02_boss_after",
+      "lines": [
+        {
+          "speaker": "Barkimedes",
+          "portrait": "enemy_boss_barkimedes",
+          "side": "right",
+          "text": "APPLICATION... APPROVED... EFFECTIVE... IMMEDIATELY..."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "That's all we wanted, big guy."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Onward to Mount Grumble! I hear the dwarves are on strike, so mining permits are — oh no. Oh NO. They're free. Something is very wrong."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "scenes": [
+    {
+      "id": "ch14_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Dungeon of Infinite Meetings. Adventurers enter seeking treasure. They leave with action items."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "What's the treasure?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Legend says at the dungeon's heart lies... a free afternoon. UNTOUCHED. Imagine it, hero."
+        }
+      ]
+    },
+    {
+      "id": "ch14_mini1",
+      "lines": [
+        {
+          "speaker": "Minotaur PM",
+          "portrait": "enemy_boss_minotaur_pm",
+          "side": "right",
+          "text": "HALT. You cannot proceed. You are BLOCKED. By task twelve."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "What's task twelve?"
+        },
+        {
+          "speaker": "Minotaur PM",
+          "portrait": "enemy_boss_minotaur_pm",
+          "side": "right",
+          "text": "DEFEATING ME. The dependency graph is a CIRCLE, tiny adventurer. All graphs are circles down here. CHARGE!"
+        }
+      ]
+    },
+    {
+      "id": "ch14_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The deepest chamber. A conference table older than language. At its head: a calendar invite, pulsing."
+        },
+        {
+          "speaker": "The Recurring Meeting",
+          "portrait": "enemy_boss_recurring",
+          "side": "right",
+          "text": "YOU HAVE JOINED. ATTENDANCE: MANDATORY. AGENDA: NONE. END TIME: NONE."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero. HERO. Decline the invite. DECLINE THE INVITE."
+        },
+        {
+          "speaker": "The Recurring Meeting",
+          "portrait": "enemy_boss_recurring",
+          "side": "right",
+          "text": "DECLINING... REQUIRES A REASON. IN WRITING. IN BLOOD. IN TRIPLICATE."
+        }
+      ]
+    },
+    {
+      "id": "ch14_boss_after",
+      "lines": [
+        {
+          "speaker": "The Recurring Meeting",
+          "portrait": "enemy_boss_recurring",
+          "side": "right",
+          "text": "MEETING... CANCELLED... TIME... RETURNED TO SENDER..."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The dungeon exhales. Somewhere above, ten thousand calendars clear at once. The sound is like rain."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The free afternoon, hero. It's REAL. What do we do with it?!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Absolutely nothing."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "A LEGEND. YOU'RE A LEGEND."
+        }
+      ]
+    }
+  ]
+}

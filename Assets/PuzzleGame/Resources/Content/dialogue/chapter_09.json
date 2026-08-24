@@ -1,0 +1,102 @@
+{
+  "scenes": [
+    {
+      "id": "ch09_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Volcano Spa & Resort! Five stars! The reviews say \"transformative\", \"life-changing\", and \"please send help, this is not a review\"."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "Why does the kingdom need us HERE?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Nobody who checks in ever checks out. The spa says that's \"guest retention\". The families say it's \"kidnapping\". Semantics! Onward!"
+        }
+      ]
+    },
+    {
+      "id": "ch09_mini1",
+      "lines": [
+        {
+          "speaker": "Concierge",
+          "portrait": "enemy_boss_concierge",
+          "side": "right",
+          "text": "Welcome. Your suite is ready. Your FOREVER suite."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We're just passing through."
+        },
+        {
+          "speaker": "Concierge",
+          "portrait": "enemy_boss_concierge",
+          "side": "right",
+          "text": "Nobody... passes through. There is a package for that, and you cannot afford it."
+        }
+      ]
+    },
+    {
+      "id": "ch09_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The penthouse. The floor is warm. The floor is TOO warm. The floor is the boss."
+        },
+        {
+          "speaker": "Caldera",
+          "portrait": "enemy_boss_manager_caldera",
+          "side": "right",
+          "text": "Checking out early incurs a fee. The fee is combat. We take violence and all major currencies."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "What if we leave a good review?"
+        },
+        {
+          "speaker": "Caldera",
+          "portrait": "enemy_boss_manager_caldera",
+          "side": "right",
+          "text": "Five stars is the MINIMUM. It is also insufficient. ERUPTION PACKAGE, ACTIVATED."
+        }
+      ]
+    },
+    {
+      "id": "ch09_boss_after",
+      "lines": [
+        {
+          "speaker": "Caldera",
+          "portrait": "enemy_boss_manager_caldera",
+          "side": "right",
+          "text": "Very well... checkout... approved... minibar charges... waived..."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The guests are free! Look at them stampede toward the exit in their robes! MAJESTIC."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "I kept the slippers."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "enemies": [
+    {
+      "id": "cell_sprite",
+      "name": "Cell Sprite A1",
+      "element": "light",
+      "boss": false,
+      "hp": 28800,
+      "atk": 4510,
+      "countdown": 3,
+      "artRef": "enemy_cell_sprite",
+      "flavor": "The first cell. The origin. Extremely smug about it.",
+      "actions": [
+        {
+          "name": "Reference Error",
+          "desc": "#REF! to the face.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Fill Down",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        }
+      ]
+    },
+    {
+      "id": "merge_horror",
+      "name": "The Merged Cells",
+      "element": "dark",
+      "boss": false,
+      "hp": 41600,
+      "atk": 4059,
+      "countdown": 3,
+      "artRef": "enemy_merge_horror",
+      "flavor": "Once they were many. Now they are one. Sorting is IMPOSSIBLE around them.",
+      "actions": [
+        {
+          "name": "Merge Crush",
+          "desc": "A big unified slam.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Unsortable",
+          "desc": "Places an unmovable blocker.",
+          "type": "block",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "circular_ref",
+      "name": "Circular Reference Wisp",
+      "element": "water",
+      "boss": false,
+      "hp": 25600,
+      "atk": 4510,
+      "countdown": 3,
+      "artRef": "enemy_circular_ref",
+      "flavor": "Depends on itself, which depends on itself, which depends on—",
+      "actions": [
+        {
+          "name": "Infinite Loop",
+          "desc": "Reduces move time by 2 seconds. Recalculating...",
+          "type": "timerDown",
+          "amount": 2
+        },
+        {
+          "name": "Self Reference",
+          "desc": "Heals itself, using itself.",
+          "type": "heal",
+          "amount": 3000
+        }
+      ]
+    },
+    {
+      "id": "vlookup_hound",
+      "name": "VLOOKUP Hound",
+      "element": "nature",
+      "boss": false,
+      "hp": 32000,
+      "atk": 4961,
+      "countdown": 3,
+      "artRef": "enemy_vlookup_hound",
+      "flavor": "Fetches values from distant tables. Sometimes fetches the WRONG value. With teeth.",
+      "actions": [
+        {
+          "name": "Exact Match",
+          "desc": "A big precisely-targeted bite.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Approximate Match",
+          "desc": "Wrong target. Still hurts.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "macro_gremlin",
+      "name": "Unreviewed Macro Gremlin",
+      "element": "fire",
+      "boss": false,
+      "hp": 32000,
+      "atk": 4510,
+      "countdown": 3,
+      "artRef": "enemy_macro_gremlin",
+      "flavor": "Recorded by someone who left the company. Runs every hour. Nobody knows what it does.",
+      "actions": [
+        {
+          "name": "Execute",
+          "desc": "Something happens. It's bad.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Side Effects",
+          "desc": "Poisons 3 orbs unexpectedly.",
+          "type": "poison",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "div_zero_specter",
+      "name": "#DIV/0! Specter",
+      "element": "dark",
+      "boss": false,
+      "hp": 32000,
+      "atk": 4961,
+      "countdown": 3,
+      "artRef": "enemy_div_zero_specter",
+      "flavor": "Born from a division by zero. Exists out of spite for mathematics.",
+      "actions": [
+        {
+          "name": "Undefined Behavior",
+          "desc": "A big impossible strike.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Error Propagation",
+          "desc": "Converts 3 orbs to Dark.",
+          "type": "convert",
+          "count": 3,
+          "color": "dark"
+        }
+      ]
+    },
+    {
+      "id": "boss_pivot_dragon",
+      "name": "The Pivot Table Dragon",
+      "element": "water",
+      "boss": true,
+      "hp": 320000,
+      "atk": 6314,
+      "countdown": 3,
+      "artRef": "enemy_boss_pivot_dragon",
+      "flavor": "Restructures reality by dragging fields. You are currently in its Rows section.",
+      "actions": [
+        {
+          "name": "Re-Pivot",
+          "desc": "Converts 4 orbs to Water. Reality regroups.",
+          "type": "convert",
+          "count": 4,
+          "color": "water"
+        },
+        {
+          "name": "Aggregate Crush",
+          "desc": "A big SUM of pain.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Filter Out",
+          "desc": "Binds a party member. Excluded from view.",
+          "type": "bind",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_autosave",
+      "name": "The Ghost of Unsaved Work",
+      "element": "dark",
+      "boss": true,
+      "hp": 352000,
+      "atk": 6765,
+      "countdown": 2,
+      "artRef": "enemy_boss_autosave",
+      "flavor": "Every document ever lost to a crash. It asks only one question: \"Did you save?\"",
+      "actions": [
+        {
+          "name": "Sudden Crash",
+          "desc": "MASSIVE damage without warning.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Recovery Failed",
+          "desc": "Locks 4 orbs. The backup was empty.",
+          "type": "lock",
+          "count": 4
+        },
+        {
+          "name": "Did You Save?",
+          "desc": "Reduces move time by 3 seconds of pure dread.",
+          "type": "timerDown",
+          "amount": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_formula_one",
+      "name": "The First Formula",
+      "element": "light",
+      "boss": true,
+      "hp": 832000,
+      "atk": 7216,
+      "countdown": 3,
+      "artRef": "enemy_boss_formula_one",
+      "flavor": "The primordial =SUM() from which all calculation flows. It has been recalculating since the beginning. It is almost done.",
+      "actions": [
+        {
+          "name": "Recalculate All",
+          "desc": "Massive damage. F9 falls upon you.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Absolute Reference",
+          "desc": "Locks 5 orbs with dollar signs.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Array Spill",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        },
+        {
+          "name": "Iterative Calculation",
+          "desc": "Heals itself, iteratively.",
+          "type": "heal",
+          "amount": 10000
+        }
+      ]
+    }
+  ]
+}

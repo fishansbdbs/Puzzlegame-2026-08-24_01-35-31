@@ -1,0 +1,258 @@
+{
+  "enemies": [
+    {
+      "id": "sales_yeti",
+      "name": "Timeshare Yeti",
+      "element": "water",
+      "boss": false,
+      "hp": 22880,
+      "atk": 2970,
+      "countdown": 3,
+      "artRef": "enemy_sales_yeti",
+      "flavor": "Just forty-five minutes of your time. Forty-five ETERNAL minutes.",
+      "actions": [
+        {
+          "name": "The Pitch",
+          "desc": "A big, unskippable presentation.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Limited Offer",
+          "desc": "Reduces move time by 2 seconds. Act NOW.",
+          "type": "timerDown",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "penguin_notary",
+      "name": "Penguin Closing Agent",
+      "element": "water",
+      "boss": false,
+      "hp": 18720,
+      "atk": 2970,
+      "countdown": 3,
+      "artRef": "enemy_penguin_notary",
+      "flavor": "Waddles in with the paperwork exactly when you weaken.",
+      "actions": [
+        {
+          "name": "Sign Here",
+          "desc": "Locks 3 orbs under signature tabs.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Flipper Slap",
+          "desc": "Formal and firm.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "frost_wolf",
+      "name": "Amenities Wolf",
+      "element": "dark",
+      "boss": false,
+      "hp": 20800,
+      "atk": 3267,
+      "countdown": 3,
+      "artRef": "enemy_frost_wolf",
+      "flavor": "Guards the pool (frozen), gym (frozen), and sauna (also somehow frozen).",
+      "actions": [
+        {
+          "name": "Amenity Denial",
+          "desc": "Places a POOL CLOSED blocker.",
+          "type": "block",
+          "count": 1
+        },
+        {
+          "name": "Cold Bite",
+          "desc": "Refreshingly agonizing.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "ice_slime",
+      "name": "Ice Slime (Gerald's Ski Trip)",
+      "element": "water",
+      "boss": false,
+      "hp": 20800,
+      "atk": 2673,
+      "countdown": 3,
+      "artRef": "enemy_ice_slime",
+      "flavor": "A slime on vacation. Still finds time to hit quota.",
+      "actions": [
+        {
+          "name": "Chill Bounce",
+          "desc": "Vacation-grade violence.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Slush Splash",
+          "desc": "Converts 3 orbs to Water.",
+          "type": "convert",
+          "count": 3,
+          "color": "water"
+        }
+      ]
+    },
+    {
+      "id": "aurora_moth",
+      "name": "Aurora Moth",
+      "element": "light",
+      "boss": false,
+      "hp": 16640,
+      "atk": 2970,
+      "countdown": 3,
+      "artRef": "enemy_aurora_moth",
+      "flavor": "Drawn to the northern lights. Sells prints of them in the lobby.",
+      "actions": [
+        {
+          "name": "Lightshow",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        },
+        {
+          "name": "Wing Chill",
+          "desc": "A shimmering swat.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "walrus_hoa",
+      "name": "Walrus Owners' Committee",
+      "element": "dark",
+      "boss": false,
+      "hp": 27040,
+      "atk": 2673,
+      "countdown": 3,
+      "artRef": "enemy_walrus_hoa",
+      "flavor": "Three walruses in one very large sweater. Votes as a bloc.",
+      "actions": [
+        {
+          "name": "Committee Crush",
+          "desc": "A big triple-weighted vote.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Special Assessment",
+          "desc": "Poisons 3 orbs with fees.",
+          "type": "poison",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_presentation",
+      "name": "The 45-Minute Presentation",
+      "element": "light",
+      "boss": true,
+      "hp": 208000,
+      "atk": 4158,
+      "countdown": 3,
+      "artRef": "enemy_boss_presentation",
+      "flavor": "A living slideshow. Slide 1 of ∞. It has animations. ALL of them are spinning.",
+      "actions": [
+        {
+          "name": "Next Slide",
+          "desc": "A big transition wipe.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Q&A Delayed",
+          "desc": "Locks 4 orbs until the end.",
+          "type": "lock",
+          "count": 4
+        },
+        {
+          "name": "Bullet Points",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        }
+      ]
+    },
+    {
+      "id": "boss_closer_kraken",
+      "name": "Karkinos the Closer",
+      "element": "water",
+      "boss": true,
+      "hp": 228800,
+      "atk": 4158,
+      "countdown": 2,
+      "artRef": "enemy_boss_closer_kraken",
+      "flavor": "The deal-closing kraken. Eight arms, eight contracts, zero cooling-off periods.",
+      "actions": [
+        {
+          "name": "Ink the Deal",
+          "desc": "A big eight-pen flourish.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Arm Twist",
+          "desc": "Binds a party member persuasively.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Undertow Clause",
+          "desc": "Converts 4 orbs to Water.",
+          "type": "convert",
+          "count": 4,
+          "color": "water"
+        }
+      ]
+    },
+    {
+      "id": "boss_glacier_ceo",
+      "name": "CEO Permafrost",
+      "element": "water",
+      "boss": true,
+      "hp": 540800,
+      "atk": 4752,
+      "countdown": 3,
+      "artRef": "enemy_boss_glacier_ceo",
+      "flavor": "An ice giant in a parka woven from cancelled contracts. His handshake lasts nine minutes and lowers your core temperature.",
+      "actions": [
+        {
+          "name": "Glacial Close",
+          "desc": "Massive damage, delivered slowly and inevitably.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Freeze the Deal",
+          "desc": "Locks 5 orbs in permafrost.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Equity Melt",
+          "desc": "Heals himself with your down payment.",
+          "type": "heal",
+          "amount": 10000
+        },
+        {
+          "name": "Blizzard of Fees",
+          "desc": "Converts 3 orbs to Water.",
+          "type": "convert",
+          "count": 3,
+          "color": "water"
+        }
+      ]
+    }
+  ]
+}

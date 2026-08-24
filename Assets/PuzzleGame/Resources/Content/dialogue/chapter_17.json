@@ -1,0 +1,102 @@
+{
+  "scenes": [
+    {
+      "id": "ch17_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Astral Gym! Where stars are literally made. Chad Emberstorm trained here! His membership is why we're here."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "What about it?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "He's been trying to cancel it for TEN YEARS. The contract keeps auto-renewing. It's draining the Guild treasury. Tonight... we cancel."
+        }
+      ]
+    },
+    {
+      "id": "ch17_mini1",
+      "lines": [
+        {
+          "speaker": "Cerberus",
+          "portrait": "enemy_boss_front_desk",
+          "side": "right",
+          "text": "Welcome! / Would you like to add towel service? / ...please hold, I'm on with billing—"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We're here to cancel a membership."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "All three heads stop. All three heads laugh. It is not a kind laugh."
+        }
+      ]
+    },
+    {
+      "id": "ch17_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The deepest vault. A single sheet of paper floats in a pillar of light. It is aware of you."
+        },
+        {
+          "speaker": "The Contract",
+          "portrait": "enemy_boss_membership",
+          "side": "right",
+          "text": "CLAUSE 1: MEMBERSHIP IS ETERNAL. CLAUSE 2: SEE CLAUSE 1."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "We're here IN PERSON. Per your own terms! CANCEL THE MEMBERSHIP."
+        },
+        {
+          "speaker": "The Contract",
+          "portrait": "enemy_boss_membership",
+          "side": "right",
+          "text": "IN-PERSON CANCELLATION REQUIRES... DEFEATING THE PAPERWORK. IT ALWAYS HAS. READ THE FINE PRINT."
+        }
+      ]
+    },
+    {
+      "id": "ch17_boss_after",
+      "lines": [
+        {
+          "speaker": "The Contract",
+          "portrait": "enemy_boss_membership",
+          "side": "right",
+          "text": "MEMBERSHIP... CANCELLED... no hard feelings... please rate your experience..."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Across the realm, Chad Emberstorm feels a weight lift that no barbell ever matched. He sheds a single, proud tear."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "On to the source, hero. The Department of Doom itself. Bring EVERY form we own."
+        }
+      ]
+    }
+  ]
+}

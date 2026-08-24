@@ -1,0 +1,284 @@
+{
+  "tables": [
+    {
+      "id": "rt_pastry",
+      "entries": [
+        {
+          "itemId": "sprinkle_token",
+          "count": 15,
+          "weight": 50
+        },
+        {
+          "itemId": "gold",
+          "count": 3000,
+          "weight": 25
+        },
+        {
+          "itemId": "gems",
+          "count": 20,
+          "weight": 15
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 1,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "rt_moon_strike",
+      "entries": [
+        {
+          "itemId": "ricecake_token",
+          "count": 15,
+          "weight": 50
+        },
+        {
+          "itemId": "gold",
+          "count": 4000,
+          "weight": 22
+        },
+        {
+          "itemId": "gems",
+          "count": 25,
+          "weight": 18
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 1,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "rt_mall",
+      "entries": [
+        {
+          "itemId": "giftcard_token",
+          "count": 12,
+          "weight": 55
+        },
+        {
+          "itemId": "gold",
+          "count": 5000,
+          "weight": 25
+        },
+        {
+          "itemId": "gems",
+          "count": 30,
+          "weight": 12
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 1,
+          "weight": 8
+        }
+      ]
+    },
+    {
+      "id": "rt_gym",
+      "entries": [
+        {
+          "itemId": "rep_token",
+          "count": 15,
+          "weight": 50
+        },
+        {
+          "itemId": "gold",
+          "count": 6000,
+          "weight": 22
+        },
+        {
+          "itemId": "gems",
+          "count": 30,
+          "weight": 18
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 2,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "rt_derby",
+      "entries": [
+        {
+          "itemId": "derby_ticket",
+          "count": 10,
+          "weight": 60
+        },
+        {
+          "itemId": "gold",
+          "count": 2500,
+          "weight": 25
+        },
+        {
+          "itemId": "speed_shell",
+          "count": 2,
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "rt_amnesty",
+      "entries": [
+        {
+          "itemId": "amnesty_stamp",
+          "count": 12,
+          "weight": 55
+        },
+        {
+          "itemId": "gold",
+          "count": 3500,
+          "weight": 25
+        },
+        {
+          "itemId": "gems",
+          "count": 20,
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "rt_ore",
+      "entries": [
+        {
+          "itemId": "grumble_ore",
+          "count": 5,
+          "weight": 60
+        },
+        {
+          "itemId": "gold",
+          "count": 8000,
+          "weight": 30
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 1,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "rt_skillbooks",
+      "entries": [
+        {
+          "itemId": "skill_tome",
+          "count": 3,
+          "weight": 60
+        },
+        {
+          "itemId": "gold",
+          "count": 6000,
+          "weight": 30
+        },
+        {
+          "itemId": "gems",
+          "count": 15,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "rt_awakening_deep",
+      "entries": [
+        {
+          "itemId": "radiant_core",
+          "count": 2,
+          "weight": 60
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 4,
+          "weight": 30
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 8,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "rt_tab_tower",
+      "entries": [
+        {
+          "itemId": "gems",
+          "count": 30,
+          "weight": 55
+        },
+        {
+          "itemId": "gems",
+          "count": 60,
+          "weight": 30
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 2,
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "rt_hold_tower",
+      "entries": [
+        {
+          "itemId": "gems",
+          "count": 35,
+          "weight": 55
+        },
+        {
+          "itemId": "gems",
+          "count": 70,
+          "weight": 30
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 2,
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "rt_sovereign_rush",
+      "entries": [
+        {
+          "itemId": "gems",
+          "count": 50,
+          "weight": 50
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 2,
+          "weight": 35
+        },
+        {
+          "itemId": "crown_fragment",
+          "count": 1,
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "rt_cosmic_rush",
+      "entries": [
+        {
+          "itemId": "gems",
+          "count": 100,
+          "weight": 45
+        },
+        {
+          "itemId": "radiant_core",
+          "count": 3,
+          "weight": 35
+        },
+        {
+          "itemId": "executive_seal",
+          "count": 1,
+          "weight": 20
+        }
+      ]
+    }
+  ]
+}

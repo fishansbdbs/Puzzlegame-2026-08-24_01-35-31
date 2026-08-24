@@ -1,0 +1,275 @@
+{
+  "enemies": [
+    {
+      "id": "exec_assistant",
+      "name": "Executive Assistant Seraph",
+      "element": "light",
+      "boss": false,
+      "hp": 36960,
+      "atk": 5203,
+      "countdown": 3,
+      "artRef": "enemy_exec_assistant",
+      "flavor": "Guards the calendar of the CEO of Everything. The calendar is FULL. Forever.",
+      "actions": [
+        {
+          "name": "No Openings",
+          "desc": "Locks 3 orbs. Try Q9.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Gatekeep",
+          "desc": "A radiant deflection.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "synergy_seraph",
+      "name": "Synergy Cherub",
+      "element": "light",
+      "boss": false,
+      "hp": 33600,
+      "atk": 4730,
+      "countdown": 3,
+      "artRef": "enemy_synergy_seraph",
+      "flavor": "Aligns stakeholders with a flaming sword labeled ALIGNMENT.",
+      "actions": [
+        {
+          "name": "Alignment",
+          "desc": "Converts 3 orbs to Light. Everyone agrees now.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        },
+        {
+          "name": "Synergize",
+          "desc": "A big collaborative strike.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "kpi_watcher",
+      "name": "KPI Watcher",
+      "element": "dark",
+      "boss": false,
+      "hp": 33600,
+      "atk": 5203,
+      "countdown": 3,
+      "artRef": "enemy_kpi_watcher",
+      "flavor": "A floating eye that sees every metric. Yours are trending... concerning.",
+      "actions": [
+        {
+          "name": "Dashboard Doom",
+          "desc": "Poisons 3 orbs with red numbers.",
+          "type": "poison",
+          "count": 3
+        },
+        {
+          "name": "Metric Beam",
+          "desc": "Measured. Found wanting.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "quota_golem",
+      "name": "Quota Golem Prime",
+      "element": "fire",
+      "boss": false,
+      "hp": 43680,
+      "atk": 5203,
+      "countdown": 3,
+      "artRef": "enemy_quota_golem",
+      "flavor": "The original mold from which Gerald's quotas were cast.",
+      "actions": [
+        {
+          "name": "Numbers Up",
+          "desc": "A big target-raising slam.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Stretch Goal",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "buzzword_hydra",
+      "name": "Buzzword Hydra",
+      "element": "water",
+      "boss": false,
+      "hp": 40320,
+      "atk": 4730,
+      "countdown": 3,
+      "artRef": "enemy_buzzword_hydra",
+      "flavor": "Cut off one head, two more pivot to disruption at scale, going forward.",
+      "actions": [
+        {
+          "name": "Leverage",
+          "desc": "Converts 3 orbs to Water, going forward.",
+          "type": "convert",
+          "count": 3,
+          "color": "water"
+        },
+        {
+          "name": "Paradigm Shift",
+          "desc": "A big disruptive chomp.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "ladder_climber",
+      "name": "Corporate Ladder Climber",
+      "element": "nature",
+      "boss": false,
+      "hp": 30240,
+      "atk": 5676,
+      "countdown": 3,
+      "artRef": "enemy_ladder_climber",
+      "flavor": "Literally climbing a ladder made of former colleagues. Waves on the way up.",
+      "actions": [
+        {
+          "name": "Step On You",
+          "desc": "Nothing personal. A big climb.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Network",
+          "desc": "Binds a party member in small talk.",
+          "type": "bind",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_gerald_promoted",
+      "name": "GERALD, VP of Meadows",
+      "element": "nature",
+      "boss": true,
+      "hp": 403200,
+      "atk": 7095,
+      "countdown": 3,
+      "artRef": "enemy_boss_gerald_promoted",
+      "flavor": "He's BACK. The tie count is now SEVEN. Losing to you was, apparently, \"demonstrating growth potential\".",
+      "actions": [
+        {
+          "name": "Vengeance Projections",
+          "desc": "A big grudge-fueled slam.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Seven Ties",
+          "desc": "Locks 5 orbs, one per promotion.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Learned Nothing",
+          "desc": "Heals himself. Growth mindset!",
+          "type": "heal",
+          "amount": 8000
+        },
+        {
+          "name": "Slime Synergy",
+          "desc": "Converts 3 orbs to Nature.",
+          "type": "convert",
+          "count": 3,
+          "color": "nature"
+        }
+      ]
+    },
+    {
+      "id": "boss_board",
+      "name": "The Board (Of Directors, Of Doom)",
+      "element": "dark",
+      "boss": true,
+      "hp": 436800,
+      "atk": 7095,
+      "countdown": 2,
+      "artRef": "enemy_boss_board",
+      "flavor": "Twelve shadowy figures and one empty chair. The empty chair votes. The empty chair ALWAYS votes.",
+      "actions": [
+        {
+          "name": "Unanimous Motion",
+          "desc": "A big twelve-vote strike.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "The Empty Chair Votes",
+          "desc": "Binds a party member. Motion carried.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Golden Handshake",
+          "desc": "Heals itself generously.",
+          "type": "heal",
+          "amount": 7000
+        },
+        {
+          "name": "Closed Session",
+          "desc": "Locks 4 orbs. Minutes sealed.",
+          "type": "lock",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "boss_ceo_everything",
+      "name": "The CEO of Everything",
+      "element": "dark",
+      "boss": true,
+      "hp": 1008000,
+      "atk": 8041,
+      "countdown": 3,
+      "artRef": "enemy_boss_ceo_everything",
+      "flavor": "Founder, Chairman, and sole shareholder of Reality Inc. Your entire adventure was a line item. Until now.",
+      "actions": [
+        {
+          "name": "Restructure Reality",
+          "desc": "MASSIVE damage. The universe is streamlined.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Hiring Freeze",
+          "desc": "Binds a party member. Headcount reduced.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Hostile Universe Takeover",
+          "desc": "Converts 4 orbs to Dark.",
+          "type": "convert",
+          "count": 4,
+          "color": "dark"
+        },
+        {
+          "name": "Stock Buyback",
+          "desc": "Heals himself enormously.",
+          "type": "heal",
+          "amount": 14000
+        },
+        {
+          "name": "End of Quarter",
+          "desc": "Reduces move time by 3 seconds. The deadline is NOW.",
+          "type": "timerDown",
+          "amount": 3
+        }
+      ]
+    }
+  ]
+}

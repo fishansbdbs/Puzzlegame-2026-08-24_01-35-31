@@ -1,0 +1,249 @@
+{
+  "enemies": [
+    {
+      "id": "agenda_zombie",
+      "name": "Agenda Zombie",
+      "element": "dark",
+      "boss": false,
+      "hp": 24000,
+      "atk": 3069,
+      "countdown": 3,
+      "artRef": "enemy_agenda_zombie",
+      "flavor": "Shuffles from meeting to meeting. Has not been alive since the kickoff.",
+      "actions": [
+        {
+          "name": "Circle Back",
+          "desc": "It returns. It ALWAYS returns.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Tabled Item",
+          "desc": "Locks 3 orbs for next week.",
+          "type": "lock",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "standup_gargoyle",
+      "name": "Daily Standup Gargoyle",
+      "element": "nature",
+      "boss": false,
+      "hp": 28800,
+      "atk": 3410,
+      "countdown": 3,
+      "artRef": "enemy_standup_gargoyle",
+      "flavor": "Stands. Delivers blockers. Has been \"almost done\" for 400 years.",
+      "actions": [
+        {
+          "name": "Blocker Report",
+          "desc": "Places a blocker. Ironically.",
+          "type": "block",
+          "count": 1
+        },
+        {
+          "name": "Status Slam",
+          "desc": "Yesterday: violence. Today: violence. Blockers: you.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "calendar_imp",
+      "name": "Double-Booking Imp",
+      "element": "fire",
+      "boss": false,
+      "hp": 19200,
+      "atk": 3751,
+      "countdown": 3,
+      "artRef": "enemy_calendar_imp",
+      "flavor": "Schedules two meetings in one slot, then attends neither.",
+      "actions": [
+        {
+          "name": "Conflict Created",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        },
+        {
+          "name": "Reminder Ping",
+          "desc": "A sharp notification.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "whiteboard_elemental",
+      "name": "Whiteboard Elemental",
+      "element": "light",
+      "boss": false,
+      "hp": 26400,
+      "atk": 3410,
+      "countdown": 3,
+      "artRef": "enemy_whiteboard_elemental",
+      "flavor": "Covered in diagrams nobody remembers drawing. DO NOT ERASE burns across its chest.",
+      "actions": [
+        {
+          "name": "Marker Fumes",
+          "desc": "Poisons 3 orbs with dry-erase vapor.",
+          "type": "poison",
+          "count": 3
+        },
+        {
+          "name": "Diagram Slam",
+          "desc": "Hit by a flowchart.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "action_item_swarm",
+      "name": "Action Item Swarm",
+      "element": "nature",
+      "boss": false,
+      "hp": 21600,
+      "atk": 3751,
+      "countdown": 3,
+      "artRef": "enemy_action_item_swarm",
+      "flavor": "Each one assigned to \"someone\". Someone is you. Someone was always you.",
+      "actions": [
+        {
+          "name": "Assigned To You",
+          "desc": "A big pile of sudden responsibility.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "projector_specter",
+      "name": "Projector Specter",
+      "element": "dark",
+      "boss": false,
+      "hp": 24000,
+      "atk": 3410,
+      "countdown": 3,
+      "artRef": "enemy_projector_specter",
+      "flavor": "Displays nothing but blue. Demands the correct dongle. There is no correct dongle.",
+      "actions": [
+        {
+          "name": "No Signal",
+          "desc": "Converts 3 orbs to Dark.",
+          "type": "convert",
+          "count": 3,
+          "color": "dark"
+        },
+        {
+          "name": "Blinding Beam",
+          "desc": "Right in the eyes.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_minotaur_pm",
+      "name": "The Minotaur Project Manager",
+      "element": "nature",
+      "boss": true,
+      "hp": 240000,
+      "atk": 4774,
+      "countdown": 3,
+      "artRef": "enemy_boss_minotaur_pm",
+      "flavor": "Half bull, half burndown chart. His labyrinth is the project plan.",
+      "actions": [
+        {
+          "name": "Scope Charge",
+          "desc": "A big horn-first scope expansion.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Sprint Planning",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        },
+        {
+          "name": "Dependency Chain",
+          "desc": "Locks 4 orbs. Blocked by task 12.",
+          "type": "lock",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "boss_icebreaker",
+      "name": "The Icebreaker",
+      "element": "water",
+      "boss": true,
+      "hp": 264000,
+      "atk": 4774,
+      "countdown": 2,
+      "artRef": "enemy_boss_icebreaker",
+      "flavor": "A frost elemental that forces you to share a fun fact about yourself. There is no escape. Fun facts only.",
+      "actions": [
+        {
+          "name": "Fun Fact Demand",
+          "desc": "Binds a party member until they share.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Two Truths, One Slam",
+          "desc": "A big deceptive strike.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Cold Open",
+          "desc": "Converts 4 orbs to Water.",
+          "type": "convert",
+          "count": 4,
+          "color": "water"
+        }
+      ]
+    },
+    {
+      "id": "boss_recurring",
+      "name": "The Recurring Meeting",
+      "element": "dark",
+      "boss": true,
+      "hp": 624000,
+      "atk": 5456,
+      "countdown": 3,
+      "artRef": "enemy_boss_recurring",
+      "flavor": "It has no end date. It has no agenda. Its original purpose died in the Second Age. It occurs FOREVER.",
+      "actions": [
+        {
+          "name": "This Could Have Been An Email",
+          "desc": "Massive existential damage.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Recur",
+          "desc": "Heals itself. Same time next week.",
+          "type": "heal",
+          "amount": 10000
+        },
+        {
+          "name": "Overrun",
+          "desc": "Reduces move time by 3 seconds. Just five more minutes.",
+          "type": "timerDown",
+          "amount": 3
+        },
+        {
+          "name": "Mandatory Attendance",
+          "desc": "Locks 5 orbs in the invite.",
+          "type": "lock",
+          "count": 5
+        }
+      ]
+    }
+  ]
+}

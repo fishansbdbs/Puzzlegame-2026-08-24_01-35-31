@@ -1,0 +1,1332 @@
+{
+  "chapter": {
+    "chapterNumber": 5,
+    "title": "Crystal Cavern HR",
+    "theme": "crystalhr",
+    "blurb": "A cavern of living gemstones running the kingdom's Human Resources. None of them are human. All of them are resources.",
+    "stages": [
+      {
+        "id": "ch05_st01",
+        "stageNumber": 1,
+        "name": "Reception (Please Shine In)",
+        "kind": "story",
+        "background": "crystalhr_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 9,
+        "dialogueBefore": "ch05_intro",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 722,
+          "gems": 5,
+          "items": [
+            {
+              "id": "morale_shard",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st02",
+        "stageNumber": 2,
+        "name": "Lanyard Grotto",
+        "kind": "normal",
+        "background": "crystalhr_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.03,
+                "atkMult": 1.03,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.03,
+                "atkMult": 1.03,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 9,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 783,
+          "gems": 0,
+          "items": [
+            {
+              "id": "onboarding_geode",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st03",
+        "stageNumber": 3,
+        "name": "The Onboarding Descent",
+        "kind": "normal",
+        "background": "crystalhr_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.07,
+                "atkMult": 1.07,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "morale_moth",
+                "hpMult": 1.07,
+                "atkMult": 1.07,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 9,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 845,
+          "gems": 0,
+          "items": [
+            {
+              "id": "onboarding_geode",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st04",
+        "stageNumber": 4,
+        "name": "Facets and Feedback",
+        "kind": "normal",
+        "background": "crystalhr_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 14,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 906,
+          "gems": 0,
+          "items": [
+            {
+              "id": "onboarding_geode",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st05",
+        "stageNumber": 5,
+        "name": "The Screening Chamber",
+        "kind": "story",
+        "background": "crystalhr_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 10,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 968,
+          "gems": 5,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st06",
+        "stageNumber": 6,
+        "name": "Refraction Interview",
+        "kind": "normal",
+        "background": "crystalhr_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "gem_recruiter",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 14,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1030,
+          "gems": 0,
+          "items": [
+            {
+              "id": "onboarding_geode",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st07",
+        "stageNumber": 7,
+        "name": "The Pizza Party Chamber",
+        "kind": "normal",
+        "background": "crystalhr_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.2,
+                "atkMult": 1.2,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.2,
+                "atkMult": 1.2,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.2,
+                "atkMult": 1.2,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 14,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1091,
+          "gems": 0,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st08",
+        "stageNumber": 8,
+        "name": "Alignment Alley",
+        "kind": "normal",
+        "background": "crystalhr_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "gem_recruiter",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "gem_recruiter",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 15,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1153,
+          "gems": 0,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st09",
+        "stageNumber": 9,
+        "name": "Core Values Cave",
+        "kind": "normal",
+        "background": "crystalhr_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 11,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1214,
+          "gems": 0,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st10",
+        "stageNumber": 10,
+        "name": "BENEFITS ORIENTATION",
+        "kind": "miniboss",
+        "background": "crystalhr_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "morale_moth",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_benefits_basilisk",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 15,
+        "dialogueBefore": "ch05_mini1",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1276,
+          "gems": 10,
+          "items": [
+            {
+              "id": "morale_shard",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st11",
+        "stageNumber": 11,
+        "name": "The Shimmering Backlog",
+        "kind": "normal",
+        "background": "crystalhr_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 15,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1338,
+          "gems": 0,
+          "items": [
+            {
+              "id": "morale_shard",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st12",
+        "stageNumber": 12,
+        "name": "Hall of Personnel Facets",
+        "kind": "normal",
+        "background": "crystalhr_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "morale_moth",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1399,
+          "gems": 0,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st13",
+        "stageNumber": 13,
+        "name": "Stalactite Standup",
+        "kind": "normal",
+        "background": "crystalhr_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.4,
+                "atkMult": 1.4,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.4,
+                "atkMult": 1.4,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.4,
+                "atkMult": 1.4,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.4,
+                "atkMult": 1.4,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1461,
+          "gems": 0,
+          "items": [
+            {
+              "id": "onboarding_geode",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st14",
+        "stageNumber": 14,
+        "name": "The Long One-on-One",
+        "kind": "normal",
+        "background": "crystalhr_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1522,
+          "gems": 0,
+          "items": [
+            {
+              "id": "morale_shard",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st15",
+        "stageNumber": 15,
+        "name": "Mandatory Fun Cavern",
+        "kind": "story",
+        "background": "crystalhr_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1584,
+          "gems": 5,
+          "items": [
+            {
+              "id": "onboarding_geode",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st16",
+        "stageNumber": 16,
+        "name": "Glittering Deliverables",
+        "kind": "normal",
+        "background": "crystalhr_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "gem_recruiter",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1646,
+          "gems": 0,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st17",
+        "stageNumber": 17,
+        "name": "The Crystal Cubicles",
+        "kind": "normal",
+        "background": "crystalhr_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1707,
+          "gems": 0,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st18",
+        "stageNumber": 18,
+        "name": "THE ORG CHART AWAKENS",
+        "kind": "miniboss",
+        "background": "crystalhr_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "morale_moth",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_org_chart",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1769,
+          "gems": 10,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st19",
+        "stageNumber": 19,
+        "name": "Circle Back Cavern",
+        "kind": "normal",
+        "background": "crystalhr_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "morale_moth",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 21,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1830,
+          "gems": 0,
+          "items": [
+            {
+              "id": "onboarding_geode",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st20",
+        "stageNumber": 20,
+        "name": "Performance Crystal Review",
+        "kind": "normal",
+        "background": "crystalhr_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 22,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1892,
+          "gems": 0,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st21",
+        "stageNumber": 21,
+        "name": "Touchbase Tunnel",
+        "kind": "normal",
+        "background": "crystalhr_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.67,
+                "atkMult": 1.67,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.67,
+                "atkMult": 1.67,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "morale_moth",
+                "hpMult": 1.67,
+                "atkMult": 1.67,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "gem_recruiter",
+                "hpMult": 1.67,
+                "atkMult": 1.67,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1954,
+          "gems": 0,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st22",
+        "stageNumber": 22,
+        "name": "The Synergy Seam",
+        "kind": "normal",
+        "background": "crystalhr_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "quartz_screener",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "morale_moth",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2015,
+          "gems": 0,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st23",
+        "stageNumber": 23,
+        "name": "Deep Dive (Literal)",
+        "kind": "normal",
+        "background": "crystalhr_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "morale_moth",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2077,
+          "gems": 0,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st24",
+        "stageNumber": 24,
+        "name": "Quarterly Quartz",
+        "kind": "normal",
+        "background": "crystalhr_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "gem_recruiter",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "morale_moth",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "morale_moth",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stalag_mite",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 23,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2138,
+          "gems": 0,
+          "items": [
+            {
+              "id": "morale_shard",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch05_st25",
+        "stageNumber": 25,
+        "name": "THE CORNER OFFICE GEODE",
+        "kind": "boss",
+        "background": "crystalhr_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_vp_vibes",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 19,
+        "dialogueBefore": "ch05_boss_before",
+        "dialogueAfter": "ch05_boss_after",
+        "rewards": {
+          "gold": 2200,
+          "gems": 30,
+          "items": [
+            {
+              "id": "facet_file",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": "300 Gems"
+        },
+        "staminaCost": 0
+      }
+    ]
+  }
+}

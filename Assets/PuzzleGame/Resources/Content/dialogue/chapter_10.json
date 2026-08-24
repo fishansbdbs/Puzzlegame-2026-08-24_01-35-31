@@ -1,0 +1,108 @@
+{
+  "scenes": [
+    {
+      "id": "ch10_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Necropolis DMV. Halfway point of our journey, hero. The dead need licenses to haunt, and the line predates several gods."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "What do WE need?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "A Class-H Heroism License. Ours expired in chapter three. We've been adventuring ILLEGALLY, hero. I haven't slept."
+        }
+      ]
+    },
+    {
+      "id": "ch10_mini1",
+      "lines": [
+        {
+          "speaker": "Registrar",
+          "portrait": "enemy_boss_registrar",
+          "side": "right",
+          "text": "NAME?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "You have it on file. You just said you have everything on file."
+        },
+        {
+          "speaker": "Registrar",
+          "portrait": "enemy_boss_registrar",
+          "side": "right",
+          "text": "THE FILE MUST BE CONFIRMED. VERBALLY. WITH YOUR EMBARRASSING MIDDLE NAME."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "...draw your weapon."
+        }
+      ]
+    },
+    {
+      "id": "ch10_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Window 1. The number board flickers: NOW SERVING 4,000,001. It is your number. It has been 6,000 years."
+        },
+        {
+          "speaker": "The Lich Clerk",
+          "portrait": "enemy_boss_lich_clerk",
+          "side": "right",
+          "text": "NEXT."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "That's us! THAT'S US! Hero, I've never been so happy and so terrified!"
+        },
+        {
+          "speaker": "The Lich Clerk",
+          "portrait": "enemy_boss_lich_clerk",
+          "side": "right",
+          "text": "YOUR FORMS ARE... adequate. UNFORTUNATELY, THE SYSTEM IS DOWN. COMBAT IS THE BACKUP SYSTEM."
+        }
+      ]
+    },
+    {
+      "id": "ch10_boss_after",
+      "lines": [
+        {
+          "speaker": "The Lich Clerk",
+          "portrait": "enemy_boss_lich_clerk",
+          "side": "right",
+          "text": "Processed... approved... laminated..."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A fresh Class-H Heroism License materializes. The photo is terrible. It is perfect."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "WE'RE LEGAL! Hero, we're LEGAL! ...why is the license already expiring in chapter twenty?"
+        }
+      ]
+    }
+  ]
+}

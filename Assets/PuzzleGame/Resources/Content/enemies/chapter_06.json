@@ -1,0 +1,256 @@
+{
+  "enemies": [
+    {
+      "id": "lawn_ghost",
+      "name": "Lawn Care Ghost",
+      "element": "nature",
+      "boss": false,
+      "hp": 11200,
+      "atk": 1650,
+      "countdown": 3,
+      "artRef": "enemy_lawn_ghost",
+      "flavor": "Died mowing. Continues mowing. The stripes are IMMACULATE.",
+      "actions": [
+        {
+          "name": "Phantom Mower",
+          "desc": "A spectral trim, ankle height.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Grass Guilt",
+          "desc": "Converts 3 orbs to Nature.",
+          "type": "convert",
+          "count": 3,
+          "color": "nature"
+        }
+      ]
+    },
+    {
+      "id": "hedge_wraith",
+      "name": "Hedge Wraith",
+      "element": "dark",
+      "boss": false,
+      "hp": 12320,
+      "atk": 1650,
+      "countdown": 3,
+      "artRef": "enemy_hedge_wraith",
+      "flavor": "Trimmed into the shape of regret. Regulation height.",
+      "actions": [
+        {
+          "name": "Topiary Terror",
+          "desc": "Poisons 2 orbs with clippings.",
+          "type": "poison",
+          "count": 2
+        },
+        {
+          "name": "Rustle",
+          "desc": "The hedge is CLOSER now.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "mailbox_mimic",
+      "name": "Mailbox Mimic",
+      "element": "dark",
+      "boss": false,
+      "hp": 13440,
+      "atk": 1650,
+      "countdown": 3,
+      "artRef": "enemy_mailbox_mimic",
+      "flavor": "Eats letters. Prefers certified mail. The flag goes up when it's hungry.",
+      "actions": [
+        {
+          "name": "Certified Chomp",
+          "desc": "Return to sender, violently.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Junk Mail",
+          "desc": "Places a blocker of flyers.",
+          "type": "block",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "sprinkler_spirit",
+      "name": "Sprinkler Poltergeist",
+      "element": "water",
+      "boss": false,
+      "hp": 10080,
+      "atk": 1650,
+      "countdown": 3,
+      "artRef": "enemy_sprinkler_spirit",
+      "flavor": "Activates at 3 AM, or whenever you walk past. Mostly whenever you walk past.",
+      "actions": [
+        {
+          "name": "Sudden Sprinkle",
+          "desc": "Converts 3 orbs to Water.",
+          "type": "convert",
+          "count": 3,
+          "color": "water"
+        },
+        {
+          "name": "Pressure Blast",
+          "desc": "FSSST. Right in the face.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "gnome_patrol",
+      "name": "Garden Gnome Patrol",
+      "element": "fire",
+      "boss": false,
+      "hp": 8960,
+      "atk": 1980,
+      "countdown": 3,
+      "artRef": "enemy_gnome_patrol",
+      "flavor": "They see everything. They report everything. Their hats are regulation red.",
+      "actions": [
+        {
+          "name": "Citizen's Citation",
+          "desc": "A tiny, furious fine.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Gnome Swarm",
+          "desc": "A big coordinated waddle.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "casserole_specter",
+      "name": "Casserole Specter",
+      "element": "light",
+      "boss": false,
+      "hp": 11200,
+      "atk": 1485,
+      "countdown": 3,
+      "artRef": "enemy_casserole_specter",
+      "flavor": "Appears uninvited with a dish you must return. The dish binds your soul. And your schedule.",
+      "actions": [
+        {
+          "name": "Unsolicited Casserole",
+          "desc": "Locks 3 orbs under tin foil.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Guilt Trip",
+          "desc": "\"You never called about the dish.\"",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_hoa_banshee",
+      "name": "HOA Board Banshee",
+      "element": "dark",
+      "boss": true,
+      "hp": 112000,
+      "atk": 2310,
+      "countdown": 3,
+      "artRef": "enemy_boss_hoa_banshee",
+      "flavor": "Her wail can be heard at every board meeting. Her wail IS the board meeting.",
+      "actions": [
+        {
+          "name": "Violation Wail",
+          "desc": "A big shriek about your fence height.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Lien Scream",
+          "desc": "Locks 4 orbs against your property.",
+          "type": "lock",
+          "count": 4
+        },
+        {
+          "name": "Motion to Haunt",
+          "desc": "Poisons 3 orbs. Seconded.",
+          "type": "poison",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_property_value",
+      "name": "The Property Value",
+      "element": "light",
+      "boss": true,
+      "hp": 123200,
+      "atk": 2310,
+      "countdown": 2,
+      "artRef": "enemy_boss_property_value",
+      "flavor": "An abstract concept made manifest. It must go up. It MUST.",
+      "actions": [
+        {
+          "name": "Market Correction",
+          "desc": "A massive adjustment.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Appraisal",
+          "desc": "Converts 4 orbs to Light. Curb appeal rising.",
+          "type": "convert",
+          "count": 4,
+          "color": "light"
+        },
+        {
+          "name": "Bubble",
+          "desc": "Heals itself unsustainably.",
+          "type": "heal",
+          "amount": 6000
+        }
+      ]
+    },
+    {
+      "id": "boss_chairman_polt",
+      "name": "Chairman Poltergeist",
+      "element": "dark",
+      "boss": true,
+      "hp": 291200,
+      "atk": 2640,
+      "countdown": 3,
+      "artRef": "enemy_boss_chairman_polt",
+      "flavor": "Died in 1743. Founded the HOA in 1744. Has never once approved a shed.",
+      "actions": [
+        {
+          "name": "Gavel of the Damned",
+          "desc": "Massive damage. Motion carried.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Eternal Bylaws",
+          "desc": "Locks 5 orbs, per section 12.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Quorum of Souls",
+          "desc": "Binds a party member into the board.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Table the Motion",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        }
+      ]
+    }
+  ]
+}

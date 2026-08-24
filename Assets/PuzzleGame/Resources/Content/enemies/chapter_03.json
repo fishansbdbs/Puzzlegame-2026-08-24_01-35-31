@@ -1,0 +1,251 @@
+{
+  "enemies": [
+    {
+      "id": "picket_dwarf",
+      "name": "Picketing Dwarf",
+      "element": "fire",
+      "boss": false,
+      "hp": 6400,
+      "atk": 1089,
+      "countdown": 3,
+      "artRef": "enemy_picket_dwarf",
+      "flavor": "His sign says \"FAIR WAGES OR NO FORGES\". His axe agrees.",
+      "actions": [
+        {
+          "name": "Sign Swing",
+          "desc": "The message lands. Hard.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Chant",
+          "desc": "A big rallying blow.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "forge_golem",
+      "name": "Unattended Forge Golem",
+      "element": "fire",
+      "boss": false,
+      "hp": 8960,
+      "atk": 891,
+      "countdown": 3,
+      "artRef": "enemy_forge_golem",
+      "flavor": "Nobody told it the shift ended three weeks ago. It keeps forging.",
+      "actions": [
+        {
+          "name": "Overwork",
+          "desc": "Converts 3 orbs to Fire.",
+          "type": "convert",
+          "count": 3,
+          "color": "fire"
+        },
+        {
+          "name": "Hammer Time",
+          "desc": "Clang.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "coal_bat",
+      "name": "Coal Bat",
+      "element": "dark",
+      "boss": false,
+      "hp": 5120,
+      "atk": 990,
+      "countdown": 3,
+      "artRef": "enemy_coal_bat",
+      "flavor": "Lives in shaft 7. Extremely sooty. Zero regrets.",
+      "actions": [
+        {
+          "name": "Soot Screech",
+          "desc": "Poisons 2 orbs with coal dust.",
+          "type": "poison",
+          "count": 2
+        },
+        {
+          "name": "Dive",
+          "desc": "A flappy ambush.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "grumble_goat",
+      "name": "Grumble Goat",
+      "element": "nature",
+      "boss": false,
+      "hp": 7040,
+      "atk": 1089,
+      "countdown": 3,
+      "artRef": "enemy_grumble_goat",
+      "flavor": "Eats strike flyers. Sides with no one. Rams everyone.",
+      "actions": [
+        {
+          "name": "Headbutt",
+          "desc": "Nonpartisan violence.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "scaffold_spider",
+      "name": "Scaffold Spider",
+      "element": "dark",
+      "boss": false,
+      "hp": 5760,
+      "atk": 891,
+      "countdown": 3,
+      "artRef": "enemy_scaffold_spider",
+      "flavor": "Took over the mine scaffolding. Now charges rent.",
+      "actions": [
+        {
+          "name": "Web Toll",
+          "desc": "Locks 3 orbs behind a paywall.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Eight-Leg Kick",
+          "desc": "All of them at once.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "ash_slime",
+      "name": "Ash Slime",
+      "element": "fire",
+      "boss": false,
+      "hp": 6400,
+      "atk": 891,
+      "countdown": 3,
+      "artRef": "enemy_ash_slime",
+      "flavor": "Gerald's cousin from the volcanic branch office.",
+      "actions": [
+        {
+          "name": "Cinder Bounce",
+          "desc": "Warm and unwelcome.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Smolder",
+          "desc": "Converts 2 orbs to Fire.",
+          "type": "convert",
+          "count": 2,
+          "color": "fire"
+        }
+      ]
+    },
+    {
+      "id": "boss_flintbeard",
+      "name": "Foreman Flintbeard",
+      "element": "fire",
+      "boss": true,
+      "hp": 64000,
+      "atk": 1386,
+      "countdown": 3,
+      "artRef": "enemy_boss_flintbeard",
+      "flavor": "Caught between the workers and the owner. Chose violence, diplomatically.",
+      "actions": [
+        {
+          "name": "Middle Management Slam",
+          "desc": "He's under a lot of pressure.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Safety Meeting",
+          "desc": "Locks 4 orbs. Attendance mandatory.",
+          "type": "lock",
+          "count": 4
+        },
+        {
+          "name": "Beard Sparks",
+          "desc": "Converts 3 orbs to Fire.",
+          "type": "convert",
+          "count": 3,
+          "color": "fire"
+        }
+      ]
+    },
+    {
+      "id": "boss_bertha",
+      "name": "Union-Buster Bertha",
+      "element": "dark",
+      "boss": true,
+      "hp": 70400,
+      "atk": 1386,
+      "countdown": 2,
+      "artRef": "enemy_boss_bertha",
+      "flavor": "A golem built by management, from management, for management.",
+      "actions": [
+        {
+          "name": "Intimidate",
+          "desc": "Binds a party member with a very firm handshake.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Cost Cutting",
+          "desc": "A big swing at overhead. You are overhead.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Overtime Clause",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "boss_goldtooth",
+      "name": "Magnate Goldtooth",
+      "element": "dark",
+      "boss": true,
+      "hp": 166400,
+      "atk": 1584,
+      "countdown": 3,
+      "artRef": "enemy_boss_goldtooth",
+      "flavor": "Owns the mine, the mountain, and — he claims — the concept of digging.",
+      "actions": [
+        {
+          "name": "Hostile Takeover",
+          "desc": "Massive damage. It's just business.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Asset Freeze",
+          "desc": "Locks 5 orbs in escrow.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Golden Parachute",
+          "desc": "Heals himself. He always lands softly.",
+          "type": "heal",
+          "amount": 10000
+        },
+        {
+          "name": "Dividend of Doom",
+          "desc": "Converts 3 orbs to Dark.",
+          "type": "convert",
+          "count": 3,
+          "color": "dark"
+        }
+      ]
+    }
+  ]
+}

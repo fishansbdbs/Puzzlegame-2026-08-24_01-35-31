@@ -1,0 +1,102 @@
+{
+  "scenes": [
+    {
+      "id": "ch16_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "So. Hell restructured. The pitchforks are headsets now. Torment is self-service, with a 2% resolution rate."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "Why are WE here?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The kingdom's complaints all route here now. Including ours. Hero... we're here about the birthday box. It's TICKET TIME."
+        }
+      ]
+    },
+    {
+      "id": "ch16_mini1",
+      "lines": [
+        {
+          "speaker": "Tier 9 Archfiend",
+          "portrait": "enemy_boss_tier9_shark",
+          "side": "right",
+          "text": "You've reached Tier 9. Congratulations. Only three mortals have ever made it this far. Two hung up."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "And the third?"
+        },
+        {
+          "speaker": "Tier 9 Archfiend",
+          "portrait": "enemy_boss_tier9_shark",
+          "side": "right",
+          "text": "You're speaking to him. I never got MY refund either. Now I ANSWER the phones. Don't become me, hero. FIGHT."
+        }
+      ]
+    },
+    {
+      "id": "ch16_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The Backlog Throne. A prince of darkness, buried to the shoulders in tickets, each one softly screaming."
+        },
+        {
+          "speaker": "The Prince",
+          "portrait": "enemy_boss_complaints_prince",
+          "side": "right",
+          "text": "CASE 1: A KNIGHT, WRONGED. CASE 2: A WIDOW, OVERCHARGED. CASE 3,000,000: A FAIRY... AWAITING A BIRTHDAY BOX."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "THAT'S MY TICKET! IT'S REAL! IT'S BEEN OPEN FOR NINE YEARS!"
+        },
+        {
+          "speaker": "The Prince",
+          "portrait": "enemy_boss_complaints_prince",
+          "side": "right",
+          "text": "AND IT SHALL REMAIN OPEN. FOREVER. AN OPEN TICKET IS AN OPEN WOUND. AND I AM ITS KING."
+        }
+      ]
+    },
+    {
+      "id": "ch16_boss_after",
+      "lines": [
+        {
+          "speaker": "The Prince",
+          "portrait": "enemy_boss_complaints_prince",
+          "side": "right",
+          "text": "RESOLVING... ALL... TICKETS... satisfaction... guaranteed..."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Three million cases close at once. The sound is indescribable. It is the sound of everyone, everywhere, finally getting through."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Ticket closed, hero. All of them. Even mine. ESPECIALLY mine."
+        }
+      ]
+    }
+  ]
+}

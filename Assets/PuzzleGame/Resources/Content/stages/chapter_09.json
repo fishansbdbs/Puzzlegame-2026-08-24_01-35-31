@@ -1,0 +1,1300 @@
+{
+  "chapter": {
+    "chapterNumber": 9,
+    "title": "The Volcano Spa & Resort",
+    "theme": "volcanospa",
+    "blurb": "Five stars. Zero survivors of the deep-tissue massage. The lava pool is \"invigorating\".",
+    "stages": [
+      {
+        "id": "ch09_st01",
+        "stageNumber": 1,
+        "name": "Check-In (Mandatory)",
+        "kind": "story",
+        "background": "volcanospa_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 9,
+        "dialogueBefore": "ch09_intro",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1115,
+          "gems": 5,
+          "items": [
+            {
+              "id": "pumice_stone",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st02",
+        "stageNumber": 2,
+        "name": "Lobby of Lingering Guests",
+        "kind": "normal",
+        "background": "volcanospa_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.03,
+                "atkMult": 1.03,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 9,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1210,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cucumber_slice",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st03",
+        "stageNumber": 3,
+        "name": "The Steam Room Gauntlet",
+        "kind": "normal",
+        "background": "volcanospa_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.07,
+                "atkMult": 1.07,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.07,
+                "atkMult": 1.07,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 9,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1306,
+          "gems": 0,
+          "items": [
+            {
+              "id": "spa_voucher",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st04",
+        "stageNumber": 4,
+        "name": "Pumice Path",
+        "kind": "normal",
+        "background": "volcanospa_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 14,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1401,
+          "gems": 0,
+          "items": [
+            {
+              "id": "spa_voucher",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st05",
+        "stageNumber": 5,
+        "name": "The Towel Swan Gallery",
+        "kind": "story",
+        "background": "volcanospa_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "towel_wraith",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 10,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1496,
+          "gems": 5,
+          "items": [
+            {
+              "id": "spa_voucher",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st06",
+        "stageNumber": 6,
+        "name": "The Robe Warmers",
+        "kind": "normal",
+        "background": "volcanospa_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 14,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1591,
+          "gems": 0,
+          "items": [
+            {
+              "id": "pumice_stone",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st07",
+        "stageNumber": 7,
+        "name": "Cabana Row Chaos",
+        "kind": "normal",
+        "background": "volcanospa_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.2,
+                "atkMult": 1.2,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.2,
+                "atkMult": 1.2,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.2,
+                "atkMult": 1.2,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.2,
+                "atkMult": 1.2,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 14,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1686,
+          "gems": 0,
+          "items": [
+            {
+              "id": "spa_voucher",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st08",
+        "stageNumber": 8,
+        "name": "The Tepid Plunge",
+        "kind": "normal",
+        "background": "volcanospa_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 15,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1782,
+          "gems": 0,
+          "items": [
+            {
+              "id": "pumice_stone",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st09",
+        "stageNumber": 9,
+        "name": "Aromatherapy Ambush",
+        "kind": "normal",
+        "background": "volcanospa_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "masseuse_magmite",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "masseuse_magmite",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 15,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1877,
+          "gems": 0,
+          "items": [
+            {
+              "id": "pumice_stone",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st10",
+        "stageNumber": 10,
+        "name": "CONCIERGE ATTENDS TO YOU",
+        "kind": "miniboss",
+        "background": "volcanospa_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_concierge",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 15,
+        "dialogueBefore": "ch09_mini1",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1972,
+          "gems": 10,
+          "items": [
+            {
+              "id": "spa_voucher",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st11",
+        "stageNumber": 11,
+        "name": "The Second Sauna",
+        "kind": "normal",
+        "background": "volcanospa_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "towel_wraith",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 15,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2067,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cucumber_slice",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st12",
+        "stageNumber": 12,
+        "name": "The Lava Lap Pool",
+        "kind": "normal",
+        "background": "volcanospa_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2162,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cucumber_slice",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st13",
+        "stageNumber": 13,
+        "name": "Wellness Wing West",
+        "kind": "normal",
+        "background": "volcanospa_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.4,
+                "atkMult": 1.4,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.4,
+                "atkMult": 1.4,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.4,
+                "atkMult": 1.4,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2258,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cucumber_slice",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st14",
+        "stageNumber": 14,
+        "name": "The Cucumber Water Station",
+        "kind": "normal",
+        "background": "volcanospa_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "masseuse_magmite",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2353,
+          "gems": 0,
+          "items": [
+            {
+              "id": "pumice_stone",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st15",
+        "stageNumber": 15,
+        "name": "Couples Massage (Violent)",
+        "kind": "story",
+        "background": "volcanospa_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2448,
+          "gems": 5,
+          "items": [
+            {
+              "id": "spa_voucher",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st16",
+        "stageNumber": 16,
+        "name": "Magma Manicures",
+        "kind": "normal",
+        "background": "volcanospa_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2543,
+          "gems": 0,
+          "items": [
+            {
+              "id": "pumice_stone",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st17",
+        "stageNumber": 17,
+        "name": "The Loyalty Program",
+        "kind": "normal",
+        "background": "volcanospa_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "towel_wraith",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2638,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cucumber_slice",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st18",
+        "stageNumber": 18,
+        "name": "HOT YOGA WITH BIKRAM",
+        "kind": "miniboss",
+        "background": "volcanospa_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_yoga_dragon",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2734,
+          "gems": 10,
+          "items": [
+            {
+              "id": "spa_voucher",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st19",
+        "stageNumber": 19,
+        "name": "Poolside Reckoning",
+        "kind": "normal",
+        "background": "volcanospa_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "masseuse_magmite",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "masseuse_magmite",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2829,
+          "gems": 0,
+          "items": [
+            {
+              "id": "pumice_stone",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st20",
+        "stageNumber": 20,
+        "name": "The Infinity Edge (Of Doom)",
+        "kind": "normal",
+        "background": "volcanospa_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "masseuse_magmite",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "towel_wraith",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2924,
+          "gems": 0,
+          "items": [
+            {
+              "id": "spa_voucher",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st21",
+        "stageNumber": 21,
+        "name": "The Meditation Pit",
+        "kind": "normal",
+        "background": "volcanospa_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.67,
+                "atkMult": 1.67,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "masseuse_magmite",
+                "hpMult": 1.67,
+                "atkMult": 1.67,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.67,
+                "atkMult": 1.67,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3019,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cucumber_slice",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st22",
+        "stageNumber": 22,
+        "name": "Spa Day Eternal",
+        "kind": "normal",
+        "background": "volcanospa_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "towel_wraith",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "towel_wraith",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 22,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3114,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cucumber_slice",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st23",
+        "stageNumber": 23,
+        "name": "The Volcanic Facial",
+        "kind": "normal",
+        "background": "volcanospa_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "sauna_imp",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 22,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3210,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cucumber_slice",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st24",
+        "stageNumber": 24,
+        "name": "Minibar of the Ancients",
+        "kind": "normal",
+        "background": "volcanospa_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "masseuse_magmite",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "towel_wraith",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "towel_wraith",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mud_mask_golem",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 23,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3305,
+          "gems": 0,
+          "items": [
+            {
+              "id": "pumice_stone",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch09_st25",
+        "stageNumber": 25,
+        "name": "CHECKOUT WITH MANAGER CALDERA",
+        "kind": "boss",
+        "background": "volcanospa_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "zen_salamander",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_manager_caldera",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 19,
+        "dialogueBefore": "ch09_boss_before",
+        "dialogueAfter": "ch09_boss_after",
+        "rewards": {
+          "gold": 3400,
+          "gems": 30,
+          "items": [
+            {
+              "id": "spa_voucher",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": "300 Gems"
+        },
+        "staminaCost": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,3380 @@
+{
+  "events": [
+    {
+      "id": "ev_pastry_uprising",
+      "name": "The Pastry Uprising",
+      "kind": "eventChapter",
+      "desc": "The Great Dessert rises. Literally. Someone left the proofing spell on overnight.",
+      "theme": "dessert_event",
+      "tokenId": "sprinkle_token",
+      "stages": [
+        {
+          "id": "ev_pastry_uprising_st01",
+          "stageNumber": 1,
+          "name": "The Dough Also Rises",
+          "kind": "normal",
+          "background": "dessert_event_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "churro_cactus",
+                  "hpMult": 1.1,
+                  "atkMult": 1.1,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "rogue_scone",
+                  "hpMult": 1.1,
+                  "atkMult": 1.1,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "biscotti_bandit",
+                  "hpMult": 1.1,
+                  "atkMult": 1.1,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [
+              {
+                "id": "sprinkle_token",
+                "count": 11
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_pastry_uprising_st02",
+          "stageNumber": 2,
+          "name": "Crust Uprising",
+          "kind": "normal",
+          "background": "dessert_event_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "gelato_golem",
+                  "hpMult": 1.23,
+                  "atkMult": 1.23,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "custard_elemental",
+                  "hpMult": 1.23,
+                  "atkMult": 1.23,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 16,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 0,
+            "items": [
+              {
+                "id": "sprinkle_token",
+                "count": 14
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_pastry_uprising_st03",
+          "stageNumber": 3,
+          "name": "Sconehenge",
+          "kind": "normal",
+          "background": "dessert_event_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "churro_cactus",
+                  "hpMult": 1.36,
+                  "atkMult": 1.36,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "custard_elemental",
+                  "hpMult": 1.36,
+                  "atkMult": 1.36,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 13,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 0,
+            "items": [
+              {
+                "id": "sprinkle_token",
+                "count": 17
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_pastry_uprising_st04",
+          "stageNumber": 4,
+          "name": "The Filling Front",
+          "kind": "miniboss",
+          "background": "dessert_event_4",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "biscotti_bandit",
+                  "hpMult": 1.5,
+                  "atkMult": 1.5,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "biscotti_bandit",
+                  "hpMult": 1.5,
+                  "atkMult": 1.5,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "rogue_scone",
+                  "hpMult": 1.5,
+                  "atkMult": 1.5,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 18,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 880,
+            "gems": 15,
+            "items": [
+              {
+                "id": "sprinkle_token",
+                "count": 20
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_pastry_uprising_st05",
+          "stageNumber": 5,
+          "name": "TIRAMISU STRIKES BACK",
+          "kind": "normal",
+          "background": "dessert_event_5",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "biscotti_bandit",
+                  "hpMult": 1.63,
+                  "atkMult": 1.63,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "boss_tiramisu",
+                  "hpMult": 1.63,
+                  "atkMult": 1.63,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "churro_cactus",
+                  "hpMult": 1.63,
+                  "atkMult": 1.63,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 19,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1000,
+            "gems": 0,
+            "items": [
+              {
+                "id": "sprinkle_token",
+                "count": 23
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_pastry_uprising_st06",
+          "stageNumber": 6,
+          "name": "Glaze of Glory",
+          "kind": "normal",
+          "background": "dessert_event_6",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "custard_elemental",
+                  "hpMult": 1.76,
+                  "atkMult": 1.76,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 16,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1120,
+            "gems": 0,
+            "items": [
+              {
+                "id": "sprinkle_token",
+                "count": 26
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_pastry_uprising_st07",
+          "stageNumber": 7,
+          "name": "The Icing Line",
+          "kind": "normal",
+          "background": "dessert_event_7",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "biscotti_bandit",
+                  "hpMult": 1.89,
+                  "atkMult": 1.89,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "churro_cactus",
+                  "hpMult": 1.89,
+                  "atkMult": 1.89,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 21,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1240,
+            "gems": 0,
+            "items": [
+              {
+                "id": "sprinkle_token",
+                "count": 29
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_pastry_uprising_st08",
+          "stageNumber": 8,
+          "name": "GATEAU: ROUND TWO",
+          "kind": "boss",
+          "background": "dessert_event_8",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "biscotti_bandit",
+                  "hpMult": 2.02,
+                  "atkMult": 2.02,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_grand_gateau",
+                  "hpMult": 1.2,
+                  "atkMult": 1.1,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 22,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1360,
+            "gems": 40,
+            "items": [
+              {
+                "id": "sprinkle_token",
+                "count": 32
+              }
+            ],
+            "firstClearBonus": "Title: 'Cake Appreciator'"
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_pastry"
+    },
+    {
+      "id": "ev_moon_rent_strike",
+      "name": "The Moon Rent Strike",
+      "kind": "eventChapter",
+      "desc": "Before the revolution, there was the rent strike. Stand with the rabbits.",
+      "theme": "moon_event",
+      "tokenId": "ricecake_token",
+      "stages": [
+        {
+          "id": "ev_moon_rent_strike_st01",
+          "stageNumber": 1,
+          "name": "Picket at the Crater",
+          "kind": "normal",
+          "background": "moon_event_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "satellite_pigeon",
+                  "hpMult": 1.6,
+                  "atkMult": 1.6,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "moon_rabbit",
+                  "hpMult": 1.6,
+                  "atkMult": 1.6,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "crater_hermit",
+                  "hpMult": 1.6,
+                  "atkMult": 1.6,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [
+              {
+                "id": "ricecake_token",
+                "count": 11
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_moon_rent_strike_st02",
+          "stageNumber": 2,
+          "name": "The Dust Settles (It Doesn't)",
+          "kind": "normal",
+          "background": "moon_event_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "cheese_prospector",
+                  "hpMult": 1.79,
+                  "atkMult": 1.79,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "dust_bunny",
+                  "hpMult": 1.79,
+                  "atkMult": 1.79,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 12,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 0,
+            "items": [
+              {
+                "id": "ricecake_token",
+                "count": 14
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_moon_rent_strike_st03",
+          "stageNumber": 3,
+          "name": "Tides Turn",
+          "kind": "normal",
+          "background": "moon_event_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "cheese_prospector",
+                  "hpMult": 1.98,
+                  "atkMult": 1.98,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "crater_hermit",
+                  "hpMult": 1.98,
+                  "atkMult": 1.98,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 0,
+            "items": [
+              {
+                "id": "ricecake_token",
+                "count": 17
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_moon_rent_strike_st04",
+          "stageNumber": 4,
+          "name": "The LLC Responds",
+          "kind": "miniboss",
+          "background": "moon_event_4",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "dust_bunny",
+                  "hpMult": 2.18,
+                  "atkMult": 2.18,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "crater_hermit",
+                  "hpMult": 2.18,
+                  "atkMult": 2.18,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 18,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 880,
+            "gems": 15,
+            "items": [
+              {
+                "id": "ricecake_token",
+                "count": 20
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_moon_rent_strike_st05",
+          "stageNumber": 5,
+          "name": "MANAGEMENT MANIFESTS",
+          "kind": "normal",
+          "background": "moon_event_5",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "cheese_prospector",
+                  "hpMult": 2.37,
+                  "atkMult": 2.37,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1000,
+            "gems": 0,
+            "items": [
+              {
+                "id": "ricecake_token",
+                "count": 23
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_moon_rent_strike_st06",
+          "stageNumber": 6,
+          "name": "Escrow on the Dark Side",
+          "kind": "normal",
+          "background": "moon_event_6",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "cheese_prospector",
+                  "hpMult": 2.56,
+                  "atkMult": 2.56,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "satellite_pigeon",
+                  "hpMult": 2.56,
+                  "atkMult": 2.56,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_property_mgmt",
+                  "hpMult": 2.56,
+                  "atkMult": 2.56,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 20,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1120,
+            "gems": 0,
+            "items": [
+              {
+                "id": "ricecake_token",
+                "count": 26
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_moon_rent_strike_st07",
+          "stageNumber": 7,
+          "name": "The Deposit Dispute",
+          "kind": "normal",
+          "background": "moon_event_7",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "crater_hermit",
+                  "hpMult": 2.75,
+                  "atkMult": 2.75,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1240,
+            "gems": 0,
+            "items": [
+              {
+                "id": "ricecake_token",
+                "count": 29
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_moon_rent_strike_st08",
+          "stageNumber": 8,
+          "name": "THE MOONLORD'S LAST NOTICE",
+          "kind": "boss",
+          "background": "moon_event_8",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "moon_rabbit",
+                  "hpMult": 2.94,
+                  "atkMult": 2.94,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_moonlord",
+                  "hpMult": 1.4,
+                  "atkMult": 1.6,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 22,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1360,
+            "gems": 40,
+            "items": [
+              {
+                "id": "ricecake_token",
+                "count": 32
+              }
+            ],
+            "firstClearBonus": "Title: 'Friend of Rabbits'"
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_moon_strike"
+    },
+    {
+      "id": "ev_mall_madness",
+      "name": "Midnight Mall Madness",
+      "kind": "eventChapter",
+      "desc": "One night a year, the Enchanted Mall holds a sale. Everything must go. Including shoppers.",
+      "theme": "mall_event",
+      "tokenId": "giftcard_token",
+      "stages": [
+        {
+          "id": "ev_mall_madness_st01",
+          "stageNumber": 1,
+          "name": "Doors Open (RUN)",
+          "kind": "normal",
+          "background": "mall_event_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "pretzel_elemental",
+                  "hpMult": 1.4,
+                  "atkMult": 1.4,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 11,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [
+              {
+                "id": "giftcard_token",
+                "count": 11
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_mall_madness_st02",
+          "stageNumber": 2,
+          "name": "The Sample Stampede",
+          "kind": "normal",
+          "background": "mall_event_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "kiosk_goblin",
+                  "hpMult": 1.57,
+                  "atkMult": 1.57,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "boss_food_court",
+                  "hpMult": 1.57,
+                  "atkMult": 1.57,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 12,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 0,
+            "items": [
+              {
+                "id": "giftcard_token",
+                "count": 14
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_mall_madness_st03",
+          "stageNumber": 3,
+          "name": "Kiosk Krossfire",
+          "kind": "miniboss",
+          "background": "mall_event_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_food_court",
+                  "hpMult": 1.74,
+                  "atkMult": 1.74,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "escalator_serpent",
+                  "hpMult": 1.74,
+                  "atkMult": 1.74,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 13,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 15,
+            "items": [
+              {
+                "id": "giftcard_token",
+                "count": 17
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_mall_madness_st04",
+          "stageNumber": 4,
+          "name": "FOOD COURT FRENZY",
+          "kind": "normal",
+          "background": "mall_event_4",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "fountain_nymph",
+                  "hpMult": 1.9,
+                  "atkMult": 1.9,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 14,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 880,
+            "gems": 0,
+            "items": [
+              {
+                "id": "giftcard_token",
+                "count": 20
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_mall_madness_st05",
+          "stageNumber": 5,
+          "name": "The Clearance Labyrinth",
+          "kind": "normal",
+          "background": "mall_event_5",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_food_court",
+                  "hpMult": 2.07,
+                  "atkMult": 2.07,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "perfume_banshee",
+                  "hpMult": 2.07,
+                  "atkMult": 2.07,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1000,
+            "gems": 0,
+            "items": [
+              {
+                "id": "giftcard_token",
+                "count": 23
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_mall_madness_st06",
+          "stageNumber": 6,
+          "name": "THE ANCHOR'S MIDNIGHT SALE",
+          "kind": "boss",
+          "background": "mall_event_6",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "fountain_nymph",
+                  "hpMult": 2.24,
+                  "atkMult": 2.24,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_mall_heart",
+                  "hpMult": 1.3,
+                  "atkMult": 1.4,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 20,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1120,
+            "gems": 40,
+            "items": [
+              {
+                "id": "giftcard_token",
+                "count": 26
+              }
+            ],
+            "firstClearBonus": "Title: 'Doorbuster'"
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_mall"
+    },
+    {
+      "id": "ev_gym_trial",
+      "name": "Free Trial at the Astral Gym",
+      "kind": "eventChapter",
+      "desc": "Seven days free. Cancel anytime. (\"Anytime\" not available in your dimension.)",
+      "theme": "gym_event",
+      "tokenId": "rep_token",
+      "stages": [
+        {
+          "id": "ev_gym_trial_st01",
+          "stageNumber": 1,
+          "name": "Day One: Optimism",
+          "kind": "normal",
+          "background": "gym_event_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "protein_ooze",
+                  "hpMult": 2,
+                  "atkMult": 2,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "nebula_lifter",
+                  "hpMult": 2,
+                  "atkMult": 2,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "cardio_comet",
+                  "hpMult": 2,
+                  "atkMult": 2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [
+              {
+                "id": "rep_token",
+                "count": 11
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_gym_trial_st02",
+          "stageNumber": 2,
+          "name": "Day Two: Regret",
+          "kind": "normal",
+          "background": "gym_event_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_front_desk",
+                  "hpMult": 2.24,
+                  "atkMult": 2.24,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "mirror_wall",
+                  "hpMult": 2.24,
+                  "atkMult": 2.24,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "nebula_lifter",
+                  "hpMult": 2.24,
+                  "atkMult": 2.24,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 16,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 0,
+            "items": [
+              {
+                "id": "rep_token",
+                "count": 14
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_gym_trial_st03",
+          "stageNumber": 3,
+          "name": "Day Three: The Void Stretches YOU",
+          "kind": "normal",
+          "background": "gym_event_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "star_spotter",
+                  "hpMult": 2.48,
+                  "atkMult": 2.48,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "yoga_void",
+                  "hpMult": 2.48,
+                  "atkMult": 2.48,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 0,
+            "items": [
+              {
+                "id": "rep_token",
+                "count": 17
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_gym_trial_st04",
+          "stageNumber": 4,
+          "name": "Day Four: Cardio Comet Chase",
+          "kind": "miniboss",
+          "background": "gym_event_4",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "protein_ooze",
+                  "hpMult": 2.72,
+                  "atkMult": 2.72,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "star_spotter",
+                  "hpMult": 2.72,
+                  "atkMult": 2.72,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 14,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 880,
+            "gems": 15,
+            "items": [
+              {
+                "id": "rep_token",
+                "count": 20
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_gym_trial_st05",
+          "stageNumber": 5,
+          "name": "DAY FIVE: FRONT DESK FRACAS",
+          "kind": "normal",
+          "background": "gym_event_5",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "star_spotter",
+                  "hpMult": 2.96,
+                  "atkMult": 2.96,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "protein_ooze",
+                  "hpMult": 2.96,
+                  "atkMult": 2.96,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "yoga_void",
+                  "hpMult": 2.96,
+                  "atkMult": 2.96,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 19,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1000,
+            "gems": 0,
+            "items": [
+              {
+                "id": "rep_token",
+                "count": 23
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_gym_trial_st06",
+          "stageNumber": 6,
+          "name": "Day Six: Mirror Match",
+          "kind": "normal",
+          "background": "gym_event_6",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "cardio_comet",
+                  "hpMult": 3.2,
+                  "atkMult": 3.2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 16,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1120,
+            "gems": 0,
+            "items": [
+              {
+                "id": "rep_token",
+                "count": 26
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_gym_trial_st07",
+          "stageNumber": 7,
+          "name": "DAY SEVEN: ARM DAY ETERNAL",
+          "kind": "boss",
+          "background": "gym_event_7",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "star_spotter",
+                  "hpMult": 3.44,
+                  "atkMult": 3.44,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_gainz_titan",
+                  "hpMult": 1.5,
+                  "atkMult": 2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 21,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1240,
+            "gems": 40,
+            "items": [
+              {
+                "id": "rep_token",
+                "count": 29
+              }
+            ],
+            "firstClearBonus": "Title: 'Swole Adjacent'"
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_gym"
+    },
+    {
+      "id": "ev_snail_derby",
+      "name": "The Grand Snail Derby",
+      "kind": "eventChapter",
+      "desc": "The meadow's deceptively fast snails hold their annual race. Betting is legal. Survival is optional.",
+      "theme": "derby_event",
+      "tokenId": "derby_ticket",
+      "stages": [
+        {
+          "id": "ev_snail_derby_st01",
+          "stageNumber": 1,
+          "name": "Qualifying Laps",
+          "kind": "normal",
+          "background": "derby_event_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "slime_red",
+                  "hpMult": 1.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "hr_butterfly",
+                  "hpMult": 1.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "hr_butterfly",
+                  "hpMult": 1.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [
+              {
+                "id": "derby_ticket",
+                "count": 11
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_snail_derby_st02",
+          "stageNumber": 2,
+          "name": "The Slippery Straightaway",
+          "kind": "normal",
+          "background": "derby_event_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "hr_butterfly",
+                  "hpMult": 1.34,
+                  "atkMult": 1.34,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "slime_green",
+                  "hpMult": 1.34,
+                  "atkMult": 1.34,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 16,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 0,
+            "items": [
+              {
+                "id": "derby_ticket",
+                "count": 14
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_snail_derby_st03",
+          "stageNumber": 3,
+          "name": "Hairpin at Half Speed",
+          "kind": "miniboss",
+          "background": "derby_event_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "slime_green",
+                  "hpMult": 1.49,
+                  "atkMult": 1.49,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "hr_butterfly",
+                  "hpMult": 1.49,
+                  "atkMult": 1.49,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 15,
+            "items": [
+              {
+                "id": "derby_ticket",
+                "count": 17
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_snail_derby_st04",
+          "stageNumber": 4,
+          "name": "The Final Furlong (Eventually)",
+          "kind": "normal",
+          "background": "derby_event_4",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "slime_blue",
+                  "hpMult": 1.63,
+                  "atkMult": 1.63,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 14,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 880,
+            "gems": 0,
+            "items": [
+              {
+                "id": "derby_ticket",
+                "count": 20
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_snail_derby_st05",
+          "stageNumber": 5,
+          "name": "THE CHAMPION SNAIL",
+          "kind": "boss",
+          "background": "derby_event_5",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "slime_green",
+                  "hpMult": 1.78,
+                  "atkMult": 1.78,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "meadow_snail",
+                  "hpMult": 2.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 19,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1000,
+            "gems": 40,
+            "items": [
+              {
+                "id": "derby_ticket",
+                "count": 23
+              }
+            ],
+            "firstClearBonus": "Title: 'Photo Finish'"
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_derby"
+    },
+    {
+      "id": "ev_permit_amnesty",
+      "name": "Permit Amnesty Weekend",
+      "kind": "eventChapter",
+      "desc": "The Darkwood forgives all expired permits. The catch: you must fight your way to the forgiveness desk.",
+      "theme": "amnesty_event",
+      "tokenId": "amnesty_stamp",
+      "stages": [
+        {
+          "id": "ev_permit_amnesty_st01",
+          "stageNumber": 1,
+          "name": "The Forgiveness Queue",
+          "kind": "normal",
+          "background": "amnesty_event_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "stamp_beetle",
+                  "hpMult": 1.3,
+                  "atkMult": 1.3,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 11,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [
+              {
+                "id": "amnesty_stamp",
+                "count": 11
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_permit_amnesty_st02",
+          "stageNumber": 2,
+          "name": "Amnesty Antechamber",
+          "kind": "normal",
+          "background": "amnesty_event_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "bramble_lawyer",
+                  "hpMult": 1.46,
+                  "atkMult": 1.46,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 12,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 0,
+            "items": [
+              {
+                "id": "amnesty_stamp",
+                "count": 14
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_permit_amnesty_st03",
+          "stageNumber": 3,
+          "name": "The Waived Fees Wilds",
+          "kind": "miniboss",
+          "background": "amnesty_event_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "file_fungus",
+                  "hpMult": 1.61,
+                  "atkMult": 1.61,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "owl_auditor",
+                  "hpMult": 1.61,
+                  "atkMult": 1.61,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 15,
+            "items": [
+              {
+                "id": "amnesty_stamp",
+                "count": 17
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_permit_amnesty_st04",
+          "stageNumber": 4,
+          "name": "DOREEN'S DOUBLE SHIFT",
+          "kind": "normal",
+          "background": "amnesty_event_4",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "bramble_lawyer",
+                  "hpMult": 1.77,
+                  "atkMult": 1.77,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "treant_clerk",
+                  "hpMult": 1.77,
+                  "atkMult": 1.77,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 14,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 880,
+            "gems": 0,
+            "items": [
+              {
+                "id": "amnesty_stamp",
+                "count": 20
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_permit_amnesty_st05",
+          "stageNumber": 5,
+          "name": "The Final Form",
+          "kind": "normal",
+          "background": "amnesty_event_5",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "permit_sprite",
+                  "hpMult": 1.92,
+                  "atkMult": 1.92,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1000,
+            "gems": 0,
+            "items": [
+              {
+                "id": "amnesty_stamp",
+                "count": 23
+              }
+            ],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_permit_amnesty_st06",
+          "stageNumber": 6,
+          "name": "BARKIMEDES SIGNS OFF",
+          "kind": "boss",
+          "background": "amnesty_event_6",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "bramble_lawyer",
+                  "hpMult": 2.08,
+                  "atkMult": 2.08,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_barkimedes",
+                  "hpMult": 1.2,
+                  "atkMult": 1.3,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 20,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1120,
+            "gems": 40,
+            "items": [
+              {
+                "id": "amnesty_stamp",
+                "count": 26
+              }
+            ],
+            "firstClearBonus": "Title: 'Fully Permitted'"
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_amnesty"
+    },
+    {
+      "id": "ev_weekly_ore",
+      "name": "Mount Grumble Ore Runs",
+      "kind": "materialDungeon",
+      "desc": "The dwarves (now fairly paid) open the mines on weekends. Ore for everyone who survives the goats.",
+      "theme": "ore_dungeon",
+      "tokenId": "",
+      "stages": [
+        {
+          "id": "ev_weekly_ore_st01",
+          "stageNumber": 1,
+          "name": "Surface Seams",
+          "kind": "normal",
+          "background": "ore_dungeon_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "grumble_goat",
+                  "hpMult": 1.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "coal_bat",
+                  "hpMult": 1.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 11,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_weekly_ore_st02",
+          "stageNumber": 2,
+          "name": "The Middle Shafts",
+          "kind": "miniboss",
+          "background": "ore_dungeon_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "coal_bat",
+                  "hpMult": 1.34,
+                  "atkMult": 1.34,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "picket_dwarf",
+                  "hpMult": 1.34,
+                  "atkMult": 1.34,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 16,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 15,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_weekly_ore_st03",
+          "stageNumber": 3,
+          "name": "THE MOTHERLODE",
+          "kind": "boss",
+          "background": "ore_dungeon_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "picket_dwarf",
+                  "hpMult": 1.49,
+                  "atkMult": 1.49,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "forge_golem",
+                  "hpMult": 1.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 40,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_ore"
+    },
+    {
+      "id": "ev_daily_skillbooks",
+      "name": "The Library After Hours",
+      "kind": "materialDungeon",
+      "desc": "Goth Librarian Morticia leaves the skill-tome wing unlocked nightly. This is either kindness or a trap.",
+      "theme": "library_dungeon",
+      "tokenId": "",
+      "stages": [
+        {
+          "id": "ev_daily_skillbooks_st01",
+          "stageNumber": 1,
+          "name": "The Quiet Section",
+          "kind": "normal",
+          "background": "library_dungeon_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "queue_skeleton",
+                  "hpMult": 1.5,
+                  "atkMult": 1.5,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 11,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_daily_skillbooks_st02",
+          "stageNumber": 2,
+          "name": "The Quieter Section",
+          "kind": "miniboss",
+          "background": "library_dungeon_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "ticket_ghoul",
+                  "hpMult": 1.68,
+                  "atkMult": 1.68,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "counter_wight",
+                  "hpMult": 1.68,
+                  "atkMult": 1.68,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 12,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 15,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_daily_skillbooks_st03",
+          "stageNumber": 3,
+          "name": "SILENCE, ENFORCED",
+          "kind": "boss",
+          "background": "library_dungeon_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "ticket_ghoul",
+                  "hpMult": 1.86,
+                  "atkMult": 1.86,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_registrar",
+                  "hpMult": 1.5,
+                  "atkMult": 1.5,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 40,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_skillbooks"
+    },
+    {
+      "id": "ev_awakening_advanced",
+      "name": "The Radiant Core: Deep Custody",
+      "kind": "awakeningStage",
+      "desc": "The custodians' inner sanctum. More cores, more concern, more mop-based violence.",
+      "theme": "sanctum_deep",
+      "tokenId": "",
+      "stages": [
+        {
+          "id": "ev_awakening_advanced_st01",
+          "stageNumber": 1,
+          "name": "The Buffed Floors",
+          "kind": "normal",
+          "background": "sanctum_deep_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "core_golem",
+                  "hpMult": 2.2,
+                  "atkMult": 2.2,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "sentinel_water",
+                  "hpMult": 2.2,
+                  "atkMult": 2.2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_awakening_advanced_st02",
+          "stageNumber": 2,
+          "name": "Supply Closet of Secrets",
+          "kind": "miniboss",
+          "background": "sanctum_deep_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "core_golem",
+                  "hpMult": 2.46,
+                  "atkMult": 2.46,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "core_golem",
+                  "hpMult": 2.46,
+                  "atkMult": 2.46,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 12,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 15,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_awakening_advanced_st03",
+          "stageNumber": 3,
+          "name": "THE DEEP CLEAN",
+          "kind": "boss",
+          "background": "sanctum_deep_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "sentinel_water",
+                  "hpMult": 2.73,
+                  "atkMult": 2.73,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "sentinel_dark",
+                  "hpMult": 2.2,
+                  "atkMult": 2.2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 40,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_awakening_deep"
+    },
+    {
+      "id": "ev_tower_spreadsheet",
+      "name": "The Tower of Tabs",
+      "kind": "challengeTower",
+      "desc": "Ten sheets. Each tab worse than the last. The final tab has been hidden since creation.",
+      "theme": "tab_tower",
+      "tokenId": "",
+      "stages": [
+        {
+          "id": "ev_tower_spreadsheet_st01",
+          "stageNumber": 1,
+          "name": "Sheet1",
+          "kind": "normal",
+          "background": "tab_tower_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "div_zero_specter",
+                  "hpMult": 1.8,
+                  "atkMult": 1.8,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "div_zero_specter",
+                  "hpMult": 1.8,
+                  "atkMult": 1.8,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 11,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_spreadsheet_st02",
+          "stageNumber": 2,
+          "name": "Sheet1 (2)",
+          "kind": "normal",
+          "background": "tab_tower_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "cell_sprite",
+                  "hpMult": 2.02,
+                  "atkMult": 2.02,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "cell_sprite",
+                  "hpMult": 2.02,
+                  "atkMult": 2.02,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "merge_horror",
+                  "hpMult": 2.02,
+                  "atkMult": 2.02,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 16,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_spreadsheet_st03",
+          "stageNumber": 3,
+          "name": "Sheet1 (2) copy",
+          "kind": "normal",
+          "background": "tab_tower_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "div_zero_specter",
+                  "hpMult": 2.23,
+                  "atkMult": 2.23,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "merge_horror",
+                  "hpMult": 2.23,
+                  "atkMult": 2.23,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_pivot_dragon",
+                  "hpMult": 2.23,
+                  "atkMult": 2.23,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_spreadsheet_st04",
+          "stageNumber": 4,
+          "name": "Sheet1 (2) copy FINAL",
+          "kind": "normal",
+          "background": "tab_tower_4",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "merge_horror",
+                  "hpMult": 2.45,
+                  "atkMult": 2.45,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 14,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 880,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_spreadsheet_st05",
+          "stageNumber": 5,
+          "name": "PIVOT POINT",
+          "kind": "miniboss",
+          "background": "tab_tower_5",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "circular_ref",
+                  "hpMult": 2.66,
+                  "atkMult": 2.66,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "cell_sprite",
+                  "hpMult": 2.66,
+                  "atkMult": 2.66,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1000,
+            "gems": 15,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_spreadsheet_st06",
+          "stageNumber": 6,
+          "name": "Sheet_old_DO_NOT_USE",
+          "kind": "normal",
+          "background": "tab_tower_6",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "macro_gremlin",
+                  "hpMult": 2.88,
+                  "atkMult": 2.88,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "div_zero_specter",
+                  "hpMult": 2.88,
+                  "atkMult": 2.88,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "macro_gremlin",
+                  "hpMult": 2.88,
+                  "atkMult": 2.88,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 20,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1120,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_spreadsheet_st07",
+          "stageNumber": 7,
+          "name": "The Hidden Tab",
+          "kind": "normal",
+          "background": "tab_tower_7",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_pivot_dragon",
+                  "hpMult": 3.1,
+                  "atkMult": 3.1,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "boss_autosave",
+                  "hpMult": 3.1,
+                  "atkMult": 3.1,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1240,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_spreadsheet_st08",
+          "stageNumber": 8,
+          "name": "Untitled Spreadsheet",
+          "kind": "normal",
+          "background": "tab_tower_8",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "vlookup_hound",
+                  "hpMult": 3.31,
+                  "atkMult": 3.31,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "boss_pivot_dragon",
+                  "hpMult": 3.31,
+                  "atkMult": 3.31,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "div_zero_specter",
+                  "hpMult": 3.31,
+                  "atkMult": 3.31,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 22,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1360,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_spreadsheet_st09",
+          "stageNumber": 9,
+          "name": "DID YOU SAVE?",
+          "kind": "normal",
+          "background": "tab_tower_9",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "circular_ref",
+                  "hpMult": 3.53,
+                  "atkMult": 3.53,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 19,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1480,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_spreadsheet_st10",
+          "stageNumber": 10,
+          "name": "THE FORMULA BAR",
+          "kind": "boss",
+          "background": "tab_tower_10",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "macro_gremlin",
+                  "hpMult": 3.74,
+                  "atkMult": 3.74,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_formula_one",
+                  "hpMult": 1.8,
+                  "atkMult": 1.8,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 24,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1600,
+            "gems": 40,
+            "items": [],
+            "firstClearBonus": "Title: 'Power User'"
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_tab_tower"
+    },
+    {
+      "id": "ev_tower_hold",
+      "name": "The Tower of Eternal Hold",
+      "kind": "challengeTower",
+      "desc": "Ten floors of Customer Service Hell's finest. The elevator music is a boss mechanic.",
+      "theme": "hold_tower",
+      "tokenId": "",
+      "stages": [
+        {
+          "id": "ev_tower_hold_st01",
+          "stageNumber": 1,
+          "name": "Your Call Matters (Floor 1)",
+          "kind": "normal",
+          "background": "hold_tower_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "refund_wraith",
+                  "hpMult": 1.9,
+                  "atkMult": 1.9,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "refund_wraith",
+                  "hpMult": 1.9,
+                  "atkMult": 1.9,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_hold_st02",
+          "stageNumber": 2,
+          "name": "Position In Queue: 9",
+          "kind": "normal",
+          "background": "hold_tower_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "survey_succubus",
+                  "hpMult": 2.13,
+                  "atkMult": 2.13,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "headset_imp",
+                  "hpMult": 2.13,
+                  "atkMult": 2.13,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 12,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_hold_st03",
+          "stageNumber": 3,
+          "name": "Position In Queue: 8",
+          "kind": "normal",
+          "background": "hold_tower_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "warranty_demon",
+                  "hpMult": 2.36,
+                  "atkMult": 2.36,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 13,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_hold_st04",
+          "stageNumber": 4,
+          "name": "Position In Queue: 8 (Again)",
+          "kind": "normal",
+          "background": "hold_tower_4",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "chatbot_golem",
+                  "hpMult": 2.58,
+                  "atkMult": 2.58,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "ticket_hydra",
+                  "hpMult": 2.58,
+                  "atkMult": 2.58,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 18,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 880,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_hold_st05",
+          "stageNumber": 5,
+          "name": "TIER 9 CHECKPOINT",
+          "kind": "miniboss",
+          "background": "hold_tower_5",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_kpi_beast",
+                  "hpMult": 2.81,
+                  "atkMult": 2.81,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "boss_kpi_beast",
+                  "hpMult": 2.81,
+                  "atkMult": 2.81,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "chatbot_golem",
+                  "hpMult": 2.81,
+                  "atkMult": 2.81,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 19,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1000,
+            "gems": 15,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_hold_st06",
+          "stageNumber": 6,
+          "name": "The Survey Gauntlet",
+          "kind": "normal",
+          "background": "hold_tower_6",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "refund_wraith",
+                  "hpMult": 3.04,
+                  "atkMult": 3.04,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 16,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1120,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_hold_st07",
+          "stageNumber": 7,
+          "name": "Deflection Deck",
+          "kind": "normal",
+          "background": "hold_tower_7",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_kpi_beast",
+                  "hpMult": 3.27,
+                  "atkMult": 3.27,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_tier9_shark",
+                  "hpMult": 3.27,
+                  "atkMult": 3.27,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 21,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1240,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_hold_st08",
+          "stageNumber": 8,
+          "name": "The Churn Floor",
+          "kind": "normal",
+          "background": "hold_tower_8",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_tier9_shark",
+                  "hpMult": 3.5,
+                  "atkMult": 3.5,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "refund_wraith",
+                  "hpMult": 3.5,
+                  "atkMult": 3.5,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 22,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1360,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_hold_st09",
+          "stageNumber": 9,
+          "name": "KPI PENTHOUSE",
+          "kind": "normal",
+          "background": "hold_tower_9",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "headset_imp",
+                  "hpMult": 3.72,
+                  "atkMult": 3.72,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "refund_wraith",
+                  "hpMult": 3.72,
+                  "atkMult": 3.72,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 23,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1480,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_tower_hold_st10",
+          "stageNumber": 10,
+          "name": "THE PRINCE'S BACKLOG",
+          "kind": "boss",
+          "background": "hold_tower_10",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "headset_imp",
+                  "hpMult": 3.95,
+                  "atkMult": 3.95,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_complaints_prince",
+                  "hpMult": 1.9,
+                  "atkMult": 1.9,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 24,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 1600,
+            "gems": 40,
+            "items": [],
+            "firstClearBonus": "Title: 'Fully Resolved'"
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_hold_tower"
+    },
+    {
+      "id": "ev_bossrush_sovereigns",
+      "name": "Boss Rush: Sovereigns of Silliness",
+      "kind": "bossRush",
+      "desc": "The Hold Queen, the Dead Letter King, the Moonlord, and the Grand Gateau. Royalty, rapid-fire.",
+      "theme": "sovereign_rush",
+      "tokenId": "",
+      "stages": [
+        {
+          "id": "ev_bossrush_sovereigns_st01",
+          "stageNumber": 1,
+          "name": "THE HOLD QUEEN",
+          "kind": "normal",
+          "background": "sovereign_rush_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_hold_queen",
+                  "hpMult": 1.4,
+                  "atkMult": 1.4,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 11,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_bossrush_sovereigns_st02",
+          "stageNumber": 2,
+          "name": "THE DEAD LETTER KING",
+          "kind": "miniboss",
+          "background": "sovereign_rush_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_dead_letter",
+                  "hpMult": 1.57,
+                  "atkMult": 1.57,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_moonlord",
+                  "hpMult": 1.57,
+                  "atkMult": 1.57,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 16,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 15,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_bossrush_sovereigns_st03",
+          "stageNumber": 3,
+          "name": "THE MOONLORD",
+          "kind": "normal",
+          "background": "sovereign_rush_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_hold_queen",
+                  "hpMult": 1.74,
+                  "atkMult": 1.74,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "boss_dead_letter",
+                  "hpMult": 1.74,
+                  "atkMult": 1.74,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 13,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_bossrush_sovereigns_st04",
+          "stageNumber": 4,
+          "name": "THE GRAND GATEAU",
+          "kind": "boss",
+          "background": "sovereign_rush_4",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_moonlord",
+                  "hpMult": 1.9,
+                  "atkMult": 1.9,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_grand_gateau",
+                  "hpMult": 1.4,
+                  "atkMult": 1.4,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 18,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 880,
+            "gems": 40,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_sovereign_rush"
+    },
+    {
+      "id": "ev_bossrush_cosmic",
+      "name": "Boss Rush: The Cosmic Escalation",
+      "kind": "bossRush",
+      "desc": "The endgame bosses, back to back to back. For heroes whose quarterly numbers are IMMACULATE.",
+      "theme": "cosmic_rush",
+      "tokenId": "",
+      "stages": [
+        {
+          "id": "ev_bossrush_cosmic_st01",
+          "stageNumber": 1,
+          "name": "THE CONTRACT",
+          "kind": "normal",
+          "background": "cosmic_rush_1",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_membership",
+                  "hpMult": 1.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "boss_membership",
+                  "hpMult": 1.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_formula_one",
+                  "hpMult": 1.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 15,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 520,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_bossrush_cosmic_st02",
+          "stageNumber": 2,
+          "name": "THE UNDER-UNDER-SECRETARY",
+          "kind": "miniboss",
+          "background": "cosmic_rush_2",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_formula_one",
+                  "hpMult": 1.34,
+                  "atkMult": 1.34,
+                  "countdownOverride": -1
+                },
+                {
+                  "enemyId": "boss_formula_one",
+                  "hpMult": 1.34,
+                  "atkMult": 1.34,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_membership",
+                  "hpMult": 1.34,
+                  "atkMult": 1.34,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 16,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 640,
+            "gems": 15,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_bossrush_cosmic_st03",
+          "stageNumber": 3,
+          "name": "THE FIRST FORMULA",
+          "kind": "normal",
+          "background": "cosmic_rush_3",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_membership",
+                  "hpMult": 1.49,
+                  "atkMult": 1.49,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_membership",
+                  "hpMult": 1.49,
+                  "atkMult": 1.49,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.5,
+          "resolutionsStar": 17,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 760,
+            "gems": 0,
+            "items": [],
+            "firstClearBonus": ""
+          },
+          "staminaCost": 0
+        },
+        {
+          "id": "ev_bossrush_cosmic_st04",
+          "stageNumber": 4,
+          "name": "THE CEO OF EVERYTHING",
+          "kind": "boss",
+          "background": "cosmic_rush_4",
+          "waves": [
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_undersecretary",
+                  "hpMult": 1.63,
+                  "atkMult": 1.63,
+                  "countdownOverride": -1
+                }
+              ]
+            },
+            {
+              "enemies": [
+                {
+                  "enemyId": "boss_ceo_everything",
+                  "hpMult": 1.2,
+                  "atkMult": 1.2,
+                  "countdownOverride": -1
+                }
+              ]
+            }
+          ],
+          "modifiers": [],
+          "hpThresholdStar": 0.4,
+          "resolutionsStar": 18,
+          "dialogueBefore": "",
+          "dialogueAfter": "",
+          "rewards": {
+            "gold": 880,
+            "gems": 40,
+            "items": [],
+            "firstClearBonus": "Title: 'Cosmically Reviewed'"
+          },
+          "staminaCost": 0
+        }
+      ],
+      "rewardTableId": "rt_cosmic_rush"
+    }
+  ]
+}

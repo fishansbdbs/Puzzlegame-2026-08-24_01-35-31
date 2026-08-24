@@ -1,0 +1,264 @@
+{
+  "enemies": [
+    {
+      "id": "headset_imp",
+      "name": "Headset Imp",
+      "element": "fire",
+      "boss": false,
+      "hp": 24480,
+      "atk": 3850,
+      "countdown": 3,
+      "artRef": "enemy_headset_imp",
+      "flavor": "Thank you for calling the Abyss. This call may be recorded for eternal purposes.",
+      "actions": [
+        {
+          "name": "Scripted Response",
+          "desc": "A damage template, personalized with your name.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Hold Transfer",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "ticket_hydra",
+      "name": "Ticket Hydra",
+      "element": "dark",
+      "boss": false,
+      "hp": 35360,
+      "atk": 3850,
+      "countdown": 3,
+      "artRef": "enemy_ticket_hydra",
+      "flavor": "Close one ticket, two more open. This is not a metaphor. It is a hydra.",
+      "actions": [
+        {
+          "name": "Duplicate Issue",
+          "desc": "A big two-headed strike.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Reopen",
+          "desc": "Heals itself. The issue persists.",
+          "type": "heal",
+          "amount": 4000
+        }
+      ]
+    },
+    {
+      "id": "survey_succubus",
+      "name": "Survey Fiend",
+      "element": "dark",
+      "boss": false,
+      "hp": 24480,
+      "atk": 4235,
+      "countdown": 3,
+      "artRef": "enemy_survey_succubus",
+      "flavor": "On a scale of 1 to 10, how likely are you to recommend eternal damnation to a friend?",
+      "actions": [
+        {
+          "name": "NPS Drain",
+          "desc": "Poisons 3 orbs with feedback requests.",
+          "type": "poison",
+          "count": 3
+        },
+        {
+          "name": "Follow-Up",
+          "desc": "Just checking in. Violently.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "chatbot_golem",
+      "name": "Chatbot Golem (Legacy)",
+      "element": "water",
+      "boss": false,
+      "hp": 32640,
+      "atk": 3465,
+      "countdown": 3,
+      "artRef": "enemy_chatbot_golem",
+      "flavor": "I'm sorry, I didn't understand that. I'm sorry, I didn't understand that. I'm sorry—",
+      "actions": [
+        {
+          "name": "Did Not Understand",
+          "desc": "Converts 3 orbs to Water. Rephrasing...",
+          "type": "convert",
+          "count": 3,
+          "color": "water"
+        },
+        {
+          "name": "Canned Reply",
+          "desc": "CLANG. Have you tried our FAQ?",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "refund_wraith",
+      "name": "Refund Denial Wraith",
+      "element": "dark",
+      "boss": false,
+      "hp": 27200,
+      "atk": 4235,
+      "countdown": 3,
+      "artRef": "enemy_refund_wraith",
+      "flavor": "Your refund has been processed. It has been processed into the void.",
+      "actions": [
+        {
+          "name": "Store Credit Curse",
+          "desc": "Locks 3 orbs as store credit.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Policy Citation",
+          "desc": "Section 4: no.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "warranty_demon",
+      "name": "Extended Warranty Demon",
+      "element": "fire",
+      "boss": false,
+      "hp": 27200,
+      "atk": 3850,
+      "countdown": 3,
+      "artRef": "enemy_warranty_demon",
+      "flavor": "Has been trying to reach you about your soul's extended warranty.",
+      "actions": [
+        {
+          "name": "Robocall",
+          "desc": "A big automated blast.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Coverage Pitch",
+          "desc": "Converts 2 orbs to Fire.",
+          "type": "convert",
+          "count": 2,
+          "color": "fire"
+        }
+      ]
+    },
+    {
+      "id": "boss_tier9_shark",
+      "name": "Tier 9 Support Archfiend",
+      "element": "fire",
+      "boss": true,
+      "hp": 272000,
+      "atk": 5390,
+      "countdown": 3,
+      "artRef": "enemy_boss_tier9_shark",
+      "flavor": "Nine escalations deep. Wields the Forbidden Knowledge: the supervisor override code.",
+      "actions": [
+        {
+          "name": "Override Code",
+          "desc": "A big forbidden keystroke.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Ticket Storm",
+          "desc": "Locks 4 orbs in the queue.",
+          "type": "lock",
+          "count": 4
+        },
+        {
+          "name": "Brimstone Hold Music",
+          "desc": "Converts 3 orbs to Fire.",
+          "type": "convert",
+          "count": 3,
+          "color": "fire"
+        }
+      ]
+    },
+    {
+      "id": "boss_kpi_beast",
+      "name": "The KPI Beast",
+      "element": "light",
+      "boss": true,
+      "hp": 299200,
+      "atk": 5390,
+      "countdown": 2,
+      "artRef": "enemy_boss_kpi_beast",
+      "flavor": "Feeds on metrics. Average handle time, first call resolution, and your dwindling hope.",
+      "actions": [
+        {
+          "name": "Metric Maul",
+          "desc": "A big data-driven strike.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Dashboard Glare",
+          "desc": "Converts 4 orbs to Light. The numbers are RED.",
+          "type": "convert",
+          "count": 4,
+          "color": "light"
+        },
+        {
+          "name": "Handle Time",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "boss_complaints_prince",
+      "name": "The Prince of Unresolved Tickets",
+      "element": "dark",
+      "boss": true,
+      "hp": 707200,
+      "atk": 6160,
+      "countdown": 3,
+      "artRef": "enemy_boss_complaints_prince",
+      "flavor": "Third in line to the infernal throne. Rules a backlog stretching past the heat death of patience.",
+      "actions": [
+        {
+          "name": "Backlog Avalanche",
+          "desc": "Massive damage. Every unresolved case at once.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Eternal Hold",
+          "desc": "Reduces move time by 3 seconds.",
+          "type": "timerDown",
+          "amount": 3
+        },
+        {
+          "name": "Case Closed (Lie)",
+          "desc": "Heals himself. The case was NOT closed.",
+          "type": "heal",
+          "amount": 10000
+        },
+        {
+          "name": "Soul Ticket",
+          "desc": "Binds a party member to a case number.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Infernal Merge",
+          "desc": "Converts 3 orbs to Dark.",
+          "type": "convert",
+          "count": 3,
+          "color": "dark"
+        }
+      ]
+    }
+  ]
+}

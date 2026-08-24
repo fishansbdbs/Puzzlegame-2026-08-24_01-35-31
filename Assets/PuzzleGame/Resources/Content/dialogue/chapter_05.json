@@ -1,0 +1,102 @@
+{
+  "scenes": [
+    {
+      "id": "ch05_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Crystal Cavern HR. All hiring for the entire kingdom happens here. The paperwork is beautiful AND sharp."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "Why are we here?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Someone classified you as \"contractor\". We're getting you benefits, hero. Even if we have to fight the dental plan. ESPECIALLY the dental plan."
+        }
+      ]
+    },
+    {
+      "id": "ch05_mini1",
+      "lines": [
+        {
+          "speaker": "Benefits Basilisk",
+          "portrait": "enemy_boss_benefits_basilisk",
+          "side": "right",
+          "text": "Sssso. You wish to enroll. Have you read the plan documentsss?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Nobody reads the plan documents."
+        },
+        {
+          "speaker": "Benefits Basilisk",
+          "portrait": "enemy_boss_benefits_basilisk",
+          "side": "right",
+          "text": "CORRECT. Those who read... are STONE. You may yet ssssurvive. Open enrollment... hasss begun."
+        }
+      ]
+    },
+    {
+      "id": "ch05_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The corner office. It has no corners. It is a geode the size of a house, wearing a blazer."
+        },
+        {
+          "speaker": "VP of Vibes",
+          "portrait": "enemy_boss_vp_vibes",
+          "side": "right",
+          "text": "Heyyy, team! Love the energy. Love it. Quick vibe check before I approve your paperwork?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Our vibes are excellent and fully documented!"
+        },
+        {
+          "speaker": "VP of Vibes",
+          "portrait": "enemy_boss_vp_vibes",
+          "side": "right",
+          "text": "Mmm. See, I'm getting more of a \"hostile takeover\" energy? Which, respect. Let's workshop it. WITH VIOLENCE."
+        }
+      ]
+    },
+    {
+      "id": "ch05_boss_after",
+      "lines": [
+        {
+          "speaker": "VP of Vibes",
+          "portrait": "enemy_boss_vp_vibes",
+          "side": "right",
+          "text": "Okay... wow... big feelings today... approving... everything..."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Full benefits! Retroactive! Hero, you have DENTAL. You can't be stopped now."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Onward. I want to use this dental plan on something."
+        }
+      ]
+    }
+  ]
+}

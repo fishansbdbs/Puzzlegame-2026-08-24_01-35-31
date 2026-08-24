@@ -1,0 +1,261 @@
+{
+  "enemies": [
+    {
+      "id": "queue_skeleton",
+      "name": "Queue Skeleton",
+      "element": "dark",
+      "boss": false,
+      "hp": 17600,
+      "atk": 2530,
+      "countdown": 3,
+      "artRef": "enemy_queue_skeleton",
+      "flavor": "Died in line. Stayed in line. Will defend its place in line.",
+      "actions": [
+        {
+          "name": "Hold My Spot",
+          "desc": "A bony defense of position.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Rattle Forward",
+          "desc": "The line moves one inch. A big hit celebrates.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "ticket_ghoul",
+      "name": "Take-a-Number Ghoul",
+      "element": "dark",
+      "boss": false,
+      "hp": 15840,
+      "atk": 2530,
+      "countdown": 3,
+      "artRef": "enemy_ticket_ghoul",
+      "flavor": "Dispenses tickets. Current number: 4. Now serving: ∞.",
+      "actions": [
+        {
+          "name": "Number Dispense",
+          "desc": "Locks 3 orbs behind ticket 8,412.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Paper Swipe",
+          "desc": "A shuffling strike.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "photo_wisp",
+      "name": "License Photo Wisp",
+      "element": "light",
+      "boss": false,
+      "hp": 14080,
+      "atk": 2783,
+      "countdown": 3,
+      "artRef": "enemy_photo_wisp",
+      "flavor": "Takes your photo at the worst possible moment. Every moment is the worst possible moment.",
+      "actions": [
+        {
+          "name": "Flash",
+          "desc": "A blinding candid.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Retake Denied",
+          "desc": "Converts 2 orbs to Light.",
+          "type": "convert",
+          "count": 2,
+          "color": "light"
+        }
+      ]
+    },
+    {
+      "id": "form_mummy",
+      "name": "Form-Wrapped Mummy",
+      "element": "nature",
+      "boss": false,
+      "hp": 22880,
+      "atk": 2277,
+      "countdown": 3,
+      "artRef": "enemy_form_mummy",
+      "flavor": "Wrapped not in bandages, but in forms. Every form filled out incorrectly.",
+      "actions": [
+        {
+          "name": "Red Tape Wrap",
+          "desc": "Locks 3 orbs in triplicate.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Papyrus Cut",
+          "desc": "The most ancient of paper cuts.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "vision_test_beholder",
+      "name": "Vision Test Beholder",
+      "element": "water",
+      "boss": false,
+      "hp": 19360,
+      "atk": 2530,
+      "countdown": 3,
+      "artRef": "enemy_vision_test_beholder",
+      "flavor": "Reads the bottom row of every chart. You cannot. It judges you.",
+      "actions": [
+        {
+          "name": "Eye Exam",
+          "desc": "Poisons 2 orbs. Read the bottom row. READ IT.",
+          "type": "poison",
+          "count": 2
+        },
+        {
+          "name": "Glare",
+          "desc": "Eleven eyes of disappointment.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "counter_wight",
+      "name": "Window 4 Wight",
+      "element": "dark",
+      "boss": false,
+      "hp": 17600,
+      "atk": 2783,
+      "countdown": 3,
+      "artRef": "enemy_counter_wight",
+      "flavor": "Closes its window the moment you reach it. Has done so for six centuries.",
+      "actions": [
+        {
+          "name": "Window Closed",
+          "desc": "Places a NEXT WINDOW blocker.",
+          "type": "block",
+          "count": 1
+        },
+        {
+          "name": "Stamp of Doom",
+          "desc": "DENIED, with force.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_registrar",
+      "name": "The Registrar of Souls",
+      "element": "dark",
+      "boss": true,
+      "hp": 176000,
+      "atk": 3542,
+      "countdown": 3,
+      "artRef": "enemy_boss_registrar",
+      "flavor": "Knows your legal name. All of them. Even the embarrassing middle one.",
+      "actions": [
+        {
+          "name": "Name Check",
+          "desc": "A big, humiliating roll call.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Records Hold",
+          "desc": "Locks 4 orbs pending verification.",
+          "type": "lock",
+          "count": 4
+        },
+        {
+          "name": "Archive Dust",
+          "desc": "Poisons 3 orbs.",
+          "type": "poison",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_road_test",
+      "name": "The Road Test Revenant",
+      "element": "fire",
+      "boss": true,
+      "hp": 193600,
+      "atk": 3542,
+      "countdown": 2,
+      "artRef": "enemy_boss_road_test",
+      "flavor": "Failed its own road test in life. Now it IS the road test.",
+      "actions": [
+        {
+          "name": "Parallel Park",
+          "desc": "A crushing maneuver between two objects. You are the objects.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Check Your Mirrors",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        },
+        {
+          "name": "Sudden Stop",
+          "desc": "Binds a party member at a phantom stop sign.",
+          "type": "bind",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_lich_clerk",
+      "name": "The Lich Clerk",
+      "element": "dark",
+      "boss": true,
+      "hp": 457600,
+      "atk": 4048,
+      "countdown": 3,
+      "artRef": "enemy_boss_lich_clerk",
+      "flavor": "His phylactery is a laminated ID badge. He cannot be destroyed, only transferred to another branch.",
+      "actions": [
+        {
+          "name": "NEXT.",
+          "desc": "Massive damage. It is finally your turn. You are not ready.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "System Down",
+          "desc": "Locks 5 orbs. The system is down. The system is ALWAYS down.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Lunch Break",
+          "desc": "Heals himself. Back in 30 minutes (eternal).",
+          "type": "heal",
+          "amount": 10000
+        },
+        {
+          "name": "Expired Stamp",
+          "desc": "Converts 3 orbs to Dark.",
+          "type": "convert",
+          "count": 3,
+          "color": "dark"
+        },
+        {
+          "name": "Come Back Tomorrow",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        }
+      ]
+    }
+  ]
+}
