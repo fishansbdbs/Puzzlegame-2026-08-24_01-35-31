@@ -135,6 +135,7 @@ namespace PuzzleGame.Core.Battle
                 Id = source.Id, DisplayName = source.DisplayName, Element = source.Element, BaseRarity = source.BaseRarity,
                 BaseStats = Clone(source.BaseStats), ActiveSkillId = source.ActiveSkillId, LeaderSkillId = source.LeaderSkillId,
                 PassiveId = source.PassiveId, Tags = Clone(source.Tags), LevelCurve = Clone(source.LevelCurve),
+                Ascension = Clone(source.Ascension),
                 Awakening = Clone(source.Awakening), BaseVisuals = Clone(source.BaseVisuals), AwakenedVisuals = Clone(source.AwakenedVisuals)
             };
         }
@@ -218,6 +219,32 @@ namespace PuzzleGame.Core.Battle
             var stats = source.StatsByLevel == null ? null : new StatBlock[source.StatsByLevel.Length];
             if (stats != null) for (var index = 0; index < stats.Length; index++) stats[index] = Clone(source.StatsByLevel[index]);
             return new ProgressionCurveData { MaxLevel = source.MaxLevel, ExperienceRequiredByLevel = source.ExperienceRequiredByLevel == null ? null : (int[])source.ExperienceRequiredByLevel.Clone(), StatsByLevel = stats };
+        }
+
+        private static AscensionConfigurationData Clone(AscensionConfigurationData source)
+        {
+            if (source == null) return null;
+            var ranks = source.Ranks == null ? null : new AscensionRankData[source.Ranks.Length];
+            if (ranks != null)
+            {
+                for (var index = 0; index < ranks.Length; index++)
+                {
+                    var rank = source.Ranks[index];
+                    ranks[index] = rank == null ? null : new AscensionRankData
+                    {
+                        Rank = rank.Rank,
+                        ActiveSkillPerformanceBonus = rank.ActiveSkillPerformanceBonus,
+                        PassivePerformanceBonus = rank.PassivePerformanceBonus,
+                        StatBonus = Clone(rank.StatBonus)
+                    };
+                }
+            }
+
+            return new AscensionConfigurationData
+            {
+                OverflowUniversalResourceAmount = source.OverflowUniversalResourceAmount,
+                Ranks = ranks
+            };
         }
 
         private static AwakeningRequirementData Clone(AwakeningRequirementData source)

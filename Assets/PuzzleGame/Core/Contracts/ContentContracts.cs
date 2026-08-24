@@ -20,6 +20,7 @@ namespace PuzzleGame.Core.Contracts
         public string PassiveId;
         public string[] Tags = Array.Empty<string>();
         public ProgressionCurveData LevelCurve = new ProgressionCurveData();
+        public AscensionConfigurationData Ascension = new AscensionConfigurationData();
         public AwakeningRequirementData Awakening = new AwakeningRequirementData();
         public VisualReferenceSet BaseVisuals = new VisualReferenceSet();
         public VisualReferenceSet AwakenedVisuals = new VisualReferenceSet();
@@ -43,6 +44,22 @@ namespace PuzzleGame.Core.Contracts
         public int MaxLevel = 1;
         public int[] ExperienceRequiredByLevel = Array.Empty<int>();
         public StatBlock[] StatsByLevel = Array.Empty<StatBlock>();
+    }
+
+    [Serializable]
+    public sealed class AscensionConfigurationData
+    {
+        public int OverflowUniversalResourceAmount;
+        public AscensionRankData[] Ranks = Array.Empty<AscensionRankData>();
+    }
+
+    [Serializable]
+    public sealed class AscensionRankData
+    {
+        public int Rank;
+        public int ActiveSkillPerformanceBonus;
+        public int PassivePerformanceBonus;
+        public StatBlock StatBonus;
     }
 
     [Serializable]
