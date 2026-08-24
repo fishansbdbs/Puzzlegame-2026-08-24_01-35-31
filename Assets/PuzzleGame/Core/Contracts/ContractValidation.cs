@@ -137,6 +137,17 @@ namespace PuzzleGame.Core.Contracts
             {
                 errors.Add("Stage must define at least one wave.");
             }
+            else
+            {
+                for (var index = 0; index < data.Waves.Length; index++)
+                {
+                    var wave = data.Waves[index];
+                    if (wave == null || string.IsNullOrWhiteSpace(wave.Id))
+                    {
+                        errors.Add("Wave ID is required.");
+                    }
+                }
+            }
 
             if (data.StarObjectives == null || data.StarObjectives.Length != 3)
             {
@@ -146,6 +157,8 @@ namespace PuzzleGame.Core.Contracts
 
         private static void ValidateBanner(BannerData data, List<string> errors)
         {
+            var requiresSteps = data.Type == BannerType.GatherIn || data.Type == BannerType.StepUp;
+
             if (data.Characters == null || data.Characters.Length == 0)
             {
                 errors.Add("Banner must define at least one weighted character.");
@@ -177,6 +190,13 @@ namespace PuzzleGame.Core.Contracts
                 return;
             }
 
+            if (requiresSteps && data.Steps.Length == 0)
+            {
+                errors.Add(data.Type == BannerType.GatherIn
+                    ? "Gather-In banner must define at least one step."
+                    : "Step-Up banner must define at least one step.");
+            }
+
             for (var index = 0; index < data.Steps.Length; index++)
             {
                 var step = data.Steps[index];
@@ -188,6 +208,26 @@ namespace PuzzleGame.Core.Contracts
                 {
                     errors.Add("Banner step gem cost cannot be negative.");
                 }
+            }
+
+            if (data.Type != BannerType.GatherIn || data.Steps.Length == 0)
+            {
+                return;
+            }
+
+            var finalStep = data.Steps[data.Steps.Length - 1];
+            if (finalStep == null)
+            {
+                return;
+            }
+
+            if (finalStep.GuaranteedFiveStarFeaturedBoost && finalStep.GuaranteedFeaturedFiveStar)
+            {
+                errors.Add("Gather-In final step can define only one guarantee.");
+            }
+            else if (!finalStep.GuaranteedFiveStarFeaturedBoost && !finalStep.GuaranteedFeaturedFiveStar)
+            {
+                errors.Add("Gather-In final step must define a guarantee.");
             }
         }
 

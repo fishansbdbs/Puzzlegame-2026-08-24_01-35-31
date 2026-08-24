@@ -132,11 +132,13 @@ namespace PuzzleGame.Core.Contracts
     }
 
     [Serializable]
-    public sealed class WaveData
+    public sealed class WaveData : IIdentifiedData
     {
         public string Id;
         public string[] EnemyIds = Array.Empty<string>();
         public RewardData[] Rewards = Array.Empty<RewardData>();
+
+        string IIdentifiedData.Id => Id;
     }
 
     [Serializable]
