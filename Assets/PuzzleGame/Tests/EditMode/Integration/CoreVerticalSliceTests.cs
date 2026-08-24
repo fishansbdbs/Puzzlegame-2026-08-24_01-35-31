@@ -1,0 +1,184 @@
+using System.Linq;
+using NUnit.Framework;
+using PuzzleGame.Core.Battle;
+using PuzzleGame.Core.Board;
+using PuzzleGame.Core.Contracts;
+using PuzzleGame.Core.Gacha;
+using PuzzleGame.Core.Persistence;
+using PuzzleGame.Core.Sample;
+
+namespace PuzzleGame.Tests.EditMode.Integration
+{
+    public sealed class CoreVerticalSliceTests
+    {
+        [Test]
+        public void Factory_exercises_board_battle_skill_leader_passive_enemy_and_stage_rules()
+        {
+            var sample = VerticalSliceFactory.Create(24082026);
+
+            {
+                Assert.That(sample.CharacterCatalog, Has.Count.EqualTo(5));
+                Assert.That(sample.CharacterCatalog.Select(item => item.Id).Distinct().Count(), Is.EqualTo(5));
+                Assert.That(sample.Party.Members, Has.Count.EqualTo(5));
+                Assert.That(sample.Party.Leader.Data.Id, Is.EqualTo(sample.CharacterCatalog[0].Id));
+                Assert.That(sample.ActiveSkillExample.Succeeded, Is.True);
+                Assert.That(sample.ActiveSkillExample.Events.Select(item => item.Kind), Contains.Item(BattleEffectKind.AttackBoost));
+                Assert.That(sample.OpeningCascadeLayers, Has.Count.EqualTo(2));
+                Assert.That(sample.OpeningCascadeLayers[0].Groups.Count(item => item.OrbType == OrbType.Fire), Is.EqualTo(2));
+                Assert.That(sample.OpeningTurn.Combat.Attacks.Count(item => item.Element == ElementType.Fire), Is.EqualTo(2));
+                Assert.That(sample.OpeningTurn.Combat.Attacks.Where(item => item.Element == ElementType.Fire).Select(item => item.GroupId).Distinct().Count(), Is.EqualTo(2));
+                Assert.That(sample.OpeningTurn.Combat.TotalHealing, Is.GreaterThan(0));
+                Assert.That(sample.OpeningTurn.EnemyTurn.ExecutedActions.Select(item => item.Id), Is.EqualTo(new[] { "boss-strike" }));
+                Assert.That(sample.OpeningTurn.Combat.Modifiers.Select(item => item.Source), Contains.Item(CombatModifierSource.Leader));
+                Assert.That(sample.OpeningTurn.Combat.Modifiers.Select(item => item.Source), Contains.Item(CombatModifierSource.Passive));
+                Assert.That(sample.OpeningTurn.Combat.Modifiers.Select(item => item.Source), Contains.Item(CombatModifierSource.ActiveSkill));
+                Assert.That(sample.StageSession.ConsumesStamina, Is.False);
+                Assert.That(sample.StageSession.AuthoredStructure.WaveCount, Is.EqualTo(1));
+                Assert.That(sample.StageSession.AuthoredStructure.GetEnemyCount(0), Is.EqualTo(1));
+                Assert.That(sample.StageObjectiveExample.All(item => item.Earned), Is.True);
+            }
+
+            foreach (var character in sample.CharacterCatalog)
+                Assert.That(ContractValidation.Validate(character), Is.Empty, character.Id);
+            foreach (var skill in sample.SkillCatalog)
+                Assert.That(ContractValidation.Validate(skill), Is.Empty, skill.Id);
+            Assert.That(ContractValidation.Validate(sample.LeaderSkill), Is.Empty);
+            Assert.That(ContractValidation.Validate(sample.EnemyDefinition), Is.Empty);
+            Assert.That(ContractValidation.Validate(sample.Stage), Is.Empty);
+        }
+
+        [Test]
+        public void Factory_demonstrates_duplicate_ascension_and_nonduplicate_six_star_awakening()
+        {
+            var sample = VerticalSliceFactory.Create(24082026);
+
+            {
+                Assert.That(sample.AscensionExample.PreviousAscension, Is.Zero);
+                Assert.That(sample.AscensionExample.NewAscension, Is.EqualTo(1));
+                Assert.That(sample.AscensionProgress.EffectiveActiveSkill.ChargeRequired, Is.LessThan(sample.SkillCatalog[0].ChargeRequired));
+                Assert.That(sample.AwakeningProgress.Ascension, Is.Zero, "Awakening must not require duplicates.");
+                Assert.That(sample.AwakeningExample.Succeeded, Is.True);
+                Assert.That(sample.AwakeningProgress.EffectiveRarity, Is.EqualTo((int)Rarity.Awakened));
+                Assert.That(sample.AwakeningProgress.CurrentVisuals.PortraitKey, Is.Not.EqualTo(sample.CharacterCatalog[0].BaseVisuals.PortraitKey));
+                Assert.That(sample.AwakeningProgress.CurrentVisuals.CardArtKey, Is.Not.EqualTo(sample.CharacterCatalog[0].BaseVisuals.CardArtKey));
+                Assert.That(sample.AwakeningProgress.CurrentVisuals.ModelKey, Is.Not.EqualTo(sample.CharacterCatalog[0].BaseVisuals.ModelKey));
+                Assert.That(sample.AwakeningProgress.CurrentVisuals.VfxKey, Is.Not.EqualTo(sample.CharacterCatalog[0].BaseVisuals.VfxKey));
+                Assert.That(sample.BossMechanicExample, Has.Count.EqualTo(1));
+                Assert.That(sample.BossMechanicExample[0].Type, Is.EqualTo(EnemyEffectType.Enrage));
+            }
+        }
+
+        [Test]
+        public void Factory_purchases_standard_and_both_final_gather_in_steps_before_pack_reveal()
+        {
+            var sample = VerticalSliceFactory.Create(24082026);
+
+            {
+                Assert.That(sample.StandardBanner.Type, Is.EqualTo(BannerType.Standard));
+                Assert.That(sample.StandardSummonExample.GemCost, Is.EqualTo(150));
+                Assert.That(sample.StandardSummonExample.Results, Has.Count.EqualTo(1));
+                Assert.That(sample.GatherInRotationOneBanner.Steps.Last().PullCount, Is.EqualTo(10));
+                Assert.That(sample.GatherInRotationOneBanner.Steps.Last().GuaranteedFiveStarFeaturedBoost, Is.True);
+                Assert.That(sample.GatherInRotationOneSummonExample.Results, Has.Count.EqualTo(10));
+                Assert.That(sample.GatherInRotationOneSummonExample.Results.Last().Rarity, Is.EqualTo(5));
+                Assert.That(sample.GatherInRotationOneState.IsComplete, Is.True);
+                Assert.That(sample.GatherInRotationTwoBanner.Steps.Last().GuaranteedFeaturedFiveStar, Is.True);
+                Assert.That(sample.GatherInRotationTwoSummonExample.Results.Last().CharacterId, Is.EqualTo(sample.FeaturedCharacterId));
+                Assert.That(sample.GatherInRotationTwoState.IsComplete, Is.True);
+                Assert.That(sample.PackFlow.State, Is.EqualTo(PackSummonState.PreStart));
+                Assert.That(sample.PackFlow.Batch.Results, Has.Count.EqualTo(10));
+            }
+
+            var states = new System.Collections.Generic.List<PackSummonState>();
+            sample.PackFlow.Transitioned += item => states.Add(item.State);
+            sample.PackFlow.Begin();
+            sample.PackFlow.PresentPack();
+            sample.PackFlow.StartPackRip();
+            sample.PackFlow.OpenPack();
+            sample.PackFlow.RevealAll();
+
+            Assert.That(states.First(), Is.EqualTo(PackSummonState.PurchaseValidated));
+            Assert.That(states, Contains.Item(PackSummonState.PackOpened));
+            Assert.That(states.Count(item => item == PackSummonState.CardReady), Is.EqualTo(10));
+            Assert.That(states.Count(item => item == PackSummonState.CardRevealed), Is.EqualTo(10));
+            Assert.That(states.Last(), Is.EqualTo(PackSummonState.ResultsComplete));
+        }
+
+        [Test]
+        public void Factory_roundtrips_a_complete_current_save_deterministically()
+        {
+            var sample = VerticalSliceFactory.Create(24082026);
+            var profile = sample.SaveProfile;
+
+            {
+                Assert.That(sample.SaveRoundTrip.Status, Is.EqualTo(SaveLoadStatus.Loaded));
+                Assert.That(profile.Version, Is.EqualTo(SaveData.CurrentVersion));
+                Assert.That(profile.Wallet.Gold, Is.GreaterThan(0));
+                Assert.That(profile.Wallet.Gems, Is.GreaterThan(0));
+                Assert.That(profile.Wallet.Tickets, Is.GreaterThan(0));
+                Assert.That(profile.Wallet.UniversalDuplicateResource, Is.GreaterThan(0));
+                Assert.That(profile.Wallet.EventCurrencies, Has.Length.EqualTo(1));
+                Assert.That(profile.Characters, Has.Length.EqualTo(5));
+                Assert.That(profile.Materials, Has.Length.GreaterThanOrEqualTo(1));
+                Assert.That(profile.PartyCharacterIds, Has.Length.EqualTo(5));
+                Assert.That(profile.Banners, Has.Length.EqualTo(3));
+                Assert.That(profile.Stages, Has.Length.EqualTo(1));
+                Assert.That(profile.Stages[0].Stars, Is.EqualTo(new[] { true, true, true }));
+                Assert.That(new SaveSerializer().Serialize(sample.SaveRoundTrip.Data), Is.EqualTo(sample.SerializedSave));
+                Assert.That(VerticalSliceFactory.Create(24082026).SerializedSave, Is.EqualTo(sample.SerializedSave));
+            }
+
+            profile.Wallet.Gold = 0;
+            profile.Characters[0].CharacterId = "tampered";
+            Assert.That(sample.SaveProfile.Wallet.Gold, Is.GreaterThan(0));
+            Assert.That(sample.SaveProfile.Characters[0].CharacterId, Is.Not.EqualTo("tampered"));
+        }
+
+        [Test]
+        public void Factory_schedules_every_supported_category_with_an_injected_fixed_clock()
+        {
+            var sample = VerticalSliceFactory.Create(24082026);
+
+            Assert.That(sample.ScheduleDefinitions.Select(item => item.ContentType).Distinct(),
+                Is.EquivalentTo(System.Enum.GetValues(typeof(ContentType)).Cast<ContentType>()));
+            Assert.That(sample.ActiveScheduledContent.Select(item => item.ContentType).Distinct(),
+                Is.EquivalentTo(System.Enum.GetValues(typeof(ContentType)).Cast<ContentType>()));
+            Assert.That(sample.ActiveScheduledContent.Any(item => item.ContentType == ContentType.EventChapter), Is.True);
+            Assert.That(sample.ActiveScheduledContent.All(item => item.ActiveStart <= sample.ScheduleNow && sample.ScheduleNow < item.ActiveEnd), Is.True);
+
+            var schedules = sample.ScheduleDefinitions;
+            schedules[0].ContentId = "tampered";
+            Assert.That(sample.ScheduleDefinitions[0].ContentId, Is.Not.EqualTo("tampered"));
+        }
+
+        [Test]
+        public void Repeated_factory_calls_are_deterministic_isolated_and_do_not_alias_authored_data()
+        {
+            var first = VerticalSliceFactory.Create(24082026);
+            var second = VerticalSliceFactory.Create(24082026);
+
+            AssertBoardsEqual(first.GeneratedBoard, second.GeneratedBoard);
+            Assert.That(first.StandardSummonExample.Results.Select(item => item.CharacterId),
+                Is.EqualTo(second.StandardSummonExample.Results.Select(item => item.CharacterId)));
+
+            var originalSecondOrb = second.Board.Get(0, 0);
+            first.Board.Set(0, 0, originalSecondOrb == OrbType.Fire ? OrbType.Water : OrbType.Fire);
+            first.Party.ApplyDamage(1);
+            var returnedCharacters = first.CharacterCatalog;
+            returnedCharacters[0].DisplayName = "tampered";
+
+            Assert.That(second.Board.Get(0, 0), Is.EqualTo(originalSecondOrb));
+            Assert.That(second.Party.CurrentHp, Is.Not.EqualTo(first.Party.CurrentHp));
+            Assert.That(first.CharacterCatalog[0].DisplayName, Is.Not.EqualTo("tampered"));
+            Assert.That(VerticalSliceFactory.Create(24082027).CharacterCatalog.Select(item => item.Id),
+                Is.EqualTo(first.CharacterCatalog.Select(item => item.Id)));
+        }
+
+        private static void AssertBoardsEqual(BoardSnapshot first, BoardSnapshot second)
+        {
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++)
+                Assert.That(second.Get(x, y), Is.EqualTo(first.Get(x, y)), "cell " + x + "," + y);
+        }
+    }
+}

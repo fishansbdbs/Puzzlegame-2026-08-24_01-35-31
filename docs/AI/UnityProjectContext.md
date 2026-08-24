@@ -2,114 +2,104 @@
 
 <!-- unity-onboarding:generated:start -->
 
-## Project Summary
+## Project summary
 
 - Project root: `D:/puzzlegame/puzzle-codex`
 - Last analyzed: 2026-08-24
-- Last analyzed commit: `a32ef23`
-- Confirmed: clean Unity 2D starter reserved for the core-systems implementation on `codex/core-systems`.
+- Branch: `codex/core-systems`, through the Task 10 integrated vertical slice
+- Product shape: deterministic landscape 2D match/drag RPG core with thin Unity input, view, persistence, and runtime-composition adapters
 
-## Confirmed Environment
+## Confirmed environment
 
-- Unity version: 6000.5.8f1 (Unity 6.5), revision `5cb7df797b7d`
-- Render pipeline: Universal Render Pipeline with the 2D Renderer
-- Input system: Input System package, `activeInputHandler: 1`
-- Target platforms: Windows/PC editor confirmed; Android/mobile modules and touch bindings are available. Product requirements also target mobile.
+- Unity: 6000.5.8f1 (Unity 6.5), revision `5cb7df797b7d`
+- Rendering: Universal Render Pipeline 17.6.0 with the 2D Renderer
+- Input: Input System 1.20.0, `activeInputHandler: 1`; mouse and primary-touch adapters are tested
+- Testing: Unity Test Framework 1.7.0 and Unity's NUnit 2.1.0 package
+- Confirmed editor target: Windows/PC; Android/mobile modules and touch bindings are installed
+- Networking/backend: none in first-party runtime code
 
-## Important Packages And Frameworks
+## First-party layout
 
-| Area | Finding | Confidence | Evidence |
-| --- | --- | --- | --- |
-| Rendering | URP 17.x with Renderer2D assets | Confirmed | `Packages/manifest.json`, `Assets/Settings/UniversalRP.asset`, `Assets/Settings/Renderer2D.asset` |
-| Input | Input System 1.20.0 with mouse and touch UI bindings | Confirmed | `Packages/manifest.json`, `Assets/Settings/InputSystem_Actions.inputactions` |
-| Testing | Unity Test Framework 1.7.0 is installed | Confirmed | `Packages/manifest.json` |
-| 2D | Unity 2D animation, sprites, tilemaps, SpriteShape, and import tooling | Confirmed | `Packages/manifest.json` |
-| AI tooling | Unity AI Assistant package is installed, but no Unity MCP client tools are exposed to this Codex session | Confirmed | `Packages/manifest.json`, active Codex tool inventory |
-| Networking | No runtime networking framework or first-party multiplayer code | Confirmed | package and source inventory |
+| Path | Purpose |
+| --- | --- |
+| `Assets/PuzzleGame/Core/Contracts` | Serializable content DTOs and validation |
+| `Assets/PuzzleGame/Core/Board` | 6x5 board, drag, matching, generation, cascade/refill snapshots |
+| `Assets/PuzzleGame/Core/Battle` | Party/enemy runtime, skills, combat, timed effects, battle turns |
+| `Assets/PuzzleGame/Core/Stages` | Catalogs, session lifecycle, boss thresholds, objectives |
+| `Assets/PuzzleGame/Core/Economy` and `Progression` | Wallet, materials, levels, duplicates/Ascension, Awakening |
+| `Assets/PuzzleGame/Core/Gacha` | Banner state, atomic summon transactions, pack presentation flow |
+| `Assets/PuzzleGame/Core/Scheduling` | Injected clock and fixed-offset schedule evaluation |
+| `Assets/PuzzleGame/Core/Persistence` | Versioned save DTOs, bounded deterministic JSON, storage service |
+| `Assets/PuzzleGame/Core/Sample` | Seeded, isolated integrated sample graph |
+| `Assets/PuzzleGame/Unity/Input` | Raw Input System mouse/touch translation |
+| `Assets/PuzzleGame/Unity/Battle` | Board layout/view and one-wave/one-enemy playable controller |
+| `Assets/PuzzleGame/Unity/Persistence` | Strict UTF-8 atomic file storage adapter |
+| `Assets/PuzzleGame/Unity/Bootstrap` | Code-only idempotent vertical-slice composition |
+| `Assets/PuzzleGame/Tests/EditMode` | Deterministic core, storage, and integrated sample tests |
+| `Assets/PuzzleGame/Tests/PlayMode` | Input/lifecycle/resource and complete playable-smoke tests |
+| `docs/core-systems.md` | Current subsystem, extension, lifecycle, and verification guide |
 
-## Directory Structure
+## Assembly boundaries
 
-| Path | Purpose | Confidence | Evidence |
-| --- | --- | --- | --- |
-| `Assets/Scenes` | Contains the starter `SampleScene` | Confirmed | repository inventory |
-| `Assets/Settings` | URP 2D, volume, scene-template, and default Input System assets | Confirmed | repository inventory |
-| `Assets/PuzzleGame` | Planned first-party root for runtime, presentation adapters, content examples, and tests | Planned | Codex core implementation plan |
-| `docs` | Design, agent prompts, project context, and implementation plans | Confirmed | repository inventory |
-
-## Assembly Boundaries
-
-No first-party assemblies existed at analysis time. The implementation will establish:
-
-| Assembly | Responsibility | Key references | Notes |
-| --- | --- | --- | --- |
-| `PuzzleGame.Core` | Deterministic contracts, board, combat, progression, gacha, stages, scheduling, persistence DTOs | Standard C# and Unity serialization types only | Presentation-independent domain logic |
-| `PuzzleGame.Unity` | MonoBehaviour input, scene composition, simple playable-slice view | `PuzzleGame.Core`, Input System, Unity runtime | Thin Unity adapter layer |
-| `PuzzleGame.Tests.EditMode` | Domain and integration tests | `PuzzleGame.Core`, Unity Test Framework | Main automated suite |
-| `PuzzleGame.Tests.PlayMode` | Input/lifecycle and playable-slice smoke tests | runtime assemblies, Unity Test Framework | Only engine-dependent behavior |
-
-## Scenes And Startup Flow
-
-- Build scenes: `Assets/Scenes/SampleScene.unity` (enabled)
-- Likely startup scene: `SampleScene`
-- Scene loading flow: no first-party loader exists yet; the vertical slice will bootstrap additively from a runtime component without redefining presentation-owned assets.
-
-## Architecture
-
-| Pattern | Finding | Confidence | Evidence |
-| --- | --- | --- | --- |
-| Domain model | Plain C# deterministic services and state objects | Planned | testability and ownership requirements in the core prompt |
-| Authoring contracts | Serializable stable DTO/config classes, with ScriptableObject catalog adapters where useful | Planned | shared data-contract requirements |
-| Runtime integration | Thin MonoBehaviours translate Input System and Unity lifecycle into domain commands/events | Planned | PC/mobile input and presentation separation requirements |
-| Presentation boundary | Core exposes immutable results/events; UI/VFX consumes them without owning gameplay rules | Planned | Codex/Claude parallel ownership rules |
-
-## Coding Conventions
-
-- Namespace style: `PuzzleGame.<Feature>` with focused feature folders.
-- Serialized fields: private serialized references in Unity adapters; serializable data contracts expose authorable fields with safe defaults.
-- Async: no framework selected; deterministic core remains synchronous. Persistence uses explicit storage interfaces.
-- Comments/docs: document public contracts and non-obvious game rules; avoid comments that narrate straightforward code.
-
-## Testing And Validation
-
-- EditMode tests: none initially; Unity Test Framework is installed and will host deterministic core tests.
-- PlayMode tests: none initially; add only for MonoBehaviour lifecycle/input integration.
-- CI/build validation: no CI configuration found. Unity Editor executable is available at `C:/Program Files/Unity/Hub/Editor/6000.5.8f1/Editor/Unity.exe`; batch-mode validation may require a non-open project copy because the project is currently open in Unity.
-
-## Available Unity Tooling
-
-| Capability | Status | Evidence |
+| Assembly | Responsibility | References |
 | --- | --- | --- |
-| Unity editor process/version | available | running Unity process and `ProjectVersion.txt` |
-| Unity batch-mode executable | available | installed editor path |
-| Unity MCP connection, console, scene, asset, and test tools | unavailable | no Unity MCP tools exposed to the session |
-| Repository and serialized-asset inspection | available | local filesystem and Git |
+| `PuzzleGame.Core` | Presentation-independent contracts and domain logic | Standard C# only; `noEngineReferences: true` |
+| `PuzzleGame.Unity` | MonoBehaviour input, board view/controller, file storage, bootstrap | Core, Unity runtime, Input System |
+| `PuzzleGame.Tests.EditMode` | Core integration and Unity persistence adapter tests | Core, Unity, Unity Test Framework |
+| `PuzzleGame.Tests.PlayMode` | Input System and runtime vertical-slice tests | Core, Unity, Input System, Input Test Framework |
 
-## Important Constraints
+Dependency direction is `Contracts/Core <- Unity adapters/presentation`. Production assemblies do not reference test assemblies.
 
-- Landscape-only, PC and mobile, mouse and touch.
-- Core owns shared contracts and game rules; presentation/content consumers must not be overwritten.
-- Build shared contracts before the vertical slice, then complete all remaining core systems.
-- Keep summon RNG complete before reveal presentation begins.
-- Keep gameplay rules deterministic and testable outside presentation.
-- Do not add real-money payment processing.
+## Scenes and startup
 
-## Unknowns And Confidence
+- Enabled build scene: `Assets/Scenes/SampleScene.unity`
+- No Task 10 scene, prefab, or presentation asset was edited.
+- `VerticalSliceBootstrap` attaches after scene load through `RuntimeInitializeOnLoadMethod`, only if no bootstrap exists.
+- The runtime root is code-composed and persistent across scene loads. Discovery includes `DontSave` objects, making repeated initialization safe with domain reload disabled.
+- Automatic composition is suppressed in EditMode and command-line test runs. `EnsureRuntimeBootstrap` is the explicit idempotent entry point; `CreateForTests` creates isolated deterministic-pointer instances.
+- `BoardPointerInput` remains the only production raw Input System reader.
 
-- Live Unity Console and Test Runner state cannot be queried through MCP; validate via Editor logs and batch mode where possible.
-- Final UI/VFX and bulk content are intentionally outside this branch.
-- The product title remains replaceable; existing `productName` is the placeholder `puzzle game`.
+## Architecture and ownership
 
-## Source Files Inspected
+- Core services are synchronous plain C# with injected RNG, clock, refill, and storage boundaries.
+- Authored inputs and public results are validated snapshots. Each `VerticalSliceFactory.Create(seed)` call owns isolated mutable runtime state.
+- Unity adapters translate lifecycle and input to domain commands/events; UI/VFX is an event consumer and does not own gameplay outcomes.
+- `VerticalSliceBootstrap` owns its child runtime graph and event forwarding. `PlayableBattleController` owns pointer subscriptions. `BoardView` owns generated GameObjects and render resources and releases them on destruction.
+- Summon purchase, rolls, guarantees, ownership/duplicate effects, wallet spend, and banner-step advancement are planned before commit. Pack reveal receives a fixed batch.
+- Persistence isolates deterministic serialization/service policy from the Unity file path and atomic file-system boundary.
+
+## Testing and validation
+
+- Direct Mono/NUnit-reflection EditMode baseline: 270/270 passing (prior 264 plus six integrated sample cases).
+- Unity EditMode: 270/270 passing in an isolated Unity 6000.5.8f1 harness.
+- Unity PlayMode: 35/35 passing (prior 29 plus six integrated playable-smoke cases).
+- PlayMode smoke proves 30 cells, ten-second moves, adjacent traversal of fast crossed cells, release/timeout exactly once, two cascade layers ending on the authoritative board, separate attacks, Heart healing, countdown/action, boss threshold, stage completion/stars, idempotent runtime composition, and render/event cleanup.
+- Task 5 mouse/touch Input Test Framework cases remain the direct backend proof; Task 10 uses a deterministic pointer seam rather than OS cursor automation.
+- CI is not configured in this repository. Batch commands and the direct runner workflow are documented in `docs/core-systems.md`.
+
+## Tooling and lock caveat
+
+- Unity batch executable: `C:/Program Files/Unity/Hub/Editor/6000.5.8f1/Editor/Unity.exe`.
+- No Unity MCP tools were exposed to this Codex session.
+- The unrelated live Unity project at `D:/puzzlegame/puzzle game` continues to own/lock its generated `Library`; it was not closed or modified.
+- Validation used `Temp/task5-harness` with Unity/version equality, SHA-256 equality for `Assets/PuzzleGame`, and matching relevant package versions: Input System 1.20.0, Test Framework 1.7.0, ext.nunit 2.1.0.
+
+## Product constraints and known limitations
+
+- Landscape PC/mobile target; mouse and primary touch are supported.
+- The current playable controller intentionally accepts exactly one wave and one enemy.
+- Schedule recurrence uses an authored fixed offset, not named timezone/DST rules.
+- v1 trusts a local clock and has no backend authority, account sync, payment, or anti-tamper implementation.
+- Final UI/VFX animation and bulk content remain presentation responsibilities; core emits complete synchronous consumer events.
+- The sample save roundtrip uses memory storage. Shipping composition must choose a scoped path below `Application.persistentDataPath` for `FileSaveStorage`.
+
+## Primary evidence inspected
 
 - `docs/agent-prompts/CODEX_CORE_PROMPT.md`
 - `docs/superpowers/specs/2026-08-24-puzzlegame-design.md`
-- `ProjectSettings/ProjectVersion.txt`
-- `ProjectSettings/ProjectSettings.asset`
-- `ProjectSettings/EditorBuildSettings.asset`
-- `ProjectSettings/GraphicsSettings.asset`
-- `Packages/manifest.json`
-- `Packages/packages-lock.json`
-- `Assets/Scenes/SampleScene.unity`
-- `Assets/Settings/InputSystem_Actions.inputactions`
+- `docs/superpowers/plans/2026-08-24-core-systems.md`
+- `.superpowers/sdd/2026-08-24-core-systems/task-1-report.md` through `task-9-report.md`
+- `ProjectSettings/ProjectVersion.txt`, `ProjectSettings/EditorBuildSettings.asset`, `Packages/manifest.json`, and `Packages/packages-lock.json`
+- Current `Assets/PuzzleGame` sources, asmdefs, tests, and Unity batch XML/log outputs
 
 <!-- unity-onboarding:generated:end -->
