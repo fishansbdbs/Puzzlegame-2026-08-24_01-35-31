@@ -25,7 +25,7 @@
 | `Assets/PuzzleGame/Core/Contracts` | Serializable content DTOs and validation |
 | `Assets/PuzzleGame/Core/Board` | 6x5 board, drag, matching, generation, cascade/refill snapshots |
 | `Assets/PuzzleGame/Core/Battle` | Party/enemy runtime, skills, combat, timed effects, battle turns |
-| `Assets/PuzzleGame/Core/Stages` | Catalogs, session lifecycle, boss thresholds, objectives |
+| `Assets/PuzzleGame/Core/Stages` | Catalogs, session lifecycle, threshold-delegate compatibility, objectives |
 | `Assets/PuzzleGame/Core/Economy` and `Progression` | Wallet, materials, levels, duplicates/Ascension, Awakening |
 | `Assets/PuzzleGame/Core/Gacha` | Banner state, atomic summon transactions, pack presentation flow |
 | `Assets/PuzzleGame/Core/Scheduling` | Injected clock and fixed-offset schedule evaluation |
@@ -62,6 +62,8 @@ Dependency direction is `Contracts/Core <- Unity adapters/presentation`. Product
 ## Architecture and ownership
 
 - Core services are synchronous plain C# with injected RNG, clock, refill, and storage boundaries.
+- `EnemyRuntime` owns once-only boss-threshold state. Board turns evaluate thresholds after player damage and board installation but before enemy actions; direct-damage skills evaluate after their complete effect list. Immutable mechanic snapshots flow outward through the controller/bootstrap.
+- `RemoveOrbs` skills require an explicit `IOrbSource`, stage compact/refill board changes before committing, preserve survivor order, and reject missing or invalid refill data without consuming charge or mutating battle state.
 - Authored inputs and public results are validated snapshots. Each `VerticalSliceFactory.Create(seed)` call owns isolated mutable runtime state. `OpeningBoard` is the immutable initial snapshot, and `CurrentBoard` dynamically follows `BattleContext.Board` after replacement.
 - Unity adapters translate lifecycle and input to domain commands/events; UI/VFX is an event consumer and does not own gameplay outcomes.
 - `VerticalSliceBootstrap` owns its child runtime graph and event forwarding, destroys that graph even when only the component is removed, and cleans factory-owned roots after composition failure. `PlayableBattleController` owns pointer subscriptions. `BoardView` owns generated GameObjects and render resources and releases them on destruction.
@@ -70,10 +72,9 @@ Dependency direction is `Contracts/Core <- Unity adapters/presentation`. Product
 
 ## Testing and validation
 
-- Direct first-party EditMode baseline: 271/271 passing (prior 264 plus seven integrated sample cases).
-- Unity EditMode: 271/271 passing with Unity 6000.5.8f1.
-- Unity PlayMode: 40/40 passing (prior 29 plus eleven integrated playable-smoke cases).
-- PlayMode smoke proves 30 cells, ten-second moves, adjacent traversal of fast crossed cells, release/timeout exactly once, two cascade layers ending on the authoritative board, separate attacks, Heart healing, countdown/action, boss threshold, stage completion/stars, command-line and flagless `InitTestScene` suppression, one-time normal callback registration, scene-reload idempotence, composition-failure atomicity, and component/root render-event cleanup.
+- Unity EditMode: 294/294 passing with Unity 6000.5.8f1.
+- Unity PlayMode: 43/43 passing.
+- PlayMode smoke proves 30 cells, ten-second moves, adjacent traversal of fast crossed cells, release/timeout exactly once, two cascade layers ending on the authoritative board, separate attacks, Heart healing, core-owned once-only boss thresholds before due actions, stable mechanic event forwarding, observer-exception state safety, stage completion/stars, command-line and flagless `InitTestScene` suppression, one-time normal callback registration, scene-reload idempotence, composition-failure atomicity, and component/root render-event cleanup.
 - Task 5 mouse/touch Input Test Framework cases remain the direct backend proof; Task 10 uses a deterministic pointer seam rather than OS cursor automation.
 - CI is not configured in this repository. Official Unity Test Framework batch commands for a clean checkout are documented in `docs/core-systems.md`.
 

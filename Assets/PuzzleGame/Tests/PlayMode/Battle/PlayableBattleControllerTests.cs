@@ -391,6 +391,77 @@ namespace PuzzleGame.Tests.PlayMode.Battle
         }
 
         [Test]
+        public void Boss_mechanics_emit_in_authored_order_after_combat_and_before_countdown_and_action()
+        {
+            var thresholds = new[]
+            {
+                Threshold("first", 75f, 2f, 2),
+                Threshold("second", 60f, 3f, 3)
+            };
+            using (var fixture = PlayableBattleFixture.Create(BoardPattern.WithFireAndHeartMatches(), enemyHp: 1000,
+                       enemyCountdown: 1, thresholdTriggers: thresholds, actionDamage: 10))
+            {
+                fixture.Context.Enemy.ApplyDamage(390);
+                var order = new List<string>();
+                var mechanics = new List<EnemyEffectSnapshot>();
+                fixture.Controller.AttackResolved += delegate { order.Add("attack"); };
+                fixture.Controller.HealResolved += delegate { order.Add("heal"); };
+                fixture.Controller.BossMechanicTriggered += item =>
+                {
+                    mechanics.Add(item);
+                    order.Add("mechanic-" + item.Multiplier);
+                };
+                fixture.Controller.EnemyCountdownChanged += delegate { order.Add("countdown"); };
+                fixture.Controller.EnemyActionResolved += delegate { order.Add("action"); };
+
+                fixture.Input.Press(fixture.CellCenter(5, 4));
+                fixture.Input.Release(fixture.CellCenter(5, 4));
+
+                Assert.That(mechanics.Select(item => item.Multiplier), Is.EqualTo(new[] { 2f, 3f }));
+                Assert.That(order.LastIndexOf("attack"), Is.LessThan(order.IndexOf("mechanic-2")));
+                Assert.That(order.LastIndexOf("heal"), Is.LessThan(order.IndexOf("mechanic-2")));
+                Assert.That(order.IndexOf("mechanic-2"), Is.LessThan(order.IndexOf("mechanic-3")));
+                Assert.That(order.IndexOf("mechanic-3"), Is.LessThan(order.IndexOf("countdown")));
+                Assert.That(order.IndexOf("countdown"), Is.LessThan(order.IndexOf("action")));
+                Assert.That(fixture.Context.Enemy.Countdown, Is.EqualTo(2));
+                Assert.That(fixture.Party.CurrentHp, Is.EqualTo(fixture.Party.MaxHp - 30),
+                    "The stronger authored threshold must affect the due action in the same core turn.");
+            }
+        }
+
+        [Test]
+        public void Throwing_attack_or_boss_observer_cannot_prevent_already_applied_threshold_and_enemy_action_state()
+        {
+            using (var attackObserver = PlayableBattleFixture.Create(BoardPattern.WithFireAndHeartMatches(), enemyHp: 1000,
+                       enemyCountdown: 1, thresholdTriggers: new[] { Threshold("enrage", 75f, 2f, 2) }, actionDamage: 10))
+            {
+                attackObserver.Context.Enemy.ApplyDamage(300);
+                attackObserver.Controller.AttackResolved += delegate { throw new InvalidOperationException("attack observer"); };
+                attackObserver.Input.Press(attackObserver.CellCenter(5, 4));
+
+                Assert.That(() => attackObserver.Input.Release(attackObserver.CellCenter(5, 4)),
+                    Throws.TypeOf<InvalidOperationException>().With.Message.EqualTo("attack observer"));
+                Assert.That(attackObserver.Context.Enemy.AttackMultiplier, Is.EqualTo(2f));
+                Assert.That(attackObserver.Context.Enemy.Countdown, Is.EqualTo(2));
+                Assert.That(attackObserver.Party.CurrentHp, Is.EqualTo(attackObserver.Party.MaxHp - 20));
+            }
+
+            using (var bossObserver = PlayableBattleFixture.Create(BoardPattern.WithFireAndHeartMatches(), enemyHp: 1000,
+                       enemyCountdown: 1, thresholdTriggers: new[] { Threshold("enrage", 75f, 2f, 2) }, actionDamage: 10))
+            {
+                bossObserver.Context.Enemy.ApplyDamage(300);
+                bossObserver.Controller.BossMechanicTriggered += delegate { throw new InvalidOperationException("boss observer"); };
+                bossObserver.Input.Press(bossObserver.CellCenter(5, 4));
+
+                Assert.That(() => bossObserver.Input.Release(bossObserver.CellCenter(5, 4)),
+                    Throws.TypeOf<InvalidOperationException>().With.Message.EqualTo("boss observer"));
+                Assert.That(bossObserver.Context.Enemy.AttackMultiplier, Is.EqualTo(2f));
+                Assert.That(bossObserver.Context.Enemy.Countdown, Is.EqualTo(2));
+                Assert.That(bossObserver.Party.CurrentHp, Is.EqualTo(bossObserver.Party.MaxHp - 20));
+            }
+        }
+
+        [Test]
         public void Final_enemy_defeat_counts_completes_stage_and_emits_three_star_results_in_order()
         {
             using (var fixture = PlayableBattleFixture.Create(BoardPattern.WithFireAndHeartMatches(), enemyHp: 1))
@@ -504,6 +575,20 @@ namespace PuzzleGame.Tests.PlayMode.Battle
             for (var x = 0; x < BoardState.Columns; x++)
                 Assert.That(snapshot.Get(x, y), Is.EqualTo(board.Get(x, y)), "final " + x + "," + y);
         }
+
+        private static EnemyThresholdTriggerData Threshold(string id, float percent, float multiplier, int turns)
+        {
+            return new EnemyThresholdTriggerData
+            {
+                Id = id,
+                HpThresholdPercent = percent,
+                Effect = new EnemyEffectData
+                {
+                    Type = EnemyEffectType.Enrage,
+                    Payload = new EffectPayloadData { Multiplier = multiplier, TurnCount = turns }
+                }
+            };
+        }
     }
 
     internal sealed class InitializerFixture : IDisposable
@@ -596,7 +681,8 @@ namespace PuzzleGame.Tests.PlayMode.Battle
         internal StageSession Session { get; private set; }
         internal BattleContext Context { get; private set; }
 
-        internal static PlayableBattleFixture Create(BoardState board = null, int enemyHp = 1000, int enemyCountdown = 2, bool damageParty = false)
+        internal static PlayableBattleFixture Create(BoardState board = null, int enemyHp = 1000, int enemyCountdown = 2,
+            bool damageParty = false, EnemyThresholdTriggerData[] thresholdTriggers = null, int actionDamage = 1)
         {
             var fixture = new PlayableBattleFixture();
             fixture.Root = new GameObject("PlayableBattleFixture");
@@ -618,9 +704,10 @@ namespace PuzzleGame.Tests.PlayMode.Battle
                     {
                         Id = "tap",
                         ResetCountdown = 2,
-                        Effects = new[] { new EnemyEffectData { Type = EnemyEffectType.Damage, Payload = new EffectPayloadData { Amount = 1 } } }
+                        Effects = new[] { new EnemyEffectData { Type = EnemyEffectType.Damage, Payload = new EffectPayloadData { Amount = actionDamage } } }
                     }
-                }
+                },
+                ThresholdTriggers = thresholdTriggers ?? Array.Empty<EnemyThresholdTriggerData>()
             };
             var stage = new StageData
             {

@@ -59,16 +59,21 @@ namespace PuzzleGame.Core.Battle
 
     public sealed class SkillResolution
     {
-        internal SkillResolution(bool succeeded, SkillActivationFailure failureReason, List<BattleEffectEvent> events)
+        internal SkillResolution(bool succeeded, SkillActivationFailure failureReason, List<BattleEffectEvent> events,
+            IReadOnlyList<EnemyEffectSnapshot> mechanics)
         {
             Succeeded = succeeded;
             FailureReason = failureReason;
             Events = events.AsReadOnly();
+            var mechanicSnapshots = new List<EnemyEffectSnapshot>(mechanics.Count);
+            for (var index = 0; index < mechanics.Count; index++) mechanicSnapshots.Add(mechanics[index]);
+            Mechanics = mechanicSnapshots.AsReadOnly();
         }
 
         public bool Succeeded { get; private set; }
         public SkillActivationFailure FailureReason { get; private set; }
         public IReadOnlyList<BattleEffectEvent> Events { get; private set; }
+        public IReadOnlyList<EnemyEffectSnapshot> Mechanics { get; private set; }
     }
 
     public sealed class SkillChargeEvent
@@ -105,6 +110,11 @@ namespace PuzzleGame.Core.Battle
 
         public SkillResolution Activate(CharacterRuntime character, BattleContext context)
         {
+            return Activate(character, context, null);
+        }
+
+        public SkillResolution Activate(CharacterRuntime character, BattleContext context, IOrbSource orbSource)
+        {
             if (character == null) throw new ArgumentNullException("character");
             if (context == null) throw new ArgumentNullException("context");
             if (character.ActiveSkillState == null) return Failed(SkillActivationFailure.NoSkill);
@@ -114,10 +124,21 @@ namespace PuzzleGame.Core.Battle
             var events = new List<BattleEffectEvent>();
             var effects = character.ActiveSkillState.Effects;
             for (var index = 0; index < effects.Length; index++) ValidateEffect(effects[index]);
+            var boardPlan = StageBoardEffects(effects, context.Board, orbSource);
+            if (boardPlan != null) CopyBoard(boardPlan.Board, context.Board);
+            var hasDirectDamage = false;
             for (var index = 0; index < effects.Length; index++)
-                events.Add(Apply(effects[index], character.ActiveSkillState.Id, context));
+            {
+                if (IsBoardEffect(effects[index].Type))
+                    events.Add(OrbEvent(ToBattleEffectKind(effects[index].Type), character.ActiveSkillState.Id,
+                        effects[index].Payload, boardPlan.AffectedCounts[index]));
+                else
+                    events.Add(Apply(effects[index], character.ActiveSkillState.Id, context));
+                hasDirectDamage |= effects[index].Type == SkillEffectType.DirectDamage;
+            }
+            var mechanics = hasDirectDamage ? context.Enemy.EvaluateThresholds() : Array.AsReadOnly(new EnemyEffectSnapshot[0]);
             character.ConsumeCharge();
-            return new SkillResolution(true, SkillActivationFailure.None, events);
+            return new SkillResolution(true, SkillActivationFailure.None, events, mechanics);
         }
 
         public SkillChargeResolution ChargeFrom(BoardResolution resolution, PartyState party)
@@ -143,7 +164,7 @@ namespace PuzzleGame.Core.Battle
 
         private static SkillResolution Failed(SkillActivationFailure reason)
         {
-            return new SkillResolution(false, reason, new List<BattleEffectEvent>());
+            return new SkillResolution(false, reason, new List<BattleEffectEvent>(), new List<EnemyEffectSnapshot>());
         }
 
         private static void ValidateEffect(SkillEffectData effect)
@@ -153,9 +174,11 @@ namespace PuzzleGame.Core.Battle
             switch (effect.Type)
             {
                 case SkillEffectType.ConvertOrbs:
-                case SkillEffectType.RemoveOrbs:
                     ValidateOrb(payload.SourceOrb);
                     ValidateOrb(payload.TargetOrb);
+                    break;
+                case SkillEffectType.RemoveOrbs:
+                    ValidateOrb(payload.SourceOrb);
                     break;
                 case SkillEffectType.CreateOrbs:
                     ValidateOrb(payload.TargetOrb);
@@ -194,8 +217,6 @@ namespace PuzzleGame.Core.Battle
                     return OrbEvent(BattleEffectKind.ConvertOrbs, sourceId, payload, ConvertAll(context.Board, payload.SourceOrb, payload.TargetOrb));
                 case SkillEffectType.CreateOrbs:
                     return OrbEvent(BattleEffectKind.CreateOrbs, sourceId, payload, Create(context.Board, payload.TargetOrb, payload.Amount));
-                case SkillEffectType.RemoveOrbs:
-                    return OrbEvent(BattleEffectKind.RemoveOrbs, sourceId, payload, ConvertAll(context.Board, payload.SourceOrb, payload.TargetOrb));
                 case SkillEffectType.AttackBoost:
                     context.Party.ApplyAttackBoost(PositiveMultiplier(payload.Multiplier), NonNegative(payload.TurnCount), sourceId);
                     return Event(BattleEffectKind.AttackBoost, sourceId, payload, 0);
@@ -218,6 +239,103 @@ namespace PuzzleGame.Core.Battle
                 default:
                     throw new InvalidOperationException("Unsupported skill effect type.");
             }
+        }
+
+        private static BoardEffectPlan StageBoardEffects(SkillEffectData[] effects, BoardState board, IOrbSource orbSource)
+        {
+            var hasBoardEffect = false;
+            var requiresRefill = false;
+            for (var index = 0; index < effects.Length; index++)
+            {
+                hasBoardEffect |= IsBoardEffect(effects[index].Type);
+                requiresRefill |= effects[index].Type == SkillEffectType.RemoveOrbs;
+            }
+            if (!hasBoardEffect) return null;
+            if (requiresRefill && orbSource == null)
+                throw new InvalidOperationException("RemoveOrbs requires an explicit refill source.");
+
+            var staged = board.Clone();
+            var counts = new int[effects.Length];
+            for (var index = 0; index < effects.Length; index++)
+            {
+                var effect = effects[index];
+                var payload = effect.Payload;
+                switch (effect.Type)
+                {
+                    case SkillEffectType.ConvertOrbs:
+                        counts[index] = ConvertAll(staged, payload.SourceOrb, payload.TargetOrb);
+                        break;
+                    case SkillEffectType.CreateOrbs:
+                        counts[index] = Create(staged, payload.TargetOrb, payload.Amount);
+                        break;
+                    case SkillEffectType.RemoveOrbs:
+                        counts[index] = RemoveAll(staged, payload.SourceOrb, orbSource);
+                        break;
+                }
+            }
+            return new BoardEffectPlan(staged, counts);
+        }
+
+        private static int RemoveAll(BoardState board, OrbType source, IOrbSource orbSource)
+        {
+            ValidateOrb(source);
+            var removed = 0;
+            for (var x = 0; x < BoardState.Columns; x++)
+            {
+                var nextRow = 0;
+                for (var y = 0; y < BoardState.Rows; y++)
+                {
+                    var orb = board.Get(x, y);
+                    if (orb == source)
+                    {
+                        removed++;
+                        continue;
+                    }
+                    board.Set(x, nextRow++, orb);
+                }
+                for (var y = nextRow; y < BoardState.Rows; y++)
+                {
+                    var refill = orbSource.NextOrb();
+                    ValidateOrb(refill);
+                    board.Set(x, y, refill);
+                }
+            }
+            return removed;
+        }
+
+        private static void CopyBoard(BoardState source, BoardState target)
+        {
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++) target.Set(x, y, source.Get(x, y));
+        }
+
+        private static bool IsBoardEffect(SkillEffectType type)
+        {
+            return type == SkillEffectType.ConvertOrbs || type == SkillEffectType.CreateOrbs ||
+                   type == SkillEffectType.RemoveOrbs;
+        }
+
+        private static BattleEffectKind ToBattleEffectKind(SkillEffectType type)
+        {
+            switch (type)
+            {
+                case SkillEffectType.ConvertOrbs: return BattleEffectKind.ConvertOrbs;
+                case SkillEffectType.CreateOrbs: return BattleEffectKind.CreateOrbs;
+                case SkillEffectType.RemoveOrbs: return BattleEffectKind.RemoveOrbs;
+                default: throw new InvalidOperationException("Skill effect is not a board effect.");
+            }
+        }
+
+        private sealed class BoardEffectPlan
+        {
+            internal BoardEffectPlan(BoardState board, int[] affectedCounts)
+            {
+                Board = board;
+                AffectedCounts = affectedCounts;
+            }
+
+            internal BoardState Board { get; private set; }
+            internal int[] AffectedCounts { get; private set; }
         }
 
         internal static int ConvertAll(BoardState board, OrbType source, OrbType target)

@@ -228,18 +228,27 @@ namespace PuzzleGame.Core.Battle
     public sealed class BattleTurnResolution
     {
         internal BattleTurnResolution(CombatResolution combat, SkillChargeResolution charge, EnemyTurnResolution enemyTurn,
-            bool wasSkippedBecausePartyDefeated = false)
+            IReadOnlyList<EnemyEffectSnapshot> mechanics, bool wasSkippedBecausePartyDefeated = false)
         {
             Combat = combat;
             Charge = charge;
             EnemyTurn = enemyTurn;
+            Mechanics = Copy(mechanics);
             WasSkippedBecausePartyDefeated = wasSkippedBecausePartyDefeated;
         }
 
         public CombatResolution Combat { get; private set; }
         public SkillChargeResolution Charge { get; private set; }
         public EnemyTurnResolution EnemyTurn { get; private set; }
+        public IReadOnlyList<EnemyEffectSnapshot> Mechanics { get; private set; }
         public bool WasSkippedBecausePartyDefeated { get; private set; }
+
+        private static IReadOnlyList<EnemyEffectSnapshot> Copy(IReadOnlyList<EnemyEffectSnapshot> source)
+        {
+            var result = new List<EnemyEffectSnapshot>(source.Count);
+            for (var index = 0; index < source.Count; index++) result.Add(source[index]);
+            return result.AsReadOnly();
+        }
     }
 
     public sealed class BattleEngine
@@ -257,7 +266,8 @@ namespace PuzzleGame.Core.Battle
                 return new BattleTurnResolution(
                     new CombatResolution(0, new List<AttackEvent>(), new List<HealEvent>(), new List<CombatModifierEvent>()),
                     new SkillChargeResolution(new List<SkillChargeEvent>()),
-                    new EnemyTurnResolution(new List<EnemyActionSnapshot>(), new List<BattleEffectEvent>()), true);
+                    new EnemyTurnResolution(new List<EnemyActionSnapshot>(), new List<BattleEffectEvent>()),
+                    new List<EnemyEffectSnapshot>(), true);
             }
             var partyEffects = context.Party.CaptureTimedEffects();
             var bindEffects = new object[context.Party.Members.Count];
@@ -269,6 +279,7 @@ namespace PuzzleGame.Core.Battle
             var combat = combatCalculator.Resolve(resolution, context.Party, context.Enemy);
             var charge = skillEngine.ChargeFrom(resolution, context.Party);
             context.InstallBoard(resolution.FinalBoard);
+            var mechanics = context.Enemy.EvaluateThresholds();
             var enemyTurn = enemyActionEngine.AdvanceAfterBoardResolution(context.Enemy, context);
             context.Party.TickCapturedTimedEffects(partyEffects);
             for (var index = 0; index < context.Party.Members.Count; index++)
@@ -276,7 +287,7 @@ namespace PuzzleGame.Core.Battle
             context.Enemy.TickCapturedTimedEffects(enemyEffects);
             context.BoardEffects.TickCapturedTimedEffects(boardEffects);
             context.TickCapturedMoveTimeEffect(moveTimeEffect);
-            return new BattleTurnResolution(combat, charge, enemyTurn);
+            return new BattleTurnResolution(combat, charge, enemyTurn, mechanics);
         }
     }
 }

@@ -107,6 +107,7 @@ namespace PuzzleGame.Unity.Battle
         public event Action<CascadeLayerEvent> CascadeLayerResolved;
         public event Action<AttackEvent> AttackResolved;
         public event Action<HealEvent> HealResolved;
+        public event Action<EnemyEffectSnapshot> BossMechanicTriggered;
         public event Action<EnemyCountdownEvent> EnemyCountdownChanged;
         public event Action<EnemyActionSnapshot> EnemyActionResolved;
         public event Action<int> BoardResolutionCountChanged;
@@ -378,6 +379,11 @@ namespace PuzzleGame.Unity.Battle
             {
                 var handler = HealResolved;
                 if (handler != null) handler(turnResolution.Combat.Heals[index]);
+            }
+            for (var index = 0; index < turnResolution.Mechanics.Count; index++)
+            {
+                var handler = BossMechanicTriggered;
+                if (handler != null) handler(turnResolution.Mechanics[index]);
             }
 
             var countdownHandler = EnemyCountdownChanged;

@@ -145,10 +145,15 @@ namespace PuzzleGame.Tests.PlayMode.Integration
             bootstrap.StarResultsReady += value => stars = value;
 
             var enemy = bootstrap.Sample.Enemy;
-            enemy.ApplyDamage(enemy.CurrentHp - enemy.MaxHp / 2);
-            Assert.That(bootstrap.EvaluateBossMechanics(), Has.Count.EqualTo(1));
-            Assert.That(bootstrap.EvaluateBossMechanics(), Is.Empty);
+            enemy.ApplyDamage(enemy.CurrentHp - (enemy.MaxHp / 2 + 1));
+
+            bootstrap.PressCell(new BoardPosition(5, 4));
+            bootstrap.ReleaseCell(new BoardPosition(5, 4));
+            Assert.That(bossEvents, Has.Count.EqualTo(1));
+
             enemy.ApplyDamage(enemy.CurrentHp - 1);
+            for (var x = 0; x < BoardState.MinimumMatchSize; x++)
+                bootstrap.Sample.CurrentBoard.Set(x, 0, OrbType.Fire);
 
             bootstrap.PressCell(new BoardPosition(5, 4));
             bootstrap.ReleaseCell(new BoardPosition(5, 4));
@@ -162,6 +167,36 @@ namespace PuzzleGame.Tests.PlayMode.Integration
                 Assert.That(stars, Has.Count.EqualTo(3));
                 Assert.That(stars.All(item => item.Earned), Is.True);
             }
+        }
+
+        [UnityTest]
+        public IEnumerator Throwing_bootstrap_attack_or_boss_observer_cannot_prevent_core_enrage_and_due_action()
+        {
+            var attackObserver = Track(VerticalSliceBootstrap.CreateForTests(24082026));
+            var attackEnemy = attackObserver.Sample.Enemy;
+            attackEnemy.ApplyDamage(attackEnemy.CurrentHp - attackEnemy.MaxHp / 2);
+            attackObserver.AttackResolved += delegate { throw new System.InvalidOperationException("attack observer"); };
+            attackObserver.PressCell(new BoardPosition(5, 4));
+
+            Assert.That(() => attackObserver.ReleaseCell(new BoardPosition(5, 4)),
+                Throws.TypeOf<System.InvalidOperationException>().With.Message.EqualTo("attack observer"));
+            Assert.That(attackEnemy.AttackMultiplier, Is.EqualTo(1.75f));
+            Assert.That(attackEnemy.Countdown, Is.EqualTo(2));
+
+            Object.DestroyImmediate(attackObserver.gameObject);
+            created.Remove(attackObserver);
+
+            var bossObserver = Track(VerticalSliceBootstrap.CreateForTests(24082026));
+            var bossEnemy = bossObserver.Sample.Enemy;
+            bossEnemy.ApplyDamage(bossEnemy.CurrentHp - bossEnemy.MaxHp / 2);
+            bossObserver.BossMechanicTriggered += delegate { throw new System.InvalidOperationException("boss observer"); };
+            bossObserver.PressCell(new BoardPosition(5, 4));
+
+            Assert.That(() => bossObserver.ReleaseCell(new BoardPosition(5, 4)),
+                Throws.TypeOf<System.InvalidOperationException>().With.Message.EqualTo("boss observer"));
+            Assert.That(bossEnemy.AttackMultiplier, Is.EqualTo(1.75f));
+            Assert.That(bossEnemy.Countdown, Is.EqualTo(2));
+            yield return null;
         }
 
         [UnityTest]

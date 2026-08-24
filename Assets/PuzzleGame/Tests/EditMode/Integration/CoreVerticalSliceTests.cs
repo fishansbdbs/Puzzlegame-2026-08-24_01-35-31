@@ -29,6 +29,7 @@ namespace PuzzleGame.Tests.EditMode.Integration
                 Assert.That(sample.OpeningTurn.Combat.Attacks.Count(item => item.Element == ElementType.Fire), Is.EqualTo(2));
                 Assert.That(sample.OpeningTurn.Combat.Attacks.Where(item => item.Element == ElementType.Fire).Select(item => item.GroupId).Distinct().Count(), Is.EqualTo(2));
                 Assert.That(sample.OpeningTurn.Combat.TotalHealing, Is.GreaterThan(0));
+                Assert.That(sample.OpeningTurn.Mechanics.Select(item => item.Type), Is.EqualTo(new[] { EnemyEffectType.Enrage }));
                 Assert.That(sample.OpeningTurn.EnemyTurn.ExecutedActions.Select(item => item.Id), Is.EqualTo(new[] { "boss-strike" }));
                 Assert.That(sample.OpeningTurn.Combat.Modifiers.Select(item => item.Source), Contains.Item(CombatModifierSource.Leader));
                 Assert.That(sample.OpeningTurn.Combat.Modifiers.Select(item => item.Source), Contains.Item(CombatModifierSource.Passive));

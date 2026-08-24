@@ -383,7 +383,8 @@ namespace PuzzleGame.Core.Contracts
             var payload = effect.Payload;
             if (payload.TurnCount < 0) errors.Add("Skill effect turn count cannot be negative.");
             if (float.IsNaN(payload.Multiplier) || float.IsInfinity(payload.Multiplier)) errors.Add("Skill effect multiplier must be finite.");
-            if ((effect.Type == SkillEffectType.ConvertOrbs || effect.Type == SkillEffectType.RemoveOrbs) && (!Enum.IsDefined(typeof(OrbType), payload.SourceOrb) || !Enum.IsDefined(typeof(OrbType), payload.TargetOrb))) errors.Add("Skill effect orb type is invalid.");
+            if (effect.Type == SkillEffectType.ConvertOrbs && (!Enum.IsDefined(typeof(OrbType), payload.SourceOrb) || !Enum.IsDefined(typeof(OrbType), payload.TargetOrb))) errors.Add("Skill effect orb type is invalid.");
+            if (effect.Type == SkillEffectType.RemoveOrbs && !Enum.IsDefined(typeof(OrbType), payload.SourceOrb)) errors.Add("Skill effect source orb type is invalid.");
             if (effect.Type == SkillEffectType.CreateOrbs && (!Enum.IsDefined(typeof(OrbType), payload.TargetOrb) || payload.Amount < 0)) errors.Add("Create orb effect is invalid.");
             if ((effect.Type == SkillEffectType.Heal || effect.Type == SkillEffectType.DirectDamage) && payload.Amount < 0) errors.Add("Skill effect amount cannot be negative.");
             if ((effect.Type == SkillEffectType.AttackBoost || effect.Type == SkillEffectType.Shield) && (payload.Multiplier < 0f || (effect.Type == SkillEffectType.Shield && payload.Multiplier > 1f))) errors.Add("Skill effect multiplier is invalid.");

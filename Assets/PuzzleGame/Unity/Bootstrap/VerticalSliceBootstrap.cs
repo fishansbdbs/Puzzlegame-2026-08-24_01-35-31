@@ -24,7 +24,6 @@ namespace PuzzleGame.Unity.Bootstrap
         private bool initialized;
         private bool forwardingEvents;
         private Func<int, VerticalSliceSample> sampleFactory;
-        private readonly BossMechanicEngine bossMechanics = new BossMechanicEngine();
 
         public event Action<MoveTimerEvent> TimerChanged;
         public event Action<MatchGroupsEvent> MatchGroupsResolved;
@@ -162,19 +161,6 @@ namespace PuzzleGame.Unity.Bootstrap
             Controller.AdvanceTime(seconds);
         }
 
-        public IReadOnlyList<EnemyEffectSnapshot> EvaluateBossMechanics()
-        {
-            if (Sample == null) throw new InvalidOperationException("The vertical slice is not initialized.");
-            if (Sample.Enemy.IsDefeated) return Array.AsReadOnly(new EnemyEffectSnapshot[0]);
-            var effects = bossMechanics.Evaluate(Sample.Enemy);
-            for (var index = 0; index < effects.Count; index++)
-            {
-                var handler = BossMechanicTriggered;
-                if (handler != null) handler(effects[index]);
-            }
-            return effects;
-        }
-
         private void Start()
         {
             if (!initialized) EnsureRuntimeComposed(VerticalSliceFactory.Create);
@@ -247,6 +233,7 @@ namespace PuzzleGame.Unity.Bootstrap
             Controller.CascadeLayerResolved += ForwardCascade;
             Controller.AttackResolved += ForwardAttack;
             Controller.HealResolved += ForwardHeal;
+            Controller.BossMechanicTriggered += ForwardBossMechanic;
             Controller.EnemyCountdownChanged += ForwardCountdown;
             Controller.EnemyActionResolved += ForwardEnemyAction;
             Controller.BoardResolutionCountChanged += ForwardResolutionCount;
@@ -266,6 +253,7 @@ namespace PuzzleGame.Unity.Bootstrap
                 Controller.CascadeLayerResolved -= ForwardCascade;
                 Controller.AttackResolved -= ForwardAttack;
                 Controller.HealResolved -= ForwardHeal;
+                Controller.BossMechanicTriggered -= ForwardBossMechanic;
                 Controller.EnemyCountdownChanged -= ForwardCountdown;
                 Controller.EnemyActionResolved -= ForwardEnemyAction;
                 Controller.BoardResolutionCountChanged -= ForwardResolutionCount;
@@ -279,13 +267,9 @@ namespace PuzzleGame.Unity.Bootstrap
         private void ForwardTimer(MoveTimerEvent value) { var handler = TimerChanged; if (handler != null) handler(value); }
         private void ForwardGroups(MatchGroupsEvent value) { var handler = MatchGroupsResolved; if (handler != null) handler(value); }
         private void ForwardCascade(CascadeLayerEvent value) { var handler = CascadeLayerResolved; if (handler != null) handler(value); }
-        private void ForwardAttack(AttackEvent value)
-        {
-            var handler = AttackResolved;
-            if (handler != null) handler(value);
-            if (Sample != null && !Sample.Enemy.IsDefeated) EvaluateBossMechanics();
-        }
+        private void ForwardAttack(AttackEvent value) { var handler = AttackResolved; if (handler != null) handler(value); }
         private void ForwardHeal(HealEvent value) { var handler = HealResolved; if (handler != null) handler(value); }
+        private void ForwardBossMechanic(EnemyEffectSnapshot value) { var handler = BossMechanicTriggered; if (handler != null) handler(value); }
         private void ForwardCountdown(EnemyCountdownEvent value) { var handler = EnemyCountdownChanged; if (handler != null) handler(value); }
         private void ForwardEnemyAction(EnemyActionSnapshot value) { var handler = EnemyActionResolved; if (handler != null) handler(value); }
         private void ForwardResolutionCount(int value) { var handler = BoardResolutionCountChanged; if (handler != null) handler(value); }

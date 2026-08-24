@@ -69,10 +69,22 @@ namespace PuzzleGame.Core.Battle
 
         internal EnemyActionData PeekNextAction() { return data.Actions[nextActionIndex]; }
 
-        internal bool TryConsumeThresholdTrigger(string triggerId)
+        public IReadOnlyList<EnemyEffectSnapshot> EvaluateThresholds()
         {
-            if (string.IsNullOrWhiteSpace(triggerId)) throw new ArgumentException("Threshold trigger ID is required.", "triggerId");
-            return consumedThresholdTriggerIds.Add(triggerId);
+            var triggered = new List<EnemyEffectSnapshot>();
+            if (IsDefeated || MaxHp <= 0) return triggered.AsReadOnly();
+            for (var index = 0; index < data.ThresholdTriggers.Length; index++)
+            {
+                var trigger = data.ThresholdTriggers[index];
+                if ((double)CurrentHp * 100d > (double)MaxHp * trigger.HpThresholdPercent) continue;
+                if (!consumedThresholdTriggerIds.Add(trigger.Id)) continue;
+                var effect = trigger.Effect;
+                var multiplier = Math.Max(EnrageTurns > 0 ? AttackMultiplier : 1f, effect.Payload.Multiplier);
+                var turns = Math.Max(EnrageTurns, effect.Payload.TurnCount);
+                SetEnrage(multiplier, turns);
+                triggered.Add(new EnemyEffectSnapshot(effect));
+            }
+            return triggered.AsReadOnly();
         }
 
         internal EnemyActionData CommitNextAction()

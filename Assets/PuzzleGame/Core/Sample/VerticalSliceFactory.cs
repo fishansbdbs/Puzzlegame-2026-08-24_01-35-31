@@ -72,14 +72,13 @@ namespace PuzzleGame.Core.Sample
             previewParty.ApplyDamage(100);
             var previewSession = stageCatalog.CreateSession(stageData.Id);
             var previewEnemy = previewSession.CurrentEnemies[0];
+            previewEnemy.ApplyDamage(previewEnemy.CurrentHp - (previewEnemy.MaxHp / 2 + 1));
             var previewContext = new BattleContext(CreateOpeningBoard(), previewParty, previewEnemy);
             ActivateLeaderSkill(previewParty, previewContext);
             var openingResolution = new BoardResolver().Resolve(previewContext.Board, new SampleOrbSource(seed ^ 0x13198a2e));
             var openingTurn = previewSession.CompleteBoardResolution(new BattleEngine(), openingResolution, previewContext);
 
-            var bossExampleEnemy = new EnemyRuntime(enemyData);
-            bossExampleEnemy.ApplyDamage(bossExampleEnemy.MaxHp - bossExampleEnemy.MaxHp / 2);
-            var bossMechanicExample = new BossMechanicEngine().Evaluate(bossExampleEnemy);
+            var bossMechanicExample = openingTurn.Mechanics;
             var objectiveExample = StageObjectiveEvaluator.Evaluate(stageData, new StageResult(true, .75f, 2));
 
             var ascensionWallet = new Wallet();

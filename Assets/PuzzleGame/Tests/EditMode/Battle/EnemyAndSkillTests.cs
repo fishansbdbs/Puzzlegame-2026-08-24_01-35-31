@@ -61,26 +61,115 @@ namespace PuzzleGame.Tests.EditMode.Battle
         }
 
         [Test]
-        public void Orb_skill_effects_convert_create_and_remove_deterministically()
+        public void Orb_skill_effects_convert_and_create_deterministically()
         {
             var effects = new[]
             {
                 BattleFixtures.Effect(SkillEffectType.ConvertOrbs, source: OrbType.Fire, target: OrbType.Water),
-                BattleFixtures.Effect(SkillEffectType.CreateOrbs, amount: 2, target: OrbType.Dark),
-                BattleFixtures.Effect(SkillEffectType.RemoveOrbs, source: OrbType.Heart, target: OrbType.Nature)
+                BattleFixtures.Effect(SkillEffectType.CreateOrbs, amount: 2, target: OrbType.Dark)
             };
             var caster = ChargedCaster(effects);
             var board = BattleFixtures.StableBoard();
-            // Keep the conversion/removal targets after the first two row-major cells used by CreateOrbs.
+            // Keep the conversion target after the first two row-major cells used by CreateOrbs.
             board.Set(5, 4, OrbType.Fire);
-            board.Set(4, 4, OrbType.Heart);
 
             var result = new SkillEngine().Activate(caster, Context(board: board, party: PartyWithCaster(caster)));
 
-            Assert.That(result.Events.Select(item => item.Kind), Is.EqualTo(new[] { BattleEffectKind.ConvertOrbs, BattleEffectKind.CreateOrbs, BattleEffectKind.RemoveOrbs }));
+            Assert.That(result.Events.Select(item => item.Kind), Is.EqualTo(new[] { BattleEffectKind.ConvertOrbs, BattleEffectKind.CreateOrbs }));
             Assert.That(board.Get(5, 4), Is.EqualTo(OrbType.Water));
-            Assert.That(board.Get(4, 4), Is.EqualTo(OrbType.Nature));
             Assert.That(result.Events[1].AffectedCount, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void Remove_orbs_compacts_each_column_and_refills_top_vacancies_in_column_row_order()
+        {
+            var board = BoardWithout(OrbType.Heart);
+            board.Set(0, 0, OrbType.Heart);
+            board.Set(0, 1, OrbType.Water);
+            board.Set(0, 2, OrbType.Heart);
+            board.Set(0, 3, OrbType.Nature);
+            board.Set(0, 4, OrbType.Dark);
+            board.Set(2, 0, OrbType.Light);
+            board.Set(2, 1, OrbType.Heart);
+            board.Set(2, 2, OrbType.Fire);
+            board.Set(2, 3, OrbType.Water);
+            board.Set(2, 4, OrbType.Heart);
+            var caster = ChargedCaster(new[]
+            {
+                BattleFixtures.Effect(SkillEffectType.RemoveOrbs, source: OrbType.Heart, target: (OrbType)999)
+            });
+            var source = new RecordingOrbSource(OrbType.Light, OrbType.Fire, OrbType.Nature, OrbType.Dark);
+
+            var result = new SkillEngine().Activate(caster, Context(board: board, party: PartyWithCaster(caster)), source);
+
+            Assert.That(result.Events.Single().Kind, Is.EqualTo(BattleEffectKind.RemoveOrbs));
+            Assert.That(result.Events.Single().AffectedCount, Is.EqualTo(4));
+            Assert.That(source.CallCount, Is.EqualTo(4));
+            Assert.That(Column(board, 0), Is.EqualTo(new[] { OrbType.Water, OrbType.Nature, OrbType.Dark, OrbType.Light, OrbType.Fire }));
+            Assert.That(Column(board, 2), Is.EqualTo(new[] { OrbType.Light, OrbType.Fire, OrbType.Water, OrbType.Nature, OrbType.Dark }));
+        }
+
+        [Test]
+        public void Remove_orbs_with_zero_matching_sources_does_not_request_a_refill()
+        {
+            var board = BoardWithout(OrbType.Heart);
+            var caster = ChargedCaster(new[]
+            {
+                BattleFixtures.Effect(SkillEffectType.RemoveOrbs, source: OrbType.Heart, target: (OrbType)999)
+            });
+            var source = new RecordingOrbSource();
+
+            var result = new SkillEngine().Activate(caster, Context(board: board, party: PartyWithCaster(caster)), source);
+
+            Assert.That(result.Succeeded, Is.True);
+            Assert.That(result.Events.Single().AffectedCount, Is.Zero);
+            Assert.That(source.CallCount, Is.Zero);
+        }
+
+        [Test]
+        public void Removal_without_a_refill_source_rejects_before_effects_board_or_charge_mutate()
+        {
+            var board = BoardWithout(OrbType.Heart);
+            board.Set(0, 0, OrbType.Heart);
+            var before = board.Clone();
+            var caster = ChargedCaster(new[]
+            {
+                BattleFixtures.Effect(SkillEffectType.Heal, amount: 8),
+                BattleFixtures.Effect(SkillEffectType.RemoveOrbs, source: OrbType.Heart, target: OrbType.Nature)
+            });
+            var party = PartyWithCaster(caster);
+            party.ApplyDamage(10);
+
+            Assert.That(() => new SkillEngine().Activate(caster, Context(board: board, party: party)),
+                Throws.TypeOf<InvalidOperationException>());
+
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 10));
+            Assert.That(caster.CurrentCharge, Is.EqualTo(1));
+            AssertBoardsEqual(before, board);
+        }
+
+        [Test]
+        public void Invalid_removal_refill_rejects_before_effects_board_or_charge_mutate()
+        {
+            var board = BoardWithout(OrbType.Heart);
+            board.Set(0, 0, OrbType.Heart);
+            board.Set(0, 2, OrbType.Heart);
+            var before = board.Clone();
+            var caster = ChargedCaster(new[]
+            {
+                BattleFixtures.Effect(SkillEffectType.Heal, amount: 8),
+                BattleFixtures.Effect(SkillEffectType.RemoveOrbs, source: OrbType.Heart, target: OrbType.Nature)
+            });
+            var party = PartyWithCaster(caster);
+            party.ApplyDamage(10);
+
+            Assert.That(() => new SkillEngine().Activate(caster, Context(board: board, party: party),
+                    new RecordingOrbSource(OrbType.Light, (OrbType)999)),
+                Throws.TypeOf<InvalidOperationException>());
+
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 10));
+            Assert.That(caster.CurrentCharge, Is.EqualTo(1));
+            AssertBoardsEqual(before, board);
         }
 
         [Test]
@@ -118,6 +207,39 @@ namespace PuzzleGame.Tests.EditMode.Battle
 
             Assert.That(enemy.CurrentHp, Is.Zero);
             Assert.That(result.Events.Single().Amount, Is.EqualTo(20));
+        }
+
+        [Test]
+        public void Direct_damage_skill_evaluates_thresholds_after_all_effects_and_returns_immutable_snapshots()
+        {
+            var caster = ChargedCaster(new[]
+            {
+                BattleFixtures.Effect(SkillEffectType.DirectDamage, amount: 40),
+                BattleFixtures.Effect(SkillEffectType.DirectDamage, amount: 20)
+            });
+            var enemy = ThresholdEnemy(100, 2, 50f, 3);
+
+            var result = new SkillEngine().Activate(caster, Context(party: PartyWithCaster(caster), enemy: enemy));
+
+            Assert.That(result.Events.Select(item => item.Amount), Is.EqualTo(new[] { 40, 20 }));
+            Assert.That(result.Mechanics.Select(item => item.Multiplier), Is.EqualTo(new[] { 2f }));
+            Assert.That(enemy.CurrentHp, Is.EqualTo(40));
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(2f));
+            Assert.That(enemy.EnrageTurns, Is.EqualTo(3));
+            Assert.That(() => ((System.Collections.IList)result.Mechanics).Clear(), Throws.TypeOf<NotSupportedException>());
+        }
+
+        [Test]
+        public void Lethal_direct_damage_does_not_trigger_a_threshold()
+        {
+            var caster = ChargedCaster(new[] { BattleFixtures.Effect(SkillEffectType.DirectDamage, amount: 100) });
+            var enemy = ThresholdEnemy(100, 2, 50f, 3);
+
+            var result = new SkillEngine().Activate(caster, Context(party: PartyWithCaster(caster), enemy: enemy));
+
+            Assert.That(enemy.IsDefeated, Is.True);
+            Assert.That(result.Mechanics, Is.Empty);
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
         }
 
         [Test]
@@ -551,6 +673,63 @@ namespace PuzzleGame.Tests.EditMode.Battle
         }
 
         [Test]
+        public void Countdown_one_threshold_crossing_enrages_the_same_enemy_action_then_resets_and_ticks()
+        {
+            var enemy = ThresholdEnemy(30, 2, 50f, 2, countdown: 1, actionDamage: 10, reset: 2);
+            var party = BattleFixtures.Party();
+            var context = Context(party: party, enemy: enemy);
+            var engine = new BattleEngine();
+
+            var crossing = engine.CompleteBoardResolution(BattleFixtures.OneGroup(OrbType.Fire, 3), context);
+
+            Assert.That(crossing.Mechanics.Select(item => item.Multiplier), Is.EqualTo(new[] { 2f }));
+            Assert.That(() => ((System.Collections.IList)crossing.Mechanics).Clear(), Throws.TypeOf<NotSupportedException>());
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 20));
+            Assert.That(enemy.Countdown, Is.EqualTo(2));
+            Assert.That(enemy.EnrageTurns, Is.EqualTo(2));
+
+            var firstTick = engine.CompleteBoardResolution(EmptyResolution(), context);
+            Assert.That(firstTick.Mechanics, Is.Empty);
+            Assert.That(enemy.Countdown, Is.EqualTo(1));
+            Assert.That(enemy.EnrageTurns, Is.EqualTo(1));
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 20));
+
+            var dueTick = engine.CompleteBoardResolution(EmptyResolution(), context);
+            Assert.That(dueTick.Mechanics, Is.Empty);
+            Assert.That(enemy.Countdown, Is.EqualTo(2));
+            Assert.That(enemy.EnrageTurns, Is.Zero);
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 40));
+        }
+
+        [Test]
+        public void Thresholds_are_returned_once_in_authored_order_and_lethal_combat_triggers_none()
+        {
+            var ordered = ThresholdEnemy(100, 2, 75f, 3);
+            var data = ordered.Data;
+            data.ThresholdTriggers = new[]
+            {
+                Threshold("first", 75f, 2f, 3),
+                Threshold("second", 50f, 3f, 4)
+            };
+            ordered = new EnemyRuntime(data);
+            ordered.ApplyDamage(60);
+
+            var first = ordered.EvaluateThresholds();
+            var repeated = ordered.EvaluateThresholds();
+
+            Assert.That(first.Select(item => item.Multiplier), Is.EqualTo(new[] { 2f, 3f }));
+            Assert.That(repeated, Is.Empty);
+
+            var lethal = ThresholdEnemy(15, 2, 50f, 3, countdown: 1, actionDamage: 10, reset: 2);
+            var lethalTurn = new BattleEngine().CompleteBoardResolution(BattleFixtures.OneGroup(OrbType.Fire, 3),
+                Context(party: BattleFixtures.Party(), enemy: lethal));
+            Assert.That(lethal.IsDefeated, Is.True);
+            Assert.That(lethalTurn.Mechanics, Is.Empty);
+            Assert.That(lethalTurn.EnemyTurn.ExecutedActions, Is.Empty);
+        }
+
+        [Test]
         public void Enemy_runtime_rejects_invalid_contract_state()
         {
             Assert.That(() => new EnemyRuntime(null), Throws.TypeOf<ArgumentNullException>());
@@ -600,6 +779,39 @@ namespace PuzzleGame.Tests.EditMode.Battle
             return BattleFixtures.Enemy(ElementType.Fire, countdown: 1, actions: new[] { Action("effects", reset, effects) });
         }
 
+        private static EnemyRuntime ThresholdEnemy(int hp, float multiplier, float thresholdPercent, int turns,
+            int countdown = 3, int actionDamage = 0, int reset = 3)
+        {
+            return new EnemyRuntime(new EnemyData
+            {
+                Id = "threshold-enemy",
+                Element = ElementType.Nature,
+                BaseStats = new StatBlock { Hp = hp, Attack = 10, Recovery = 0 },
+                InitialCountdown = countdown,
+                Actions = new[]
+                {
+                    Action("threshold-action", reset,
+                        actionDamage == 0 ? new EnemyEffectData[0] : new[] { EnemyEffect(EnemyEffectType.Damage, amount: actionDamage) })
+                },
+                ThresholdTriggers = new[] { Threshold("threshold", thresholdPercent, multiplier, turns) }
+            });
+        }
+
+        private static EnemyThresholdTriggerData Threshold(string id, float thresholdPercent, float multiplier, int turns)
+        {
+            return new EnemyThresholdTriggerData
+            {
+                Id = id,
+                HpThresholdPercent = thresholdPercent,
+                Effect = EnemyEffect(EnemyEffectType.Enrage, multiplier: multiplier, turns: turns)
+            };
+        }
+
+        private static BoardResolution EmptyResolution()
+        {
+            return new BoardResolver().Resolve(BattleFixtures.StableBoard(), new RecordingOrbSource());
+        }
+
         private static BattleContext Context(BoardState board = null, PartyState party = null, EnemyRuntime enemy = null)
         {
             return new BattleContext(board ?? BattleFixtures.StableBoard(), party ?? BattleFixtures.Party(), enemy ?? BattleFixtures.Enemy(ElementType.Fire));
@@ -612,6 +824,47 @@ namespace PuzzleGame.Tests.EditMode.Battle
             for (var x = 0; x < BoardState.Columns; x++)
                 if (board.Get(x, y) == orbType) count++;
             return count;
+        }
+
+        private static BoardState BoardWithout(OrbType excluded)
+        {
+            var values = Enum.GetValues(typeof(OrbType)).Cast<OrbType>().Where(item => item != excluded).ToArray();
+            var board = new BoardState();
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++) board.Set(x, y, values[(x + y) % values.Length]);
+            return board;
+        }
+
+        private static OrbType[] Column(BoardState board, int x)
+        {
+            var result = new OrbType[BoardState.Rows];
+            for (var y = 0; y < BoardState.Rows; y++) result[y] = board.Get(x, y);
+            return result;
+        }
+
+        private static void AssertBoardsEqual(BoardState expected, BoardState actual)
+        {
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++)
+                Assert.That(actual.Get(x, y), Is.EqualTo(expected.Get(x, y)), "cell " + x + "," + y);
+        }
+
+        private sealed class RecordingOrbSource : IOrbSource
+        {
+            private readonly OrbType[] values;
+
+            internal RecordingOrbSource(params OrbType[] values)
+            {
+                this.values = values;
+            }
+
+            internal int CallCount { get; private set; }
+
+            public OrbType NextOrb()
+            {
+                if (CallCount >= values.Length) throw new InvalidOperationException("Unexpected refill request.");
+                return values[CallCount++];
+            }
         }
     }
 }
