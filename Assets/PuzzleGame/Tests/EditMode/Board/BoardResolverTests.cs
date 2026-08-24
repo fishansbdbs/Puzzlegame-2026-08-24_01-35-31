@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using PuzzleGame.Core.Board;
 using PuzzleGame.Core.Contracts;
@@ -70,6 +71,29 @@ namespace PuzzleGame.Tests.EditMode.Board
             Assert.That(result.CascadeLayers, Has.Count.EqualTo(2));
             Assert.That(result.CascadeLayers[1].Groups[0].OrbType, Is.EqualTo(OrbType.Water));
             Assert.That(MatchDetector.FindGroups(result.FinalBoard), Is.Empty);
+        }
+
+        [Test]
+        public void Resolver_stops_a_valid_source_that_never_stabilizes_at_the_configured_layer_limit()
+        {
+            var board = BoardFixtures.Create((x, y) => OrbType.Fire);
+
+            Assert.That(
+                () => new BoardResolver(1).Resolve(board, new QueueOrbSource(new[] { OrbType.Fire })),
+                Throws.TypeOf<InvalidOperationException>().With.Message.EqualTo("Board resolution exceeded the maximum cascade layer count."));
+        }
+
+        [Test]
+        public void Resolver_rejects_an_undefined_orb_returned_by_a_refill_source()
+        {
+            var board = BoardFixtures.Sequential();
+            board.Set(0, 0, OrbType.Fire);
+            board.Set(0, 1, OrbType.Fire);
+            board.Set(0, 2, OrbType.Fire);
+
+            Assert.That(
+                () => new BoardResolver().Resolve(board, new QueueOrbSource(new[] { (OrbType)999 })),
+                Throws.TypeOf<ArgumentOutOfRangeException>());
         }
     }
 

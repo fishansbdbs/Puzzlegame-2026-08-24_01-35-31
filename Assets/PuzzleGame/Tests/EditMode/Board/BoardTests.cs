@@ -30,6 +30,36 @@ namespace PuzzleGame.Tests.EditMode.Board
         }
 
         [Test]
+        public void Board_rejects_undefined_orb_values_in_initial_cells()
+        {
+            var cells = new OrbType[BoardState.Columns * BoardState.Rows];
+            cells[0] = (OrbType)999;
+
+            Assert.That(() => new BoardState(cells), Throws.TypeOf<ArgumentOutOfRangeException>());
+        }
+
+        [Test]
+        public void Board_rejects_undefined_orb_values_set_after_construction()
+        {
+            var board = BoardFixtures.Sequential();
+
+            Assert.That(() => board.Set(0, 0, (OrbType)999), Throws.TypeOf<ArgumentOutOfRangeException>());
+            Assert.That(board.Get(0, 0), Is.EqualTo(OrbType.Fire));
+        }
+
+        [Test]
+        public void Match_detector_cannot_emit_undefined_orb_groups_from_a_public_board()
+        {
+            var board = BoardFixtures.Create((x, y) => y == 0 ? OrbType.Fire : (OrbType)((x + y) % 6));
+            Assert.That(() => board.Set(0, 0, (OrbType)999), Throws.TypeOf<ArgumentOutOfRangeException>());
+
+            var groups = MatchDetector.FindGroups(board);
+
+            Assert.That(groups, Has.Count.EqualTo(1));
+            Assert.That(groups[0].OrbType, Is.EqualTo(OrbType.Fire));
+        }
+
+        [Test]
         public void Clone_has_independent_orb_storage()
         {
             var board = BoardFixtures.Sequential();

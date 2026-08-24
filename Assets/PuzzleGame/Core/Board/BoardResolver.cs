@@ -37,6 +37,20 @@ namespace PuzzleGame.Core.Board
 
     public sealed class BoardResolver
     {
+        public const int DefaultMaximumCascadeLayers = 100;
+
+        private readonly int maximumCascadeLayers;
+
+        public BoardResolver(int maximumCascadeLayers = DefaultMaximumCascadeLayers)
+        {
+            if (maximumCascadeLayers <= 0)
+            {
+                throw new ArgumentOutOfRangeException("maximumCascadeLayers");
+            }
+
+            this.maximumCascadeLayers = maximumCascadeLayers;
+        }
+
         public BoardResolution Resolve(BoardState board, IOrbSource orbSource)
         {
             if (board == null)
@@ -57,6 +71,11 @@ namespace PuzzleGame.Core.Board
                 if (groups.Count == 0)
                 {
                     return new BoardResolution(layers, workingBoard);
+                }
+
+                if (layers.Count >= maximumCascadeLayers)
+                {
+                    throw new InvalidOperationException("Board resolution exceeded the maximum cascade layer count.");
                 }
 
                 layers.Add(new CascadeLayer(groups));
@@ -90,7 +109,9 @@ namespace PuzzleGame.Core.Board
 
                 for (var y = nextEmptyRow; y < BoardState.Rows; y++)
                 {
-                    board.Set(x, y, orbSource.NextOrb());
+                    var orbType = orbSource.NextOrb();
+                    BoardState.ValidateOrbType(orbType, "orbSource");
+                    board.Set(x, y, orbType);
                 }
             }
         }

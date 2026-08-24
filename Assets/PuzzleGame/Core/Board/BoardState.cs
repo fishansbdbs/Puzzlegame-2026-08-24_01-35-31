@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using PuzzleGame.Core.Contracts;
 
 namespace PuzzleGame.Core.Board
@@ -15,6 +16,33 @@ namespace PuzzleGame.Core.Board
         public BoardState()
         {
             cells = new OrbType[Columns * Rows];
+        }
+
+        public BoardState(IEnumerable<OrbType> initialCells)
+        {
+            if (initialCells == null)
+            {
+                throw new ArgumentNullException("initialCells");
+            }
+
+            cells = new OrbType[Columns * Rows];
+            var index = 0;
+            foreach (var orbType in initialCells)
+            {
+                if (index >= cells.Length)
+                {
+                    throw new ArgumentException("Initial board must contain exactly 30 cells.", "initialCells");
+                }
+
+                ValidateOrbType(orbType, "initialCells");
+                cells[index] = orbType;
+                index++;
+            }
+
+            if (index != cells.Length)
+            {
+                throw new ArgumentException("Initial board must contain exactly 30 cells.", "initialCells");
+            }
         }
 
         private BoardState(OrbType[] cells)
@@ -37,6 +65,7 @@ namespace PuzzleGame.Core.Board
 
         public void Set(int x, int y, OrbType orbType)
         {
+            ValidateOrbType(orbType, "orbType");
             cells[GetIndex(x, y)] = orbType;
         }
 
@@ -67,6 +96,14 @@ namespace PuzzleGame.Core.Board
             }
 
             return y * Columns + x;
+        }
+
+        internal static void ValidateOrbType(OrbType orbType, string parameterName)
+        {
+            if (orbType < OrbType.Fire || orbType > OrbType.Heart)
+            {
+                throw new ArgumentOutOfRangeException(parameterName, orbType, "Orb type is not defined.");
+            }
         }
     }
 }
