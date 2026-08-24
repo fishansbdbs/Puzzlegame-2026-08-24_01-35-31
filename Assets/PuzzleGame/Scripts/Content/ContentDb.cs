@@ -119,7 +119,7 @@ namespace PuzzleGame.Presentation.Content
             int hp = Mathf.RoundToInt(Mathf.Lerp(dto.hp * 0.4f, dto.hp, t));
             int atk = Mathf.RoundToInt(Mathf.Lerp(dto.atk * 0.4f, dto.atk, t));
             int rec = Mathf.RoundToInt(Mathf.Lerp(dto.rec * 0.4f, dto.rec, t));
-            if (awakened && dto.awakened != null)
+            if (awakened && dto.HasAwakenedForm)
             {
                 hp += dto.awakened.hpBonus;
                 atk += dto.awakened.atkBonus;
@@ -129,7 +129,7 @@ namespace PuzzleGame.Presentation.Content
             {
                 Id = dto.id,
                 DisplayName = dto.name,
-                Epithet = awakened && dto.awakened != null && !string.IsNullOrEmpty(dto.awakened.epithet)
+                Epithet = awakened && dto.HasAwakenedForm && !string.IsNullOrEmpty(dto.awakened.epithet)
                     ? dto.awakened.epithet : dto.epithet,
                 Element = ParseElement(dto.element),
                 BaseRarity = dto.rarity,
@@ -157,9 +157,9 @@ namespace PuzzleGame.Presentation.Content
                 PassiveDescription = dto.passive != null ? dto.passive.desc : "",
                 Tags = new List<string>(dto.tags),
                 ArtRef = dto.artRef,
-                AwakenedArtRef = dto.awakened != null ? dto.awakened.artRef : "",
+                AwakenedArtRef = dto.HasAwakenedForm ? dto.awakened.artRef : "",
                 VfxRef = dto.vfxRef,
-                AwakenedVfxRef = dto.awakened != null ? dto.awakened.vfxRef : "",
+                AwakenedVfxRef = dto.HasAwakenedForm ? dto.awakened.vfxRef : "",
                 Flavor = dto.flavor
             };
             return view;

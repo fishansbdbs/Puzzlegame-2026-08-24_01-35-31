@@ -1,0 +1,100 @@
+{
+  "entries": [
+    {
+      "id": "sched_standard",
+      "kind": "banner",
+      "targetId": "standard_permanent",
+      "name": "Standard Summon",
+      "desc": "Always available.",
+      "permanent": true
+    },
+    {
+      "id": "sched_featured_gym",
+      "kind": "banner",
+      "targetId": "featured_gym_legends",
+      "name": "Legends of the Guild of Gains",
+      "desc": "Limited featured banner.",
+      "startUtc": "2026-08-17T00:00:00Z",
+      "endUtc": "2026-09-07T00:00:00Z"
+    },
+    {
+      "id": "sched_featured_night",
+      "kind": "banner",
+      "targetId": "featured_night_court",
+      "name": "The Night Court",
+      "desc": "Limited featured banner.",
+      "startUtc": "2026-09-07T00:00:00Z",
+      "endUtc": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sched_gatherin_r1",
+      "kind": "banner",
+      "targetId": "gatherin_glimmer_r1",
+      "name": "Glimmerdale Gather-In (Rotation 1)",
+      "desc": "Step banner, rotation 1.",
+      "startUtc": "2026-08-10T00:00:00Z",
+      "endUtc": "2026-08-31T00:00:00Z"
+    },
+    {
+      "id": "sched_gatherin_r2",
+      "kind": "banner",
+      "targetId": "gatherin_glimmer_r2",
+      "name": "Glimmerdale Gather-In (Rotation 2)",
+      "desc": "Step banner, rotation 2.",
+      "startUtc": "2026-08-31T00:00:00Z",
+      "endUtc": "2026-09-21T00:00:00Z"
+    },
+    {
+      "id": "sched_stepup_night",
+      "kind": "banner",
+      "targetId": "stepup_night_shift",
+      "name": "Night Shift Step-Up",
+      "desc": "Limited step-up banner.",
+      "startUtc": "2026-08-20T00:00:00Z",
+      "endUtc": "2026-09-03T00:00:00Z"
+    },
+    {
+      "id": "sched_bog_tax",
+      "kind": "eventChapter",
+      "targetId": "ev_bog_tax_season",
+      "name": "Tax Season in the Bog",
+      "desc": "Limited event chapter with the Taxlord.",
+      "startUtc": "2026-08-15T00:00:00Z",
+      "endUtc": "2026-09-01T00:00:00Z"
+    },
+    {
+      "id": "sched_daily_gold",
+      "kind": "materialDungeon",
+      "targetId": "ev_daily_gold",
+      "name": "The Royal Mint (Rear Entrance)",
+      "desc": "Daily gold dungeon.",
+      "recurrence": "daily"
+    },
+    {
+      "id": "sched_weekly_awakening",
+      "kind": "awakeningStage",
+      "targetId": "ev_weekly_awakening",
+      "name": "Custodians of the Radiant Core",
+      "desc": "Weekly Awakening material stage.",
+      "recurrence": "weekly",
+      "weekday": 3
+    },
+    {
+      "id": "sched_tower",
+      "kind": "challengeTower",
+      "targetId": "ev_tower_glimmer",
+      "name": "The Tower of Escalating Concern",
+      "desc": "Permanent challenge tower.",
+      "permanent": true
+    },
+    {
+      "id": "sched_bossrush",
+      "kind": "bossRush",
+      "targetId": "ev_bossrush_management",
+      "name": "Boss Rush: Performance Review Season",
+      "desc": "Weekend boss rush.",
+      "recurrence": "weekly",
+      "weekday": 6
+    }
+  ]
+}

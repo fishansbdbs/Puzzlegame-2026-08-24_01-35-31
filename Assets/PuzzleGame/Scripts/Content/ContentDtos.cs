@@ -49,6 +49,13 @@ namespace PuzzleGame.Presentation.Content
     [Serializable]
     public class CharacterDto
     {
+        /// <summary>
+        /// JsonUtility materializes absent objects as empty instances, so
+        /// "has a 6★ form" is defined by a non-empty awakened ability name.
+        /// </summary>
+        public bool HasAwakenedForm =>
+            awakened != null && !string.IsNullOrEmpty(awakened.abilityName);
+
         public string id;
         public string name;
         public string epithet;

@@ -123,7 +123,7 @@ namespace PuzzleGame.Presentation.Mock
         {
             if (!_owned.TryGetValue(characterId, out var state)) return false;
             if (!_db.Characters.TryGetValue(characterId, out var dto)) return false;
-            if (state.Awakened || dto.awakened == null) return false;
+            if (state.Awakened || !dto.HasAwakenedForm) return false;
             if (dto.rarity < 5 || state.Level < dto.maxLevel || AwakeningMaterials < 10) return false;
             AwakeningMaterials -= 10;
             state.Awakened = true;
@@ -136,7 +136,7 @@ namespace PuzzleGame.Presentation.Mock
             outLines.Clear();
             if (!_owned.TryGetValue(characterId, out var state)) return false;
             if (!_db.Characters.TryGetValue(characterId, out var dto)) return false;
-            if (dto.awakened == null || dto.rarity < 5)
+            if (!dto.HasAwakenedForm || dto.rarity < 5)
             {
                 outLines.Add("This character has no 6★ Awakened form yet.");
                 return false;
