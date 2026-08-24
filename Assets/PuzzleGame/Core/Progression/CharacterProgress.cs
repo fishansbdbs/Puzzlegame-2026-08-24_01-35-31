@@ -44,6 +44,20 @@ namespace PuzzleGame.Core.Progression
         public VisualSnapshot CurrentVisuals { get { return ProgressionDataSnapshot.Snapshot(awakened ? data.AwakenedVisuals : data.BaseVisuals); } }
 
         internal CharacterData Data { get { return data; } }
+        internal CharacterProgress CreateTransactionSnapshot()
+        {
+            var snapshot = new CharacterProgress(ProgressionDataSnapshot.Clone(data), new SkillData
+            {
+                Id = activeSkill.Id,
+                DisplayName = activeSkill.DisplayName,
+                ChargeElement = activeSkill.ChargeElement,
+                ChargeRequired = activeSkill.ChargeRequired
+            });
+            snapshot.SetExperience(totalExperience, level);
+            snapshot.SetAscension(ascension);
+            if (awakened) snapshot.SetAwakened();
+            return snapshot;
+        }
         internal void SetExperience(int value, int newLevel) { totalExperience = value; level = newLevel; }
         internal void SetAscension(int value) { ascension = value; }
         internal void SetAwakened() { awakened = true; }

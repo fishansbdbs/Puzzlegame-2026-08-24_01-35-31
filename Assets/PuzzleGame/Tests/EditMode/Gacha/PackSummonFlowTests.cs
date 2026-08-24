@@ -64,6 +64,38 @@ namespace PuzzleGame.Tests.EditMode.Gacha
             Assert.That(attempted, Is.True);
             Assert.That(flow.State, Is.EqualTo(PackSummonState.PackPresented));
         }
+
+        [Test]
+        public void Create_then_begin_emits_purchase_validated_exactly_once_before_any_other_hook()
+        {
+            var flow = PackSummonFlow.Create(FlowFixtures.Batch(1));
+            var hooks = "";
+            flow.PurchaseValidated += e => hooks += "purchase:" + e.CardIndex + ",";
+            flow.Transitioned += e => hooks += e.State + ",";
+
+            flow.Begin();
+            Assert.That(flow.State, Is.EqualTo(PackSummonState.PurchaseValidated));
+            Assert.That(hooks, Is.EqualTo("PurchaseValidated,purchase:-1,"));
+            Assert.That(() => flow.Begin(), Throws.TypeOf<InvalidOperationException>());
+            flow.PresentPack();
+            Assert.That(hooks, Does.EndWith("PackPresented,"));
+        }
+
+        [Test]
+        public void Partial_reveal_all_keeps_ready_card_index_and_emits_remaining_typed_indexes_once()
+        {
+            var flow = PackSummonFlow.Create(FlowFixtures.Batch(2));
+            var ready = ""; var revealed = "";
+            flow.CardReady += e => ready += e.CardIndex + ",";
+            flow.CardRevealed += e => revealed += e.CardIndex + ",";
+            flow.Begin(); flow.PresentPack(); flow.StartPackRip(); flow.OpenPack();
+            flow.PrepareNextCard();
+            flow.RevealAll();
+
+            Assert.That(ready, Is.EqualTo("0,1,2,3,4,5,6,7,8,9,"));
+            Assert.That(revealed, Is.EqualTo("0,1,2,3,4,5,6,7,8,9,"));
+            Assert.That(flow.State, Is.EqualTo(PackSummonState.ResultsComplete));
+        }
     }
 
     internal static class FlowFixtures

@@ -30,27 +30,44 @@ namespace PuzzleGame.Core.Progression
         {
             if (progress == null) throw new ArgumentNullException("progress");
             if (wallet == null) throw new ArgumentNullException("wallet");
-            var previous = progress.Ascension;
-            if (previous == MaximumAscension)
-            {
-                var overflow = progress.Data.Ascension.OverflowUniversalResourceAmount;
-                var result = new DuplicateApplicationResult(
-                    previous,
-                    previous,
-                    overflow,
-                    ProgressionCalculation.DeriveEffects(progress.Data, previous));
-                wallet.Add(WalletCurrencies.UniversalDuplicateResource, overflow);
-                return result;
-            }
+            var plan = PlanDuplicate(progress);
+            CommitDuplicatePlan(plan, progress, wallet);
+            return plan.Result;
+        }
 
-            var next = previous + 1;
-            var nextResult = new DuplicateApplicationResult(
-                previous,
-                next,
-                0,
-                ProgressionCalculation.DeriveEffects(progress.Data, next));
-            progress.SetAscension(next);
-            return nextResult;
+        internal static DuplicateTransactionPlan PlanDuplicate(CharacterProgress progress)
+        {
+            if (progress == null) throw new ArgumentNullException("progress");
+            var previous = progress.Ascension;
+            var overflow = previous == MaximumAscension ? progress.Data.Ascension.OverflowUniversalResourceAmount : 0;
+            var next = overflow == 0 ? previous + 1 : previous;
+            var result = new DuplicateApplicationResult(previous, next, overflow, ProgressionCalculation.DeriveEffects(progress.Data, next));
+            return new DuplicateTransactionPlan(previous, result);
+        }
+
+        internal static void ApplyDuplicatePlanToSnapshot(DuplicateTransactionPlan plan, CharacterProgress progress)
+        {
+            if (plan == null) throw new ArgumentNullException("plan");
+            if (progress == null) throw new ArgumentNullException("progress");
+            if (progress.Ascension != plan.ExpectedAscension) throw new InvalidOperationException("Progress changed while a duplicate transaction was planned.");
+            progress.SetAscension(plan.Result.NewAscension);
+        }
+
+        internal static void CommitDuplicatePlan(DuplicateTransactionPlan plan, CharacterProgress progress, Wallet wallet)
+        {
+            if (plan == null) throw new ArgumentNullException("plan");
+            if (progress == null) throw new ArgumentNullException("progress");
+            if (wallet == null) throw new ArgumentNullException("wallet");
+            if (progress.Ascension != plan.ExpectedAscension) throw new InvalidOperationException("Progress changed while a duplicate transaction was planned.");
+            progress.SetAscension(plan.Result.NewAscension);
+            if (plan.Result.UniversalResourceGranted > 0) wallet.Add(WalletCurrencies.UniversalDuplicateResource, plan.Result.UniversalResourceGranted);
+        }
+
+        internal static void CommitDuplicateOverflow(DuplicateTransactionPlan plan, Wallet wallet)
+        {
+            if (plan == null) throw new ArgumentNullException("plan");
+            if (wallet == null) throw new ArgumentNullException("wallet");
+            if (plan.Result.UniversalResourceGranted > 0) wallet.Add(WalletCurrencies.UniversalDuplicateResource, plan.Result.UniversalResourceGranted);
         }
 
         public static bool CanAwaken(CharacterProgress progress, Wallet wallet, MaterialInventory materials)
@@ -121,6 +138,13 @@ namespace PuzzleGame.Core.Progression
         public int TotalExperience { get; private set; }
         public bool IsAtMaxLevel { get; private set; }
         public StatSnapshot Stats { get; private set; }
+    }
+
+    internal sealed class DuplicateTransactionPlan
+    {
+        internal DuplicateTransactionPlan(int expectedAscension, DuplicateApplicationResult result) { ExpectedAscension = expectedAscension; Result = result; }
+        internal int ExpectedAscension { get; private set; }
+        internal DuplicateApplicationResult Result { get; private set; }
     }
 
     public sealed class DuplicateApplicationResult

@@ -205,6 +205,7 @@ namespace PuzzleGame.Core.Contracts
         public WeightedCharacterData[] Characters = Array.Empty<WeightedCharacterData>();
         public BannerStepData[] Steps = Array.Empty<BannerStepData>();
         public string PresentationKey;
+        public string RotationId;
 
         string IIdentifiedData.Id => Id;
     }

@@ -4,6 +4,7 @@ namespace PuzzleGame.Core.Gacha
 {
     public enum PackSummonState
     {
+        PreStart,
         PurchaseValidated,
         PackPresented,
         PackRipStarted,
@@ -34,10 +35,11 @@ namespace PuzzleGame.Core.Gacha
         {
             this.batch = batch ?? throw new ArgumentNullException("batch");
             if (batch.Results == null || batch.Results.Count == 0) throw new ArgumentException("Summon batches must contain results.", "batch");
-            state = PackSummonState.PurchaseValidated;
+            state = PackSummonState.PreStart;
         }
 
-        public static PackSummonFlow Start(SummonBatch batch) { return new PackSummonFlow(batch); }
+        public static PackSummonFlow Create(SummonBatch batch) { return new PackSummonFlow(batch); }
+        public static PackSummonFlow Start(SummonBatch batch) { var flow = Create(batch); flow.Begin(); return flow; }
         public SummonBatch Batch { get { return batch; } }
         public PackSummonState State { get { return state; } }
         public int NextCardIndex { get { return nextCardIndex; } }
@@ -52,6 +54,7 @@ namespace PuzzleGame.Core.Gacha
         public event Action<PackSummonFlowEvent> AllCardsRevealed;
         public event Action<PackSummonFlowEvent> ResultsComplete;
 
+        public void Begin() { Transition(PackSummonState.PreStart, PackSummonState.PurchaseValidated, -1); }
         public void PresentPack() { Transition(PackSummonState.PurchaseValidated, PackSummonState.PackPresented, -1); }
         public void StartPackRip() { Transition(PackSummonState.PackPresented, PackSummonState.PackRipStarted, -1); }
         public void OpenPack() { Transition(PackSummonState.PackRipStarted, PackSummonState.PackOpened, -1); }
