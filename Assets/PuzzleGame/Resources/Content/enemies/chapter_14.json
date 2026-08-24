@@ -244,7 +244,7 @@
           "count": 5
         },
         {
-          "name": "Mandatory Attendance",
+          "name": "You Cannot Decline",
           "desc": "TAUNTS: you cannot target anything else. You are IN the meeting.",
           "type": "taunt"
         }

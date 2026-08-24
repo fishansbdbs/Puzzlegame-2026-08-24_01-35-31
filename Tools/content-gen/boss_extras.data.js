@@ -30,7 +30,7 @@ module.exports = {
     boss_dead_letter: [
       { name: 'Sealed Court', desc: 'Combo shield: 4+ combos to breach the pigeonholes.', type: 'comboShield', count: 4 } ],
     boss_recurring: [
-      { name: 'Mandatory Attendance', desc: 'TAUNTS: you cannot target anything else. You are IN the meeting.', type: 'taunt' } ],
+      { name: 'You Cannot Decline', desc: 'TAUNTS: you cannot target anything else. You are IN the meeting.', type: 'taunt' } ],
     boss_moonlord: [
       { name: 'Dark Side Holdings', desc: 'Absorbs Dark damage this rotation. He owns that too.', type: 'absorb', color: 'dark' } ],
     boss_complaints_prince: [
