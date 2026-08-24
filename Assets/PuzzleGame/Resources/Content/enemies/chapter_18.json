@@ -1,0 +1,268 @@
+{
+  "enemies": [
+    {
+      "id": "form_elemental",
+      "name": "Form Elemental (Blank)",
+      "element": "light",
+      "boss": false,
+      "hp": 30400,
+      "atk": 4290,
+      "countdown": 3,
+      "artRef": "enemy_form_elemental",
+      "flavor": "A being of pure unfilled fields. Yearns for your information.",
+      "actions": [
+        {
+          "name": "Required Field",
+          "desc": "Locks 3 orbs with red asterisks.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Paper Press",
+          "desc": "Flattened by potential.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "red_tape_serpent",
+      "name": "Red Tape Serpent",
+      "element": "fire",
+      "boss": false,
+      "hp": 36480,
+      "atk": 4290,
+      "countdown": 3,
+      "artRef": "enemy_red_tape_serpent",
+      "flavor": "Miles long. Wraps entire departments. Sheds regulations seasonally.",
+      "actions": [
+        {
+          "name": "Constrict Process",
+          "desc": "A big procedural squeeze.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Tape Coil",
+          "desc": "Locks 3 orbs in crimson ribbon.",
+          "type": "lock",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "rubber_stamp_ogre",
+      "name": "Rubber Stamp Ogre",
+      "element": "nature",
+      "boss": false,
+      "hp": 39520,
+      "atk": 4719,
+      "countdown": 3,
+      "artRef": "enemy_rubber_stamp_ogre",
+      "flavor": "APPROVED and DENIED, one in each fist. He decides mid-swing.",
+      "actions": [
+        {
+          "name": "DENIED",
+          "desc": "A big left hook of rejection.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "APPROVED",
+          "desc": "Somehow this also hurts.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "binder_beast",
+      "name": "Three-Ring Binder Beast",
+      "element": "dark",
+      "boss": false,
+      "hp": 33440,
+      "atk": 4290,
+      "countdown": 3,
+      "artRef": "enemy_binder_beast",
+      "flavor": "SNAP. SNAP. SNAP. The rings hunger for loose leaf. And fingers.",
+      "actions": [
+        {
+          "name": "Ring Snap",
+          "desc": "Mind your hands.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Reorganize",
+          "desc": "Converts 3 orbs to Dark.",
+          "type": "convert",
+          "count": 3,
+          "color": "dark"
+        }
+      ]
+    },
+    {
+      "id": "intern_phantom",
+      "name": "The Eternal Intern",
+      "element": "water",
+      "boss": false,
+      "hp": 27360,
+      "atk": 4290,
+      "countdown": 3,
+      "artRef": "enemy_intern_phantom",
+      "flavor": "Has been \"gaining experience\" since the department's founding. Unpaid. Unstoppable.",
+      "actions": [
+        {
+          "name": "Coffee Sprint",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        },
+        {
+          "name": "Filing Flurry",
+          "desc": "A blur of alphabetization.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "notary_gorgon",
+      "name": "Notary Gorgon",
+      "element": "dark",
+      "boss": false,
+      "hp": 30400,
+      "atk": 4719,
+      "countdown": 3,
+      "artRef": "enemy_notary_gorgon",
+      "flavor": "Meet her gaze and be witnessed. PERMANENTLY.",
+      "actions": [
+        {
+          "name": "Witnessed",
+          "desc": "Binds a party member under official seal.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Seal Strike",
+          "desc": "Embossed at high velocity.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_auditor_general",
+      "name": "The Auditor General",
+      "element": "light",
+      "boss": true,
+      "hp": 304000,
+      "atk": 6006,
+      "countdown": 3,
+      "artRef": "enemy_boss_auditor_general",
+      "flavor": "Audits audits. Her findings have findings. Nothing reconciles. NOTHING.",
+      "actions": [
+        {
+          "name": "Finding of Findings",
+          "desc": "A big recursive discovery.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Reconciliation",
+          "desc": "Converts 4 orbs to Light.",
+          "type": "convert",
+          "count": 4,
+          "color": "light"
+        },
+        {
+          "name": "Materiality Threshold",
+          "desc": "Locks 4 orbs below the line.",
+          "type": "lock",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "boss_shredder",
+      "name": "The Shredder of Fates",
+      "element": "dark",
+      "boss": true,
+      "hp": 334400,
+      "atk": 6435,
+      "countdown": 2,
+      "artRef": "enemy_boss_shredder",
+      "flavor": "Feeds on destinies filed in error. Jam it at your peril. It remembers every jam.",
+      "actions": [
+        {
+          "name": "Cross-Cut",
+          "desc": "A big shredding sweep.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Confetti of the Doomed",
+          "desc": "Poisons 4 orbs with shredded fates.",
+          "type": "poison",
+          "count": 4
+        },
+        {
+          "name": "Feed Me Files",
+          "desc": "Heals itself. NOM.",
+          "type": "heal",
+          "amount": 6000
+        }
+      ]
+    },
+    {
+      "id": "boss_undersecretary",
+      "name": "The Under-Under-Secretary",
+      "element": "dark",
+      "boss": true,
+      "hp": 790400,
+      "atk": 6864,
+      "countdown": 3,
+      "artRef": "enemy_boss_undersecretary",
+      "flavor": "Seventeen levels below the Secretary. Actually runs everything. Has never been photographed.",
+      "actions": [
+        {
+          "name": "Chain of Command",
+          "desc": "Massive damage, delegated downward.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Bury in Committee",
+          "desc": "Locks 5 orbs pending review.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Plausible Deniability",
+          "desc": "Heals himself. He was never here.",
+          "type": "heal",
+          "amount": 10000
+        },
+        {
+          "name": "Memo of Doom",
+          "desc": "Converts 3 orbs to Dark.",
+          "type": "convert",
+          "count": 3,
+          "color": "dark"
+        },
+        {
+          "name": "Furlough",
+          "desc": "Binds a party member indefinitely.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Delegate Downward",
+          "desc": "Summons a subordinate. There is ALWAYS a subordinate.",
+          "type": "summon",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

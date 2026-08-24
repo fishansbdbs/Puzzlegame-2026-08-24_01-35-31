@@ -1,0 +1,189 @@
+{
+  "scenes": [
+    {
+      "id": "ch10_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Necropolis DMV. Halfway point of our journey, hero. The dead need licenses to haunt, and the line predates several gods."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "What do WE need?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "A Class-H Heroism License. Ours expired in chapter three. We've been adventuring ILLEGALLY, hero. I haven't slept."
+        }
+      ]
+    },
+    {
+      "id": "ch10_mini1",
+      "lines": [
+        {
+          "speaker": "Registrar",
+          "portrait": "enemy_boss_registrar",
+          "side": "right",
+          "text": "NAME?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "You have it on file. You just said you have everything on file."
+        },
+        {
+          "speaker": "Registrar",
+          "portrait": "enemy_boss_registrar",
+          "side": "right",
+          "text": "THE FILE MUST BE CONFIRMED. VERBALLY. WITH YOUR EMBARRASSING MIDDLE NAME."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "...draw your weapon."
+        }
+      ]
+    },
+    {
+      "id": "ch10_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Window 1. The number board flickers: NOW SERVING 4,000,001. It is your number. It has been 6,000 years."
+        },
+        {
+          "speaker": "The Lich Clerk",
+          "portrait": "enemy_boss_lich_clerk",
+          "side": "right",
+          "text": "NEXT."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "That's us! THAT'S US! Hero, I've never been so happy and so terrified!"
+        },
+        {
+          "speaker": "The Lich Clerk",
+          "portrait": "enemy_boss_lich_clerk",
+          "side": "right",
+          "text": "YOUR FORMS ARE... adequate. UNFORTUNATELY, THE SYSTEM IS DOWN. COMBAT IS THE BACKUP SYSTEM."
+        }
+      ]
+    },
+    {
+      "id": "ch10_boss_after",
+      "lines": [
+        {
+          "speaker": "The Lich Clerk",
+          "portrait": "enemy_boss_lich_clerk",
+          "side": "right",
+          "text": "Processed... approved... laminated..."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A fresh Class-H Heroism License materializes. The photo is terrible. It is perfect."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "WE'RE LEGAL! Hero, we're LEGAL! ...why is the license already expiring in chapter twenty?"
+        }
+      ]
+    },
+    {
+      "id": "ch10_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "In the eternal queue, skeletons pass around pamphlets printed on rice paper."
+        },
+        {
+          "speaker": "Queue Skeleton",
+          "portrait": "enemy_queue_skeleton",
+          "side": "right",
+          "text": "It says here... we don't HAVE to hold our place in line... for six centuries... without breaks?"
+        },
+        {
+          "speaker": "Fenris",
+          "portrait": "enemy_boss_wolf_rep",
+          "side": "left",
+          "text": "Local 4,000,001 — the Undead Line-Standers' Guild. First demand: CHAIRS."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "He's here too. Of course he's here too."
+        }
+      ]
+    },
+    {
+      "id": "ch10_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A phantom vehicle idles in the testing yard. It has no wheels, no doors, and one furious instructor."
+        },
+        {
+          "speaker": "Road Test Revenant",
+          "portrait": "enemy_boss_road_test",
+          "side": "right",
+          "text": "MIRRORS. SIGNAL. SCREAM. In that order. BEGIN."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "This isn't a road."
+        },
+        {
+          "speaker": "Road Test Revenant",
+          "portrait": "enemy_boss_road_test",
+          "side": "right",
+          "text": "THE ROAD IS A STATE OF MIND. YOU HAVE ALREADY FAILED IT."
+        }
+      ]
+    },
+    {
+      "id": "ch10_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "PING. The number board changes: NOW SERVING 4,000,001. The queue holds its collective breath. All of it. Every bone."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "That's us, hero. Six thousand years of waiting ends TODAY. Straighten your collar. Practice your embarrassing middle name."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Never."
+        }
+      ]
+    }
+  ]
+}

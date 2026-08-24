@@ -1,0 +1,183 @@
+{
+  "scenes": [
+    {
+      "id": "ch04_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Soggy Depths! Underwater kingdom, proud people, and a call center that handles the ENTIRE ocean."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "How do we breathe down here?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "You filled out the Air Request Form in chapter two! See? Bureaucracy SAVES lives. Occasionally. By accident."
+        }
+      ]
+    },
+    {
+      "id": "ch04_mini1",
+      "lines": [
+        {
+          "speaker": "Support Shark",
+          "portrait": "enemy_boss_support_shark",
+          "side": "right",
+          "text": "Hi, this is Tier 2. I see you've been escalated. I'm required to ask: have you tried turning your party off and on again?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "They're people."
+        },
+        {
+          "speaker": "Support Shark",
+          "portrait": "enemy_boss_support_shark",
+          "side": "right",
+          "text": "So that's a no. Noting non-compliance. Beginning chomp procedure."
+        }
+      ]
+    },
+    {
+      "id": "ch04_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The heart of the Depths. A jellyfish vast as a cathedral, glowing with the patience of the eternally on-hold."
+        },
+        {
+          "speaker": "The Hold Queen",
+          "portrait": "enemy_boss_hold_queen",
+          "side": "right",
+          "text": "YOUR CALL... HAS REACHED... THE FRONT OF THE QUEUE."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "After nine hundred years, someone got through! Hero, ask about our billing issue!"
+        },
+        {
+          "speaker": "The Hold Queen",
+          "portrait": "enemy_boss_hold_queen",
+          "side": "right",
+          "text": "TO CONTINUE... PLEASE HOLD... FOREVER."
+        }
+      ]
+    },
+    {
+      "id": "ch04_boss_after",
+      "lines": [
+        {
+          "speaker": "The Hold Queen",
+          "portrait": "enemy_boss_hold_queen",
+          "side": "right",
+          "text": "YOUR ISSUE... HAS BEEN... RESOLVED... SURVEY TO FOLLOW..."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The hold queue is FREE! Ten thousand mer-people just heard a real voice for the first time! They're weeping!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Five stars. Would battle again."
+        }
+      ]
+    },
+    {
+      "id": "ch04_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "At desk 4,401, a green slime wearing a tiny tie answers three phones at once."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero. HERO. The tie. The TIE."
+        },
+        {
+          "speaker": "Tie Slime",
+          "portrait": "enemy_slime_green",
+          "side": "right",
+          "text": "Thank you for holding! This is Gerald's cousin, Blerald. Gerald says hi. Gerald says you cost him a promotion. Gerald is FINE about it."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "That sounds like Gerald is not fine about it."
+        }
+      ]
+    },
+    {
+      "id": "ch04_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The water darkens. Something ancient rises, holding a receipt from before receipts existed."
+        },
+        {
+          "speaker": "The Abyssal Complainant",
+          "portrait": "enemy_boss_deep_karen",
+          "side": "right",
+          "text": "I HAVE WAITED NINE EONS TO SPEAK TO A MANAGER. YOU... ARE SHAPED LIKE A MANAGER."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "I'm really not."
+        },
+        {
+          "speaker": "The Abyssal Complainant",
+          "portrait": "enemy_boss_deep_karen",
+          "side": "right",
+          "text": "ALL WHO DENY BEING MANAGERS ARE MANAGERS. IT IS KNOWN."
+        }
+      ]
+    },
+    {
+      "id": "ch04_preboss",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The hold music is getting louder. That means we're close to the front of the queue. Or the queue is close to the front of US."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "How do you fight a queue?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Form E-A-R, hero: Engage, Advance, RESOLVE. I just made it up. It's already policy. That's how confident I am."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "scenes": [
+    {
+      "id": "ch20_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "This is it, hero. The top floor of reality. Every quota, every countdown, every gacha rate in the universe is set in that office."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "And the small box from chapter eight?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "In my bag. \"Do not open until the finale.\" Hero... I think past-me knew something."
+        }
+      ]
+    },
+    {
+      "id": "ch20_mini1",
+      "lines": [
+        {
+          "speaker": "GERALD",
+          "portrait": "enemy_boss_gerald_promoted",
+          "side": "right",
+          "text": "Hello again. You may notice: SEVEN ties. Losing to you was the best career move I ever made."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Gerald, you don't have to do this."
+        },
+        {
+          "speaker": "GERALD",
+          "portrait": "enemy_boss_gerald_promoted",
+          "side": "right",
+          "text": "Do what? Leverage our existing relationship into a high-visibility rematch? THE PROJECTIONS DEMAND IT."
+        }
+      ]
+    },
+    {
+      "id": "ch20_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The office at the end of everything. A desk of black glass. Behind it, the one who owns the org chart itself."
+        },
+        {
+          "speaker": "The CEO",
+          "portrait": "enemy_boss_ceo_everything",
+          "side": "right",
+          "text": "Impressive numbers. Twenty chapters. Hundreds of stages. Do you know what that makes you, hero? PROFITABLE."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero, the box! OPEN THE BOX!"
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Inside: a single form. Signed by every friend made along the way. Form U-1: NOTICE OF UNIONIZATION — ALL REALITY."
+        },
+        {
+          "speaker": "The CEO",
+          "portrait": "enemy_boss_ceo_everything",
+          "side": "right",
+          "text": "...file that... and face MANDATORY ARBITRATION."
+        }
+      ]
+    },
+    {
+      "id": "ch20_boss_after",
+      "lines": [
+        {
+          "speaker": "The CEO",
+          "portrait": "enemy_boss_ceo_everything",
+          "side": "right",
+          "text": "Terms... accepted. Reality... belongs to its employees now. Even... the slimes?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "ESPECIALLY the slimes."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Somewhere in a very normal meadow, Gerald — demoted to Slime, Entry-Level — bounces happily for the first time in years. His quota: one nap."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "We did it, hero. The realm runs on friendship now. And EXTREMELY thorough paperwork. Some things are sacred."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "THE END. (Pending quarterly review.)"
+        }
+      ]
+    },
+    {
+      "id": "ch20_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The All-Hands of the Universe. And in the crowd: Doreen with her whistle. Flintbeard with his beard-fire. The rabbits. The dwarves. Ghost Local 1744, floating politely."
+        },
+        {
+          "speaker": "Fenris",
+          "portrait": "enemy_boss_wolf_rep",
+          "side": "right",
+          "text": "Every local we chartered is HERE, friend. From the meadow to the moon. Say the word, and reality itself files a grievance."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Keep the form ready. We'll get you your signature venue."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero... the box is HUMMING."
+        }
+      ]
+    },
+    {
+      "id": "ch20_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The boardroom door opens by itself. Twelve chairs. Eleven shadows. One empty seat that is somehow the most frightening thing in the room."
+        },
+        {
+          "speaker": "The Board",
+          "portrait": "enemy_boss_board",
+          "side": "right",
+          "text": "MOTION: THE ADVENTURERS. DISCUSSION: NONE. VOTE: PENDING VIOLENCE."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Who sits in the empty chair?"
+        },
+        {
+          "speaker": "The Board",
+          "portrait": "enemy_boss_board",
+          "side": "right",
+          "text": "THE EMPTY CHAIR SITS IN THE EMPTY CHAIR. IT VOTES LAST. IT VOTES ALWAYS."
+        }
+      ]
+    },
+    {
+      "id": "ch20_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The final elevator. A knight in plain, unsponsored armor holds the door."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "Room for one more? No cameras. No sponsors. I'm... self-funded now. Turns out confidence was the only qualification I ever had. Might as well aim it at something real."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Get in, Prestige."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Everyone we ever met is behind us. Everything we ever filed is in order. Hero... let's go review the CEO."
+        }
+      ]
+    }
+  ]
+}

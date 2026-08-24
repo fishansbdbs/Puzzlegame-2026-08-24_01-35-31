@@ -1,0 +1,183 @@
+{
+  "scenes": [
+    {
+      "id": "ch15_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The moon, hero! We're ON THE MOON. Which, it turns out, has been privately owned since a shady auction in the Fourth Age."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "Who buys the MOON?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Someone who charges the OCEAN rent for using gravity. The rabbits called us. It's bad."
+        }
+      ]
+    },
+    {
+      "id": "ch15_mini1",
+      "lines": [
+        {
+          "speaker": "The LLC",
+          "portrait": "enemy_boss_property_mgmt",
+          "side": "right",
+          "text": "THIS ENTITY ACKNOWLEDGES YOUR COMPLAINT. THIS ENTITY WILL RESPOND WITHIN 6-8 BUSINESS EONS."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "How do you fight an LLC?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Aim for the registered agent!"
+        }
+      ]
+    },
+    {
+      "id": "ch15_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The penthouse crater. A throne of security deposits. The Moonlord counts tide-rent by candlelight, though he owns the biggest light in the night sky."
+        },
+        {
+          "speaker": "The Moonlord",
+          "portrait": "enemy_boss_moonlord",
+          "side": "right",
+          "text": "Ah. The rabbits' little \"advocates\". The moon is MINE. I have a deed. It's laminated."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Laminated by WHOM? We know The Laminator personally, and he keeps RECORDS."
+        },
+        {
+          "speaker": "The Moonlord",
+          "portrait": "enemy_boss_moonlord",
+          "side": "right",
+          "text": "...EVICTION PROCEEDINGS BEGIN NOW."
+        }
+      ]
+    },
+    {
+      "id": "ch15_boss_after",
+      "lines": [
+        {
+          "speaker": "The Moonlord",
+          "portrait": "enemy_boss_moonlord",
+          "side": "right",
+          "text": "Fine... FINE... the moon goes... to the rabbits..."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The rabbits establish the Lunar Cooperative. First act: rice cakes for all. Second act: the tides ride free, forever."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Best view I've ever had of home."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Don't get cozy. Our next stop is... hmm. The travel form just says \"HELL (CUSTOMER SERVICE DIVISION)\". Neat!"
+        }
+      ]
+    },
+    {
+      "id": "ch15_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The Rice Cake Commons. A tenant meeting is in session. The moon rabbits pound mochi and grievances in equal measure."
+        },
+        {
+          "speaker": "Moon Rabbit Elder",
+          "portrait": "enemy_moon_rabbit",
+          "side": "right",
+          "text": "The wolf sent moon-mail. He says: \"Withhold the rent. Hold the line. Solidarity, even in low gravity.\""
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Fenris organized the MOON by POST. I want to study him. I want to BE him."
+        }
+      ]
+    },
+    {
+      "id": "ch15_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "An old light flickers on across the crater. A face appears in it — tired, kind, luminous."
+        },
+        {
+          "speaker": "Man in the Moon",
+          "portrait": "enemy_boss_man_in_moon",
+          "side": "right",
+          "text": "I ran this rock for ten thousand years. Soft light. Free tides. Then I retire ONE eon and someone installs a LANDLORD?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We're here to fix that."
+        },
+        {
+          "speaker": "Man in the Moon",
+          "portrait": "enemy_boss_man_in_moon",
+          "side": "right",
+          "text": "Then prove it, young light. Old moon rules: we spar first, THEN I believe you."
+        }
+      ]
+    },
+    {
+      "id": "ch15_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The penthouse crater elevator. The buttons read: LOBBY, MEZZANINE, DARK SIDE, and PROFIT."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Everything the rabbits pounded, he taxed. Everything the tides moved, he metered. Tonight the moon goes BACK to the moon, hero."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Press PROFIT."
+        }
+      ]
+    }
+  ]
+}

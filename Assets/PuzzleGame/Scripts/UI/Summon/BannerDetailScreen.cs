@@ -1,0 +1,210 @@
+using UnityEngine;
+using UnityEngine.UIElements;
+using PuzzleGame.Presentation.VFX;
+
+namespace PuzzleGame.Presentation.UI.Summon
+{
+    /// <summary>
+    /// Full banner page: featured showcase, rates/info, guarantees,
+    /// Gather-In/Step-Up step ladder with consumed state, and the summon
+    /// buttons that hand off to the pack-opening flow.
+    /// </summary>
+    public class BannerDetailScreen : UiScreen
+    {
+        readonly string _bannerId;
+        BannerVm _banner;
+        VisualElement _content;
+
+        public BannerDetailScreen(string bannerId)
+        {
+            _bannerId = bannerId;
+        }
+
+        protected override void Build(VisualElement root)
+        {
+            root.Add(Header("Banner"));
+            _content = new VisualElement();
+            _content.style.flexGrow = 1f;
+            root.Add(_content);
+        }
+
+        public override void OnEnter()
+        {
+            Rebuild();
+        }
+
+        void Rebuild()
+        {
+            _content.Clear();
+            var summons = PresentationServices.Get<ISummonSource>();
+            _banner = summons.GetBanner(_bannerId);
+            if (_banner == null)
+            {
+                _content.Add(UiKit.Dim("This banner has ended.", 14f));
+                return;
+            }
+
+            var main = UiKit.Row(16f);
+            main.style.flexGrow = 1f;
+            main.style.paddingLeft = 18f;
+            main.style.paddingRight = 18f;
+            main.style.paddingTop = 10f;
+            _content.Add(main);
+
+            // Left: pack visual + summon actions.
+            var left = UiKit.Column(12f);
+            left.style.alignItems = Align.Center;
+            left.style.flexShrink = 0f;
+            left.style.width = 260f;
+            main.Add(left);
+
+            var pack = new VisualElement();
+            pack.style.width = 170f;
+            pack.style.height = 232f;
+            UiKit.Round(pack, 10f);
+            pack.style.backgroundImage = new StyleBackground(
+                PlaceholderArt.Pack(_banner.PackArtRef, _banner.Kind == BannerKind.Standard ? 0 : 1));
+            left.Add(pack);
+            if (!MotionSettings.ReducedMotion)
+            {
+                pack.experimental.animation.Start(0f, 1f, 2400, (e, t) =>
+                    e.style.translate = new Translate(0f, Mathf.Sin(t * Mathf.PI * 2f) * 5f));
+            }
+
+            if (_banner.Steps.Count > 0)
+            {
+                BuildStepActions(left);
+            }
+            else
+            {
+                left.Add(SummonButton("Summon ×1   ❖" + _banner.SingleCost, false));
+                left.Add(SummonButton("Summon ×" + _banner.MultiCount + "   ❖" + _banner.MultiCost, true));
+            }
+
+            // Right: info.
+            var right = new ScrollView(ScrollViewMode.Vertical);
+            right.style.flexGrow = 1f;
+            main.Add(right);
+            var col = UiKit.Column(10f);
+            right.Add(col);
+
+            var titleRow = UiKit.Row(10f);
+            titleRow.Add(SummonHubScreen.KindBadge(_banner.Kind));
+            titleRow.Add(UiKit.Title(_banner.DisplayName, 22f));
+            col.Add(titleRow);
+            if (_banner.EndsAtUtc.HasValue)
+            {
+                var schedule = PresentationServices.Get<IScheduleSource>();
+                col.Add(UiKit.Dim("⏳ Ends in " + UiKit.FormatTimeRemaining(_banner.EndsAtUtc.Value - schedule.NowUtc), 12f));
+            }
+            if (!string.IsNullOrEmpty(_banner.Description))
+            {
+                col.Add(UiKit.Text(_banner.Description, 13f));
+            }
+
+            if (_banner.FeaturedUnits.Count > 0)
+            {
+                var panel = UiKit.Panel();
+                panel.Add(UiKit.Text("Featured Characters", 14f, true, Theme.AccentWarm));
+                var frow = UiKit.Row(10f);
+                frow.style.flexWrap = Wrap.Wrap;
+                frow.style.marginTop = 6f;
+                foreach (var unit in _banner.FeaturedUnits)
+                {
+                    var uc = UiKit.Column(3f);
+                    uc.style.alignItems = Align.Center;
+                    uc.Add(UiKit.PortraitCard(unit, 78f, 96f));
+                    uc.Add(UiKit.Text(unit.DisplayName, 11f, true));
+                    frow.Add(uc);
+                }
+                panel.Add(frow);
+                col.Add(panel);
+            }
+
+            if (!string.IsNullOrEmpty(_banner.GuaranteeText))
+            {
+                var gp = UiKit.Panel();
+                UiKit.Border(gp, Theme.AccentWarm, 1.5f);
+                gp.Add(UiKit.Text("Guarantee", 13f, true, Theme.AccentWarm));
+                gp.Add(UiKit.Text(_banner.GuaranteeText, 12f));
+                col.Add(gp);
+            }
+
+            var rates = UiKit.Panel();
+            rates.Add(UiKit.Text("Rates & Info", 13f, true));
+            var ratesText = UiKit.Dim(_banner.RatesText, 12f);
+            rates.Add(ratesText);
+            rates.Add(UiKit.Dim("Pull results are generated by the game's summon system the moment you confirm. " +
+                                "Duplicates raise Ascension; past max they convert to Spark Essence.", 10f));
+            col.Add(rates);
+        }
+
+        void BuildStepActions(VisualElement left)
+        {
+            var stepPanel = UiKit.Panel();
+            stepPanel.style.width = 250f;
+            stepPanel.Add(UiKit.Text(
+                _banner.RotationIndex > 0 ? "Rotation " + _banner.RotationIndex + " — Steps" : "Steps",
+                13f, true, Theme.Rarity6));
+            bool allDone = true;
+            for (int i = 0; i < _banner.Steps.Count; i++)
+            {
+                var step = _banner.Steps[i];
+                var row = UiKit.Row(8f);
+                bool isCurrent = !step.Consumed && i == _banner.CurrentStep;
+                if (!step.Consumed) allDone = false;
+                var marker = UiKit.Text(step.Consumed ? "✓" : (isCurrent ? "▶" : "•"), 12f, true,
+                    step.Consumed ? Theme.Success : (isCurrent ? Theme.AccentWarm : Theme.TextDim));
+                marker.style.width = 16f;
+                row.Add(marker);
+                var text = UiKit.Text("❖" + step.GemCost + " → " + step.PullCount + " character" + (step.PullCount > 1 ? "s" : ""),
+                    12f, isCurrent, step.Consumed ? Theme.TextDim : Theme.TextMain);
+                row.Add(text);
+                if (!string.IsNullOrEmpty(step.GuaranteeText))
+                {
+                    row.Add(UiKit.Text(step.GuaranteeText, 10f, true, Theme.Rarity5));
+                }
+                stepPanel.Add(row);
+            }
+            left.Add(stepPanel);
+
+            if (!allDone)
+            {
+                var current = _banner.Steps[_banner.CurrentStep];
+                var btn = UiKit.WarmButton(
+                    "Summon Step " + (_banner.CurrentStep + 1) + "  ❖" + current.GemCost, () =>
+                    {
+                        var summons = PresentationServices.Get<ISummonSource>();
+                        var session = summons.RequestStepSummon(_bannerId);
+                        HandleSession(session);
+                    });
+                left.Add(btn);
+            }
+            else
+            {
+                left.Add(UiKit.Dim("All steps used this rotation. Come back next rotation!", 11f));
+            }
+        }
+
+        Button SummonButton(string label, bool multi)
+        {
+            return UiKit.Button(label, () =>
+            {
+                var summons = PresentationServices.Get<ISummonSource>();
+                var session = summons.RequestSummon(_bannerId, multi);
+                HandleSession(session);
+            }, multi);
+        }
+
+        void HandleSession(SummonSession session)
+        {
+            if (session == null)
+            {
+                UiFx.Shake(Root, 5f, 220);
+                UiFx.TelegraphBanner(Root, "Cannot summon", "Not enough Gems (or the step is used up).", Theme.Danger);
+                return;
+            }
+            Router.Push(new PackOpeningScreen(session));
+        }
+    }
+}

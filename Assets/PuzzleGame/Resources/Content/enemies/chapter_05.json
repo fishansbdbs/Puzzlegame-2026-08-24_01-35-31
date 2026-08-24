@@ -1,0 +1,257 @@
+{
+  "enemies": [
+    {
+      "id": "gem_recruiter",
+      "name": "Gemstone Recruiter",
+      "element": "light",
+      "boss": false,
+      "hp": 9600,
+      "atk": 1430,
+      "countdown": 3,
+      "artRef": "enemy_gem_recruiter",
+      "flavor": "Found your resume in a rockslide. Loves your \"facets\". Wants to \"align\".",
+      "actions": [
+        {
+          "name": "Cold Outreach",
+          "desc": "A dazzling unsolicited attack.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Pipeline",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        }
+      ]
+    },
+    {
+      "id": "quartz_screener",
+      "name": "Quartz Phone Screener",
+      "element": "light",
+      "boss": false,
+      "hp": 8640,
+      "atk": 1430,
+      "countdown": 3,
+      "artRef": "enemy_quartz_screener",
+      "flavor": "Asks where you see yourself in five geological eras.",
+      "actions": [
+        {
+          "name": "Screening Question",
+          "desc": "Locks 3 orbs pending your answer.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Crystal Chirp",
+          "desc": "A pointed follow-up.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "onboarding_bat",
+      "name": "Onboarding Bat",
+      "element": "dark",
+      "boss": false,
+      "hp": 7680,
+      "atk": 1430,
+      "countdown": 3,
+      "artRef": "enemy_onboarding_bat",
+      "flavor": "Delivers your welcome packet at terminal velocity.",
+      "actions": [
+        {
+          "name": "Welcome Packet",
+          "desc": "A heavy folder to the face.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "stalag_mite",
+      "name": "Stalag-Mite",
+      "element": "nature",
+      "boss": false,
+      "hp": 10560,
+      "atk": 1287,
+      "countdown": 3,
+      "artRef": "enemy_stalag_mite",
+      "flavor": "Technically a pest. Technically also employee of the month.",
+      "actions": [
+        {
+          "name": "Drip Feedback",
+          "desc": "Poisons 2 orbs, one drop at a time.",
+          "type": "poison",
+          "count": 2
+        },
+        {
+          "name": "Point Up",
+          "desc": "You walked into it.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "morale_moth",
+      "name": "Morale Moth",
+      "element": "fire",
+      "boss": false,
+      "hp": 8640,
+      "atk": 1573,
+      "countdown": 3,
+      "artRef": "enemy_morale_moth",
+      "flavor": "Drawn to burnout. Organizes pizza parties that fix nothing.",
+      "actions": [
+        {
+          "name": "Pizza Party",
+          "desc": "Heals its allies. Morale is now mandatory.",
+          "type": "heal",
+          "amount": 3000
+        },
+        {
+          "name": "Wing Dust",
+          "desc": "Inspirational particulates.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "crystal_clerk",
+      "name": "Crystalline File Clerk",
+      "element": "water",
+      "boss": false,
+      "hp": 9600,
+      "atk": 1430,
+      "countdown": 3,
+      "artRef": "enemy_crystal_clerk",
+      "flavor": "Every personnel file, refracted in triplicate.",
+      "actions": [
+        {
+          "name": "Refile",
+          "desc": "Converts 3 orbs to Water.",
+          "type": "convert",
+          "count": 3,
+          "color": "water"
+        },
+        {
+          "name": "Sharp Corner",
+          "desc": "Mind the edges.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_benefits_basilisk",
+      "name": "Benefits Basilisk",
+      "element": "dark",
+      "boss": true,
+      "hp": 96000,
+      "atk": 2002,
+      "countdown": 3,
+      "artRef": "enemy_boss_benefits_basilisk",
+      "flavor": "Look directly at the dental plan and be turned to stone. It's a great plan. Nobody has survived reading it.",
+      "actions": [
+        {
+          "name": "Fine Print Gaze",
+          "desc": "Binds a party member who read too closely.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Coverage Gap",
+          "desc": "A big hit. Not covered.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Premium Hike",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "boss_org_chart",
+      "name": "The Living Org Chart",
+      "element": "light",
+      "boss": true,
+      "hp": 105600,
+      "atk": 2002,
+      "countdown": 2,
+      "artRef": "enemy_boss_org_chart",
+      "flavor": "A diagram that achieved sentience and immediately restructured itself.",
+      "actions": [
+        {
+          "name": "Dotted Line",
+          "desc": "You now report to pain.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Reorg",
+          "desc": "Converts 4 orbs to Light. Boxes shift ominously.",
+          "type": "convert",
+          "count": 4,
+          "color": "light"
+        },
+        {
+          "name": "Circular Reporting",
+          "desc": "A big spinning slam.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_vp_vibes",
+      "name": "Vice President of Vibes",
+      "element": "light",
+      "boss": true,
+      "hp": 249600,
+      "atk": 2288,
+      "countdown": 3,
+      "artRef": "enemy_boss_vp_vibes",
+      "flavor": "A colossal geode in a blazer. Radiates synergy. The vibes are, frankly, immaculate and hostile.",
+      "actions": [
+        {
+          "name": "Vibe Check",
+          "desc": "Massive damage to anyone found lacking.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Culture Fit",
+          "desc": "Locks 5 orbs that don't match the culture.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Wellness Wednesday",
+          "desc": "Heals itself. Self-care.",
+          "type": "heal",
+          "amount": 10000
+        },
+        {
+          "name": "Synergy Beam",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        },
+        {
+          "name": "Vibe Threshold",
+          "desc": "Combo shield: 3+ combos required. Match the energy.",
+          "type": "comboShield",
+          "count": 3
+        }
+      ]
+    }
+  ]
+}

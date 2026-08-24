@@ -1,0 +1,1152 @@
+{
+  "banners": [
+    {
+      "id": "feat_meadow_veterans",
+      "name": "Meadow Veterans",
+      "kind": "featured",
+      "desc": "Sir Reginald and Grandpa Oakbeard: the frontline that never dries out and never hurries.",
+      "packArt": "pack_water",
+      "featured": [
+        "water_reginald",
+        "nature_oakbeard"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_disco_dawn",
+      "name": "Disco Dawn",
+      "kind": "featured",
+      "desc": "Disco Oracle Yolanda saw this banner coming. It was, of course, a Friday.",
+      "packArt": "pack_light",
+      "featured": [
+        "light_yolanda",
+        "fire_cindra"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_two_swords",
+      "name": "Two Swords, One Banner",
+      "kind": "featured",
+      "desc": "Edgelord Kevin II and Admiral Bathtub. One broods. One floats. Both carry.",
+      "packArt": "pack_dark",
+      "featured": [
+        "dark_kevin2",
+        "water_bathtub"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_garden_party",
+      "name": "Garden Party (Armed)",
+      "kind": "featured",
+      "desc": "Barbara Thornwood and Queen Cindra host. RSVP is mandatory and so is the violence.",
+      "packArt": "pack_nature",
+      "featured": [
+        "nature_barbara",
+        "fire_cindra"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_midwinter_keys",
+      "name": "Midwinter Keys",
+      "kind": "featured",
+      "desc": "Saint Brightbeard finds your keys, your hope, and the featured 5★ slot.",
+      "packArt": "pack_light",
+      "featured": [
+        "light_brightbeard",
+        "dark_bedtime"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_new_year_gains",
+      "name": "New Year, New Gains",
+      "kind": "featured",
+      "desc": "Chad Emberstorm's resolution: everyone gets swole. Including you. Especially you.",
+      "packArt": "pack_fire",
+      "featured": [
+        "fire_chad",
+        "water_reginald"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_nap_appreciation",
+      "name": "Nap Appreciation Week",
+      "kind": "featured",
+      "desc": "Baron Von Bedtime declares a realm-wide lie-down. Attendance horizontal.",
+      "packArt": "pack_dark",
+      "featured": [
+        "dark_bedtime",
+        "nature_oakbeard"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_spring_tide",
+      "name": "Spring Tide",
+      "kind": "featured",
+      "desc": "Admiral Bathtub leads the spring flotilla. All ducks on deck.",
+      "packArt": "pack_water",
+      "featured": [
+        "water_bathtub",
+        "nature_barbara"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_double_royalty",
+      "name": "A Very Royal Banner",
+      "kind": "featured",
+      "desc": "Queen Cindra and Baron Von Bedtime. Two crowns, zero shared agenda.",
+      "packArt": "pack_fire",
+      "featured": [
+        "fire_cindra",
+        "dark_bedtime"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_lights_out",
+      "name": "Lights Out",
+      "kind": "featured",
+      "desc": "Yolanda and Kevin II: the brightest light, the edgiest dark, one confusing playlist.",
+      "packArt": "pack_light",
+      "featured": [
+        "light_yolanda",
+        "dark_kevin2"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_old_growth",
+      "name": "Old Growth Festival",
+      "kind": "featured",
+      "desc": "Grandpa Oakbeard's birthday (est. age: 4,000). Gifts accepted in summons.",
+      "packArt": "pack_nature",
+      "featured": [
+        "nature_oakbeard",
+        "light_brightbeard"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_moist_order",
+      "name": "Rites of the Order of Moist",
+      "kind": "featured",
+      "desc": "Sir Reginald's knighting anniversary. The ceremony is damp and DEEPLY moving.",
+      "packArt": "pack_water",
+      "featured": [
+        "water_reginald",
+        "light_brightbeard"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "fac_guild_gains",
+      "name": "Guild of Gains Recruitment",
+      "kind": "featured",
+      "desc": "Fire-forward fitness fanatics. Cardio optional, courage mandatory.",
+      "packArt": "pack_fire",
+      "featured": [
+        "fire_chad"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "10-pulls guarantee a Guild of Gains member.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Guild of Gains"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "fac_order_moist",
+      "name": "Order of Moist Enlistment",
+      "kind": "featured",
+      "desc": "Take the damp vow. Towels forbidden.",
+      "packArt": "pack_water",
+      "featured": [
+        "water_reginald"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "10-pulls guarantee an Order of Moist member.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Order of Moist"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "fac_root_authority",
+      "name": "Root Authority Hiring Drive",
+      "kind": "featured",
+      "desc": "The forest is unionizing and it needs organizers.",
+      "packArt": "pack_nature",
+      "featured": [
+        "nature_barbara"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "10-pulls guarantee a Root Authority member.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Root Authority"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "fac_bright_bureau",
+      "name": "Bright Bureau Open House",
+      "kind": "featured",
+      "desc": "The department of Light. Lost items found while you wait.",
+      "packArt": "pack_light",
+      "featured": [
+        "light_brightbeard"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "10-pulls guarantee a Bright Bureau member.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Bright Bureau"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "fac_nap_dynasty",
+      "name": "Nap Dynasty Census",
+      "kind": "featured",
+      "desc": "The sleepiest royal line in history is counting subjects. Slowly.",
+      "packArt": "pack_dark",
+      "featured": [
+        "dark_bedtime"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "10-pulls guarantee a Nap Dynasty member.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Nap Dynasty"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "gatherin_glimmer_r3",
+      "name": "Glimmerdale Gather-In: Third Rotation",
+      "kind": "gatherIn",
+      "desc": "The steps return with Barbara Thornwood. Final step guarantees a 5★.",
+      "packArt": "pack_gatherin",
+      "featured": [
+        "nature_barbara"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 60
+      },
+      "guarantee": "Final 10-character step guarantees a 5★ with boosted Barbara odds.",
+      "steps": [
+        {
+          "gemCost": 50,
+          "pullCount": 1,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 100,
+          "pullCount": 2,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 150,
+          "pullCount": 3,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 250,
+          "pullCount": 4,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 400,
+          "pullCount": 5,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 600,
+          "pullCount": 6,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 900,
+          "pullCount": 8,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 1500,
+          "pullCount": 10,
+          "guarantee": "5★ GUARANTEED"
+        }
+      ],
+      "rotationIndex": 1,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "gatherin_glimmer_r4",
+      "name": "Glimmerdale Gather-In: Fourth Rotation",
+      "kind": "gatherIn",
+      "desc": "Rotation four guarantees the featured 5★: Disco Oracle Yolanda.",
+      "packArt": "pack_gatherin",
+      "featured": [
+        "light_yolanda"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 60
+      },
+      "guarantee": "Final 10-character step guarantees the featured 5★: Yolanda.",
+      "steps": [
+        {
+          "gemCost": 50,
+          "pullCount": 1,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 100,
+          "pullCount": 2,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 150,
+          "pullCount": 3,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 250,
+          "pullCount": 4,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 400,
+          "pullCount": 5,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 600,
+          "pullCount": 6,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 900,
+          "pullCount": 8,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 1500,
+          "pullCount": 10,
+          "guarantee": "FEATURED 5★ GUARANTEED"
+        }
+      ],
+      "rotationIndex": 2,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "gatherin_glimmer_r5",
+      "name": "Glimmerdale Gather-In: Fifth Rotation",
+      "kind": "gatherIn",
+      "desc": "Rotation five features Chad Emberstorm. The steps ARE the workout.",
+      "packArt": "pack_gatherin",
+      "featured": [
+        "fire_chad"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 60
+      },
+      "guarantee": "Final 10-character step guarantees a 5★ with boosted Chad odds.",
+      "steps": [
+        {
+          "gemCost": 50,
+          "pullCount": 1,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 100,
+          "pullCount": 2,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 150,
+          "pullCount": 3,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 250,
+          "pullCount": 4,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 400,
+          "pullCount": 5,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 600,
+          "pullCount": 6,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 900,
+          "pullCount": 8,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 1500,
+          "pullCount": 10,
+          "guarantee": "5★ GUARANTEED"
+        }
+      ],
+      "rotationIndex": 1,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "gatherin_glimmer_r6",
+      "name": "Glimmerdale Gather-In: Sixth Rotation",
+      "kind": "gatherIn",
+      "desc": "Rotation six guarantees the featured 5★: Edgelord Kevin II. He asked us to say it louder.",
+      "packArt": "pack_gatherin",
+      "featured": [
+        "dark_kevin2"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 60
+      },
+      "guarantee": "Final 10-character step guarantees the featured 5★: EDGELORD KEVIN II.",
+      "steps": [
+        {
+          "gemCost": 50,
+          "pullCount": 1,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 100,
+          "pullCount": 2,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 150,
+          "pullCount": 3,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 250,
+          "pullCount": 4,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 400,
+          "pullCount": 5,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 600,
+          "pullCount": 6,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 900,
+          "pullCount": 8,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 1500,
+          "pullCount": 10,
+          "guarantee": "FEATURED 5★ GUARANTEED"
+        }
+      ],
+      "rotationIndex": 2,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "stepup_object_lesson",
+      "name": "Object Lesson Step-Up",
+      "kind": "stepUp",
+      "desc": "Sentient objects only: rocks, cups, socks, stoves. They have feelings AND stat lines.",
+      "packArt": "pack_comedy",
+      "featured": [],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 0,
+        "fourStar": 22,
+        "threeStar": 40,
+        "twoStar": 24,
+        "oneStar": 14,
+        "featuredShareOfFiveStar": 0
+      },
+      "guarantee": "Object-only pool. Step 3 guarantees a 4★ Object.",
+      "steps": [
+        {
+          "gemCost": 80,
+          "pullCount": 1,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 240,
+          "pullCount": 3,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 560,
+          "pullCount": 6,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 1000,
+          "pullCount": 10,
+          "guarantee": ""
+        }
+      ],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Object"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "stepup_union_drive",
+      "name": "Union Drive Step-Up",
+      "kind": "stepUp",
+      "desc": "Solidarity summons. Union members at negotiated rates.",
+      "packArt": "pack_comedy",
+      "featured": [],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 0,
+        "fourStar": 20,
+        "threeStar": 45,
+        "twoStar": 22,
+        "oneStar": 13,
+        "featuredShareOfFiveStar": 0
+      },
+      "guarantee": "Union pool. Step 4 guarantees the best available member.",
+      "steps": [
+        {
+          "gemCost": 90,
+          "pullCount": 1,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 270,
+          "pullCount": 3,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 630,
+          "pullCount": 6,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 1200,
+          "pullCount": 10,
+          "guarantee": ""
+        }
+      ],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Union",
+        "Mercenary"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "stepup_royal_treatment",
+      "name": "Royal Treatment Step-Up",
+      "kind": "stepUp",
+      "desc": "Royalty and Knights at escalating pomp. Trumpets included at step 3.",
+      "packArt": "pack_anniversary",
+      "featured": [
+        "fire_cindra"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 6,
+        "fourStar": 18,
+        "threeStar": 40,
+        "twoStar": 22,
+        "oneStar": 14,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "Step 4 guarantees a 5★ Royal or Knight.",
+      "steps": [
+        {
+          "gemCost": 120,
+          "pullCount": 1,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 360,
+          "pullCount": 3,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 800,
+          "pullCount": 6,
+          "guarantee": ""
+        },
+        {
+          "gemCost": 1500,
+          "pullCount": 10,
+          "guarantee": "5★ GUARANTEED"
+        }
+      ],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Royalty",
+        "Knight"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "seasonal_spooky",
+      "name": "The Spooky Season Banner",
+      "kind": "featured",
+      "desc": "Dark and Mystery units at their most powerful. The Ominous Sock is watching.",
+      "packArt": "pack_dark",
+      "featured": [
+        "dark_bedtime",
+        "dark_kevin2"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Nap Dynasty",
+        "Mystery",
+        "Object",
+        "Bureau"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "seasonal_harvest",
+      "name": "The Great Harvest Banner",
+      "kind": "featured",
+      "desc": "Nature celebrates the harvest. The Aggressive Shrub celebrates aggressively.",
+      "packArt": "pack_nature",
+      "featured": [
+        "nature_oakbeard",
+        "nature_barbara"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Root Authority",
+        "Elemental",
+        "Beast",
+        "Union"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "seasonal_midwinter",
+      "name": "Midwinter Lights Banner",
+      "kind": "featured",
+      "desc": "Light units shine longest on the longest night.",
+      "packArt": "pack_light",
+      "featured": [
+        "light_brightbeard",
+        "light_yolanda"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Bright Bureau",
+        "Human",
+        "Beast",
+        "Object"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "seasonal_lunar_new_year",
+      "name": "Lunar Cooperative New Year",
+      "kind": "featured",
+      "desc": "The moon rabbits' first new year as owners. Rice cakes and rate-ups for all.",
+      "packArt": "pack_comedy",
+      "featured": [
+        "water_bathtub",
+        "fire_cindra"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "fac_meadow_watch",
+      "name": "The Meadow Watch Musters",
+      "kind": "featured",
+      "desc": "Captain Bramblebeard and Grandma Cinders recruit for the meadow's volunteer defense force. Somebody has to.",
+      "packArt": "pack_nature",
+      "featured": [
+        "nature_bramblebeard",
+        "fire_grandma_cinders"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "10-pulls guarantee a Meadow Watch member.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Meadow Watch"
+      ],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_new_blood",
+      "name": "New Blood: Crowns and Verdicts",
+      "kind": "featured",
+      "desc": "Her Dampness steps out of the puddle. Judge Lumen calls the court to order. The roster grows.",
+      "packArt": "pack_water",
+      "featured": [
+        "water_puddle_queen",
+        "light_judge_lumen"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "Featured units take half of all 5★ results.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "feat_void_hospitality",
+      "name": "Void Hospitality",
+      "kind": "featured",
+      "desc": "Auntie Umbra opens the void for guests. Dinner is served. Attendance is not optional.",
+      "packArt": "pack_dark",
+      "featured": [
+        "dark_auntie_umbra",
+        "dark_bedtime"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "Featured units take half of all 5★ results.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "newplayer_first_steps",
+      "name": "First Steps Summon",
+      "kind": "stepUp",
+      "desc": "A one-time welcome for new adventurers. Two discounted steps, then you're one of us.",
+      "packArt": "pack_beginner",
+      "featured": [
+        "water_reginald"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "One-time steps: step 1 guarantees a 4★, step 2 guarantees a 5★.",
+      "steps": [
+        {
+          "gemCost": 750,
+          "pullCount": 10,
+          "guarantee": "Half price"
+        },
+        {
+          "gemCost": 1500,
+          "pullCount": 10,
+          "guarantee": "5★ GUARANTEED"
+        }
+      ],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "revival_hall_of_legends",
+      "name": "Hall of Legends Revival",
+      "kind": "featured",
+      "desc": "Every previously-featured 5★, back for one encore. The nostalgia is complimentary.",
+      "packArt": "pack_revival",
+      "featured": [
+        "fire_chad",
+        "nature_barbara",
+        "dark_bedtime",
+        "light_brightbeard"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 80
+      },
+      "guarantee": "Featured legends take 80% of 5★ results.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "villain_appreciation",
+      "name": "Department of Doom Appreciation Week",
+      "kind": "featured",
+      "desc": "Official merchandise of the defeated. The packs file a complaint when torn. Dark and Bureau units boosted.",
+      "packArt": "pack_villain",
+      "featured": [
+        "dark_kevin2",
+        "dark_bedtime"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Nap Dynasty",
+        "Bureau",
+        "Mystery",
+        "Object",
+        "Mercenary"
+      ],
+      "minPoolRarity": 1
+    }
+  ]
+}

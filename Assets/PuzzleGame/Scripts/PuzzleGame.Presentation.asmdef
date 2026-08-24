@@ -1,0 +1,17 @@
+{
+    "name": "PuzzleGame.Presentation",
+    "rootNamespace": "PuzzleGame",
+    "references": [
+        "PuzzleGame.Core",
+        "PuzzleGame.Unity"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,99 @@
+{
+  "banners": [
+    {
+      "id": "standard_permanent",
+      "name": "Standard Summon",
+      "kind": "standard",
+      "desc": "The dependable classic. Every hero in Glimmerdale, one pack at a time.",
+      "packArt": "pack_standard",
+      "featured": [],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": { "fiveStar": 4, "fourStar": 16, "threeStar": 40, "twoStar": 25, "oneStar": 15, "featuredShareOfFiveStar": 0 },
+      "guarantee": ""
+    },
+    {
+      "id": "featured_gym_legends",
+      "name": "Legends of the Guild of Gains",
+      "kind": "featured",
+      "desc": "Chad Emberstorm and Barbara Thornwood hit the banner. And the gym. Mostly the gym.",
+      "packArt": "pack_gym",
+      "featured": ["fire_chad", "nature_barbara"],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": { "fiveStar": 4, "fourStar": 16, "threeStar": 40, "twoStar": 25, "oneStar": 15, "featuredShareOfFiveStar": 50 },
+      "guarantee": "Featured units take half of all 5★ results."
+    },
+    {
+      "id": "featured_night_court",
+      "name": "The Night Court",
+      "kind": "featured",
+      "desc": "Baron Von Bedtime and Saint Brightbeard, together at last. One brings the dark. One finds your keys in it.",
+      "packArt": "pack_night",
+      "featured": ["dark_bedtime", "light_brightbeard"],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": { "fiveStar": 4, "fourStar": 16, "threeStar": 40, "twoStar": 25, "oneStar": 15, "featuredShareOfFiveStar": 50 },
+      "guarantee": "Featured units take half of all 5★ results."
+    },
+    {
+      "id": "gatherin_glimmer_r1",
+      "name": "Glimmerdale Gather-In",
+      "kind": "gatherIn",
+      "desc": "Climb the steps! Each one pulls more heroes for better value — and the final step guarantees a 5★.",
+      "packArt": "pack_gatherin",
+      "featured": ["water_reginald"],
+      "rotationIndex": 1,
+      "rates": { "fiveStar": 4, "fourStar": 16, "threeStar": 40, "twoStar": 25, "oneStar": 15, "featuredShareOfFiveStar": 60 },
+      "guarantee": "Final 10-character step guarantees a 5★ with boosted odds for Sir Reginald.",
+      "steps": [
+        { "gemCost": 50, "pullCount": 1, "guarantee": "" },
+        { "gemCost": 100, "pullCount": 2, "guarantee": "" },
+        { "gemCost": 150, "pullCount": 3, "guarantee": "" },
+        { "gemCost": 250, "pullCount": 4, "guarantee": "" },
+        { "gemCost": 400, "pullCount": 5, "guarantee": "" },
+        { "gemCost": 600, "pullCount": 6, "guarantee": "" },
+        { "gemCost": 900, "pullCount": 8, "guarantee": "" },
+        { "gemCost": 1500, "pullCount": 10, "guarantee": "5★ GUARANTEED" }
+      ]
+    },
+    {
+      "id": "gatherin_glimmer_r2",
+      "name": "Glimmerdale Gather-In: Second Rotation",
+      "kind": "gatherIn",
+      "desc": "The steps return — and this rotation's final step guarantees Admiral Bathtub himself.",
+      "packArt": "pack_gatherin2",
+      "featured": ["water_bathtub"],
+      "rotationIndex": 2,
+      "rates": { "fiveStar": 4, "fourStar": 16, "threeStar": 40, "twoStar": 25, "oneStar": 15, "featuredShareOfFiveStar": 60 },
+      "guarantee": "Final 10-character step guarantees the featured 5★: Admiral Bathtub.",
+      "steps": [
+        { "gemCost": 50, "pullCount": 1, "guarantee": "" },
+        { "gemCost": 100, "pullCount": 2, "guarantee": "" },
+        { "gemCost": 150, "pullCount": 3, "guarantee": "" },
+        { "gemCost": 250, "pullCount": 4, "guarantee": "" },
+        { "gemCost": 400, "pullCount": 5, "guarantee": "" },
+        { "gemCost": 600, "pullCount": 6, "guarantee": "" },
+        { "gemCost": 900, "pullCount": 8, "guarantee": "" },
+        { "gemCost": 1500, "pullCount": 10, "guarantee": "FEATURED 5★ GUARANTEED" }
+      ]
+    },
+    {
+      "id": "stepup_night_shift",
+      "name": "Night Shift Step-Up",
+      "kind": "stepUp",
+      "desc": "Light and Dark specialists at escalating value. The graveyard shift pays better.",
+      "packArt": "pack_nightshift",
+      "featured": ["light_yolanda", "dark_kevin2"],
+      "poolTags": ["Bright Bureau", "Nap Dynasty", "Mystery", "Bureau"],
+      "rates": { "fiveStar": 5, "fourStar": 18, "threeStar": 42, "twoStar": 22, "oneStar": 13, "featuredShareOfFiveStar": 50 },
+      "guarantee": "Each step is one-time. Step 4 guarantees a 5★.",
+      "steps": [
+        { "gemCost": 100, "pullCount": 1, "guarantee": "" },
+        { "gemCost": 300, "pullCount": 3, "guarantee": "" },
+        { "gemCost": 700, "pullCount": 6, "guarantee": "" },
+        { "gemCost": 1400, "pullCount": 10, "guarantee": "5★ GUARANTEED" }
+      ]
+    }
+  ]
+}

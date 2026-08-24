@@ -1,0 +1,32 @@
+{
+  "scenes": [
+    {
+      "id": "evbog_s01_before",
+      "lines": [
+        { "speaker": "", "text": "The Bog of Eternal Deductions. The air smells of moss and unpaid balances." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Bad news, hero. The Taxlord has audited the ENTIRE kingdom. Even the birds owe back taxes on their nests." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "right", "text": "I don't even have income." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "You have loot. Loot is income. Oh dear — here comes a frog with a briefcase. RUN. No wait, FIGHT. Fight is deductible." }
+      ]
+    },
+    {
+      "id": "evbog_s08_before",
+      "lines": [
+        { "speaker": "", "text": "A throne of filing cabinets rises from the murk. Upon it: an ancient horror in a sensible cardigan." },
+        { "speaker": "The Taxlord", "portrait": "enemy_boss_taxlord", "side": "right", "text": "AH. THE DELINQUENT. YOUR EXTENSION REQUEST WAS RECEIVED. IT WAS BEAUTIFUL. IT IS DENIED." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "left", "text": "We brought receipts." },
+        { "speaker": "The Taxlord", "portrait": "enemy_boss_taxlord", "side": "right", "text": "RECEIPTS?! No one... in nine hundred years... has brought receipts. VERY WELL. WE PROCEED TO ARBITRATION. ARBITRATION IS COMBAT." }
+      ]
+    },
+    {
+      "id": "evbog_s08_after",
+      "lines": [
+        { "speaker": "The Taxlord", "portrait": "enemy_boss_taxlord", "side": "right", "text": "Your return... has been... accepted..." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "WE DID IT! The kingdom's taxes are settled for the year!" },
+        { "speaker": "The Taxlord", "portrait": "enemy_boss_taxlord", "side": "right", "text": "SEE YOU... NEXT... FISCAL YEAR..." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "left", "text": "Wait, this happens EVERY year?" },
+        { "speaker": "", "text": "It happens every year." }
+      ]
+    }
+  ]
+}

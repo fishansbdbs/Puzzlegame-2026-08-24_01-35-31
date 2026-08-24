@@ -1,0 +1,1327 @@
+{
+  "chapter": {
+    "chapterNumber": 19,
+    "title": "The Spreadsheet Dimension",
+    "theme": "spreadsheet",
+    "blurb": "The plane of pure data where reality is calculated. Do not anger the pivot tables. Do NOT break a formula.",
+    "mechanicNote": "Conversion chaos: the grid recalculates.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 140,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 280,
+        "items": [
+          {
+            "id": "cell_fragment",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 560,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
+    "stages": [
+      {
+        "id": "ch19_st01",
+        "stageNumber": 1,
+        "name": "Cell A1 (The Beginning)",
+        "kind": "story",
+        "background": "spreadsheet_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "div_zero_specter",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
+        "dialogueBefore": "ch19_intro",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2099,
+          "gems": 5,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st02",
+        "stageNumber": 2,
+        "name": "Gridline Plains",
+        "kind": "normal",
+        "background": "spreadsheet_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.03,
+                "atkMult": 1.03,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.03,
+                "atkMult": 1.03,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 10,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2278,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cell_fragment",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st03",
+        "stageNumber": 3,
+        "name": "The Sorted Steppes",
+        "kind": "normal",
+        "background": "spreadsheet_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.07,
+                "atkMult": 1.07,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.07,
+                "atkMult": 1.07,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2458,
+          "gems": 0,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st04",
+        "stageNumber": 4,
+        "name": "Conditional Formatting Fields",
+        "kind": "normal",
+        "background": "spreadsheet_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 11,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2637,
+          "gems": 0,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st05",
+        "stageNumber": 5,
+        "name": "The Frozen Panes",
+        "kind": "story",
+        "background": "spreadsheet_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 15,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2816,
+          "gems": 5,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st06",
+        "stageNumber": 6,
+        "name": "The Header Row",
+        "kind": "normal",
+        "background": "spreadsheet_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 15,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2995,
+          "gems": 0,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st07",
+        "stageNumber": 7,
+        "name": "AutoFill Flats",
+        "kind": "normal",
+        "background": "spreadsheet_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite",
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 11,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4762,
+          "gems": 5,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st08",
+        "stageNumber": 8,
+        "name": "The Second Sheet",
+        "kind": "normal",
+        "background": "spreadsheet_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 12,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3354,
+          "gems": 0,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st09",
+        "stageNumber": 9,
+        "name": "Named Range Ridge",
+        "kind": "normal",
+        "background": "spreadsheet_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "div_zero_specter",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3533,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cell_fragment",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st10",
+        "stageNumber": 10,
+        "name": "THE PIVOT TABLE DRAGON",
+        "kind": "miniboss",
+        "background": "spreadsheet_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "div_zero_specter",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_pivot_dragon",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
+        "dialogueBefore": "ch19_mini1",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3712,
+          "gems": 10,
+          "items": [
+            {
+              "id": "cell_fragment",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st11",
+        "stageNumber": 11,
+        "name": "The Comment Thread Thicket",
+        "kind": "normal",
+        "background": "spreadsheet_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3891,
+          "gems": 0,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st12",
+        "stageNumber": 12,
+        "name": "Hidden Rows (What Do They Hide?)",
+        "kind": "normal",
+        "background": "spreadsheet_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4070,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cell_fragment",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st13",
+        "stageNumber": 13,
+        "name": "Data Validation Valley",
+        "kind": "normal",
+        "background": "spreadsheet_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite",
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 13,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 6374,
+          "gems": 5,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 4
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st14",
+        "stageNumber": 14,
+        "name": "The Wrapped Text Wilds",
+        "kind": "normal",
+        "background": "spreadsheet_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4429,
+          "gems": 0,
+          "items": [
+            {
+              "id": "formula_rune",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st15",
+        "stageNumber": 15,
+        "name": "The Formula Bar",
+        "kind": "story",
+        "background": "spreadsheet_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
+        "dialogueBefore": "ch19_mid",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4608,
+          "gems": 5,
+          "items": [
+            {
+              "id": "formula_rune",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st16",
+        "stageNumber": 16,
+        "name": "Column Width Wars",
+        "kind": "normal",
+        "background": "spreadsheet_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4787,
+          "gems": 0,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st17",
+        "stageNumber": 17,
+        "name": "The Hidden Sheet",
+        "kind": "normal",
+        "background": "spreadsheet_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4966,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cell_fragment",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st18",
+        "stageNumber": 18,
+        "name": "DID YOU SAVE?",
+        "kind": "miniboss",
+        "background": "spreadsheet_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_autosave",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch19_mini2",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 5146,
+          "gems": 10,
+          "items": [
+            {
+              "id": "cell_fragment",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st19",
+        "stageNumber": 19,
+        "name": "Concatenation Coast",
+        "kind": "normal",
+        "background": "spreadsheet_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 5325,
+          "gems": 0,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st20",
+        "stageNumber": 20,
+        "name": "The Ten-Thousandth Column",
+        "kind": "normal",
+        "background": "spreadsheet_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 19,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 5504,
+          "gems": 0,
+          "items": [
+            {
+              "id": "formula_rune",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st21",
+        "stageNumber": 21,
+        "name": "The Template Tundra",
+        "kind": "normal",
+        "background": "spreadsheet_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_presentation",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite",
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 22,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 8525,
+          "gems": 5,
+          "items": [
+            {
+              "id": "formula_rune",
+              "count": 6
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st22",
+        "stageNumber": 22,
+        "name": "Version History Vault",
+        "kind": "normal",
+        "background": "spreadsheet_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "div_zero_specter",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 23,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 5862,
+          "gems": 0,
+          "items": [
+            {
+              "id": "freeze_pane",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st23",
+        "stageNumber": 23,
+        "name": "The Protected Range",
+        "kind": "normal",
+        "background": "spreadsheet_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "div_zero_specter",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 19,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 6042,
+          "gems": 0,
+          "items": [
+            {
+              "id": "cell_fragment",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st24",
+        "stageNumber": 24,
+        "name": "Print Area Perimeter",
+        "kind": "story",
+        "background": "spreadsheet_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "div_zero_specter",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "circular_ref",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch19_preboss",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 6221,
+          "gems": 5,
+          "items": [
+            {
+              "id": "formula_rune",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch19_st25",
+        "stageNumber": 25,
+        "name": "THE FIRST FORMULA",
+        "kind": "boss",
+        "background": "spreadsheet_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "div_zero_specter",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "macro_gremlin",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "merge_horror",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_formula_one",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 24,
+        "dialogueBefore": "ch19_boss_before",
+        "dialogueAfter": "ch19_boss_after",
+        "rewards": {
+          "gold": 6400,
+          "gems": 30,
+          "items": [
+            {
+              "id": "formula_rune",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": "300 Gems"
+        },
+        "staminaCost": 0
+      }
+    ]
+  }
+}

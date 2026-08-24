@@ -1,0 +1,1353 @@
+{
+  "chapter": {
+    "chapterNumber": 20,
+    "title": "The Final Quarterly Review",
+    "theme": "finalreview",
+    "blurb": "The top floor of reality. The quotas, the countdowns, the packs, the pulls — every system reports to this office.",
+    "mechanicNote": "Everything at once. The final review holds nothing back.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 145,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 290,
+        "items": [
+          {
+            "id": "executive_seal",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 580,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
+    "stages": [
+      {
+        "id": "ch20_st01",
+        "stageNumber": 1,
+        "name": "The Elevator (Top Floor: ∞)",
+        "kind": "story",
+        "background": "finalreview_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
+        "dialogueBefore": "ch20_intro",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2198,
+          "gems": 5,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st02",
+        "stageNumber": 2,
+        "name": "Mezzanine of Middle Managers",
+        "kind": "normal",
+        "background": "finalreview_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1.03,
+                "atkMult": 1.03,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2385,
+          "gems": 0,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st03",
+        "stageNumber": 3,
+        "name": "The Vision Statement Vault",
+        "kind": "normal",
+        "background": "finalreview_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "synergy_seraph",
+                "hpMult": 1.07,
+                "atkMult": 1.07,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2573,
+          "gems": 0,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st04",
+        "stageNumber": 4,
+        "name": "Corner Office Approach",
+        "kind": "normal",
+        "background": "finalreview_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 15,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2760,
+          "gems": 0,
+          "items": [
+            {
+              "id": "golden_stapler",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st05",
+        "stageNumber": 5,
+        "name": "Reception of Reality Inc.",
+        "kind": "story",
+        "background": "finalreview_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 11,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2948,
+          "gems": 5,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st06",
+        "stageNumber": 6,
+        "name": "The Motivational Poster Gallery",
+        "kind": "normal",
+        "background": "finalreview_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 15,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3136,
+          "gems": 0,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st07",
+        "stageNumber": 7,
+        "name": "Quarterly Canyon",
+        "kind": "normal",
+        "background": "finalreview_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite",
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 11,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4985,
+          "gems": 5,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st08",
+        "stageNumber": 8,
+        "name": "The Second Elevator",
+        "kind": "normal",
+        "background": "finalreview_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "exec_assistant",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "synergy_seraph",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 12,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3511,
+          "gems": 0,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st09",
+        "stageNumber": 9,
+        "name": "Stakeholder Summit",
+        "kind": "normal",
+        "background": "finalreview_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "synergy_seraph",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3698,
+          "gems": 0,
+          "items": [
+            {
+              "id": "universe_kpi",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st10",
+        "stageNumber": 10,
+        "name": "GERALD'S REVENGE",
+        "kind": "miniboss",
+        "background": "finalreview_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "exec_assistant",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_gerald_promoted",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
+        "dialogueBefore": "ch20_mini1",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3886,
+          "gems": 10,
+          "items": [
+            {
+              "id": "universe_kpi",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st11",
+        "stageNumber": 11,
+        "name": "The Pension Void",
+        "kind": "normal",
+        "background": "finalreview_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "exec_assistant",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4074,
+          "gems": 0,
+          "items": [
+            {
+              "id": "golden_stapler",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st12",
+        "stageNumber": 12,
+        "name": "The Hall of Org Charts Past",
+        "kind": "normal",
+        "background": "finalreview_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4261,
+          "gems": 0,
+          "items": [
+            {
+              "id": "universe_kpi",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st13",
+        "stageNumber": 13,
+        "name": "Blue Sky Thinking Chamber",
+        "kind": "normal",
+        "background": "finalreview_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "synergy_seraph",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_wolf_rep",
+                "hpMult": 10.5,
+                "atkMult": 10.5,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite",
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 20,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 6673,
+          "gems": 5,
+          "items": [
+            {
+              "id": "golden_stapler",
+              "count": 4
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st14",
+        "stageNumber": 14,
+        "name": "The Golden Parachute Hangar",
+        "kind": "normal",
+        "background": "finalreview_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "synergy_seraph",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4636,
+          "gems": 0,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st15",
+        "stageNumber": 15,
+        "name": "All-Hands of the Universe",
+        "kind": "story",
+        "background": "finalreview_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "exec_assistant",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "exec_assistant",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
+        "dialogueBefore": "ch20_mid",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4824,
+          "gems": 5,
+          "items": [
+            {
+              "id": "golden_stapler",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st16",
+        "stageNumber": 16,
+        "name": "Deliverables Deck",
+        "kind": "normal",
+        "background": "finalreview_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "exec_assistant",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 5012,
+          "gems": 0,
+          "items": [
+            {
+              "id": "golden_stapler",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st17",
+        "stageNumber": 17,
+        "name": "The Town Hall",
+        "kind": "normal",
+        "background": "finalreview_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 5199,
+          "gems": 0,
+          "items": [
+            {
+              "id": "universe_kpi",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st18",
+        "stageNumber": 18,
+        "name": "THE BOARD CONVENES",
+        "kind": "miniboss",
+        "background": "finalreview_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "synergy_seraph",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_board",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch20_mini2",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 5387,
+          "gems": 10,
+          "items": [
+            {
+              "id": "golden_stapler",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st19",
+        "stageNumber": 19,
+        "name": "Succession Planning Suite",
+        "kind": "normal",
+        "background": "finalreview_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "synergy_seraph",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "exec_assistant",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 5574,
+          "gems": 0,
+          "items": [
+            {
+              "id": "golden_stapler",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st20",
+        "stageNumber": 20,
+        "name": "The Executive Washroom (Forbidden)",
+        "kind": "normal",
+        "background": "finalreview_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "synergy_seraph",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 19,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 5762,
+          "gems": 0,
+          "items": [
+            {
+              "id": "golden_stapler",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st21",
+        "stageNumber": 21,
+        "name": "The Actuals vs Forecast Foyer",
+        "kind": "normal",
+        "background": "finalreview_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_lich_clerk",
+                "hpMult": 1.9,
+                "atkMult": 1.9,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite",
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 22,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 8924,
+          "gems": 5,
+          "items": [
+            {
+              "id": "universe_kpi",
+              "count": 6
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st22",
+        "stageNumber": 22,
+        "name": "Growth Chart Gorge",
+        "kind": "normal",
+        "background": "finalreview_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "exec_assistant",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "exec_assistant",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "exec_assistant",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 23,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 6137,
+          "gems": 0,
+          "items": [
+            {
+              "id": "golden_stapler",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st23",
+        "stageNumber": 23,
+        "name": "The Fiscal Cliff",
+        "kind": "normal",
+        "background": "finalreview_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "synergy_seraph",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 23,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 6325,
+          "gems": 0,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st24",
+        "stageNumber": 24,
+        "name": "One Last Sync",
+        "kind": "story",
+        "background": "finalreview_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ladder_climber",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "synergy_seraph",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch20_preboss",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 6512,
+          "gems": 5,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch20_st25",
+        "stageNumber": 25,
+        "name": "THE FINAL QUARTERLY REVIEW",
+        "kind": "boss",
+        "background": "finalreview_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "buzzword_hydra",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "quota_golem",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "kpi_watcher",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_ceo_everything",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 24,
+        "dialogueBefore": "ch20_boss_before",
+        "dialogueAfter": "ch20_boss_after",
+        "rewards": {
+          "gold": 6700,
+          "gems": 30,
+          "items": [
+            {
+              "id": "executive_seal",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": "300 Gems"
+        },
+        "staminaCost": 0
+      }
+    ]
+  }
+}

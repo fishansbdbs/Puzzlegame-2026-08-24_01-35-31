@@ -1,0 +1,189 @@
+{
+  "scenes": [
+    {
+      "id": "ch11_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Enchanted Mall! Built by wizards, abandoned by wizards, haunted by retail."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "What's our objective?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Anchor Store at the center has been... acquiring people. Also I need socks. Two birds, hero."
+        }
+      ]
+    },
+    {
+      "id": "ch11_mini1",
+      "lines": [
+        {
+          "speaker": "Food Court Sovereign",
+          "portrait": "enemy_boss_food_court",
+          "side": "right",
+          "text": "YOU APPROACH THE COURT. ALL WHO EAT HERE SERVE HERE. THOSE ARE THE TERMS OF THE SAMPLE."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero... I ate the sample. I ate FOUR samples."
+        },
+        {
+          "speaker": "Food Court Sovereign",
+          "portrait": "enemy_boss_food_court",
+          "side": "right",
+          "text": "FOUR?! THE DEBT IS ENORMOUS. TO ARMS."
+        }
+      ]
+    },
+    {
+      "id": "ch11_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The mall's heart. A storefront with no sign, no windows, and doors that open like a yawn."
+        },
+        {
+          "speaker": "The Anchor Store",
+          "portrait": "enemy_boss_mall_heart",
+          "side": "right",
+          "text": "WELCOME. EVERYTHING MUST GO. YOU... ARE EVERYTHING."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We're just here for the missing people. And socks."
+        },
+        {
+          "speaker": "The Anchor Store",
+          "portrait": "enemy_boss_mall_heart",
+          "side": "right",
+          "text": "THE MISSING PEOPLE ARE IN AISLE NEVER. THE SOCKS ARE EXCELLENT. PREPARE FOR ACQUISITION."
+        }
+      ]
+    },
+    {
+      "id": "ch11_boss_after",
+      "lines": [
+        {
+          "speaker": "The Anchor Store",
+          "portrait": "enemy_boss_mall_heart",
+          "side": "right",
+          "text": "GOING... OUT OF... BUSINESS..."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The doors exhale four hundred missing shoppers, sixty mall-walkers mid-lap, and one wizard who just wanted a smoothie."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Everyone's free! And hero... the socks. They ARE excellent."
+        }
+      ]
+    },
+    {
+      "id": "ch11_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A folding table in the atrium. A banner: MEET SIR PRESTIGE, 2PM. It is 4PM. The chairs are empty."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "The turnout is... intimate. Curated, even. My people say organic reach is DOWN across all kingdoms."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We could get a pretzel. If you want."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "...a pretzel would be agreeable. No photos. Actually — one photo."
+        }
+      ]
+    },
+    {
+      "id": "ch11_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The intercom crackles: \"WOULD THE GUARDIANS OF A LOST CHILD PLEASE COME TO... EVERYWHERE.\""
+        },
+        {
+          "speaker": "The Lost Child",
+          "portrait": "enemy_boss_lost_child",
+          "side": "right",
+          "text": "Have YOU seen my parents? It has been 639 years. They said to wait by the fountain. I HAVE BEEN SO PATIENT."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Oh no. Hero, my heart. Can we adopt it? Can we adopt the horrifying mall entity?"
+        },
+        {
+          "speaker": "The Lost Child",
+          "portrait": "enemy_boss_lost_child",
+          "side": "right",
+          "text": "HOLD. HANDS."
+        }
+      ]
+    },
+    {
+      "id": "ch11_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The mall directory glows. The YOU ARE HERE dot has been replaced with a dot labeled: YOU ARE INVENTORY."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Deep breath, hero. Past those doors is the Anchor Store. Remember the plan: rescue the shoppers, refuse all loyalty programs."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "And the socks."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "And the socks. Obviously the socks."
+        }
+      ]
+    }
+  ]
+}

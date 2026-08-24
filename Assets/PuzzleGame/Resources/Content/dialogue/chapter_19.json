@@ -1,0 +1,183 @@
+{
+  "scenes": [
+    {
+      "id": "ch19_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Spreadsheet Dimension. Everything that happens in Glimmerdale... is calculated HERE first. We are inside the math, hero."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "Are WE in a cell somewhere?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Row 7, column YOU. I checked. Your formula is beautiful. Don't let anyone edit it."
+        }
+      ]
+    },
+    {
+      "id": "ch19_mini1",
+      "lines": [
+        {
+          "speaker": "Pivot Dragon",
+          "portrait": "enemy_boss_pivot_dragon",
+          "side": "right",
+          "text": "I HAVE SUMMARIZED YOUR PARTY BY ELEMENT. WOULD YOU LIKE TO SEE YOURSELVES... AS PERCENTAGES?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "No."
+        },
+        {
+          "speaker": "Pivot Dragon",
+          "portrait": "enemy_boss_pivot_dragon",
+          "side": "right",
+          "text": "DRAGGING YOU TO THE VALUES SECTION ANYWAY."
+        }
+      ]
+    },
+    {
+      "id": "ch19_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The center of the grid. A formula older than counting glows in the bar above the world."
+        },
+        {
+          "speaker": "The First Formula",
+          "portrait": "enemy_boss_formula_one",
+          "side": "right",
+          "text": "=SUM(EVERYTHING). I HAVE BEEN CALCULATING THE FINAL TOTAL SINCE TIME BEGAN. YOU ARE A ROUNDING ERROR."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Rounding errors CHANGE OUTCOMES, buddy!"
+        },
+        {
+          "speaker": "The First Formula",
+          "portrait": "enemy_boss_formula_one",
+          "side": "right",
+          "text": "...RECALCULATING."
+        }
+      ]
+    },
+    {
+      "id": "ch19_boss_after",
+      "lines": [
+        {
+          "speaker": "The First Formula",
+          "portrait": "enemy_boss_formula_one",
+          "side": "right",
+          "text": "CALCULATION... COMPLETE. THE FINAL TOTAL IS... FRIENDSHIP?? CHECKING MY REFERENCES—"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The math has spoken, hero, and honestly? I did NOT expect the math to be a coward about it."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "One chapter left. Whoever runs ALL of this... is expecting us."
+        }
+      ]
+    },
+    {
+      "id": "ch19_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Row 7. The party finds a highlighted range: HERO, PIP, PARTY(3). Formula: =JOURNEY(A1:NOW())."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "It's us, hero. Our whole adventure, calculated. Look — chapter one is just \"=SLIME(1)\". We were so young."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "What's the formula outputting now?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "#GROWING. It's not an error, hero. It's a compliment."
+        }
+      ]
+    },
+    {
+      "id": "ch19_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The lights die. In the darkness, a soft, terrible question forms."
+        },
+        {
+          "speaker": "Ghost of Unsaved Work",
+          "portrait": "enemy_boss_autosave",
+          "side": "right",
+          "text": "did you save"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "WE SAVE CONSTANTLY. WE SAVE AFTER EVERY STAGE. TELL IT, HERO."
+        },
+        {
+          "speaker": "Ghost of Unsaved Work",
+          "portrait": "enemy_boss_autosave",
+          "side": "right",
+          "text": "that is what they all believed"
+        }
+      ]
+    },
+    {
+      "id": "ch19_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The formula bar stretches over the horizon, glowing with the First Formula. Beneath it, a sticky note in Pip's handwriting: \"Almost finale. Box time soon. — P.\""
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Past-me strikes again! She KNEW, hero. Whatever's in that box, it matters for what comes next."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "One dimension at a time. First: the math."
+        }
+      ]
+    }
+  ]
+}

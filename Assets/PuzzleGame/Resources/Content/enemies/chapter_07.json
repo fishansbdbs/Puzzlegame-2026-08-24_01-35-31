@@ -1,0 +1,255 @@
+{
+  "enemies": [
+    {
+      "id": "rogue_scone",
+      "name": "Rogue Scone",
+      "element": "fire",
+      "boss": false,
+      "hp": 12800,
+      "atk": 1870,
+      "countdown": 3,
+      "artRef": "enemy_rogue_scone",
+      "flavor": "Went stale. Went feral. Crumbles for no one.",
+      "actions": [
+        {
+          "name": "Crumb Burst",
+          "desc": "Dry, devastating shrapnel.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Stale Stare",
+          "desc": "A big dense hit.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "custard_elemental",
+      "name": "Custard Elemental",
+      "element": "light",
+      "boss": false,
+      "hp": 15360,
+      "atk": 1683,
+      "countdown": 3,
+      "artRef": "enemy_custard_elemental",
+      "flavor": "Wobbles with ancient power. Sets when threatened.",
+      "actions": [
+        {
+          "name": "Wobble Wave",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        },
+        {
+          "name": "Scald",
+          "desc": "It's hotter in the middle.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "churro_cactus",
+      "name": "Churro Cactus",
+      "element": "nature",
+      "boss": false,
+      "hp": 14080,
+      "atk": 1870,
+      "countdown": 3,
+      "artRef": "enemy_churro_cactus",
+      "flavor": "Do not hug. Delicious, but do not hug.",
+      "actions": [
+        {
+          "name": "Cinnamon Spines",
+          "desc": "Poisons 2 orbs with sugar dust.",
+          "type": "poison",
+          "count": 2
+        },
+        {
+          "name": "Snap Off",
+          "desc": "A crunchy jab.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "gelato_golem",
+      "name": "Gelato Golem",
+      "element": "water",
+      "boss": false,
+      "hp": 16640,
+      "atk": 1683,
+      "countdown": 3,
+      "artRef": "enemy_gelato_golem",
+      "flavor": "Slowly melting. Extremely calm about it.",
+      "actions": [
+        {
+          "name": "Brain Freeze",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        },
+        {
+          "name": "Scoop Slam",
+          "desc": "Two scoops of impact.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "biscotti_bandit",
+      "name": "Biscotti Bandit",
+      "element": "dark",
+      "boss": false,
+      "hp": 11520,
+      "atk": 2244,
+      "countdown": 3,
+      "artRef": "enemy_biscotti_bandit",
+      "flavor": "Twice-baked. Twice as bitter. Robs coffee carts.",
+      "actions": [
+        {
+          "name": "Dunk",
+          "desc": "A big dip attack.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "meringue_wisp",
+      "name": "Meringue Wisp",
+      "element": "light",
+      "boss": false,
+      "hp": 10240,
+      "atk": 1683,
+      "countdown": 3,
+      "artRef": "enemy_meringue_wisp",
+      "flavor": "Light as air. Judgmental as a pastry chef.",
+      "actions": [
+        {
+          "name": "Stiff Peaks",
+          "desc": "Places a fluffy blocker.",
+          "type": "block",
+          "count": 1
+        },
+        {
+          "name": "Whip",
+          "desc": "Folded into your face.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_tiramisu",
+      "name": "Tiramisu the Unrisen",
+      "element": "dark",
+      "boss": true,
+      "hp": 128000,
+      "atk": 2618,
+      "countdown": 3,
+      "artRef": "enemy_boss_tiramisu",
+      "flavor": "A layered horror. Espresso-soaked. Pick-me-up? It will pick YOU up.",
+      "actions": [
+        {
+          "name": "Espresso Shot",
+          "desc": "A jittery, devastating blast.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Cocoa Cloud",
+          "desc": "Poisons 3 orbs with fine powder.",
+          "type": "poison",
+          "count": 3
+        },
+        {
+          "name": "Layer Up",
+          "desc": "Heals itself. Another layer forms.",
+          "type": "heal",
+          "amount": 5000
+        }
+      ]
+    },
+    {
+      "id": "boss_flanbeast",
+      "name": "The Flanbeast",
+      "element": "light",
+      "boss": true,
+      "hp": 140800,
+      "atk": 2618,
+      "countdown": 2,
+      "artRef": "enemy_boss_flanbeast",
+      "flavor": "It jiggles with malice. Caramel drips like the tears of its enemies.",
+      "actions": [
+        {
+          "name": "Caramel Flood",
+          "desc": "Converts 4 orbs to Light.",
+          "type": "convert",
+          "count": 4,
+          "color": "light"
+        },
+        {
+          "name": "Jiggle Quake",
+          "desc": "A big resonant wobble.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Sticky Situation",
+          "desc": "Locks 3 orbs in caramel.",
+          "type": "lock",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_grand_gateau",
+      "name": "The Grand Gateau",
+      "element": "fire",
+      "boss": true,
+      "hp": 332800,
+      "atk": 2992,
+      "countdown": 3,
+      "artRef": "enemy_boss_grand_gateau",
+      "flavor": "A wedding cake the size of a fortress. Nobody got married. It simply DECLARED itself.",
+      "actions": [
+        {
+          "name": "Tier Drop",
+          "desc": "A floor of cake falls on you.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Fondant Prison",
+          "desc": "Locks 5 orbs in smooth icing.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Candle Barrage",
+          "desc": "Converts 3 orbs to Fire. Make a wish.",
+          "type": "convert",
+          "count": 3,
+          "color": "fire"
+        },
+        {
+          "name": "Self-Frosting",
+          "desc": "Heals itself. Another rosette appears.",
+          "type": "heal",
+          "amount": 9000
+        },
+        {
+          "name": "Blow Out the Candles",
+          "desc": "TAUNTS: all attacks must target the cake. It insists.",
+          "type": "taunt"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "enemies": [
+    {
+      "id": "tax_frog",
+      "name": "Tax Frog",
+      "element": "water",
+      "hp": 5200, "atk": 720, "countdown": 2,
+      "artRef": "enemy_tax_frog",
+      "flavor": "Ribbits in triplicate. Knows exactly what you owe. Down to the fly.",
+      "actions": [
+        { "name": "Audit Tongue", "desc": "Snatches your gold-colored hopes.", "type": "damage", "amount": 720 },
+        { "name": "Withholding", "desc": "Locks 3 orbs until further review.", "type": "lock", "count": 3 }
+      ]
+    },
+    {
+      "id": "bog_accountant",
+      "name": "Licensed Bog Accountant",
+      "element": "nature",
+      "hp": 6100, "atk": 780, "countdown": 3,
+      "artRef": "enemy_bog_accountant",
+      "flavor": "Half wizard, half ledger, entirely damp. His briefcase is a lily pad.",
+      "actions": [
+        { "name": "Depreciate", "desc": "Reduces your move time. Assets lose value over time.", "type": "timerdown", "amount": 2 },
+        { "name": "Itemize", "desc": "Converts 3 orbs to Nature. Every deduction counted.", "type": "convert", "count": 3, "color": "nature" }
+      ]
+    },
+    {
+      "id": "audit_gator",
+      "name": "Audit Gator",
+      "element": "dark",
+      "hp": 7800, "atk": 950, "countdown": 3,
+      "artRef": "enemy_audit_gator",
+      "flavor": "See you later? No. He sees you NOW. Bring receipts.",
+      "actions": [
+        { "name": "Receipt Chomp", "desc": "A massive bite with supporting documentation.", "type": "bigdamage", "amount": 1600 },
+        { "name": "Red Flag", "desc": "Poisons 3 orbs. Suspicious activity detected.", "type": "poison", "count": 3 }
+      ]
+    },
+    {
+      "id": "swamp_notary",
+      "name": "Swamp Notary",
+      "element": "water",
+      "hp": 5600, "atk": 680, "countdown": 3,
+      "artRef": "enemy_swamp_notary",
+      "flavor": "Stamps things. Mostly documents. Occasionally adventurers.",
+      "actions": [
+        { "name": "Official Stamp", "desc": "THUD. Certified damage.", "type": "damage", "amount": 680 },
+        { "name": "Blockade of Bureaucracy", "desc": "Places a blocker on the board. Sign here first.", "type": "block", "count": 1 }
+      ]
+    },
+    {
+      "id": "boss_taxlord",
+      "name": "The Taxlord of the Bog",
+      "element": "dark",
+      "boss": true,
+      "hp": 70000, "atk": 1300, "countdown": 3,
+      "artRef": "enemy_boss_taxlord",
+      "flavor": "An ancient horror in a sensible cardigan. Death and taxes, in one convenient location.",
+      "actions": [
+        { "name": "Final Notice", "desc": "Enormous damage. You have been warned. Repeatedly.", "type": "bigdamage", "amount": 2400 },
+        { "name": "Freeze Assets", "desc": "Locks 5 orbs pending investigation.", "type": "lock", "count": 5 },
+        { "name": "Late Fees", "desc": "Poisons 3 orbs. Interest compounds.", "type": "poison", "count": 3 },
+        { "name": "Loophole", "desc": "Heals himself through a clause nobody read.", "type": "heal", "amount": 7000 }
+      ]
+    }
+  ]
+}

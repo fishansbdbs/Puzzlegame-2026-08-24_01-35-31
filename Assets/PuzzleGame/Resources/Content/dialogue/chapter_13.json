@@ -1,0 +1,171 @@
+{
+  "scenes": [
+    {
+      "id": "ch13_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Royal Post Office. They say the mail always gets through. They do not say WHEN."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "Why are we here?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Dead Letter King has been hoarding every heartfelt letter in history. The kingdom's feelings are BACKED UP, hero. It's an emotional plumbing emergency."
+        }
+      ]
+    },
+    {
+      "id": "ch13_mini1",
+      "lines": [
+        {
+          "speaker": "Postmaster",
+          "portrait": "enemy_boss_postmaster",
+          "side": "right",
+          "text": "FOUR BILLION AND TWELVE. That is how many letters I have rejected. Yours would be four billion and THIRTEEN."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We didn't bring a letter."
+        },
+        {
+          "speaker": "Postmaster",
+          "portrait": "enemy_boss_postmaster",
+          "side": "right",
+          "text": "THEN I SHALL REJECT YOU DIRECTLY."
+        }
+      ]
+    },
+    {
+      "id": "ch13_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A throne room of pigeonholes, each one glowing faintly with an unread letter."
+        },
+        {
+          "speaker": "Dead Letter King",
+          "portrait": "enemy_boss_dead_letter",
+          "side": "right",
+          "text": "Every unsaid apology. Every unmailed confession. MINE. They are safest unread. Unread words... cannot wound."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "They can't HEAL either, your majesty."
+        },
+        {
+          "speaker": "Dead Letter King",
+          "portrait": "enemy_boss_dead_letter",
+          "side": "right",
+          "text": "...deliver THIS, then."
+        }
+      ]
+    },
+    {
+      "id": "ch13_boss_after",
+      "lines": [
+        {
+          "speaker": "Dead Letter King",
+          "portrait": "enemy_boss_dead_letter",
+          "side": "right",
+          "text": "Very well... release the mail... ALL of it..."
+        },
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A century of letters takes flight at once, darkening the sky like starlings. Somewhere, ten thousand grudges end."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero. There's one for you. It's from the slimes. It says \"good hustle\". I'm crying."
+        }
+      ]
+    },
+    {
+      "id": "ch13_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A sorting tray rattles. One letter has worked itself loose. The address, in careful goo-print: TO THE HERO. THE MEADOW. YOU KNOW THE ONE."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "It's from the slimes, hero. It's been in the system since chapter one. It's trying to REACH you."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "...we get that letter out of here. Whatever it takes."
+        }
+      ]
+    },
+    {
+      "id": "ch13_mini2",
+      "lines": [
+        {
+          "speaker": "The Chain Letter",
+          "portrait": "enemy_boss_chain_letter",
+          "side": "right",
+          "text": "FORWARD ME TO TEN FRIENDS OR SUFFER MISFORTUNE. YOUR GRANDMOTHER FORWARDED ME. YOUR KING FORWARDED ME. BE LIKE THEM."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "I have five friends and they're all in this party."
+        },
+        {
+          "speaker": "The Chain Letter",
+          "portrait": "enemy_boss_chain_letter",
+          "side": "right",
+          "text": "THEN THE MISFORTUNE IS DOUBLED AND SHARED. HOW EFFICIENT."
+        }
+      ]
+    },
+    {
+      "id": "ch13_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The antechamber of the Dead Letter King. Millions of pigeonholes. In each: an apology, a confession, a birthday card with the money still inside."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Every unsaid thing in the kingdom, hero. Filed. Hoarded. He thinks he's protecting people."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Words don't expire. Let's go deliver them."
+        }
+      ]
+    }
+  ]
+}

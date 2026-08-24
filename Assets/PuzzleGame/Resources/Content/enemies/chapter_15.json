@@ -1,0 +1,263 @@
+{
+  "enemies": [
+    {
+      "id": "moon_rabbit",
+      "name": "Moon Rabbit Tenant",
+      "element": "light",
+      "boss": false,
+      "hp": 23040,
+      "atk": 3630,
+      "countdown": 3,
+      "artRef": "enemy_moon_rabbit",
+      "flavor": "Pounds rice cakes by ancient tradition. Pounds landlords by recent necessity.",
+      "actions": [
+        {
+          "name": "Mallet Swing",
+          "desc": "Rice cake technique, combat application.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Tenant Meeting",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        }
+      ]
+    },
+    {
+      "id": "crater_hermit",
+      "name": "Crater Hermit Crab",
+      "element": "water",
+      "boss": false,
+      "hp": 30720,
+      "atk": 3267,
+      "countdown": 3,
+      "artRef": "enemy_crater_hermit",
+      "flavor": "Lives in a crater. The crater is a studio apartment. Rent: astronomical. Literally.",
+      "actions": [
+        {
+          "name": "Shell Sublease",
+          "desc": "Places a blocker. No vacancies.",
+          "type": "block",
+          "count": 1
+        },
+        {
+          "name": "Claw Clause",
+          "desc": "Read your lease closer.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "dust_bunny",
+      "name": "Lunar Dust Bunny",
+      "element": "dark",
+      "boss": false,
+      "hp": 20480,
+      "atk": 3630,
+      "countdown": 3,
+      "artRef": "enemy_dust_bunny",
+      "flavor": "Accumulated since the moon's last deep clean, four billion years ago.",
+      "actions": [
+        {
+          "name": "Dust Cloud",
+          "desc": "Poisons 2 orbs with regolith.",
+          "type": "poison",
+          "count": 2
+        },
+        {
+          "name": "Fluffy Ambush",
+          "desc": "Soft. Deadly. Soft.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "tide_manager",
+      "name": "Tide Middle Manager",
+      "element": "water",
+      "boss": false,
+      "hp": 28160,
+      "atk": 3630,
+      "countdown": 3,
+      "artRef": "enemy_tide_manager",
+      "flavor": "Manages the tides remotely. The oceans have COMPLAINTS.",
+      "actions": [
+        {
+          "name": "Pull Rank",
+          "desc": "A big gravitational power move.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Tidal Memo",
+          "desc": "Converts 2 orbs to Water.",
+          "type": "convert",
+          "count": 2,
+          "color": "water"
+        }
+      ]
+    },
+    {
+      "id": "cheese_prospector",
+      "name": "Cheese Prospector",
+      "element": "nature",
+      "boss": false,
+      "hp": 25600,
+      "atk": 3993,
+      "countdown": 3,
+      "artRef": "enemy_cheese_prospector",
+      "flavor": "Still convinced. Forty years of digging. You will not tell him otherwise.",
+      "actions": [
+        {
+          "name": "Pickaxe of Belief",
+          "desc": "Powered by pure conviction.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Core Sample",
+          "desc": "A big exploratory strike.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "satellite_pigeon",
+      "name": "Satellite Pigeon",
+      "element": "fire",
+      "boss": false,
+      "hp": 23040,
+      "atk": 3630,
+      "countdown": 3,
+      "artRef": "enemy_satellite_pigeon",
+      "flavor": "Orbits the coop. Delivers eviction notices from very high altitude.",
+      "actions": [
+        {
+          "name": "Notice Drop",
+          "desc": "Terminal velocity paperwork.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Orbital Coo",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "boss_property_mgmt",
+      "name": "Lunar Property Management LLC",
+      "element": "dark",
+      "boss": true,
+      "hp": 256000,
+      "atk": 5082,
+      "countdown": 3,
+      "artRef": "enemy_boss_property_mgmt",
+      "flavor": "Not a person. Not a monster. An LLC. Somehow, this is worse.",
+      "actions": [
+        {
+          "name": "Ignore Maintenance Request",
+          "desc": "A big hit of neglect.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Deposit Withheld",
+          "desc": "Locks 4 orbs for \"cleaning fees\".",
+          "type": "lock",
+          "count": 4
+        },
+        {
+          "name": "Rent Increase",
+          "desc": "Poisons 3 orbs, effective immediately.",
+          "type": "poison",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_man_in_moon",
+      "name": "The Man in the Moon (Retired)",
+      "element": "light",
+      "boss": true,
+      "hp": 281600,
+      "atk": 5082,
+      "countdown": 2,
+      "artRef": "enemy_boss_man_in_moon",
+      "flavor": "Used to run this place. Came out of retirement because the new management is \"ruining the vibe\".",
+      "actions": [
+        {
+          "name": "Full Beam",
+          "desc": "A big nostalgic glow blast.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Back In My Day",
+          "desc": "Binds a party member in a long story.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Waning Patience",
+          "desc": "Converts 4 orbs to Light.",
+          "type": "convert",
+          "count": 4,
+          "color": "light"
+        }
+      ]
+    },
+    {
+      "id": "boss_moonlord",
+      "name": "The Moonlord (Landlord of the Moon)",
+      "element": "dark",
+      "boss": true,
+      "hp": 665600,
+      "atk": 5808,
+      "countdown": 3,
+      "artRef": "enemy_boss_moonlord",
+      "flavor": "Bought the moon in a questionable auction. Charges the tides rent. The rabbits have HAD IT.",
+      "actions": [
+        {
+          "name": "Eviction Eclipse",
+          "desc": "Massive damage. Notice served.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Security Deposit Void",
+          "desc": "Locks 5 orbs. Normal wear and tear DENIED.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Collect Rent",
+          "desc": "Heals himself. The tides paid up.",
+          "type": "heal",
+          "amount": 10000
+        },
+        {
+          "name": "Dark Side Lease",
+          "desc": "Converts 3 orbs to Dark.",
+          "type": "convert",
+          "count": 3,
+          "color": "dark"
+        },
+        {
+          "name": "Dark Side Holdings",
+          "desc": "Absorbs Dark damage this rotation. He owns that too.",
+          "type": "absorb",
+          "color": "dark"
+        }
+      ]
+    }
+  ]
+}

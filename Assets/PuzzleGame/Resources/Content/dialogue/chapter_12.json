@@ -1,0 +1,177 @@
+{
+  "scenes": [
+    {
+      "id": "ch12_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Frostbite Fjord! The ice giants pivoted from pillaging to timeshares. Historians agree this is worse."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "We're not buying anything."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero, NOBODY plans to buy a timeshare. That's the terrifying part. Guard your signature with your LIFE."
+        }
+      ]
+    },
+    {
+      "id": "ch12_mini1",
+      "lines": [
+        {
+          "speaker": "The Presentation",
+          "portrait": "enemy_boss_presentation",
+          "side": "right",
+          "text": "SLIDE ONE: WELCOME. SLIDE TWO: IMAGINE... OWNING... WINTER."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "How many slides are there?"
+        },
+        {
+          "speaker": "The Presentation",
+          "portrait": "enemy_boss_presentation",
+          "side": "right",
+          "text": "SLIDE THREE: DO NOT ASK ABOUT THE SLIDES."
+        }
+      ]
+    },
+    {
+      "id": "ch12_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The corner floe. A desk carved from a glacier. Behind it, a giant whose breath is a cold front."
+        },
+        {
+          "speaker": "Permafrost",
+          "portrait": "enemy_boss_glacier_ceo",
+          "side": "right",
+          "text": "I hear you sat through the ENTIRE presentation and bought NOTHING. Remarkable. I respect it. I also cannot allow it."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Is there a \"leave quietly\" package?"
+        },
+        {
+          "speaker": "Permafrost",
+          "portrait": "enemy_boss_glacier_ceo",
+          "side": "right",
+          "text": "Everything is a package. That one costs a battle. Shall we... close?"
+        }
+      ]
+    },
+    {
+      "id": "ch12_boss_after",
+      "lines": [
+        {
+          "speaker": "Permafrost",
+          "portrait": "enemy_boss_glacier_ceo",
+          "side": "right",
+          "text": "The contracts... void... the fjord... free... my parka... just a regular parka now..."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Four thousand timeshare owners released! The penguins are shredding paperwork! It's SNOWING CONTRACTS!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Prettiest snow I've ever seen."
+        }
+      ]
+    },
+    {
+      "id": "ch12_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "On the slopes below, a green shape in seven scarves carves elegant turns. A tie flutters from each scarf."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Is that... GERALD? On VACATION?"
+        },
+        {
+          "speaker": "Gerald (distant)",
+          "portrait": "enemy_boss_gerald",
+          "side": "right",
+          "text": "PTO IS A RIGHT, NOT A GIFT! Also I'm expensing this! WHEEEEE—"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "I'm glad he's doing well. I'm also afraid."
+        }
+      ]
+    },
+    {
+      "id": "ch12_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Eight arms surface from the fjord. Each holds a pen. Each pen is uncapped. This is a closing."
+        },
+        {
+          "speaker": "Karkinos",
+          "portrait": "enemy_boss_closer_kraken",
+          "side": "right",
+          "text": "I sense hesitation. Hesitation is just a signature that hasn't happened yet."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "GUARD YOUR INITIALS, HERO."
+        }
+      ]
+    },
+    {
+      "id": "ch12_preboss",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Foreman Flintbeard was here selling his FORGE as a timeshare. His own forge! Fractional ownership of an anvil!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Did anyone buy in?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Fourteen penguins and, devastatingly, me. We close on Tuesday. ANYWAY — Permafrost's office. Mittens on. Sign NOTHING."
+        }
+      ]
+    }
+  ]
+}

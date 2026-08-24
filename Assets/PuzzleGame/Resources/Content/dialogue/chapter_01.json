@@ -1,0 +1,143 @@
+{
+  "scenes": [
+    {
+      "id": "ch01_tut_cascades",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Quick tip before the slimes arrive: when matched orbs vanish, new ones fall from above. If THOSE line up too — that's a cascade, and your combo keeps climbing!" },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "And remember: two separate Fire matches means your Fire heroes attack TWICE. Separate matches, separate attacks. It's the law. I checked." }
+      ]
+    },
+    {
+      "id": "ch01_tut_hearts",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "See those pink Heart orbs? Match three and the party heals. No hero uses Heart as an element — it belongs to everyone. Very egalitarian. Very pink." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "right", "text": "Match hearts when hurt. Understood." }
+      ]
+    },
+    {
+      "id": "ch01_tut_elements",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Element chart, hero! Fire scorches Nature, Nature drinks Water, Water douses Fire. Light and Dark? Ancient rivals — they hit each OTHER harder." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "That damp slime ahead is Water. Bring Nature matches and watch the numbers get bigger. Bigger numbers are morale." }
+      ]
+    },
+    {
+      "id": "ch01_tut_leader",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Your slot-one hero is your LEADER. Their Leader Skill is always on — team-wide, no charging, no button. Build your party around it!" },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "right", "text": "So the crown icon isn't decorative." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Nothing in this kingdom is decorative, hero. Everything is load-bearing." }
+      ]
+    },
+    {
+      "id": "ch01_tut_active",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Watch the little bars under your heroes! Matching a hero's element charges their Active Skill. When it says READY, tap their portrait and unleash it!" },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Orb conversions, heals, delays — every skill is different. Reading them is free. Using them wisely is priceless. Using them randomly is also fine honestly." }
+      ]
+    },
+    {
+      "id": "ch01_tut_countdown",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Last lesson, and it's the big one: the NUMBER on each enemy. Every move you finish ticks it down. At zero — they act. Attacks, orb locks, worse." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Watch the 'Next:' hint under tough enemies to see what's coming. Manage those countdowns, hero. Dave is beyond this field, and Dave SCHEDULES his violence." }
+      ]
+    },
+    {
+      "id": "ch01_s01_before",
+      "lines": [
+        { "speaker": "", "text": "The Kingdom of Glimmerdale. A land of heroes, magic, and remarkably thorough paperwork." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Welcome, hero! I'm Pip, your assigned Adventure Compliance Officer. Please initial here, here, and... here." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "right", "text": "I just wanted to fight slimes." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "And you legally may! Congratulations. Your slime license is valid in this meadow only." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "right", "text": "Slimes need licenses now?" },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "No, YOU need the license. The slimes have a union. It's complicated. Look, here one comes!" }
+      ]
+    },
+    {
+      "id": "ch01_s01_after",
+      "lines": [
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Excellent form! I've rated your first battle 'Exceeds Expectations'." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "right", "text": "It was one slime." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "One slime TODAY. Tomorrow? Possibly two slimes. Growth mindset, hero." }
+      ]
+    },
+    {
+      "id": "ch01_s05_before",
+      "lines": [
+        { "speaker": "Clipboard Goblin", "portrait": "enemy_clipboard_goblin", "side": "right", "text": "HALT. Do you have a Meadow Traversal Permit, Form MT-7?" },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "left", "text": "I have a sword?" },
+        { "speaker": "Clipboard Goblin", "portrait": "enemy_clipboard_goblin", "side": "right", "text": "A sword is not a form. I'm noting 'hostile and formless' in your file." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Oh no. He has a clipboard, hero. This just became SERIOUS." }
+      ]
+    },
+    {
+      "id": "ch01_s10_before",
+      "lines": [
+        { "speaker": "", "text": "A slime blocks the path. It is wearing a tie. The tie is load-bearing." },
+        { "speaker": "Dave", "portrait": "enemy_boss_slime_dave", "side": "right", "text": "Hi, hi, welcome — Dave, Slime Supervisor. Real quick: I'm seeing a LOT of defeated slimes in your quarterly numbers." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "left", "text": "They attacked me." },
+        { "speaker": "Dave", "portrait": "enemy_boss_slime_dave", "side": "right", "text": "Sure, sure. But have you considered... not? Anyway, I'm going to need you to fight me now. It's a whole process thing." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Careful! Middle managers hit harder when cornered by their own metrics!" }
+      ]
+    },
+    {
+      "id": "ch01_s10_after",
+      "lines": [
+        { "speaker": "Dave", "portrait": "enemy_boss_slime_dave", "side": "right", "text": "Noted... noted... I'll flag this... in the system..." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "left", "text": "Is he okay?" },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "He's fine. Slimes reform in 3-5 business days. He'll be back at his desk by Thursday." },
+        { "speaker": "Dave", "portrait": "enemy_boss_slime_dave", "side": "right", "text": "Tell Gerald... the projections... were never real..." }
+      ]
+    },
+    {
+      "id": "ch01_s15_before",
+      "lines": [
+        { "speaker": "", "text": "Moonrise over the meadow. In the distance: howling, and the unmistakable sound of a strike vote passing." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Bad news. The wolves have unionized. Worse news: their demands are actually quite reasonable." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "right", "text": "Then why are they attacking us?" },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "We crossed the picket line. It's the meadow, hero. The ENTIRE meadow is the picket line." }
+      ]
+    },
+    {
+      "id": "ch01_s18_before",
+      "lines": [
+        { "speaker": "Fenris", "portrait": "enemy_boss_wolf_rep", "side": "right", "text": "So. Management sends a hero." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "left", "text": "Nobody sent me. I'm just trying to cross the meadow." },
+        { "speaker": "Fenris", "portrait": "enemy_boss_wolf_rep", "side": "right", "text": "That's what management WOULD say. Article 12: all meadow-crossers must either honor the strike or fight the rep. I AM the rep." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "His teeth have dental coverage, hero. Their teeth have TEETH." }
+      ]
+    },
+    {
+      "id": "ch01_s18_after",
+      "lines": [
+        { "speaker": "Fenris", "portrait": "enemy_boss_wolf_rep", "side": "right", "text": "You fight... like someone with excellent benefits." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "left", "text": "I don't even have a contract." },
+        { "speaker": "Fenris", "portrait": "enemy_boss_wolf_rep", "side": "right", "text": "WHAT. Unacceptable. Here — take a union card. When you reach Gerald, ask him about YOUR quarterly numbers. Watch him squirm." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "Did... did the miniboss just recruit us?" }
+      ]
+    },
+    {
+      "id": "ch01_s25_before",
+      "lines": [
+        { "speaker": "", "text": "The heart of the meadow. A corner office with no walls, because it is a meadow. Three ties flutter in the wind." },
+        { "speaker": "Gerald", "portrait": "enemy_boss_gerald", "side": "right", "text": "Ah. The disruption. Please, sit. I've reviewed your file: eleven slimes, one supervisor, and a union representative. That's a lot of turnover." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "left", "text": "Your slimes attacked ME." },
+        { "speaker": "Gerald", "portrait": "enemy_boss_gerald", "side": "right", "text": "They were meeting their engagement quotas. Which brings me to you. Your numbers are, frankly, incredible. I'd like to offer you a position." },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "left", "text": "No." },
+        { "speaker": "Gerald", "portrait": "enemy_boss_gerald", "side": "right", "text": "Then, per policy, I must escalate. Gerald is now entering the meeting. GERALD IS NOW ENTERING THE MEETING." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "HERO. HIS COUNTDOWN. HE'S SCHEDULING A SLAM." }
+      ]
+    },
+    {
+      "id": "ch01_s25_after",
+      "lines": [
+        { "speaker": "Gerald", "portrait": "enemy_boss_gerald", "side": "right", "text": "This... this will reflect... very poorly... on the quarter..." },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "You did it! The meadow is free! All middle management has been... um... 'right-sized'!" },
+        { "speaker": "Hero", "portrait": "npc_hero", "side": "left", "text": "Where does that path lead?" },
+        { "speaker": "Pip", "portrait": "npc_pip", "side": "left", "text": "The Darkwood! Lovely this time of year. You'll need a hiking permit, a camping permit, and — oh dear — a permit permit." },
+        { "speaker": "", "text": "The heroes walk on. Behind them, a small slime picks up a fallen tie, and slowly, ominously, begins to knot it." }
+      ]
+    }
+  ]
+}

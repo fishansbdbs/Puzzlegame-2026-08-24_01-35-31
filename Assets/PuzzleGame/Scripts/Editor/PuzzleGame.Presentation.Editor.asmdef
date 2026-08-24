@@ -1,0 +1,20 @@
+{
+    "name": "PuzzleGame.Presentation.Editor",
+    "rootNamespace": "PuzzleGame",
+    "references": [
+        "PuzzleGame.Presentation",
+        "PuzzleGame.Core",
+        "PuzzleGame.Unity"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,229 @@
+{
+  "events": [
+    {
+      "id": "ev_bog_tax_season",
+      "name": "Tax Season in the Bog",
+      "kind": "eventChapter",
+      "desc": "The Taxlord of the Bog has declared EVERYONE delinquent. Fight your way to an extension.",
+      "theme": "bog",
+      "tokenId": "bog_receipt",
+      "rewardTableId": "rt_bog_event",
+      "stages": [
+        {
+          "id": "evbog_st01", "stageNumber": 1, "name": "Preliminary Filing", "kind": "story",
+          "background": "bog_shallows",
+          "dialogueBefore": "evbog_s01_before",
+          "waves": [ { "enemies": [ { "enemyId": "tax_frog" } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 8,
+          "rewards": { "gold": 500, "items": [ { "id": "bog_receipt", "count": 10 } ] }
+        },
+        {
+          "id": "evbog_st02", "stageNumber": 2, "name": "Estimated Payments", "kind": "normal",
+          "background": "bog_shallows",
+          "waves": [
+            { "enemies": [ { "enemyId": "tax_frog" }, { "enemyId": "tax_frog" } ] }
+          ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 10,
+          "rewards": { "gold": 550, "items": [ { "id": "bog_receipt", "count": 12 } ] }
+        },
+        {
+          "id": "evbog_st03", "stageNumber": 3, "name": "Ledger of the Damp", "kind": "normal",
+          "background": "bog_deep",
+          "waves": [
+            { "enemies": [ { "enemyId": "bog_accountant" } ] },
+            { "enemies": [ { "enemyId": "tax_frog", "hpMult": 1.2 } ] }
+          ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 11,
+          "rewards": { "gold": 600, "items": [ { "id": "bog_receipt", "count": 14 } ] }
+        },
+        {
+          "id": "evbog_st04", "stageNumber": 4, "name": "Notarized Violence", "kind": "normal",
+          "background": "bog_deep",
+          "waves": [
+            { "enemies": [ { "enemyId": "swamp_notary" }, { "enemyId": "tax_frog", "hpMult": 1.2 } ] }
+          ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 11,
+          "rewards": { "gold": 650, "items": [ { "id": "bog_receipt", "count": 16 } ] }
+        },
+        {
+          "id": "evbog_st05", "stageNumber": 5, "name": "SURPRISE AUDIT", "kind": "miniboss",
+          "background": "bog_deep",
+          "waves": [
+            { "enemies": [ { "enemyId": "bog_accountant", "hpMult": 1.2 } ] },
+            { "enemies": [ { "enemyId": "audit_gator" } ] }
+          ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 13,
+          "rewards": { "gold": 800, "gems": 10, "items": [ { "id": "bog_receipt", "count": 25 } ] }
+        },
+        {
+          "id": "evbog_st06", "stageNumber": 6, "name": "Itemized Despair", "kind": "normal",
+          "background": "bog_murk",
+          "waves": [
+            { "enemies": [ { "enemyId": "bog_accountant", "hpMult": 1.3 }, { "enemyId": "swamp_notary", "hpMult": 1.2 } ] },
+            { "enemies": [ { "enemyId": "tax_frog", "hpMult": 1.5 }, { "enemyId": "tax_frog", "hpMult": 1.5 } ] }
+          ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 14,
+          "rewards": { "gold": 850, "items": [ { "id": "bog_receipt", "count": 20 } ] }
+        },
+        {
+          "id": "evbog_st07", "stageNumber": 7, "name": "The Extension Window", "kind": "normal",
+          "background": "bog_murk",
+          "waves": [
+            { "enemies": [ { "enemyId": "audit_gator", "hpMult": 1.2 }, { "enemyId": "swamp_notary", "hpMult": 1.3 } ] }
+          ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 13,
+          "rewards": { "gold": 900, "items": [ { "id": "bog_receipt", "count": 22 } ] }
+        },
+        {
+          "id": "evbog_st08", "stageNumber": 8, "name": "THE TAXLORD COMETH", "kind": "boss",
+          "background": "bog_throne",
+          "dialogueBefore": "evbog_s08_before", "dialogueAfter": "evbog_s08_after",
+          "waves": [
+            { "enemies": [ { "enemyId": "audit_gator", "hpMult": 1.3 } ] },
+            { "enemies": [ { "enemyId": "boss_taxlord" } ] }
+          ],
+          "hpThresholdStar": 0.4, "resolutionsStar": 18,
+          "rewards": { "gold": 1500, "gems": 30, "items": [ { "id": "bog_receipt", "count": 50 }, { "id": "radiant_core", "count": 1 } ], "firstClearBonus": "Title: 'Fiscally Responsible'" }
+        }
+      ]
+    },
+    {
+      "id": "ev_daily_gold",
+      "name": "The Royal Mint (Rear Entrance)",
+      "kind": "materialDungeon",
+      "desc": "Daily gold runs. The guards are golems and the golems are gold. It's very convenient.",
+      "theme": "mint",
+      "rewardTableId": "rt_daily_gold",
+      "stages": [
+        {
+          "id": "evgold_st01", "stageNumber": 1, "name": "Petty Cash", "kind": "normal",
+          "background": "mint_vault",
+          "waves": [ { "enemies": [ { "enemyId": "gold_golem", "hpMult": 0.7 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 8,
+          "rewards": { "gold": 3000 }
+        },
+        {
+          "id": "evgold_st02", "stageNumber": 2, "name": "Main Vault", "kind": "normal",
+          "background": "mint_vault",
+          "waves": [
+            { "enemies": [ { "enemyId": "gold_golem" } ] },
+            { "enemies": [ { "enemyId": "gold_golem", "hpMult": 1.2 } ] }
+          ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 12,
+          "rewards": { "gold": 8000 }
+        },
+        {
+          "id": "evgold_st03", "stageNumber": 3, "name": "Executive Reserves", "kind": "boss",
+          "background": "mint_vault_deep",
+          "waves": [
+            { "enemies": [ { "enemyId": "gold_golem", "hpMult": 1.4 }, { "enemyId": "gold_golem", "hpMult": 1.4 } ] }
+          ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 14,
+          "rewards": { "gold": 20000 }
+        }
+      ]
+    },
+    {
+      "id": "ev_weekly_awakening",
+      "name": "Custodians of the Radiant Core",
+      "kind": "awakeningStage",
+      "desc": "Weekly chance at Radiant Cores — the farmable material for 6★ Awakening. No duplicates required, ever.",
+      "theme": "sanctum",
+      "rewardTableId": "rt_awakening",
+      "stages": [
+        {
+          "id": "evawk_st01", "stageNumber": 1, "name": "Sanctum Lobby", "kind": "normal",
+          "background": "sanctum_hall",
+          "waves": [ { "enemies": [ { "enemyId": "core_golem", "hpMult": 0.7 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 10,
+          "rewards": { "items": [ { "id": "radiant_core", "count": 1 } ] }
+        },
+        {
+          "id": "evawk_st02", "stageNumber": 2, "name": "Custodial Closet", "kind": "normal",
+          "background": "sanctum_hall",
+          "waves": [
+            { "enemies": [ { "enemyId": "core_golem" } ] },
+            { "enemies": [ { "enemyId": "core_golem", "hpMult": 1.2 } ] }
+          ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 14,
+          "rewards": { "items": [ { "id": "radiant_core", "count": 2 } ] }
+        },
+        {
+          "id": "evawk_st03", "stageNumber": 3, "name": "The Core Itself", "kind": "boss",
+          "background": "sanctum_core",
+          "waves": [
+            { "enemies": [ { "enemyId": "core_golem", "hpMult": 1.6 }, { "enemyId": "core_golem", "hpMult": 1.3 } ] }
+          ],
+          "hpThresholdStar": 0.4, "resolutionsStar": 16,
+          "rewards": { "items": [ { "id": "radiant_core", "count": 4 } ] }
+        }
+      ]
+    },
+    {
+      "id": "ev_tower_glimmer",
+      "name": "The Tower of Escalating Concern",
+      "kind": "challengeTower",
+      "desc": "Ten floors. No elevator. Each sentinel is slightly more concerned than the last.",
+      "theme": "tower",
+      "rewardTableId": "rt_tower",
+      "stages": [
+        { "id": "tower_f01", "stageNumber": 1, "name": "Floor 1: Mild Concern", "kind": "normal", "background": "tower_low",
+          "waves": [ { "enemies": [ { "enemyId": "sentinel_fire", "hpMult": 0.6 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 9, "rewards": { "gems": 20 } },
+        { "id": "tower_f02", "stageNumber": 2, "name": "Floor 2: Notable Concern", "kind": "normal", "background": "tower_low",
+          "waves": [ { "enemies": [ { "enemyId": "sentinel_water", "hpMult": 0.7 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 9, "rewards": { "gems": 20 } },
+        { "id": "tower_f03", "stageNumber": 3, "name": "Floor 3: Growing Concern", "kind": "normal", "background": "tower_low",
+          "waves": [ { "enemies": [ { "enemyId": "sentinel_fire", "hpMult": 0.9 }, { "enemyId": "sentinel_water", "hpMult": 0.7 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 11, "rewards": { "gems": 25 } },
+        { "id": "tower_f04", "stageNumber": 4, "name": "Floor 4: Escalated Ticket", "kind": "normal", "background": "tower_mid",
+          "waves": [ { "enemies": [ { "enemyId": "sentinel_water" } ] }, { "enemies": [ { "enemyId": "sentinel_fire" } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 13, "rewards": { "gems": 25 } },
+        { "id": "tower_f05", "stageNumber": 5, "name": "Floor 5: Manager Involved", "kind": "miniboss", "background": "tower_mid",
+          "waves": [ { "enemies": [ { "enemyId": "boss_slime_dave", "hpMult": 1.2 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 14, "rewards": { "gems": 40, "items": [ { "id": "radiant_core", "count": 1 } ] } },
+        { "id": "tower_f06", "stageNumber": 6, "name": "Floor 6: Deeply Concerned", "kind": "normal", "background": "tower_mid",
+          "waves": [ { "enemies": [ { "enemyId": "sentinel_fire", "hpMult": 1.2 }, { "enemyId": "sentinel_water", "hpMult": 1.2 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 14, "rewards": { "gems": 30 } },
+        { "id": "tower_f07", "stageNumber": 7, "name": "Floor 7: Formal Warning", "kind": "normal", "background": "tower_high",
+          "waves": [ { "enemies": [ { "enemyId": "sentinel_dark", "hpMult": 0.9 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 14, "rewards": { "gems": 30 } },
+        { "id": "tower_f08", "stageNumber": 8, "name": "Floor 8: Beyond Concerned", "kind": "normal", "background": "tower_high",
+          "waves": [ { "enemies": [ { "enemyId": "sentinel_dark" }, { "enemyId": "sentinel_water", "hpMult": 1.3 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 16, "rewards": { "gems": 35 } },
+        { "id": "tower_f09", "stageNumber": 9, "name": "Floor 9: The Waiting Room", "kind": "normal", "background": "tower_high",
+          "waves": [ { "enemies": [ { "enemyId": "sentinel_fire", "hpMult": 1.5 }, { "enemyId": "sentinel_dark", "hpMult": 1.1 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 16, "rewards": { "gems": 35 } },
+        { "id": "tower_f10", "stageNumber": 10, "name": "Floor 10: MAXIMUM CONCERN", "kind": "boss", "background": "tower_top",
+          "waves": [ { "enemies": [ { "enemyId": "sentinel_dark", "hpMult": 1.5 } ] }, { "enemies": [ { "enemyId": "boss_monday", "hpMult": 0.8 } ] } ],
+          "hpThresholdStar": 0.4, "resolutionsStar": 20, "rewards": { "gems": 100, "items": [ { "id": "radiant_core", "count": 3 } ], "firstClearBonus": "Title: 'Sufficiently Concerned'" } }
+      ]
+    },
+    {
+      "id": "ev_bossrush_management",
+      "name": "Boss Rush: Performance Review Season",
+      "kind": "bossRush",
+      "desc": "Every manager you've ever defeated, back to back. HR calls it 'a 360 review'.",
+      "theme": "office",
+      "rewardTableId": "rt_bossrush",
+      "stages": [
+        { "id": "rush_st01", "stageNumber": 1, "name": "Dave Again", "kind": "miniboss", "background": "meadow_office",
+          "waves": [ { "enemies": [ { "enemyId": "boss_slime_dave", "hpMult": 1.5 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 12, "rewards": { "gems": 30 } },
+        { "id": "rush_st02", "stageNumber": 2, "name": "Fenris, Rested", "kind": "miniboss", "background": "meadow_moonlit",
+          "waves": [ { "enemies": [ { "enemyId": "boss_wolf_rep", "hpMult": 1.5 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 13, "rewards": { "gems": 30 } },
+        { "id": "rush_st03", "stageNumber": 3, "name": "The Taxlord Returns (With Interest)", "kind": "boss", "background": "bog_throne",
+          "waves": [ { "enemies": [ { "enemyId": "boss_taxlord", "hpMult": 1.3 } ] } ],
+          "hpThresholdStar": 0.5, "resolutionsStar": 15, "rewards": { "gems": 40 } },
+        { "id": "rush_st04", "stageNumber": 4, "name": "Gerald, Unbound", "kind": "boss", "background": "meadow_boss_office",
+          "waves": [ { "enemies": [ { "enemyId": "boss_gerald", "hpMult": 1.3 } ] } ],
+          "hpThresholdStar": 0.4, "resolutionsStar": 18, "rewards": { "gems": 50 } },
+        { "id": "rush_st05", "stageNumber": 5, "name": "It Is Monday", "kind": "boss", "background": "void_office",
+          "waves": [ { "enemies": [ { "enemyId": "boss_monday" } ] } ],
+          "hpThresholdStar": 0.3, "resolutionsStar": 22,
+          "rewards": { "gems": 150, "items": [ { "id": "radiant_core", "count": 3 } ], "firstClearBonus": "Title: 'Survived Monday'" } }
+      ]
+    }
+  ]
+}

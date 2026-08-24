@@ -1,0 +1,263 @@
+{
+  "enemies": [
+    {
+      "id": "mail_golem",
+      "name": "First-Class Mail Golem",
+      "element": "nature",
+      "boss": false,
+      "hp": 26880,
+      "atk": 3190,
+      "countdown": 3,
+      "artRef": "enemy_mail_golem",
+      "flavor": "Made entirely of undelivered letters. Some are yours. It will not give them back.",
+      "actions": [
+        {
+          "name": "Letter Storm",
+          "desc": "A big flurry of correspondence.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Postage Due",
+          "desc": "Locks 3 orbs pending stamps.",
+          "type": "lock",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "stamp_sprite",
+      "name": "Commemorative Stamp Sprite",
+      "element": "light",
+      "boss": false,
+      "hp": 17920,
+      "atk": 3190,
+      "countdown": 3,
+      "artRef": "enemy_stamp_sprite",
+      "flavor": "Limited edition. Self-adhesive. Self-important.",
+      "actions": [
+        {
+          "name": "First Day Cover",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        },
+        {
+          "name": "Lick and Stick",
+          "desc": "Unhygienic but effective.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "parcel_hound",
+      "name": "Parcel Hound",
+      "element": "fire",
+      "boss": false,
+      "hp": 22400,
+      "atk": 3509,
+      "countdown": 3,
+      "artRef": "enemy_parcel_hound",
+      "flavor": "The eternal war between dog and mail, resolved: the dog IS mail now.",
+      "actions": [
+        {
+          "name": "Fetch (Violent)",
+          "desc": "A big retrieving lunge.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Bark Notice",
+          "desc": "You have been notified.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "envelope_wraith",
+      "name": "Envelope Wraith",
+      "element": "dark",
+      "boss": false,
+      "hp": 20160,
+      "atk": 3190,
+      "countdown": 3,
+      "artRef": "enemy_envelope_wraith",
+      "flavor": "Seals itself around secrets. Yours, preferably.",
+      "actions": [
+        {
+          "name": "Seal Fate",
+          "desc": "Poisons 2 orbs with wax.",
+          "type": "poison",
+          "count": 2
+        },
+        {
+          "name": "Paper Wing Slice",
+          "desc": "The sharpest edge known to science.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "zip_gremlin",
+      "name": "Zip Code Gremlin",
+      "element": "water",
+      "boss": false,
+      "hp": 20160,
+      "atk": 3190,
+      "countdown": 3,
+      "artRef": "enemy_zip_gremlin",
+      "flavor": "Transposes two digits and watches empires fall.",
+      "actions": [
+        {
+          "name": "Digit Swap",
+          "desc": "Converts 3 orbs to Water.",
+          "type": "convert",
+          "count": 3,
+          "color": "water"
+        },
+        {
+          "name": "Gremlin Jab",
+          "desc": "Small hands, big consequences.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "registered_owlbear",
+      "name": "Registered Owlbear",
+      "element": "nature",
+      "boss": false,
+      "hp": 29120,
+      "atk": 3190,
+      "countdown": 3,
+      "artRef": "enemy_registered_owlbear",
+      "flavor": "Requires a signature. Requires it with TALONS.",
+      "actions": [
+        {
+          "name": "Signature Required",
+          "desc": "Binds a party member until they sign.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Certified Maul",
+          "desc": "Tracked and traced.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_postmaster",
+      "name": "The Postmaster Ancient",
+      "element": "light",
+      "boss": true,
+      "hp": 224000,
+      "atk": 4466,
+      "countdown": 3,
+      "artRef": "enemy_boss_postmaster",
+      "flavor": "Has personally rejected 4 billion insufficiently-stamped letters. Keeps count. Out loud.",
+      "actions": [
+        {
+          "name": "Insufficient Postage",
+          "desc": "A big RETURN TO SENDER slam.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Sorting Ritual",
+          "desc": "Converts 4 orbs to Light.",
+          "type": "convert",
+          "count": 4,
+          "color": "light"
+        },
+        {
+          "name": "Hold Mail",
+          "desc": "Locks 4 orbs indefinitely.",
+          "type": "lock",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "boss_chain_letter",
+      "name": "The Chain Letter",
+      "element": "dark",
+      "boss": true,
+      "hp": 246400,
+      "atk": 4466,
+      "countdown": 2,
+      "artRef": "enemy_boss_chain_letter",
+      "flavor": "Forward it to ten friends or suffer misfortune. It has been forwarding ITSELF since the Bronze Age.",
+      "actions": [
+        {
+          "name": "Misfortune Clause",
+          "desc": "Poisons 4 orbs. You didn't forward it.",
+          "type": "poison",
+          "count": 4
+        },
+        {
+          "name": "Copy of a Copy",
+          "desc": "Heals itself. It multiplies.",
+          "type": "heal",
+          "amount": 6000
+        },
+        {
+          "name": "Guilt Post",
+          "desc": "A big passive-aggressive delivery.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_dead_letter",
+      "name": "The Dead Letter King",
+      "element": "dark",
+      "boss": true,
+      "hp": 582400,
+      "atk": 5104,
+      "countdown": 3,
+      "artRef": "enemy_boss_dead_letter",
+      "flavor": "Sovereign of every letter never delivered: confessions, apologies, birthday cards with money still inside.",
+      "actions": [
+        {
+          "name": "Words Unsaid",
+          "desc": "Massive damage. Everything you never mailed.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "The Unsent Archive",
+          "desc": "Locks 5 orbs among the lost.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Postmark of Doom",
+          "desc": "Converts 3 orbs to Dark.",
+          "type": "convert",
+          "count": 3,
+          "color": "dark"
+        },
+        {
+          "name": "Reread Old Letters",
+          "desc": "Heals himself with nostalgia.",
+          "type": "heal",
+          "amount": 9000
+        },
+        {
+          "name": "Sealed Court",
+          "desc": "Combo shield: 4+ combos to breach the pigeonholes.",
+          "type": "comboShield",
+          "count": 4
+        }
+      ]
+    }
+  ]
+}

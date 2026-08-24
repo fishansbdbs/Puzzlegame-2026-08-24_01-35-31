@@ -1,0 +1,1329 @@
+{
+  "chapter": {
+    "chapterNumber": 12,
+    "title": "Frostbite Fjord Timeshares",
+    "theme": "fjord",
+    "blurb": "Ice giants discovered real estate. Attend one (1) presentation and win a free hero-sized ice sculpture. Of you.",
+    "mechanicNote": "Frozen orbs and closing windows.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 105,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 210,
+        "items": [
+          {
+            "id": "glacier_deed",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 420,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
+    "stages": [
+      {
+        "id": "ch12_st01",
+        "stageNumber": 1,
+        "name": "Free Breakfast (A Trap)",
+        "kind": "story",
+        "background": "fjord_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 11,
+        "dialogueBefore": "ch12_intro",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1410,
+          "gems": 5,
+          "items": [
+            {
+              "id": "glacier_deed",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st02",
+        "stageNumber": 2,
+        "name": "The Frosted Lobby",
+        "kind": "normal",
+        "background": "fjord_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.03,
+                "atkMult": 1.03,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 11,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1531,
+          "gems": 0,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st03",
+        "stageNumber": 3,
+        "name": "Brochure Blizzard",
+        "kind": "normal",
+        "background": "fjord_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.07,
+                "atkMult": 1.07,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.07,
+                "atkMult": 1.07,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 11,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1651,
+          "gems": 0,
+          "items": [
+            {
+              "id": "frost_brochure",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st04",
+        "stageNumber": 4,
+        "name": "Sales Floor Floe",
+        "kind": "normal",
+        "background": "fjord_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1772,
+          "gems": 0,
+          "items": [
+            {
+              "id": "frost_brochure",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st05",
+        "stageNumber": 5,
+        "name": "The Model Unit (Frozen)",
+        "kind": "story",
+        "background": "fjord_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1892,
+          "gems": 5,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st06",
+        "stageNumber": 6,
+        "name": "The Icicle Escrow",
+        "kind": "normal",
+        "background": "fjord_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2012,
+          "gems": 0,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st07",
+        "stageNumber": 7,
+        "name": "Points System Crevasse",
+        "kind": "normal",
+        "background": "fjord_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite",
+          "move_time_minus:1"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 12,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3199,
+          "gems": 5,
+          "items": [
+            {
+              "id": "frost_brochure",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st08",
+        "stageNumber": 8,
+        "name": "The Second Pitch",
+        "kind": "normal",
+        "background": "fjord_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "walrus_hoa",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2253,
+          "gems": 0,
+          "items": [
+            {
+              "id": "glacier_deed",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st09",
+        "stageNumber": 9,
+        "name": "Fjord Fine Print",
+        "kind": "normal",
+        "background": "fjord_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "walrus_hoa",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 13,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2374,
+          "gems": 0,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st10",
+        "stageNumber": 10,
+        "name": "THE PRESENTATION BEGINS",
+        "kind": "miniboss",
+        "background": "fjord_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_presentation",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "ch12_mini1",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2494,
+          "gems": 10,
+          "items": [
+            {
+              "id": "glacier_deed",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st11",
+        "stageNumber": 11,
+        "name": "The Owners' Lounge (Members Only)",
+        "kind": "normal",
+        "background": "fjord_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2614,
+          "gems": 0,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st12",
+        "stageNumber": 12,
+        "name": "Amenity Deck C (Closed)",
+        "kind": "normal",
+        "background": "fjord_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "walrus_hoa",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2735,
+          "gems": 0,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st13",
+        "stageNumber": 13,
+        "name": "Maintenance Fee Morraine",
+        "kind": "normal",
+        "background": "fjord_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 14,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4283,
+          "gems": 5,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 4
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st14",
+        "stageNumber": 14,
+        "name": "The Frozen Hot Tub",
+        "kind": "normal",
+        "background": "fjord_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2976,
+          "gems": 0,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st15",
+        "stageNumber": 15,
+        "name": "The Cooling-Off Period",
+        "kind": "story",
+        "background": "fjord_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "walrus_hoa",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch12_mid",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3096,
+          "gems": 5,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st16",
+        "stageNumber": 16,
+        "name": "Glacial Common Areas",
+        "kind": "normal",
+        "background": "fjord_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 19,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3216,
+          "gems": 0,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st17",
+        "stageNumber": 17,
+        "name": "Peak Season Panic",
+        "kind": "normal",
+        "background": "fjord_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "walrus_hoa",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 19,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3337,
+          "gems": 0,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st18",
+        "stageNumber": 18,
+        "name": "KARKINOS WANTS INK",
+        "kind": "miniboss",
+        "background": "fjord_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_closer_kraken",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 19,
+        "dialogueBefore": "ch12_mini2",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3457,
+          "gems": 10,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st19",
+        "stageNumber": 19,
+        "name": "The Referral Bonus Ridge",
+        "kind": "normal",
+        "background": "fjord_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "walrus_hoa",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "move_time_minus:1"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 19,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3578,
+          "gems": 0,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st20",
+        "stageNumber": 20,
+        "name": "The Deed Vault",
+        "kind": "normal",
+        "background": "fjord_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "walrus_hoa",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 20,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3698,
+          "gems": 0,
+          "items": [
+            {
+              "id": "glacier_deed",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st21",
+        "stageNumber": 21,
+        "name": "Booking Window Tundra",
+        "kind": "normal",
+        "background": "fjord_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_flintbeard",
+                "hpMult": 3.2,
+                "atkMult": 3.2,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 23,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 5728,
+          "gems": 5,
+          "items": [
+            {
+              "id": "glacier_deed",
+              "count": 6
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st22",
+        "stageNumber": 22,
+        "name": "The Perpetual Walkthrough",
+        "kind": "normal",
+        "background": "fjord_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "frost_wolf",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 20,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3939,
+          "gems": 0,
+          "items": [
+            {
+              "id": "icicle_pen",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st23",
+        "stageNumber": 23,
+        "name": "Contract Cove",
+        "kind": "normal",
+        "background": "fjord_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "walrus_hoa",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 20,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4059,
+          "gems": 0,
+          "items": [
+            {
+              "id": "glacier_deed",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st24",
+        "stageNumber": 24,
+        "name": "The Long Handshake",
+        "kind": "story",
+        "background": "fjord_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "penguin_notary",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 21,
+        "dialogueBefore": "ch12_preboss",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4180,
+          "gems": 5,
+          "items": [
+            {
+              "id": "frost_brochure",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch12_st25",
+        "stageNumber": 25,
+        "name": "CEO PERMAFROST'S CORNER FLOE",
+        "kind": "boss",
+        "background": "fjord_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_glacier_ceo",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "move_time_minus:1"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 25,
+        "dialogueBefore": "ch12_boss_before",
+        "dialogueAfter": "ch12_boss_after",
+        "rewards": {
+          "gold": 4300,
+          "gems": 30,
+          "items": [
+            {
+              "id": "frost_brochure",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": "300 Gems"
+        },
+        "staminaCost": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "scenes": [
+    {
+      "id": "ch03_intro",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Mount Grumble! Famous for ore, beards, and passive aggression. Currently: a labor dispute."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "right",
+          "text": "Whose side are we on?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The side that isn't currently swinging at us. This changes moment to moment. Stay flexible!"
+        }
+      ]
+    },
+    {
+      "id": "ch03_mini1",
+      "lines": [
+        {
+          "speaker": "Flintbeard",
+          "portrait": "enemy_boss_flintbeard",
+          "side": "right",
+          "text": "The workers hate me. The owner hates me. My beard is on fire. This is the best day I've had all month."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We can just... go around you?"
+        },
+        {
+          "speaker": "Flintbeard",
+          "portrait": "enemy_boss_flintbeard",
+          "side": "right",
+          "text": "And rob me of the one meeting I can WIN? Raise your fists, paper-pusher."
+        }
+      ]
+    },
+    {
+      "id": "ch03_boss_before",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The summit office. One dwarf. Forty gold teeth. A desk made of other, smaller desks."
+        },
+        {
+          "speaker": "Goldtooth",
+          "portrait": "enemy_boss_goldtooth",
+          "side": "right",
+          "text": "Adventurers! Wonderful. I'd like to buy you. Not hire — BUY."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We're not for sale."
+        },
+        {
+          "speaker": "Goldtooth",
+          "portrait": "enemy_boss_goldtooth",
+          "side": "right",
+          "text": "Everyone says that before the second offer. There is no second offer. FIGHT."
+        }
+      ]
+    },
+    {
+      "id": "ch03_boss_after",
+      "lines": [
+        {
+          "speaker": "Goldtooth",
+          "portrait": "enemy_boss_goldtooth",
+          "side": "right",
+          "text": "Fine... FINE. The dwarves get their wages... and casual Fridays..."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The strike is over! The forges are singing again! Beautifully! Wait, no, that's the fire alarm."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Where next?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Down, hero. Deep down. The Soggy Depths. Bring a towel and INFINITE patience — their call center has a hold queue."
+        }
+      ]
+    },
+    {
+      "id": "ch03_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "On a crate by the picket line, a familiar wolf addresses a crowd of dwarves."
+        },
+        {
+          "speaker": "Fenris",
+          "portrait": "enemy_boss_wolf_rep",
+          "side": "right",
+          "text": "Brothers and sisters of the mountain! The wolves of the meadow won DENTAL. You dig through ROCK. Imagine your dental!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Fenris? You're organizing here now?"
+        },
+        {
+          "speaker": "Fenris",
+          "portrait": "enemy_boss_wolf_rep",
+          "side": "right",
+          "text": "The movement travels, friend. Also you still owe me a signature on the meadow accord. Article 12 never sleeps."
+        }
+      ]
+    },
+    {
+      "id": "ch03_mini2",
+      "lines": [
+        {
+          "speaker": "Bertha",
+          "portrait": "enemy_boss_bertha",
+          "side": "right",
+          "text": "MANAGEMENT DIRECTIVE 4: DISPERSE THE ORGANIZERS. MANAGEMENT DIRECTIVE 5: DISPERSE THE ADVENTURERS."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "We're not organizers! We're barely organized!"
+        },
+        {
+          "speaker": "Bertha",
+          "portrait": "enemy_boss_bertha",
+          "side": "right",
+          "text": "DIRECTIVE 6: DISPERSE EVERYONE. IT IS SIMPLER."
+        }
+      ]
+    },
+    {
+      "id": "ch03_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Outside the summit office, a dejected knight sits amid rejected sponsorship contracts."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "Goldtooth declined my endorsement package. Said he \"already owns better heroes\". Can you BELIEVE—"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Move, Prestige."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "Destroy him a little for me. #justice"
+        }
+      ]
+    }
+  ]
+}

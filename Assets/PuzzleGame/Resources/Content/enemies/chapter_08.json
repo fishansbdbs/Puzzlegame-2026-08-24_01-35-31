@@ -1,0 +1,256 @@
+{
+  "enemies": [
+    {
+      "id": "parcel_pigeon",
+      "name": "Parcel Pigeon",
+      "element": "light",
+      "boss": false,
+      "hp": 12960,
+      "atk": 2090,
+      "countdown": 3,
+      "artRef": "enemy_parcel_pigeon",
+      "flavor": "Delivers with pinpoint inaccuracy. Your neighbor has your sword now.",
+      "actions": [
+        {
+          "name": "Misdelivery",
+          "desc": "Converts 3 orbs to Light. Wrong address.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        },
+        {
+          "name": "Peck of Peril",
+          "desc": "Signature required.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "storm_courier",
+      "name": "Storm Courier",
+      "element": "water",
+      "boss": false,
+      "hp": 14400,
+      "atk": 2299,
+      "countdown": 3,
+      "artRef": "enemy_storm_courier",
+      "flavor": "Neither rain nor MORE rain stays this courier. There is only rain.",
+      "actions": [
+        {
+          "name": "Express Bolt",
+          "desc": "Overnight shipping, to your face.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Drizzle Route",
+          "desc": "Converts 2 orbs to Water.",
+          "type": "convert",
+          "count": 2,
+          "color": "water"
+        }
+      ]
+    },
+    {
+      "id": "bubble_wrap_slime",
+      "name": "Bubble Wrap Slime",
+      "element": "water",
+      "boss": false,
+      "hp": 18720,
+      "atk": 1672,
+      "countdown": 3,
+      "artRef": "enemy_bubble_wrap_slime",
+      "flavor": "Pop it and it only gets angrier. And more popped.",
+      "actions": [
+        {
+          "name": "Pop Pop Pop",
+          "desc": "Deeply satisfying damage.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Cushioning",
+          "desc": "Places a protective blocker.",
+          "type": "block",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "lost_package",
+      "name": "The Lost Package",
+      "element": "dark",
+      "boss": false,
+      "hp": 15840,
+      "atk": 2090,
+      "countdown": 3,
+      "artRef": "enemy_lost_package",
+      "flavor": "Nine years in transit. It has seen things. It has BECOME things.",
+      "actions": [
+        {
+          "name": "Return to Sender",
+          "desc": "A haunted big hit.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Damaged in Transit",
+          "desc": "Poisons 2 orbs.",
+          "type": "poison",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "tape_gull",
+      "name": "Packing Tape Gull",
+      "element": "nature",
+      "boss": false,
+      "hp": 12960,
+      "atk": 2090,
+      "countdown": 3,
+      "artRef": "enemy_tape_gull",
+      "flavor": "Steals tape. Nests in tape. IS mostly tape at this point.",
+      "actions": [
+        {
+          "name": "Tape Tangle",
+          "desc": "Locks 3 orbs in industrial adhesive.",
+          "type": "lock",
+          "count": 3
+        },
+        {
+          "name": "Squawk Strike",
+          "desc": "MINE. MINE. MINE.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "drone_cherub",
+      "name": "Delivery Cherub (Beta)",
+      "element": "fire",
+      "boss": false,
+      "hp": 11520,
+      "atk": 2508,
+      "countdown": 3,
+      "artRef": "enemy_drone_cherub",
+      "flavor": "The future of delivery. Crashes into the present constantly.",
+      "actions": [
+        {
+          "name": "Crash Landing",
+          "desc": "A big uncontrolled descent.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_sorting_sphinx",
+      "name": "The Sorting Sphinx",
+      "element": "light",
+      "boss": true,
+      "hp": 144000,
+      "atk": 2926,
+      "countdown": 3,
+      "artRef": "enemy_boss_sorting_sphinx",
+      "flavor": "Answer her riddle or your package goes to the wrong dimension. The riddle is a zip code.",
+      "actions": [
+        {
+          "name": "Riddle of Routing",
+          "desc": "Locks 4 orbs pending correct postage.",
+          "type": "lock",
+          "count": 4
+        },
+        {
+          "name": "Claw Cancellation",
+          "desc": "A big stamping strike.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Address Unknown",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        }
+      ]
+    },
+    {
+      "id": "boss_thunderhead",
+      "name": "Thunderhead, Route Manager",
+      "element": "water",
+      "boss": true,
+      "hp": 158400,
+      "atk": 2926,
+      "countdown": 2,
+      "artRef": "enemy_boss_thunderhead",
+      "flavor": "A storm cloud with a delivery quota. Rains on schedule. The schedule is \"always\".",
+      "actions": [
+        {
+          "name": "Route Storm",
+          "desc": "A big electrified downpour.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Weather Delay",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        },
+        {
+          "name": "Flood the Zone",
+          "desc": "Converts 4 orbs to Water.",
+          "type": "convert",
+          "count": 4,
+          "color": "water"
+        }
+      ]
+    },
+    {
+      "id": "boss_final_notice",
+      "name": "FINAL NOTICE, The Undeliverable",
+      "element": "dark",
+      "boss": true,
+      "hp": 374400,
+      "atk": 3344,
+      "countdown": 3,
+      "artRef": "enemy_boss_final_notice",
+      "flavor": "Every failed delivery slip ever written, fused into one entity. It knows you weren't home. You were home.",
+      "actions": [
+        {
+          "name": "We Missed You",
+          "desc": "Massive damage. You were home. IT KNOWS.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Pickup Window",
+          "desc": "Reduces move time by 3 seconds. 2-4pm only.",
+          "type": "timerDown",
+          "amount": 3
+        },
+        {
+          "name": "Slip Storm",
+          "desc": "Locks 5 orbs under paper slips.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Redelivery Loop",
+          "desc": "Heals itself. Attempt 3 of ∞.",
+          "type": "heal",
+          "amount": 9000
+        },
+        {
+          "name": "Third Attempt",
+          "desc": "ENRAGES below half strength. There is no fourth attempt.",
+          "type": "enrage"
+        }
+      ]
+    }
+  ]
+}

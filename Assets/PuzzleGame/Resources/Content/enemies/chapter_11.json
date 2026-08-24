@@ -1,0 +1,256 @@
+{
+  "enemies": [
+    {
+      "id": "kiosk_goblin",
+      "name": "Kiosk Goblin",
+      "element": "fire",
+      "boss": false,
+      "hp": 17280,
+      "atk": 3025,
+      "countdown": 3,
+      "artRef": "enemy_kiosk_goblin",
+      "flavor": "HEY. HEY. Can it ask you a question? It's about your phone case. HEY.",
+      "actions": [
+        {
+          "name": "Aggressive Sample",
+          "desc": "You WILL try the lotion.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Sales Pitch",
+          "desc": "A big, unstoppable offer.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "escalator_serpent",
+      "name": "Escalator Serpent",
+      "element": "dark",
+      "boss": false,
+      "hp": 23040,
+      "atk": 2750,
+      "countdown": 3,
+      "artRef": "enemy_escalator_serpent",
+      "flavor": "An endless metal serpent. Always going the wrong direction.",
+      "actions": [
+        {
+          "name": "Wrong Way",
+          "desc": "Reduces move time by 2 seconds.",
+          "type": "timerDown",
+          "amount": 2
+        },
+        {
+          "name": "Step Chomp",
+          "desc": "Mind the gap. The gap has teeth.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "perfume_banshee",
+      "name": "Perfume Banshee",
+      "element": "light",
+      "boss": false,
+      "hp": 17280,
+      "atk": 2750,
+      "countdown": 3,
+      "artRef": "enemy_perfume_banshee",
+      "flavor": "One spritz can be smelled across three timelines.",
+      "actions": [
+        {
+          "name": "Spritz Assault",
+          "desc": "Poisons 3 orbs with Eau de Doom.",
+          "type": "poison",
+          "count": 3
+        },
+        {
+          "name": "Sample Scream",
+          "desc": "A fragrant shriek.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "pretzel_elemental",
+      "name": "Cursed Pretzel Elemental",
+      "element": "nature",
+      "boss": false,
+      "hp": 21120,
+      "atk": 2750,
+      "countdown": 3,
+      "artRef": "enemy_pretzel_elemental",
+      "flavor": "Twisted beyond redemption. Salted beyond reason. Delicious beyond dispute.",
+      "actions": [
+        {
+          "name": "Salt Storm",
+          "desc": "Converts 3 orbs to Nature.",
+          "type": "convert",
+          "count": 3,
+          "color": "nature"
+        },
+        {
+          "name": "Knot Slam",
+          "desc": "A doughy haymaker.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "mannequin_stalker",
+      "name": "Mannequin (Do Not Turn Around)",
+      "element": "dark",
+      "boss": false,
+      "hp": 19200,
+      "atk": 3300,
+      "countdown": 3,
+      "artRef": "enemy_mannequin_stalker",
+      "flavor": "It was in the window. Now it is not in the window.",
+      "actions": [
+        {
+          "name": "It Moved",
+          "desc": "A big hit from exactly behind you.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "fountain_nymph",
+      "name": "Wishing Fountain Nymph",
+      "element": "water",
+      "boss": false,
+      "hp": 19200,
+      "atk": 2475,
+      "countdown": 3,
+      "artRef": "enemy_fountain_nymph",
+      "flavor": "Every coin is a wish she must process. She is nine million wishes behind.",
+      "actions": [
+        {
+          "name": "Coin Flick",
+          "desc": "Exact change, high velocity.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Wish Backlog",
+          "desc": "Locks 3 orbs pending wish review.",
+          "type": "lock",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_food_court",
+      "name": "The Food Court Sovereign",
+      "element": "fire",
+      "boss": true,
+      "hp": 192000,
+      "atk": 3850,
+      "countdown": 3,
+      "artRef": "enemy_boss_food_court",
+      "flavor": "Rules seventeen competing cuisines from a throne of trays. The samples are tribute.",
+      "actions": [
+        {
+          "name": "Tray Avalanche",
+          "desc": "A big cascade of lightly-used trays.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Grease Fire",
+          "desc": "Converts 3 orbs to Fire.",
+          "type": "convert",
+          "count": 3,
+          "color": "fire"
+        },
+        {
+          "name": "Free Sample",
+          "desc": "Poisons 3 orbs. It was NOT free.",
+          "type": "poison",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_lost_child",
+      "name": "The Eternally Lost Child",
+      "element": "light",
+      "boss": true,
+      "hp": 211200,
+      "atk": 3850,
+      "countdown": 2,
+      "artRef": "enemy_boss_lost_child",
+      "flavor": "Announced over the intercom in 1387. Never claimed. Now it claims OTHERS.",
+      "actions": [
+        {
+          "name": "Intercom Wail",
+          "desc": "A big echoing announcement.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Hold Hands",
+          "desc": "Binds a party member. For safety.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Balloon Release",
+          "desc": "Converts 4 orbs to Light.",
+          "type": "convert",
+          "count": 4,
+          "color": "light"
+        }
+      ]
+    },
+    {
+      "id": "boss_mall_heart",
+      "name": "The Anchor Store",
+      "element": "dark",
+      "boss": true,
+      "hp": 499200,
+      "atk": 4400,
+      "countdown": 3,
+      "artRef": "enemy_boss_mall_heart",
+      "flavor": "The ancient store at the mall's heart. Nobody remembers what it sells. It sells NOTHING. It BUYS.",
+      "actions": [
+        {
+          "name": "Everything Must Go",
+          "desc": "Massive damage. Including you.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Store Credit Only",
+          "desc": "Locks 5 orbs. No refunds.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Doorbuster",
+          "desc": "Reduces move time by 3 seconds.",
+          "type": "timerDown",
+          "amount": 3
+        },
+        {
+          "name": "Clearance Rack",
+          "desc": "Heals itself with unsold inventory.",
+          "type": "heal",
+          "amount": 9000
+        },
+        {
+          "name": "Store Policy",
+          "desc": "Absorbs Dark damage this rotation. No returns.",
+          "type": "absorb",
+          "color": "dark"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1246 @@
+{
+  "chapter": {
+    "chapterNumber": 13,
+    "title": "The Royal Post Office",
+    "theme": "royalpost",
+    "blurb": "Older than the crown itself. The mail moves through rain, snow, dragons, and — slowest of all — internal review.",
+    "mechanicNote": "Binds: signatures required mid-battle.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 110,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 220,
+        "items": [
+          {
+            "id": "first_class_seal",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 440,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
+    "stages": [
+      {
+        "id": "ch13_st01",
+        "stageNumber": 1,
+        "name": "The Sorting Hall Eternal",
+        "kind": "story",
+        "background": "royalpost_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 11,
+        "dialogueBefore": "ch13_intro",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1509,
+          "gems": 5,
+          "items": [
+            {
+              "id": "first_class_seal",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st02",
+        "stageNumber": 2,
+        "name": "Conveyor of Consequence",
+        "kind": "normal",
+        "background": "royalpost_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.03,
+                "atkMult": 1.03,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.03,
+                "atkMult": 1.03,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 11,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1638,
+          "gems": 0,
+          "items": [
+            {
+              "id": "wax_blob",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st03",
+        "stageNumber": 3,
+        "name": "The Wax Seal Gallery",
+        "kind": "normal",
+        "background": "royalpost_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "registered_owlbear",
+                "hpMult": 1.07,
+                "atkMult": 1.07,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 11,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1766,
+          "gems": 0,
+          "items": [
+            {
+              "id": "first_class_seal",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st04",
+        "stageNumber": 4,
+        "name": "Priority Peril",
+        "kind": "normal",
+        "background": "royalpost_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.1,
+                "atkMult": 1.1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 12,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 1895,
+          "gems": 0,
+          "items": [
+            {
+              "id": "wax_blob",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st05",
+        "stageNumber": 5,
+        "name": "Stamp Vault Antechamber",
+        "kind": "story",
+        "background": "royalpost_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "parcel_hound",
+                "hpMult": 1.13,
+                "atkMult": 1.13,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 12,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2024,
+          "gems": 5,
+          "items": [
+            {
+              "id": "wax_blob",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st06",
+        "stageNumber": 6,
+        "name": "The Owlbear Route",
+        "kind": "normal",
+        "background": "royalpost_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zip_gremlin",
+                "hpMult": 1.17,
+                "atkMult": 1.17,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 12,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2153,
+          "gems": 0,
+          "items": [
+            {
+              "id": "first_class_seal",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st07",
+        "stageNumber": 7,
+        "name": "Misdelivered Meadows",
+        "kind": "normal",
+        "background": "royalpost_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite",
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 12,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3422,
+          "gems": 5,
+          "items": [
+            {
+              "id": "undeliverable_letter",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st08",
+        "stageNumber": 8,
+        "name": "The Second Sorting Hall",
+        "kind": "normal",
+        "background": "royalpost_a",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.23,
+                "atkMult": 1.23,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 13,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2410,
+          "gems": 0,
+          "items": [
+            {
+              "id": "undeliverable_letter",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st09",
+        "stageNumber": 9,
+        "name": "Postage Purgatory",
+        "kind": "normal",
+        "background": "royalpost_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.27,
+                "atkMult": 1.27,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 13,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2539,
+          "gems": 0,
+          "items": [
+            {
+              "id": "wax_blob",
+              "count": 1
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st10",
+        "stageNumber": 10,
+        "name": "THE POSTMASTER'S COUNT",
+        "kind": "miniboss",
+        "background": "royalpost_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.3,
+                "atkMult": 1.3,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_postmaster",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "ch13_mini1",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2668,
+          "gems": 10,
+          "items": [
+            {
+              "id": "first_class_seal",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st11",
+        "stageNumber": 11,
+        "name": "The Gremlin Annex",
+        "kind": "normal",
+        "background": "royalpost_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "registered_owlbear",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "registered_owlbear",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.33,
+                "atkMult": 1.33,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 17,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2797,
+          "gems": 0,
+          "items": [
+            {
+              "id": "undeliverable_letter",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st12",
+        "stageNumber": 12,
+        "name": "The Registered Route",
+        "kind": "normal",
+        "background": "royalpost_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "parcel_hound",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.37,
+                "atkMult": 1.37,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 2926,
+          "gems": 0,
+          "items": [
+            {
+              "id": "undeliverable_letter",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st13",
+        "stageNumber": 13,
+        "name": "Certified Corridors",
+        "kind": "normal",
+        "background": "royalpost_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 14,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4582,
+          "gems": 5,
+          "items": [
+            {
+              "id": "undeliverable_letter",
+              "count": 4
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st14",
+        "stageNumber": 14,
+        "name": "The Envelope Archives",
+        "kind": "normal",
+        "background": "royalpost_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "parcel_hound",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "registered_owlbear",
+                "hpMult": 1.43,
+                "atkMult": 1.43,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3183,
+          "gems": 0,
+          "items": [
+            {
+              "id": "wax_blob",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st15",
+        "stageNumber": 15,
+        "name": "A Letter Addressed To You",
+        "kind": "story",
+        "background": "royalpost_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "parcel_hound",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "parcel_hound",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "zip_gremlin",
+                "hpMult": 1.47,
+                "atkMult": 1.47,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch13_mid",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3312,
+          "gems": 5,
+          "items": [
+            {
+              "id": "undeliverable_letter",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st16",
+        "stageNumber": 16,
+        "name": "Return Address Unknown",
+        "kind": "normal",
+        "background": "royalpost_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "registered_owlbear",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "registered_owlbear",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.5,
+                "atkMult": 1.5,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 19,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3441,
+          "gems": 0,
+          "items": [
+            {
+              "id": "wax_blob",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st17",
+        "stageNumber": 17,
+        "name": "The Franking Machine",
+        "kind": "normal",
+        "background": "royalpost_b",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zip_gremlin",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.53,
+                "atkMult": 1.53,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 19,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3570,
+          "gems": 0,
+          "items": [
+            {
+              "id": "wax_blob",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st18",
+        "stageNumber": 18,
+        "name": "DO NOT BREAK THE CHAIN",
+        "kind": "miniboss",
+        "background": "royalpost_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "parcel_hound",
+                "hpMult": 1.57,
+                "atkMult": 1.57,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_chain_letter",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 19,
+        "dialogueBefore": "ch13_mini2",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3698,
+          "gems": 10,
+          "items": [
+            {
+              "id": "first_class_seal",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": "100 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st19",
+        "stageNumber": 19,
+        "name": "Parcel Hound Kennels",
+        "kind": "normal",
+        "background": "royalpost_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 19,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3827,
+          "gems": 0,
+          "items": [
+            {
+              "id": "undeliverable_letter",
+              "count": 2
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st20",
+        "stageNumber": 20,
+        "name": "The Undeliverable Stacks",
+        "kind": "normal",
+        "background": "royalpost_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zip_gremlin",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "registered_owlbear",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "zip_gremlin",
+                "hpMult": 1.63,
+                "atkMult": 1.63,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 20,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 3956,
+          "gems": 0,
+          "items": [
+            {
+              "id": "wax_blob",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st21",
+        "stageNumber": 21,
+        "name": "The Overnight Vault",
+        "kind": "normal",
+        "background": "royalpost_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "elite",
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 16,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 6127,
+          "gems": 5,
+          "items": [
+            {
+              "id": "first_class_seal",
+              "count": 6
+            }
+          ],
+          "firstClearBonus": "50 Gems"
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st22",
+        "stageNumber": 22,
+        "name": "Letters to the Void",
+        "kind": "normal",
+        "background": "royalpost_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "parcel_hound",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 20,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4214,
+          "gems": 0,
+          "items": [
+            {
+              "id": "undeliverable_letter",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st23",
+        "stageNumber": 23,
+        "name": "The Philatelist's Trap",
+        "kind": "normal",
+        "background": "royalpost_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "registered_owlbear",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "registered_owlbear",
+                "hpMult": 1.73,
+                "atkMult": 1.73,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 20,
+        "dialogueBefore": "",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4342,
+          "gems": 0,
+          "items": [
+            {
+              "id": "undeliverable_letter",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st24",
+        "stageNumber": 24,
+        "name": "Outgoing (Never)",
+        "kind": "story",
+        "background": "royalpost_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "parcel_hound",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.77,
+                "atkMult": 1.77,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.5,
+        "resolutionsStar": 21,
+        "dialogueBefore": "ch13_preboss",
+        "dialogueAfter": "",
+        "rewards": {
+          "gold": 4471,
+          "gems": 5,
+          "items": [
+            {
+              "id": "undeliverable_letter",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": ""
+        },
+        "staminaCost": 0
+      },
+      {
+        "id": "ch13_st25",
+        "stageNumber": 25,
+        "name": "COURT OF THE DEAD LETTER KING",
+        "kind": "boss",
+        "background": "royalpost_c",
+        "waves": [
+          {
+            "enemies": [
+              {
+                "enemyId": "zip_gremlin",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_dead_letter",
+                "hpMult": 1,
+                "atkMult": 1,
+                "countdownOverride": -1
+              }
+            ]
+          }
+        ],
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 25,
+        "dialogueBefore": "ch13_boss_before",
+        "dialogueAfter": "ch13_boss_after",
+        "rewards": {
+          "gold": 4600,
+          "gems": 30,
+          "items": [
+            {
+              "id": "wax_blob",
+              "count": 3
+            }
+          ],
+          "firstClearBonus": "300 Gems"
+        },
+        "staminaCost": 0
+      }
+    ]
+  }
+}

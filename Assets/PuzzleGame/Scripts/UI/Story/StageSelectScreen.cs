@@ -1,0 +1,209 @@
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UIElements;
+using PuzzleGame.Presentation.Content;
+
+using PuzzleGame.Presentation.UI.Battle;
+
+namespace PuzzleGame.Presentation.UI.Story
+{
+    /// <summary>
+    /// Story chapter/stage select. Chapters on the left, the chapter's 25
+    /// stages on the right with kind markers (story/miniboss/boss), star
+    /// goals and rewards preview. Stages launch the battle screen.
+    /// </summary>
+    public class StageSelectScreen : UiScreen
+    {
+        int _chapterNumber = 1;
+        VisualElement _chapterList;
+        ScrollView _stageList;
+        Label _chapterTitle;
+        Label _chapterBlurb;
+
+        protected override void Build(VisualElement root)
+        {
+            root.Add(Header("Story"));
+            var main = UiKit.Row(0f);
+            main.style.flexGrow = 1f;
+            root.Add(main);
+
+            var left = new ScrollView(ScrollViewMode.Vertical);
+            left.style.width = 230f;
+            left.style.flexShrink = 0f;
+            left.style.backgroundColor = Theme.BgDeep.WithAlpha(0.5f);
+            _chapterList = UiKit.Column(4f);
+            UiKit.Pad(_chapterList, 10f);
+            left.Add(_chapterList);
+            main.Add(left);
+
+            var right = UiKit.Column(6f);
+            right.style.flexGrow = 1f;
+            UiKit.Pad(right, 12f);
+            _chapterTitle = UiKit.Title("", 20f);
+            right.Add(_chapterTitle);
+            _chapterBlurb = UiKit.Dim("", 12f);
+            right.Add(_chapterBlurb);
+            _stageList = new ScrollView(ScrollViewMode.Vertical);
+            _stageList.style.flexGrow = 1f;
+            _stageList.contentContainer.style.flexDirection = FlexDirection.Row;
+            _stageList.contentContainer.style.flexWrap = Wrap.Wrap;
+            right.Add(_stageList);
+            main.Add(right);
+        }
+
+        public override void OnEnter()
+        {
+            RebuildChapters();
+            RebuildStages();
+        }
+
+        void RebuildChapters()
+        {
+            _chapterList.Clear();
+            var db = ContentDb.Instance;
+            foreach (var number in db.Chapters.Keys.OrderBy(n => n))
+            {
+                var chapter = db.Chapters[number];
+                var btn = UiKit.Button(number + ". " + chapter.title, () =>
+                {
+                    _chapterNumber = number;
+                    RebuildStages();
+                }, number == _chapterNumber);
+                btn.style.unityTextAlign = TextAnchor.MiddleLeft;
+                _chapterList.Add(btn);
+            }
+        }
+
+        void RebuildStages()
+        {
+            _stageList.Clear();
+            var db = ContentDb.Instance;
+            if (!db.Chapters.TryGetValue(_chapterNumber, out var chapter))
+            {
+                _chapterTitle.text = "No chapters authored yet";
+                return;
+            }
+            _chapterTitle.text = "Chapter " + chapter.chapterNumber + ": " + chapter.title;
+            _chapterBlurb.text = chapter.blurb
+                + (string.IsNullOrEmpty(chapter.mechanicNote) ? "" : "\n⚙ " + chapter.mechanicNote);
+            RebuildChapters();
+
+            // Chapter star milestones strip.
+            if (chapter.starMilestones.Count > 0)
+            {
+                var strip = UiKit.Row(10f);
+                strip.style.marginBottom = 4f;
+                strip.Add(UiKit.Text("★ Milestones:", 12f, true, Theme.Rarity5));
+                foreach (var milestone in chapter.starMilestones)
+                {
+                    string rewardText = "❖" + milestone.gems;
+                    foreach (var item in milestone.items)
+                    {
+                        var db2 = ContentDb.Instance;
+                        string label = db2.Items.TryGetValue(item.id, out var def)
+                            ? def.icon + " " + def.name : item.id;
+                        rewardText += "  " + item.count + "× " + label;
+                    }
+                    var chip = UiKit.Dim(milestone.stars + "★ → " + rewardText, 11f);
+                    chip.style.backgroundColor = Theme.BgDeep;
+                    UiKit.Round(chip, 5f);
+                    chip.style.paddingLeft = 6f; chip.style.paddingRight = 6f;
+                    chip.style.paddingTop = 2f; chip.style.paddingBottom = 2f;
+                    strip.Add(chip);
+                }
+                _stageList.Add(strip);
+            }
+
+            // Real progression state: stars, cleared and unlock gating.
+            var library = PresentationServices.Get<IContentLibrary>();
+            var summaries = library.GetChapterStages(_chapterNumber)
+                .ToDictionary(s => s.Id, s => s);
+            foreach (var stage in chapter.stages.OrderBy(s => s.stageNumber))
+            {
+                StageSummaryVm summary;
+                summaries.TryGetValue(stage.id, out summary);
+                _stageList.Add(StageCard(chapter, stage, summary));
+            }
+        }
+
+        VisualElement StageCard(ChapterDto chapter, StageDto stage, StageSummaryVm summary)
+        {
+            bool unlocked = summary == null || summary.Unlocked;
+            var card = UiKit.Panel(stage.kind == "boss");
+            card.style.width = 172f;
+            card.style.marginRight = 10f;
+            card.style.marginBottom = 10f;
+            if (stage.kind == "boss") UiKit.Border(card, Theme.Danger, 2f);
+            else if (stage.kind == "miniboss") UiKit.Border(card, Theme.AccentWarm, 1.5f);
+
+            bool elite = stage.modifiers.Contains("elite");
+            var head = UiKit.Row(6f);
+            head.Add(UiKit.Text(stage.stageNumber.ToString(), 17f, true,
+                stage.kind == "boss" ? Theme.Danger : elite ? Theme.AccentWarm : Theme.Accent));
+            string marker = stage.kind == "boss" ? "☠ BOSS"
+                : stage.kind == "miniboss" ? "⚔ MINIBOSS"
+                : stage.kind == "story" ? "✦ STORY"
+                : elite ? "☆ ELITE" : "";
+            if (marker != "")
+            {
+                head.Add(UiKit.Text(marker, 10f, true,
+                    stage.kind == "boss" ? Theme.Danger : Theme.AccentWarm));
+            }
+            if (summary != null && (summary.Cleared || summary.StarsEarned > 0))
+            {
+                var starRow = UiKit.Row(1f);
+                for (var index = 0; index < 3; index++)
+                {
+                    starRow.Add(UiKit.Text("★", 11f, true,
+                        index < summary.StarsEarned ? Theme.Rarity5 : Theme.PanelLine));
+                }
+                head.Add(UiKit.Spacer());
+                head.Add(starRow);
+            }
+            card.Add(head);
+            var name = UiKit.Text(stage.name, 12f, true);
+            card.Add(name);
+            card.Add(UiKit.Dim(stage.waves.Count + " wave" + (stage.waves.Count == 1 ? "" : "s") +
+                               " • ★ under " + stage.resolutionsStar + " moves", 10f));
+            // Data-driven modifier warnings so the player can plan a team.
+            var mods = stage.modifiers.FindAll(m => m != "elite");
+            if (mods.Count > 0)
+            {
+                var modRow = UiKit.Row(4f);
+                modRow.style.flexWrap = Wrap.Wrap;
+                modRow.style.marginTop = 2f;
+                foreach (var mod in mods) modRow.Add(ModifierDisplay.Chip(mod));
+                card.Add(modRow);
+            }
+            if (stage.rewards != null && (stage.rewards.gold > 0 || stage.rewards.gems > 0))
+            {
+                card.Add(UiKit.Dim("◆" + stage.rewards.gold + (stage.rewards.gems > 0 ? "  ❖" + stage.rewards.gems : ""), 10f));
+            }
+
+            if (!unlocked)
+            {
+                card.style.opacity = 0.45f;
+                var lockNote = UiKit.Dim("🔒 Clear the previous stage", 10f);
+                card.Add(lockNote);
+                return card;
+            }
+            card.RegisterCallback<PointerDownEvent>(_ => Launch(chapter, stage));
+            return card;
+        }
+
+        void Launch(ChapterDto chapter, StageDto stage)
+        {
+            var factory = PresentationServices.Get<IBattleFactory>();
+            System.Action<float> pump;
+            var source = factory.Create(chapter, stage, out pump);
+            Router.Push(new BattleScreen(source, pump, chapter, stage));
+        }
+
+        public static List<CharacterView> BuildParty()
+        {
+            var roster = PresentationServices.Get<IRosterSource>();
+            return roster.GetOwned().Take(5).ToList();
+        }
+    }
+}

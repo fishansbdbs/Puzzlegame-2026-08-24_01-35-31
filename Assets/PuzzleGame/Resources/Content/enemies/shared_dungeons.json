@@ -1,0 +1,81 @@
+{
+  "enemies": [
+    {
+      "id": "gold_golem",
+      "name": "Gold Golem (Do Not Lick)",
+      "element": "light",
+      "hp": 9000, "atk": 600, "countdown": 4,
+      "artRef": "enemy_gold_golem",
+      "flavor": "Made of solid treasury reserves. The sign exists for a reason.",
+      "actions": [
+        { "name": "Coin Toss", "desc": "Throws exact change, hard.", "type": "damage", "amount": 600 },
+        { "name": "Compound Interest", "desc": "A big hit that accrued over time.", "type": "bigdamage", "amount": 1300 }
+      ]
+    },
+    {
+      "id": "core_golem",
+      "name": "Radiant Core Custodian",
+      "element": "light",
+      "hp": 14000, "atk": 900, "countdown": 3,
+      "artRef": "enemy_core_golem",
+      "flavor": "Guards the Awakening Materials. Will absolutely do its one job.",
+      "actions": [
+        { "name": "Custodial Sweep", "desc": "A broad, janitorial strike.", "type": "damage", "amount": 900 },
+        { "name": "Wet Floor", "desc": "Converts 3 orbs to Water. Caution advised.", "type": "convert", "count": 3, "color": "water" },
+        { "name": "Lights Out", "desc": "A big closing-time slam.", "type": "bigdamage", "amount": 1600 }
+      ]
+    },
+    {
+      "id": "sentinel_fire",
+      "name": "Tower Sentinel of Flame",
+      "element": "fire",
+      "hp": 12000, "atk": 1000, "countdown": 3,
+      "artRef": "enemy_sentinel_fire",
+      "flavor": "Floor guardian, floors 1-10. Takes the stairs. Always the stairs.",
+      "actions": [
+        { "name": "Cinder Sweep", "desc": "A burning arc.", "type": "damage", "amount": 1000 },
+        { "name": "Heat Haze", "desc": "Converts 3 orbs to Fire.", "type": "convert", "count": 3, "color": "fire" }
+      ]
+    },
+    {
+      "id": "sentinel_water",
+      "name": "Tower Sentinel of Brine",
+      "element": "water",
+      "hp": 12000, "atk": 1000, "countdown": 3,
+      "artRef": "enemy_sentinel_water",
+      "flavor": "Middle floors. Slightly damp handshake. Excellent small talk.",
+      "actions": [
+        { "name": "Tide Swat", "desc": "A crashing blow.", "type": "damage", "amount": 1000 },
+        { "name": "Undertow", "desc": "Locks 3 orbs beneath the surface.", "type": "lock", "count": 3 }
+      ]
+    },
+    {
+      "id": "sentinel_dark",
+      "name": "Tower Sentinel of Gloom",
+      "element": "dark",
+      "hp": 16000, "atk": 1200, "countdown": 3,
+      "artRef": "enemy_sentinel_dark",
+      "flavor": "Top floor. Has seen the view. Remains unimpressed.",
+      "actions": [
+        { "name": "Gloom Crush", "desc": "A heavy strike of pure ennui.", "type": "bigdamage", "amount": 1800 },
+        { "name": "Dim the Lights", "desc": "Converts 3 orbs to Dark.", "type": "convert", "count": 3, "color": "dark" },
+        { "name": "Existential Pause", "desc": "Reduces your move time. What is time, anyway?", "type": "timerdown", "amount": 2 }
+      ]
+    },
+    {
+      "id": "boss_monday",
+      "name": "The Concept of Monday",
+      "element": "dark",
+      "boss": true,
+      "hp": 120000, "atk": 1500, "countdown": 2,
+      "artRef": "enemy_boss_monday",
+      "flavor": "It cannot be slain, only survived. It smells like cold coffee and unread messages.",
+      "actions": [
+        { "name": "Alarm Clock", "desc": "Sudden, jarring damage at the worst moment.", "type": "bigdamage", "amount": 2600 },
+        { "name": "Inbox Flood", "desc": "Locks 5 orbs. All marked urgent.", "type": "lock", "count": 5 },
+        { "name": "Meeting That Could Have Been An Email", "desc": "Reduces move time by 3 seconds.", "type": "timerdown", "amount": 3 },
+        { "name": "Snooze Denied", "desc": "Binds a party member under the covers.", "type": "bind", "count": 1 }
+      ]
+    }
+  ]
+}

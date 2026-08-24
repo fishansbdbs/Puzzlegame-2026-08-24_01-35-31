@@ -456,8 +456,12 @@ namespace PuzzleGame.Unity.Bootstrap
             for (var index = 0; index < arguments.Count; index++)
                 if (string.Equals(arguments[index], "-runTests", StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(arguments[index], "-testPlatform", StringComparison.OrdinalIgnoreCase)) return true;
-            return initialSceneName != null &&
-                   initialSceneName.StartsWith("InitTestScene", StringComparison.Ordinal);
+            if (initialSceneName != null &&
+                initialSceneName.StartsWith("InitTestScene", StringComparison.Ordinal)) return true;
+            // Integration: the sample vertical slice only self-starts in its
+            // own scene; the shipped game ("Game") and the presentation demo
+            // ("PresentationDemo") compose their own bootstraps.
+            return !string.Equals(initialSceneName, "SampleScene", StringComparison.Ordinal);
         }
 
         internal void Begin(bool suppress, Action autoBootstrap, Action registerSceneCallback)

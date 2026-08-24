@@ -1,0 +1,154 @@
+{
+  "enemies": [
+    {
+      "id": "slime_green",
+      "name": "Entry-Level Slime",
+      "element": "nature",
+      "hp": 3200, "atk": 550, "countdown": 3,
+      "artRef": "enemy_slime_green",
+      "flavor": "Fresh out of slime school. Very motivated. Zero skills.",
+      "actions": [
+        { "name": "Bounce", "desc": "A standard-issue bounce attack.", "type": "damage", "amount": 550 }
+      ]
+    },
+    {
+      "id": "slime_red",
+      "name": "Spicy Slime",
+      "element": "fire",
+      "hp": 3400, "atk": 620, "countdown": 3,
+      "artRef": "enemy_slime_red",
+      "flavor": "Ate one (1) pepper and never recovered emotionally.",
+      "actions": [
+        { "name": "Sizzle Slam", "desc": "A hot bounce. Ow.", "type": "damage", "amount": 620 },
+        { "name": "Spice Splash", "desc": "Converts 2 orbs to Fire.", "type": "convert", "count": 2, "color": "fire" }
+      ]
+    },
+    {
+      "id": "slime_blue",
+      "name": "Damp Slime",
+      "element": "water",
+      "hp": 3400, "atk": 600, "countdown": 3,
+      "artRef": "enemy_slime_blue",
+      "flavor": "Distantly related to Suspicious Puddle. They don't talk about it.",
+      "actions": [
+        { "name": "Soggy Tackle", "desc": "A moist bounce attack.", "type": "damage", "amount": 600 },
+        { "name": "Drizzle", "desc": "Converts 2 orbs to Water.", "type": "convert", "count": 2, "color": "water" }
+      ]
+    },
+    {
+      "id": "meadow_wolf",
+      "name": "Meadow Wolf (Probationary)",
+      "element": "nature",
+      "hp": 4800, "atk": 780, "countdown": 2,
+      "artRef": "enemy_meadow_wolf",
+      "flavor": "Still in his 90-day trial period with the pack. Trying very hard.",
+      "actions": [
+        { "name": "Trial Bite", "desc": "A bite, pending manager approval.", "type": "damage", "amount": 780 },
+        { "name": "Practice Howl", "desc": "A big hit. He's been rehearsing.", "type": "bigdamage", "amount": 1100 }
+      ]
+    },
+    {
+      "id": "bee_swarm",
+      "name": "Non-Union Bee Swarm",
+      "element": "light",
+      "hp": 3800, "atk": 500, "countdown": 2,
+      "artRef": "enemy_bee_swarm",
+      "flavor": "Beatrice Bumble has strong opinions about these scabs.",
+      "actions": [
+        { "name": "Sting Cloud", "desc": "Many tiny stings.", "type": "damage", "amount": 500 },
+        { "name": "Pollen Bomb", "desc": "Poisons 2 orbs with allergen dust.", "type": "poison", "count": 2 }
+      ]
+    },
+    {
+      "id": "angry_mushroom",
+      "name": "Passive-Aggressive Mushroom",
+      "element": "dark",
+      "hp": 4200, "atk": 640, "countdown": 3,
+      "artRef": "enemy_angry_mushroom",
+      "flavor": "'No no, it's FINE. Step on me. Everyone else does.'",
+      "actions": [
+        { "name": "Guilt Spores", "desc": "Poisons 3 orbs with pure resentment.", "type": "poison", "count": 3 },
+        { "name": "Sigh Loudly", "desc": "Damage plus emotional damage.", "type": "damage", "amount": 640 }
+      ]
+    },
+    {
+      "id": "clipboard_goblin",
+      "name": "Clipboard Goblin",
+      "element": "dark",
+      "hp": 5200, "atk": 700, "countdown": 3,
+      "artRef": "enemy_clipboard_goblin",
+      "flavor": "Nobody hired him. Nobody can fire him. He has a clipboard.",
+      "actions": [
+        { "name": "Mandatory Survey", "desc": "Locks 3 orbs pending your feedback.", "type": "lock", "count": 3 },
+        { "name": "Paper Cut", "desc": "Shockingly painful.", "type": "damage", "amount": 700 }
+      ]
+    },
+    {
+      "id": "meadow_snail",
+      "name": "Deceptively Fast Snail",
+      "element": "water",
+      "hp": 6000, "atk": 850, "countdown": 4,
+      "artRef": "enemy_meadow_snail",
+      "flavor": "Slow countdown. HUGE hit. Do the math before it does.",
+      "actions": [
+        { "name": "Sudden Zoom", "desc": "It was never slow. It was waiting.", "type": "bigdamage", "amount": 1700 }
+      ]
+    },
+    {
+      "id": "hr_butterfly",
+      "name": "HR Butterfly",
+      "element": "light",
+      "hp": 4400, "atk": 520, "countdown": 3,
+      "artRef": "enemy_hr_butterfly",
+      "flavor": "Fluttering by to remind you this battle violates workplace policy.",
+      "actions": [
+        { "name": "Schedule a Meeting", "desc": "Reduces your move time. The meeting could have been an email.", "type": "timerdown", "amount": 2 },
+        { "name": "Wing Slap", "desc": "Gentle but firm, like her feedback.", "type": "damage", "amount": 520 }
+      ]
+    },
+    {
+      "id": "boss_slime_dave",
+      "name": "Slime Supervisor Dave",
+      "element": "nature",
+      "boss": true,
+      "hp": 36000, "atk": 950, "countdown": 3,
+      "artRef": "enemy_boss_slime_dave",
+      "flavor": "Wears a tie ON his slime. Middle management made flesh. Well, made goo.",
+      "actions": [
+        { "name": "Performance Review", "desc": "Locks 4 orbs. 'We need to talk about your output.'", "type": "lock", "count": 4 },
+        { "name": "Team Building Slam", "desc": "A big mandatory-fun attack.", "type": "bigdamage", "amount": 1500 },
+        { "name": "Synergy Ooze", "desc": "Converts 3 orbs to Nature. Leveraging core competencies.", "type": "convert", "count": 3, "color": "nature" }
+      ]
+    },
+    {
+      "id": "boss_wolf_rep",
+      "name": "Fenris, Wolf Union Rep",
+      "element": "dark",
+      "boss": true,
+      "hp": 42000, "atk": 1050, "countdown": 2,
+      "artRef": "enemy_boss_wolf_rep",
+      "flavor": "Negotiates with his teeth. His teeth have excellent benefits.",
+      "actions": [
+        { "name": "Grievance Bite", "desc": "A formal complaint, with fangs.", "type": "damage", "amount": 1050 },
+        { "name": "Call a Strike", "desc": "Binds one of your party members in picket lines.", "type": "bind", "count": 1 },
+        { "name": "Howl of Solidarity", "desc": "A big hit for the workers of the wild.", "type": "bigdamage", "amount": 1800 }
+      ]
+    },
+    {
+      "id": "boss_gerald",
+      "name": "Gerald, Regional Slime Manager",
+      "element": "nature",
+      "boss": true,
+      "hp": 90000, "atk": 1200, "countdown": 3,
+      "artRef": "enemy_boss_gerald",
+      "flavor": "Three ties. A name tag that says 'GERALD — ASK ME ABOUT QUOTAS'. The meadow's final boss.",
+      "actions": [
+        { "name": "Quarterly Projections", "desc": "Locks 5 orbs. The numbers must go up.", "type": "lock", "count": 5 },
+        { "name": "Restructuring Slam", "desc": "Massive damage. Your position has been made redundant.", "type": "bigdamage", "amount": 2200 },
+        { "name": "Mandatory Overtime", "desc": "Reduces your move time by 2 seconds.", "type": "timerdown", "amount": 2 },
+        { "name": "Absorb Feedback", "desc": "Gerald absorbs Nature damage this rotation. He hears you. He's not listening.", "type": "absorb", "color": "nature" },
+        { "name": "Delegate Blame", "desc": "Heals himself. It was YOUR fault somehow.", "type": "heal", "amount": 8000 }
+      ]
+    }
+  ]
+}

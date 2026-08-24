@@ -1,0 +1,261 @@
+{
+  "enemies": [
+    {
+      "id": "star_spotter",
+      "name": "Star Spotter",
+      "element": "light",
+      "boss": false,
+      "hp": 28800,
+      "atk": 4070,
+      "countdown": 3,
+      "artRef": "enemy_star_spotter",
+      "flavor": "Spots for the constellations. Never skips leg day. Legs are 40 lightyears long.",
+      "actions": [
+        {
+          "name": "Spot Check",
+          "desc": "A supportive but devastating shove.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Form Correction",
+          "desc": "Converts 3 orbs to Light.",
+          "type": "convert",
+          "count": 3,
+          "color": "light"
+        }
+      ]
+    },
+    {
+      "id": "nebula_lifter",
+      "name": "Nebula Powerlifter",
+      "element": "fire",
+      "boss": false,
+      "hp": 37440,
+      "atk": 4477,
+      "countdown": 3,
+      "artRef": "enemy_nebula_lifter",
+      "flavor": "Deadlifts gas giants. Grunts in stellar frequencies.",
+      "actions": [
+        {
+          "name": "Cosmic Deadlift",
+          "desc": "A big gravitational heave.",
+          "type": "bigDamage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "cardio_comet",
+      "name": "Cardio Comet",
+      "element": "water",
+      "boss": false,
+      "hp": 23040,
+      "atk": 4070,
+      "countdown": 3,
+      "artRef": "enemy_cardio_comet",
+      "flavor": "Has been doing one lap for six thousand years. Almost done. Almost.",
+      "actions": [
+        {
+          "name": "Fly-By",
+          "desc": "A blistering pass.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Pace Push",
+          "desc": "Reduces move time by 2 seconds. KEEP UP.",
+          "type": "timerDown",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "yoga_void",
+      "name": "The Yoga Void",
+      "element": "dark",
+      "boss": false,
+      "hp": 31680,
+      "atk": 3663,
+      "countdown": 3,
+      "artRef": "enemy_yoga_void",
+      "flavor": "Empty your mind, it says. It is VERY empty. It would like yours too.",
+      "actions": [
+        {
+          "name": "Empty Mind",
+          "desc": "Binds a party member in deep stretch.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Void Pose",
+          "desc": "Converts 3 orbs to Dark.",
+          "type": "convert",
+          "count": 3,
+          "color": "dark"
+        }
+      ]
+    },
+    {
+      "id": "protein_ooze",
+      "name": "Protein Shake Ooze",
+      "element": "nature",
+      "boss": false,
+      "hp": 34560,
+      "atk": 3663,
+      "countdown": 3,
+      "artRef": "enemy_protein_ooze",
+      "flavor": "Forty scoops. No blender survived. It simply IS the shake now.",
+      "actions": [
+        {
+          "name": "Gains Splash",
+          "desc": "Poisons 2 orbs with chalky residue.",
+          "type": "poison",
+          "count": 2
+        },
+        {
+          "name": "Shaker Slam",
+          "desc": "Blended impact.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "mirror_wall",
+      "name": "The Mirror Wall",
+      "element": "light",
+      "boss": false,
+      "hp": 37440,
+      "atk": 3663,
+      "countdown": 3,
+      "artRef": "enemy_mirror_wall",
+      "flavor": "Watches every rep. Reflects every flaw. Judges silently, at scale.",
+      "actions": [
+        {
+          "name": "Reflect Judgment",
+          "desc": "Places a blocker of self-doubt.",
+          "type": "block",
+          "count": 1
+        },
+        {
+          "name": "Glare",
+          "desc": "You looked. You shouldn't have looked.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "boss_front_desk",
+      "name": "Cerberus, Front Desk",
+      "element": "fire",
+      "boss": true,
+      "hp": 288000,
+      "atk": 5698,
+      "countdown": 3,
+      "artRef": "enemy_boss_front_desk",
+      "flavor": "Three heads: one checks you in, one upsells you, one has been on hold with billing since forever.",
+      "actions": [
+        {
+          "name": "Triple Scan",
+          "desc": "A big three-headed membership check.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Upsell Bite",
+          "desc": "Poisons 3 orbs with add-ons.",
+          "type": "poison",
+          "count": 3
+        },
+        {
+          "name": "Guest Pass Denied",
+          "desc": "Locks 4 orbs at the turnstile.",
+          "type": "lock",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "boss_gainz_titan",
+      "name": "The Titan of Gainz",
+      "element": "fire",
+      "boss": true,
+      "hp": 316800,
+      "atk": 6105,
+      "countdown": 2,
+      "artRef": "enemy_boss_gainz_titan",
+      "flavor": "A primordial being of pure exertion. Skipped every day EXCEPT arm day. It shows.",
+      "actions": [
+        {
+          "name": "Bicep Eclipse",
+          "desc": "A big flex that blots out stars.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Chalk Storm",
+          "desc": "Converts 4 orbs to Fire.",
+          "type": "convert",
+          "count": 4,
+          "color": "fire"
+        },
+        {
+          "name": "One More Set",
+          "desc": "Heals itself. It always has one more set.",
+          "type": "heal",
+          "amount": 6000
+        },
+        {
+          "name": "Pre-Workout Kicks In",
+          "desc": "ENRAGES below half strength. Do not ask what is in it.",
+          "type": "enrage"
+        }
+      ]
+    },
+    {
+      "id": "boss_membership",
+      "name": "The Unbreakable Membership Contract",
+      "element": "dark",
+      "boss": true,
+      "hp": 748800,
+      "atk": 6512,
+      "countdown": 3,
+      "artRef": "enemy_boss_membership",
+      "flavor": "Signed by the first star. Auto-renews at the heat death of the universe. Cancellation requires appearing IN PERSON. This is in person.",
+      "actions": [
+        {
+          "name": "Auto-Renewal",
+          "desc": "Heals itself. Another billing cycle begins.",
+          "type": "heal",
+          "amount": 10000
+        },
+        {
+          "name": "Cancellation Fee",
+          "desc": "Massive damage. Per the agreement.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Binding Clause",
+          "desc": "Binds a party member. LITERALLY binding.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Fine Print Fog",
+          "desc": "Locks 5 orbs in subsection (d)(4)(iii).",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Clause 4.4",
+          "desc": "Combo shield: 4+ combos, per the agreement you signed.",
+          "type": "comboShield",
+          "count": 4
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "enemies": [
+    {
+      "id": "masseuse_magmite",
+      "name": "Deep-Tissue Magmite",
+      "element": "fire",
+      "boss": false,
+      "hp": 16000,
+      "atk": 2541,
+      "countdown": 3,
+      "artRef": "enemy_masseuse_magmite",
+      "flavor": "Finds knots you didn't know you had. Creates several new ones.",
+      "actions": [
+        {
+          "name": "Deep Tissue",
+          "desc": "A BIG therapeutic slam.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Hot Stone",
+          "desc": "The stones are lava. They were always lava.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "towel_wraith",
+      "name": "Towel Wraith",
+      "element": "light",
+      "boss": false,
+      "hp": 14400,
+      "atk": 2079,
+      "countdown": 3,
+      "artRef": "enemy_towel_wraith",
+      "flavor": "Folded into a swan. The swan remembers being a towel. It is furious.",
+      "actions": [
+        {
+          "name": "Swan Snap",
+          "desc": "A whip-crack of terrycloth.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Fold",
+          "desc": "Locks 3 orbs into decorative shapes.",
+          "type": "lock",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "sauna_imp",
+      "name": "Sauna Imp",
+      "element": "fire",
+      "boss": false,
+      "hp": 14400,
+      "atk": 2310,
+      "countdown": 3,
+      "artRef": "enemy_sauna_imp",
+      "flavor": "Keeps adding coals. \"It's good for you,\" it hisses. \"Sweat out the cowardice.\"",
+      "actions": [
+        {
+          "name": "More Coals",
+          "desc": "Converts 3 orbs to Fire.",
+          "type": "convert",
+          "count": 3,
+          "color": "fire"
+        },
+        {
+          "name": "Steam Slap",
+          "desc": "Open-palm humidity.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "cucumber_horror",
+      "name": "The Cucumber Horror",
+      "element": "nature",
+      "boss": false,
+      "hp": 19200,
+      "atk": 2079,
+      "countdown": 3,
+      "artRef": "enemy_cucumber_horror",
+      "flavor": "Two slices covered its eyes. Now it has neither eyes nor mercy.",
+      "actions": [
+        {
+          "name": "Blind Fury",
+          "desc": "Poisons 2 orbs with spa water.",
+          "type": "poison",
+          "count": 2
+        },
+        {
+          "name": "Crisp Strike",
+          "desc": "Refreshingly painful.",
+          "type": "damage",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "mud_mask_golem",
+      "name": "Mud Mask Golem",
+      "element": "nature",
+      "boss": false,
+      "hp": 22400,
+      "atk": 1848,
+      "countdown": 3,
+      "artRef": "enemy_mud_mask_golem",
+      "flavor": "Exfoliates enemies. Violently. Your pores will thank it, eventually.",
+      "actions": [
+        {
+          "name": "Exfoliate",
+          "desc": "Removes several layers. Of you.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Clay Wall",
+          "desc": "Places a mineral-rich blocker.",
+          "type": "block",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "zen_salamander",
+      "name": "Zen Salamander",
+      "element": "fire",
+      "boss": false,
+      "hp": 16000,
+      "atk": 2310,
+      "countdown": 3,
+      "artRef": "enemy_zen_salamander",
+      "flavor": "Achieved inner peace. Guards it jealously with outer violence.",
+      "actions": [
+        {
+          "name": "Mindful Strike",
+          "desc": "Fully present damage.",
+          "type": "damage",
+          "amount": 1
+        },
+        {
+          "name": "Breathing Exercise",
+          "desc": "Heals itself. In through the nose...",
+          "type": "heal",
+          "amount": 3000
+        }
+      ]
+    },
+    {
+      "id": "boss_concierge",
+      "name": "The Obsidian Concierge",
+      "element": "dark",
+      "boss": true,
+      "hp": 160000,
+      "atk": 3234,
+      "countdown": 3,
+      "artRef": "enemy_boss_concierge",
+      "flavor": "Anything you need, any hour. What you need, it has decided, is to never leave.",
+      "actions": [
+        {
+          "name": "Turndown Service",
+          "desc": "A big tucking-in you cannot escape.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Do Not Disturb",
+          "desc": "Locks 4 orbs behind the door hanger.",
+          "type": "lock",
+          "count": 4
+        },
+        {
+          "name": "Minibar Charges",
+          "desc": "Poisons 3 orbs. You WILL pay for that water.",
+          "type": "poison",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "boss_yoga_dragon",
+      "name": "Bikram the Yoga Dragon",
+      "element": "fire",
+      "boss": true,
+      "hp": 176000,
+      "atk": 3234,
+      "countdown": 2,
+      "artRef": "enemy_boss_yoga_dragon",
+      "flavor": "The hot yoga instructor. The room is hot because he is IN it.",
+      "actions": [
+        {
+          "name": "Downward Dragon",
+          "desc": "A big, extremely aligned slam.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "Hold the Pose",
+          "desc": "Binds a party member mid-stretch.",
+          "type": "bind",
+          "count": 1
+        },
+        {
+          "name": "Breath of Fire",
+          "desc": "Converts 4 orbs to Fire. Literally.",
+          "type": "convert",
+          "count": 4,
+          "color": "fire"
+        }
+      ]
+    },
+    {
+      "id": "boss_manager_caldera",
+      "name": "General Manager Caldera",
+      "element": "fire",
+      "boss": true,
+      "hp": 416000,
+      "atk": 3696,
+      "countdown": 3,
+      "artRef": "enemy_boss_manager_caldera",
+      "flavor": "The volcano itself, in a name-tagged blazer. Checkout time is never.",
+      "actions": [
+        {
+          "name": "Eruption Package",
+          "desc": "The premium experience. Massive damage.",
+          "type": "bigDamage",
+          "amount": 1
+        },
+        {
+          "name": "All-Inclusive",
+          "desc": "Locks 5 orbs. Everything is included. Nothing may leave.",
+          "type": "lock",
+          "count": 5
+        },
+        {
+          "name": "Complimentary Upgrade",
+          "desc": "Heals himself. Suite deal.",
+          "type": "heal",
+          "amount": 10000
+        },
+        {
+          "name": "Lava Robes",
+          "desc": "Converts 3 orbs to Fire. So warm. TOO warm.",
+          "type": "convert",
+          "count": 3,
+          "color": "fire"
+        },
+        {
+          "name": "Geothermal Rewards Program",
+          "desc": "Absorbs Fire damage this rotation. Loyalty pays.",
+          "type": "absorb",
+          "color": "fire"
+        }
+      ]
+    }
+  ]
+}
