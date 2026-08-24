@@ -143,7 +143,12 @@ namespace PuzzleGame.Core.Scheduling
                     continue;
                 }
 
-                var candidateStart = AtMinute(startDate, schedule.StartMinuteOfDay, schedule.Start.Offset);
+                DateTimeOffset candidateStart;
+                if (!TryAtMinute(startDate, schedule.StartMinuteOfDay, localNow, out candidateStart))
+                {
+                    continue;
+                }
+
                 if (now < candidateStart)
                 {
                     continue;
@@ -154,7 +159,7 @@ namespace PuzzleGame.Core.Scheduling
                     startDate,
                     schedule.StartMinuteOfDay,
                     schedule.EndMinuteOfDay,
-                    schedule.Start.Offset,
+                    localNow,
                     schedule.End,
                     out candidateEnd) || now >= candidateEnd)
                 {
@@ -199,35 +204,70 @@ namespace PuzzleGame.Core.Scheduling
             return false;
         }
 
-        private static DateTimeOffset AtMinute(DateTime date, int minuteOfDay, TimeSpan offset)
-        {
-            return new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, offset).AddMinutes(minuteOfDay);
-        }
-
         private static bool TryCandidateEnd(
             DateTime startDate,
             int startMinute,
             int endMinute,
-            TimeSpan offset,
+            DateTimeOffset localNow,
             DateTimeOffset outerEnd,
             out DateTimeOffset candidateEnd)
         {
             if (startMinute < endMinute)
             {
-                candidateEnd = AtMinute(startDate, endMinute, offset);
+                if (!TryAtMinute(startDate, endMinute, localNow, out candidateEnd))
+                {
+                    candidateEnd = outerEnd;
+                }
+
                 return true;
             }
 
             DateTime endDate;
             if (TryAddDays(startDate, 1, out endDate))
             {
-                candidateEnd = AtMinute(endDate, endMinute, offset);
+                if (!TryAtMinute(endDate, endMinute, localNow, out candidateEnd))
+                {
+                    candidateEnd = outerEnd;
+                }
+
                 return true;
             }
 
             // The intended end lies beyond DateTime.MaxValue. The absolute outer
             // window is representable and therefore supplies the exact usable cap.
             candidateEnd = outerEnd;
+            return true;
+        }
+
+        private static bool TryAtMinute(
+            DateTime date,
+            int minuteOfDay,
+            DateTimeOffset localAnchor,
+            out DateTimeOffset candidate)
+        {
+            candidate = default(DateTimeOffset);
+            var dayDifference = date.Subtract(localAnchor.Date).Days;
+            DateTimeOffset dateAnchor;
+            if (!TryAddTicks(localAnchor, (long)dayDifference * TimeSpan.TicksPerDay, out dateAnchor))
+            {
+                return false;
+            }
+
+            var targetTicks = (long)minuteOfDay * TimeSpan.TicksPerMinute;
+            return TryAddTicks(dateAnchor, targetTicks - dateAnchor.TimeOfDay.Ticks, out candidate);
+        }
+
+        private static bool TryAddTicks(DateTimeOffset value, long ticks, out DateTimeOffset result)
+        {
+            var utcTicks = value.UtcDateTime.Ticks;
+            if ((ticks > 0 && utcTicks > DateTime.MaxValue.Ticks - ticks) ||
+                (ticks < 0 && utcTicks < DateTime.MinValue.Ticks - ticks))
+            {
+                result = default(DateTimeOffset);
+                return false;
+            }
+
+            result = value.AddTicks(ticks);
             return true;
         }
 
