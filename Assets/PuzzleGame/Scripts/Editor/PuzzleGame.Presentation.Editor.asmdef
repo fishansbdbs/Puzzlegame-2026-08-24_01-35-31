@@ -2,7 +2,9 @@
     "name": "PuzzleGame.Presentation.Editor",
     "rootNamespace": "PuzzleGame",
     "references": [
-        "PuzzleGame.Presentation"
+        "PuzzleGame.Presentation",
+        "PuzzleGame.Core",
+        "PuzzleGame.Unity"
     ],
     "includePlatforms": [
         "Editor"
