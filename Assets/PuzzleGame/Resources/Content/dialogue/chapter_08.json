@@ -97,6 +97,81 @@
           "text": "MY BIRTHDAY PRESENT! It's... a smaller box. Addressed to me. From me. \"Do not open until the finale.\" PIP, YOU ABSOLUTE MYSTERY."
         }
       ]
+    },
+    {
+      "id": "ch08_mid",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero! The cargo manifest! Line 88,412: \"One (1) small box. Sender: Pip. Recipient: Pip. Note: do not open until the finale.\""
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "You mailed yourself a box and forgot?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "I NEVER forget. I file. Somewhere in my past is a Pip with a PLAN, and I intend to honor her paperwork."
+        }
+      ]
+    },
+    {
+      "id": "ch08_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The clouds ahead wear a tiny badge: ROUTE MANAGER."
+        },
+        {
+          "speaker": "Thunderhead",
+          "portrait": "enemy_boss_thunderhead",
+          "side": "right",
+          "text": "YOU ARE OFF ROUTE. EVERYTHING IS OFF ROUTE. I HAVE A QUOTA OF STORMS AND YOU ARE WEATHER NOW."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We're pedestrians."
+        },
+        {
+          "speaker": "Thunderhead",
+          "portrait": "enemy_boss_thunderhead",
+          "side": "right",
+          "text": "PEDESTRIANS ARE SLOW PACKAGES."
+        }
+      ]
+    },
+    {
+      "id": "ch08_preboss",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Did you see Dave back there?! \"Regional Slime Manager, LOGISTICS DIVISION.\" He transferred! He got a lateral move out of losing to us!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Everyone we beat gets promoted. I'm starting to feel used."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Focus. The Dead Letter Office is ahead — and my box is INSIDE."
+        }
+      ]
     }
   ]
 }

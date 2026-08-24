@@ -161,5 +161,25 @@ module.exports = {
       desc: 'The moon rabbits\' first new year as owners. Rice cakes and rate-ups for all.',
       featured: ['water_bathtub', 'fire_cindra'],
       guarantee: '10-pulls always contain at least one 4★.', window: ['2027-02-05T00:00:00Z', '2027-02-19T00:00:00Z'] },
+
+    // ------------------------- Special banners ----------------------------
+    { id: 'newplayer_first_steps', name: 'First Steps Summon', kind: 'stepUp',
+      desc: 'A one-time welcome for new adventurers. Two discounted steps, then you\'re one of us.',
+      featured: ['water_reginald'], permanent: true,
+      guarantee: 'One-time steps: step 1 guarantees a 4★, step 2 guarantees a 5★.',
+      steps: [
+        { gemCost: 750, pullCount: 10, guarantee: '4★ guaranteed (half price)' },
+        { gemCost: 1500, pullCount: 10, guarantee: '5★ GUARANTEED' } ] },
+    { id: 'revival_hall_of_legends', name: 'Hall of Legends Revival', kind: 'featured',
+      desc: 'Every previously-featured 5★, back for one encore. The nostalgia is complimentary.',
+      featured: ['fire_chad', 'nature_barbara', 'dark_bedtime', 'light_brightbeard'],
+      rates: { featuredShareOfFiveStar: 80 },
+      guarantee: '10-pulls always contain at least one 4★. Featured legends take 80% of 5★ results.',
+      window: ['2027-03-01T00:00:00Z', '2027-03-15T00:00:00Z'] },
+    { id: 'villain_appreciation', name: 'Department of Doom Appreciation Week', kind: 'featured',
+      desc: 'Official merchandise of the defeated. The packs file a complaint when torn. Dark and Bureau units boosted.',
+      featured: ['dark_kevin2', 'dark_bedtime'], poolTags: ['Nap Dynasty', 'Bureau', 'Mystery', 'Object', 'Mercenary'],
+      guarantee: '10-pulls always contain at least one 4★.',
+      window: ['2027-03-20T00:00:00Z', '2027-03-27T00:00:00Z'] },
   ],
 };

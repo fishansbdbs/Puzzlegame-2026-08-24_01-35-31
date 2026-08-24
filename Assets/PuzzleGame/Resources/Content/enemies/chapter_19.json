@@ -250,6 +250,12 @@
           "desc": "Heals itself, iteratively.",
           "type": "heal",
           "amount": 10000
+        },
+        {
+          "name": "Absolute Value",
+          "desc": "Absorbs Light damage this rotation. |damage| becomes healing.",
+          "type": "absorb",
+          "color": "light"
         }
       ]
     }

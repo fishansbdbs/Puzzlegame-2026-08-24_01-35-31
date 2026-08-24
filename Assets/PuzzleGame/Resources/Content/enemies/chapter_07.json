@@ -243,6 +243,11 @@
           "desc": "Heals itself. Another rosette appears.",
           "type": "heal",
           "amount": 9000
+        },
+        {
+          "name": "Blow Out the Candles",
+          "desc": "TAUNTS: all attacks must target the cake. It insists.",
+          "type": "taunt"
         }
       ]
     }

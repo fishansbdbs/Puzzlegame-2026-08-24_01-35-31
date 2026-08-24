@@ -103,6 +103,87 @@
           "text": "WE'RE LEGAL! Hero, we're LEGAL! ...why is the license already expiring in chapter twenty?"
         }
       ]
+    },
+    {
+      "id": "ch10_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "In the eternal queue, skeletons pass around pamphlets printed on rice paper."
+        },
+        {
+          "speaker": "Queue Skeleton",
+          "portrait": "enemy_queue_skeleton",
+          "side": "right",
+          "text": "It says here... we don't HAVE to hold our place in line... for six centuries... without breaks?"
+        },
+        {
+          "speaker": "Fenris",
+          "portrait": "enemy_boss_wolf_rep",
+          "side": "left",
+          "text": "Local 4,000,001 — the Undead Line-Standers' Guild. First demand: CHAIRS."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "He's here too. Of course he's here too."
+        }
+      ]
+    },
+    {
+      "id": "ch10_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A phantom vehicle idles in the testing yard. It has no wheels, no doors, and one furious instructor."
+        },
+        {
+          "speaker": "Road Test Revenant",
+          "portrait": "enemy_boss_road_test",
+          "side": "right",
+          "text": "MIRRORS. SIGNAL. SCREAM. In that order. BEGIN."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "This isn't a road."
+        },
+        {
+          "speaker": "Road Test Revenant",
+          "portrait": "enemy_boss_road_test",
+          "side": "right",
+          "text": "THE ROAD IS A STATE OF MIND. YOU HAVE ALREADY FAILED IT."
+        }
+      ]
+    },
+    {
+      "id": "ch10_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "PING. The number board changes: NOW SERVING 4,000,001. The queue holds its collective breath. All of it. Every bone."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "That's us, hero. Six thousand years of waiting ends TODAY. Straighten your collar. Practice your embarrassing middle name."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Never."
+        }
+      ]
     }
   ]
 }

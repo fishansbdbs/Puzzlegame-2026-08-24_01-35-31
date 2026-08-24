@@ -97,6 +97,81 @@
           "text": "Ticket closed, hero. All of them. Even mine. ESPECIALLY mine."
         }
       ]
+    },
+    {
+      "id": "ch16_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A terminal in the queue-cavern displays ticket #3,000,000: \"FAIRY, AWAITING BIRTHDAY BOX. YEAR 9. STATUS: OPEN.\""
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "That's MY ticket, hero. It's real. Someone down here has been keeping it open. On PURPOSE."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Then someone down here is about to close it."
+        }
+      ]
+    },
+    {
+      "id": "ch16_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A vast eye opens above the dashboard. Every metric in creation scrolls across its iris. Most are red."
+        },
+        {
+          "speaker": "The KPI Beast",
+          "portrait": "enemy_boss_kpi_beast",
+          "side": "right",
+          "text": "YOUR AVERAGE HANDLE TIME: TWENTY CHAPTERS. UNACCEPTABLE. YOUR RESOLUTION RATE: SUSPICIOUSLY PERFECT. ALSO UNACCEPTABLE."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "We literally cannot win with this thing!"
+        },
+        {
+          "speaker": "The KPI Beast",
+          "portrait": "enemy_boss_kpi_beast",
+          "side": "right",
+          "text": "CORRECT. THAT IS THE METRIC."
+        }
+      ]
+    },
+    {
+      "id": "ch16_preboss",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Support Shark made TIER 9, hero. He remembered us! He waved with his dorsal fin and then tried to eat us! Growth!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "The Prince's backlog is through here. Ready?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Nine years, hero. Nine years on hold. CLOSE. MY. TICKET."
+        }
+      ]
     }
   ]
 }

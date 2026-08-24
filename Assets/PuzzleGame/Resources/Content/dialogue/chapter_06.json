@@ -97,6 +97,87 @@
           "text": "Somewhere out there, a shed is finally being built."
         }
       ]
+    },
+    {
+      "id": "ch06_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "In the clubhouse basement, spectral workers gather around a very alive wolf."
+        },
+        {
+          "speaker": "Fenris",
+          "portrait": "enemy_boss_wolf_rep",
+          "side": "right",
+          "text": "Ghost Local 1744 is hereby chartered! Dues: one rattle per month. First demand: haunting is WORK, and work gets WAGES."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "He unionized the DEAD. The man cannot be stopped."
+        },
+        {
+          "speaker": "Fenris",
+          "portrait": "enemy_boss_wolf_rep",
+          "side": "right",
+          "text": "Wolf, actually. And no. I cannot."
+        }
+      ]
+    },
+    {
+      "id": "ch06_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The air shimmers with an abstract dread. Numbers float in it. They are going up."
+        },
+        {
+          "speaker": "The Property Value",
+          "portrait": "enemy_boss_property_value",
+          "side": "right",
+          "text": "I MUST RISE. IF YOU REMAIN, I CANNOT RISE. THE MATH IS SIMPLE. THE MATH IS CRUEL."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We're not even residents."
+        },
+        {
+          "speaker": "The Property Value",
+          "portrait": "enemy_boss_property_value",
+          "side": "right",
+          "text": "YOU ARE FOOT TRAFFIC. FOOT TRAFFIC IS A MIXED INDICATOR."
+        }
+      ]
+    },
+    {
+      "id": "ch06_preboss",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero... the casserole dish. It's on our doorstep. We don't HAVE a doorstep. We don't have a DOOR."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Bring it. We'll return it to the Chairman."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "RETURN the dish?! Nobody has EVER returned the dish. This changes everything. This is our secret weapon."
+        }
+      ]
     }
   ]
 }

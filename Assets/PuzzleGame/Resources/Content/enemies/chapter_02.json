@@ -173,6 +173,11 @@
           "desc": "A big, shrill hit.",
           "type": "bigDamage",
           "amount": 1
+        },
+        {
+          "name": "Jurisdiction",
+          "desc": "TAUNTS: all complaints route through Doreen.",
+          "type": "taunt"
         }
       ]
     },
@@ -243,6 +248,14 @@
           "type": "convert",
           "count": 3,
           "color": "nature"
+        },
+        {
+          "name": "Fiscal Year End",
+          "desc": "ENRAGES below half strength. The rings tighten.",
+          "type": "enrage",
+          "amount": 0,
+          "count": 0,
+          "color": ""
         }
       ]
     }

@@ -4,6 +4,34 @@
     "title": "The Great Dessert",
     "theme": "dessert",
     "blurb": "A vast expanse of dunes. The dunes are sugar. The cacti are churros. The heat is oven-quality.",
+    "mechanicNote": "Enemy healing pressure: desserts self-frost.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 80,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 160,
+        "items": [
+          {
+            "id": "sugar_crystal",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 320,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 2
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch07_st01",
@@ -30,8 +58,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 13,
         "dialogueBefore": "ch07_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -72,8 +100,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -81,7 +109,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "sugar_crystal",
+              "id": "frosting_vial",
               "count": 1
             }
           ],
@@ -108,8 +136,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -117,7 +145,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "sugar_crystal",
+              "id": "sprinkle_pouch",
               "count": 1
             }
           ],
@@ -150,8 +178,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -186,8 +214,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -195,7 +223,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "sugar_crystal",
+              "id": "sprinkle_pouch",
               "count": 1
             }
           ],
@@ -244,8 +272,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -253,7 +281,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frosting_vial",
+              "id": "sprinkle_pouch",
               "count": 1
             }
           ],
@@ -271,51 +299,38 @@
           {
             "enemies": [
               {
-                "enemyId": "custard_elemental",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "rogue_scone",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "biscotti_bandit",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "meringue_wisp",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "meringue_wisp",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "churro_cactus",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
+        "modifiers": [
+          "elite",
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.45,
         "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1389,
-          "gems": 0,
+          "gold": 2083,
+          "gems": 5,
           "items": [
             {
               "id": "sprinkle_pouch",
-              "count": 1
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -344,8 +359,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -396,8 +411,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -405,7 +420,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frosting_vial",
+              "id": "sugar_crystal",
               "count": 1
             }
           ],
@@ -447,9 +462,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "modifiers": [
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 19,
         "dialogueBefore": "ch07_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -457,7 +474,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "sugar_crystal",
+              "id": "frosting_vial",
               "count": 2
             }
           ],
@@ -506,8 +523,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -515,7 +532,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frosting_vial",
+              "id": "sugar_crystal",
               "count": 2
             }
           ],
@@ -558,8 +575,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -585,39 +602,38 @@
           {
             "enemies": [
               {
-                "enemyId": "churro_cactus",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
+                "enemyId": "gelato_golem",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              },
               {
-                "enemyId": "custard_elemental",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "churro_cactus",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
+        "modifiers": [
+          "elite",
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.45,
         "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1859,
-          "gems": 0,
+          "gold": 2789,
+          "gems": 5,
           "items": [
             {
-              "id": "frosting_vial",
-              "count": 2
+              "id": "sugar_crystal",
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -656,8 +672,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -665,7 +681,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frosting_vial",
+              "id": "sugar_crystal",
               "count": 2
             }
           ],
@@ -713,17 +729,19 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch07_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2016,
           "gems": 5,
           "items": [
             {
-              "id": "sugar_crystal",
+              "id": "frosting_vial",
               "count": 2
             }
           ],
@@ -766,8 +784,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -775,7 +793,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "sprinkle_pouch",
+              "id": "sugar_crystal",
               "count": 2
             }
           ],
@@ -823,9 +841,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -833,7 +853,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "sugar_crystal",
+              "id": "sprinkle_pouch",
               "count": 2
             }
           ],
@@ -875,10 +895,12 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
+        "dialogueBefore": "ch07_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2251,
@@ -937,9 +959,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 21,
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 25,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -999,9 +1023,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 26,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1027,45 +1053,38 @@
           {
             "enemies": [
               {
-                "enemyId": "biscotti_bandit",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "meringue_wisp",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "gelato_golem",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "gelato_golem",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "rogue_scone",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
+        "modifiers": [
+          "elite",
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.4,
         "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2486,
-          "gems": 0,
+          "gold": 3730,
+          "gems": 5,
           "items": [
             {
               "id": "frosting_vial",
-              "count": 3
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1110,8 +1129,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1178,8 +1197,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 26,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1187,7 +1206,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frosting_vial",
+              "id": "sugar_crystal",
               "count": 3
             }
           ],
@@ -1199,7 +1218,7 @@
         "id": "ch07_st24",
         "stageNumber": 24,
         "name": "The Bundt Badlands",
-        "kind": "normal",
+        "kind": "story",
         "background": "dessert_c",
         "waves": [
           {
@@ -1236,13 +1255,13 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 23,
+        "dialogueBefore": "ch07_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2722,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
               "id": "frosting_vial",
@@ -1287,9 +1306,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.35,
+        "resolutionsStar": 23,
         "dialogueBefore": "ch07_boss_before",
         "dialogueAfter": "ch07_boss_after",
         "rewards": {
@@ -1297,7 +1318,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "sprinkle_pouch",
+              "id": "frosting_vial",
               "count": 3
             }
           ],

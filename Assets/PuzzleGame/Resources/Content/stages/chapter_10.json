@@ -4,6 +4,34 @@
     "title": "The Necropolis DMV",
     "theme": "necrodmv",
     "blurb": "Where the dead go to renew their licenses. The line has not moved since the Third Age.",
+    "mechanicNote": "Queue mechanics: locks, blockers and slow dread.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 95,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 190,
+        "items": [
+          {
+            "id": "bone_ticket",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 380,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch10_st01",
@@ -25,7 +53,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "ch10_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -33,7 +61,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "expired_license",
+              "id": "bone_ticket",
               "count": 1
             }
           ],
@@ -61,7 +89,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -69,7 +97,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "expired_license",
+              "id": "soul_stamp",
               "count": 1
             }
           ],
@@ -103,7 +131,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -139,7 +167,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -147,7 +175,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "soul_stamp",
+              "id": "expired_license",
               "count": 1
             }
           ],
@@ -175,7 +203,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -227,7 +255,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -235,7 +263,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "soul_stamp",
+              "id": "expired_license",
               "count": 1
             }
           ],
@@ -253,35 +281,38 @@
           {
             "enemies": [
               {
-                "enemyId": "ticket_ghoul",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "form_mummy",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
                 "enemyId": "queue_skeleton",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite",
+          "start_locks:3"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1835,
-          "gems": 0,
+          "gold": 2753,
+          "gems": 5,
           "items": [
             {
               "id": "bone_ticket",
-              "count": 1
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -311,7 +342,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -357,7 +388,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -407,9 +438,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:3"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "ch10_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -417,7 +450,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "bone_ticket",
+              "id": "soul_stamp",
               "count": 2
             }
           ],
@@ -461,7 +494,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -513,7 +546,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -521,7 +554,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "expired_license",
+              "id": "bone_ticket",
               "count": 2
             }
           ],
@@ -540,50 +573,36 @@
             "enemies": [
               {
                 "enemyId": "queue_skeleton",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "counter_wight",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "ticket_ghoul",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "ticket_ghoul",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "queue_skeleton",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2457,
-          "gems": 0,
+          "gold": 3685,
+          "gems": 5,
           "items": [
             {
-              "id": "soul_stamp",
-              "count": 2
+              "id": "expired_license",
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -615,9 +634,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_blockers:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -667,17 +688,19 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:3"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch10_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2664,
           "gems": 5,
           "items": [
             {
-              "id": "bone_ticket",
+              "id": "soul_stamp",
               "count": 2
             }
           ],
@@ -721,7 +744,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -729,7 +752,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "expired_license",
+              "id": "soul_stamp",
               "count": 2
             }
           ],
@@ -771,9 +794,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:3"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -823,10 +848,12 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:3"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "resolutionsStar": 19,
+        "dialogueBefore": "ch10_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2975,
@@ -883,7 +910,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -891,7 +918,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "soul_stamp",
+              "id": "bone_ticket",
               "count": 2
             }
           ],
@@ -935,7 +962,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -961,61 +988,37 @@
           {
             "enemies": [
               {
-                "enemyId": "counter_wight",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "vision_test_beholder",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "queue_skeleton",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "counter_wight",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
                 "enemyId": "photo_wisp",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "ticket_ghoul",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 3286,
-          "gems": 0,
+          "gold": 4928,
+          "gems": 5,
           "items": [
             {
               "id": "soul_stamp",
-              "count": 3
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1061,7 +1064,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1069,7 +1072,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "soul_stamp",
+              "id": "bone_ticket",
               "count": 3
             }
           ],
@@ -1123,7 +1126,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "resolutionsStar": 24,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1131,7 +1134,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "soul_stamp",
+              "id": "bone_ticket",
               "count": 3
             }
           ],
@@ -1143,7 +1146,7 @@
         "id": "ch10_st24",
         "stageNumber": 24,
         "name": "The Final Window",
-        "kind": "normal",
+        "kind": "story",
         "background": "necrodmv_c",
         "waves": [
           {
@@ -1189,14 +1192,16 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_blockers:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 23,
-        "dialogueBefore": "",
+        "resolutionsStar": 25,
+        "dialogueBefore": "ch10_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3596,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
               "id": "bone_ticket",
@@ -1233,6 +1238,22 @@
           {
             "enemies": [
               {
+                "enemyId": "ticket_ghoul",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "photo_wisp",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
                 "enemyId": "boss_lich_clerk",
                 "hpMult": 1,
                 "atkMult": 1,
@@ -1241,9 +1262,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_blockers:1"
+        ],
         "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "resolutionsStar": 25,
         "dialogueBefore": "ch10_boss_before",
         "dialogueAfter": "ch10_boss_after",
         "rewards": {

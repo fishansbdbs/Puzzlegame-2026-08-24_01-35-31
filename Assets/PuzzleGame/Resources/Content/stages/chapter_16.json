@@ -4,6 +4,34 @@
     "title": "Customer Service Hell",
     "theme": "servicehell",
     "blurb": "Actual hell. The demons wear headsets now. Torment is ticket-based. Your case number is your soul.",
+    "mechanicNote": "Hold music: timer and poison pressure.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 125,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 250,
+        "items": [
+          {
+            "id": "ticket_stub_infernal",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 500,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch16_st01",
@@ -30,8 +58,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
         "dialogueBefore": "ch16_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -66,8 +94,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -75,7 +103,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "brimstone_headset",
+              "id": "escalation_sigil",
               "count": 1
             }
           ],
@@ -108,8 +136,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 10,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -117,7 +145,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "escalation_sigil",
+              "id": "ticket_stub_infernal",
               "count": 1
             }
           ],
@@ -160,8 +188,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -169,7 +197,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "escalation_sigil",
+              "id": "brimstone_headset",
               "count": 1
             }
           ],
@@ -202,8 +230,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -211,7 +239,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "brimstone_headset",
+              "id": "escalation_sigil",
               "count": 1
             }
           ],
@@ -237,9 +265,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "modifiers": [
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -247,7 +277,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "ticket_stub_infernal",
+              "id": "brimstone_headset",
               "count": 1
             }
           ],
@@ -266,34 +296,36 @@
             "enemies": [
               {
                 "enemyId": "warranty_demon",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
                 "enemyId": "chatbot_golem",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "modifiers": [
+          "elite"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2728,
-          "gems": 0,
+          "gold": 4092,
+          "gems": 5,
           "items": [
             {
               "id": "ticket_stub_infernal",
-              "count": 1
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -322,8 +354,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -358,8 +390,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -367,7 +399,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "brimstone_headset",
+              "id": "ticket_stub_infernal",
               "count": 1
             }
           ],
@@ -409,9 +441,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "modifiers": [
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
         "dialogueBefore": "ch16_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -419,7 +453,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "escalation_sigil",
+              "id": "brimstone_headset",
               "count": 2
             }
           ],
@@ -456,8 +490,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -513,9 +547,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -523,7 +559,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "ticket_stub_infernal",
+              "id": "brimstone_headset",
               "count": 2
             }
           ],
@@ -541,39 +577,37 @@
           {
             "enemies": [
               {
-                "enemyId": "survey_succubus",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
                 "enemyId": "warranty_demon",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "survey_succubus",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "elite"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 3652,
-          "gems": 0,
+          "gold": 5478,
+          "gems": 5,
           "items": [
             {
               "id": "ticket_stub_infernal",
-              "count": 2
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -618,8 +652,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -627,7 +661,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "escalation_sigil",
+              "id": "brimstone_headset",
               "count": 2
             }
           ],
@@ -670,16 +704,16 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
+        "dialogueBefore": "ch16_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3960,
           "gems": 5,
           "items": [
             {
-              "id": "brimstone_headset",
+              "id": "escalation_sigil",
               "count": 2
             }
           ],
@@ -722,8 +756,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -731,7 +765,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "escalation_sigil",
+              "id": "ticket_stub_infernal",
               "count": 2
             }
           ],
@@ -774,8 +808,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -826,16 +860,16 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch16_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 4422,
           "gems": 10,
           "items": [
             {
-              "id": "escalation_sigil",
+              "id": "ticket_stub_infernal",
               "count": 2
             }
           ],
@@ -888,8 +922,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 21,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -961,9 +995,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "modifiers": [
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 23,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -971,7 +1007,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "ticket_stub_infernal",
+              "id": "brimstone_headset",
               "count": 3
             }
           ],
@@ -989,45 +1025,48 @@
           {
             "enemies": [
               {
-                "enemyId": "ticket_hydra",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "refund_wraith",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "survey_succubus",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "headset_imp",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           },
           {
             "enemies": [
               {
-                "enemyId": "chatbot_golem",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
+                "enemyId": "boss_support_shark",
+                "hpMult": 3.4,
+                "atkMult": 3.4,
                 "countdownOverride": -1
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "elite",
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 4884,
-          "gems": 0,
+          "gold": 7326,
+          "gems": 5,
           "items": [
             {
               "id": "brimstone_headset",
-              "count": 3
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1082,8 +1121,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 23,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1091,7 +1130,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "brimstone_headset",
+              "id": "escalation_sigil",
               "count": 3
             }
           ],
@@ -1150,8 +1189,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 23,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1159,7 +1198,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "escalation_sigil",
+              "id": "brimstone_headset",
               "count": 3
             }
           ],
@@ -1171,7 +1210,7 @@
         "id": "ch16_st24",
         "stageNumber": 24,
         "name": "The Final FAQ",
-        "kind": "normal",
+        "kind": "story",
         "background": "servicehell_c",
         "waves": [
           {
@@ -1195,17 +1234,19 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch16_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 5346,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
-              "id": "ticket_stub_infernal",
+              "id": "brimstone_headset",
               "count": 3
             }
           ],
@@ -1239,6 +1280,22 @@
           {
             "enemies": [
               {
+                "enemyId": "survey_succubus",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "survey_succubus",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
                 "enemyId": "boss_complaints_prince",
                 "hpMult": 1,
                 "atkMult": 1,
@@ -1247,9 +1304,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "modifiers": [
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 24,
         "dialogueBefore": "ch16_boss_before",
         "dialogueAfter": "ch16_boss_after",
         "rewards": {

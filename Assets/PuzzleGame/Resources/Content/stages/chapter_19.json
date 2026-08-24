@@ -4,6 +4,34 @@
     "title": "The Spreadsheet Dimension",
     "theme": "spreadsheet",
     "blurb": "The plane of pure data where reality is calculated. Do not anger the pivot tables. Do NOT break a formula.",
+    "mechanicNote": "Conversion chaos: the grid recalculates.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 140,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 280,
+        "items": [
+          {
+            "id": "cell_fragment",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 560,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch19_st01",
@@ -30,8 +58,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
         "dialogueBefore": "ch19_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -39,7 +67,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "cell_fragment",
+              "id": "freeze_pane",
               "count": 1
             }
           ],
@@ -72,8 +100,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 10,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -81,7 +109,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "formula_rune",
+              "id": "cell_fragment",
               "count": 1
             }
           ],
@@ -114,8 +142,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -123,7 +151,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "cell_fragment",
+              "id": "freeze_pane",
               "count": 1
             }
           ],
@@ -150,8 +178,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -202,8 +230,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -211,7 +239,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "cell_fragment",
+              "id": "freeze_pane",
               "count": 1
             }
           ],
@@ -260,8 +288,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -269,7 +297,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "formula_rune",
+              "id": "freeze_pane",
               "count": 1
             }
           ],
@@ -287,45 +315,38 @@
           {
             "enemies": [
               {
-                "enemyId": "vlookup_hound",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "cell_sprite",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "merge_horror",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "macro_gremlin",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "circular_ref",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "modifiers": [
+          "elite",
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 3174,
-          "gems": 0,
+          "gold": 4762,
+          "gems": 5,
           "items": [
             {
               "id": "freeze_pane",
-              "count": 1
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -353,9 +374,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -363,7 +386,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "cell_fragment",
+              "id": "freeze_pane",
               "count": 1
             }
           ],
@@ -412,8 +435,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -421,7 +444,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "freeze_pane",
+              "id": "cell_fragment",
               "count": 1
             }
           ],
@@ -463,9 +486,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
         "dialogueBefore": "ch19_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -510,8 +535,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -519,7 +544,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "formula_rune",
+              "id": "freeze_pane",
               "count": 2
             }
           ],
@@ -556,8 +581,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -565,7 +590,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "formula_rune",
+              "id": "cell_fragment",
               "count": 2
             }
           ],
@@ -583,51 +608,38 @@
           {
             "enemies": [
               {
+                "enemyId": "cell_sprite",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              },
+              {
                 "enemyId": "merge_horror",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "vlookup_hound",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "circular_ref",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "div_zero_specter",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "elite",
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 4250,
-          "gems": 0,
+          "gold": 6374,
+          "gems": 5,
           "items": [
             {
-              "id": "formula_rune",
-              "count": 2
+              "id": "freeze_pane",
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -666,8 +678,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -723,17 +735,19 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "modifiers": [
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
+        "dialogueBefore": "ch19_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 4608,
           "gems": 5,
           "items": [
             {
-              "id": "cell_fragment",
+              "id": "formula_rune",
               "count": 2
             }
           ],
@@ -770,8 +784,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -779,7 +793,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "formula_rune",
+              "id": "freeze_pane",
               "count": 2
             }
           ],
@@ -821,9 +835,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -873,17 +889,19 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch19_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 5146,
           "gems": 10,
           "items": [
             {
-              "id": "formula_rune",
+              "id": "cell_fragment",
               "count": 2
             }
           ],
@@ -925,9 +943,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -935,7 +955,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "cell_fragment",
+              "id": "freeze_pane",
               "count": 2
             }
           ],
@@ -983,9 +1003,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -993,7 +1015,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "cell_fragment",
+              "id": "formula_rune",
               "count": 3
             }
           ],
@@ -1011,55 +1033,48 @@
           {
             "enemies": [
               {
-                "enemyId": "vlookup_hound",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "macro_gremlin",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
                 "enemyId": "cell_sprite",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
                 "enemyId": "macro_gremlin",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
+                "enemyId": "boss_presentation",
+                "hpMult": 1.6,
+                "atkMult": 1.6,
                 "countdownOverride": -1
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
+        "modifiers": [
+          "elite",
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.55,
         "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 5683,
-          "gems": 0,
+          "gold": 8525,
+          "gems": 5,
           "items": [
             {
               "id": "formula_rune",
-              "count": 3
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1113,9 +1128,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 23,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1123,7 +1140,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "cell_fragment",
+              "id": "freeze_pane",
               "count": 3
             }
           ],
@@ -1160,8 +1177,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1169,7 +1186,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "formula_rune",
+              "id": "cell_fragment",
               "count": 3
             }
           ],
@@ -1181,7 +1198,7 @@
         "id": "ch19_st24",
         "stageNumber": 24,
         "name": "Print Area Perimeter",
-        "kind": "normal",
+        "kind": "story",
         "background": "spreadsheet_c",
         "waves": [
           {
@@ -1218,13 +1235,13 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch19_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 6221,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
               "id": "formula_rune",
@@ -1261,6 +1278,22 @@
           {
             "enemies": [
               {
+                "enemyId": "merge_horror",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "vlookup_hound",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
                 "enemyId": "boss_formula_one",
                 "hpMult": 1,
                 "atkMult": 1,
@@ -1269,9 +1302,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "modifiers": [
+          "combo_shield:4"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 24,
         "dialogueBefore": "ch19_boss_before",
         "dialogueAfter": "ch19_boss_after",
         "rewards": {
@@ -1279,7 +1314,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "cell_fragment",
+              "id": "formula_rune",
               "count": 3
             }
           ],

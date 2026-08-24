@@ -213,6 +213,12 @@
           "desc": "Reduces move time by 2 seconds.",
           "type": "timerDown",
           "amount": 2
+        },
+        {
+          "name": "Minimum Viable Combo",
+          "desc": "Combo shield: 3+ combos or the metrics reject you.",
+          "type": "comboShield",
+          "count": 3
         }
       ]
     },
@@ -257,6 +263,11 @@
           "type": "convert",
           "count": 3,
           "color": "dark"
+        },
+        {
+          "name": "Backlog Overflow",
+          "desc": "ENRAGES below half strength. Every ticket screams at once.",
+          "type": "enrage"
         }
       ]
     }

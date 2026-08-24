@@ -23,6 +23,25 @@ namespace PuzzleGame.Presentation.Content
         public readonly Dictionary<string, EventDto> Events = new Dictionary<string, EventDto>();
         public readonly Dictionary<string, RewardTableDto> RewardTables = new Dictionary<string, RewardTableDto>();
         public readonly List<ScheduleEntryDto> Schedule = new List<ScheduleEntryDto>();
+        public readonly Dictionary<string, ItemDto> Items = new Dictionary<string, ItemDto>();
+        public readonly Dictionary<string, PackThemeDto> PackThemes = new Dictionary<string, PackThemeDto>();
+
+        /// <summary>Load anomalies (duplicate ids across files, etc.) for the validator.</summary>
+        public readonly List<string> LoadIssues = new List<string>();
+
+        void Put<T>(Dictionary<string, T> map, string id, T value, string what)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                LoadIssues.Add(what + " entry with empty id");
+                return;
+            }
+            if (map.ContainsKey(id))
+            {
+                LoadIssues.Add("duplicate " + what + " id '" + id + "' across content files");
+            }
+            map[id] = value;
+        }
 
         public static ContentDb Load()
         {
@@ -31,49 +50,65 @@ namespace PuzzleGame.Presentation.Content
             {
                 var parsed = JsonUtility.FromJson<CharacterFileDto>(file.text);
                 if (parsed?.characters == null) { Warn(file); continue; }
-                foreach (var c in parsed.characters) db.Characters[c.id] = c;
+                foreach (var c in parsed.characters) db.Put(db.Characters, c.id, c, "character");
             }
             foreach (var file in Resources.LoadAll<TextAsset>("Content/enemies"))
             {
                 var parsed = JsonUtility.FromJson<EnemyFileDto>(file.text);
                 if (parsed?.enemies == null) { Warn(file); continue; }
-                foreach (var e in parsed.enemies) db.Enemies[e.id] = e;
+                foreach (var e in parsed.enemies) db.Put(db.Enemies, e.id, e, "enemy");
             }
             foreach (var file in Resources.LoadAll<TextAsset>("Content/stages"))
             {
                 var parsed = JsonUtility.FromJson<ChapterFileDto>(file.text);
                 if (parsed?.chapter == null) { Warn(file); continue; }
+                if (db.Chapters.ContainsKey(parsed.chapter.chapterNumber))
+                {
+                    db.LoadIssues.Add("duplicate chapter number " + parsed.chapter.chapterNumber + " across content files");
+                }
                 db.Chapters[parsed.chapter.chapterNumber] = parsed.chapter;
             }
             foreach (var file in Resources.LoadAll<TextAsset>("Content/dialogue"))
             {
                 var parsed = JsonUtility.FromJson<DialogueFileDto>(file.text);
                 if (parsed?.scenes == null) { Warn(file); continue; }
-                foreach (var s in parsed.scenes) db.DialogueScenes[s.id] = s;
+                foreach (var s in parsed.scenes) db.Put(db.DialogueScenes, s.id, s, "dialogue scene");
             }
             foreach (var file in Resources.LoadAll<TextAsset>("Content/banners"))
             {
                 var parsed = JsonUtility.FromJson<BannerFileDto>(file.text);
                 if (parsed?.banners == null) { Warn(file); continue; }
-                foreach (var b in parsed.banners) db.Banners[b.id] = b;
+                foreach (var b in parsed.banners) db.Put(db.Banners, b.id, b, "banner");
             }
             foreach (var file in Resources.LoadAll<TextAsset>("Content/events"))
             {
                 var parsed = JsonUtility.FromJson<EventFileDto>(file.text);
                 if (parsed?.events == null) { Warn(file); continue; }
-                foreach (var e in parsed.events) db.Events[e.id] = e;
+                foreach (var e in parsed.events) db.Put(db.Events, e.id, e, "event");
             }
             foreach (var file in Resources.LoadAll<TextAsset>("Content/rewards"))
             {
                 var parsed = JsonUtility.FromJson<RewardFileDto>(file.text);
                 if (parsed?.tables == null) { Warn(file); continue; }
-                foreach (var t in parsed.tables) db.RewardTables[t.id] = t;
+                foreach (var t in parsed.tables) db.Put(db.RewardTables, t.id, t, "reward table");
             }
             foreach (var file in Resources.LoadAll<TextAsset>("Content/schedule"))
             {
                 var parsed = JsonUtility.FromJson<ScheduleFileDto>(file.text);
                 if (parsed?.entries == null) { Warn(file); continue; }
                 db.Schedule.AddRange(parsed.entries);
+            }
+            foreach (var file in Resources.LoadAll<TextAsset>("Content/items"))
+            {
+                var parsed = JsonUtility.FromJson<ItemFileDto>(file.text);
+                if (parsed?.items == null) { Warn(file); continue; }
+                foreach (var i in parsed.items) db.Put(db.Items, i.id, i, "item");
+            }
+            foreach (var file in Resources.LoadAll<TextAsset>("Content/packs"))
+            {
+                var parsed = JsonUtility.FromJson<PackThemeFileDto>(file.text);
+                if (parsed?.themes == null) { Warn(file); continue; }
+                foreach (var t in parsed.themes) db.Put(db.PackThemes, t.id, t, "pack theme");
             }
             return db;
         }

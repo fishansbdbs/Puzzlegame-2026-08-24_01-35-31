@@ -97,6 +97,87 @@
           "text": "Onward. I want to use this dental plan on something."
         }
       ]
+    },
+    {
+      "id": "ch05_mid",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Mandatory Fun Cavern. The pizza party is in forty minutes. Attendance is being TRACKED, hero."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We could just... attend? Eat pizza? Rest?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The pizza is a crystal. The party is a performance review. The fun is MANDATORY. Weapons out."
+        }
+      ]
+    },
+    {
+      "id": "ch05_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The wall of the cavern is a diagram. The diagram is looking at you."
+        },
+        {
+          "speaker": "The Org Chart",
+          "portrait": "enemy_boss_org_chart",
+          "side": "right",
+          "text": "WHERE... DO YOU... REPORT?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Nowhere. We're independent."
+        },
+        {
+          "speaker": "The Org Chart",
+          "portrait": "enemy_boss_org_chart",
+          "side": "right",
+          "text": "UNACCEPTABLE. EVERYONE IS A BOX. YOU WILL BE A BOX. THE DEPARTMENT OF DOOM REQUIRES IT."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "There's that name again, hero. They're EVERYWHERE."
+        }
+      ]
+    },
+    {
+      "id": "ch05_preboss",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "I can't believe Ranger Doreen was moonlighting as HR security. I can't believe she whistled at us AGAIN."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "She said the benefits here are excellent."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "They ARE. That's the horrifying part. Now — the corner office. Match the vibes. BEAT the vibes."
+        }
+      ]
     }
   ]
 }

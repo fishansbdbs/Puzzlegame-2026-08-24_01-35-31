@@ -4,6 +4,34 @@
     "title": "The Dungeon of Infinite Meetings",
     "theme": "meetings",
     "blurb": "An ancient dungeon retrofitted with conference rooms. The minotaur takes minutes. The minutes take hours.",
+    "mechanicNote": "Meetings drain your movement time.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 115,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 230,
+        "items": [
+          {
+            "id": "agenda_scroll",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 460,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch14_st01",
@@ -25,7 +53,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "ch14_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -33,7 +61,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "whiteboard_shard",
+              "id": "agenda_scroll",
               "count": 1
             }
           ],
@@ -67,7 +95,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -75,7 +103,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "agenda_scroll",
+              "id": "whiteboard_shard",
               "count": 1
             }
           ],
@@ -103,7 +131,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -111,7 +139,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "whiteboard_shard",
+              "id": "action_item",
               "count": 1
             }
           ],
@@ -145,7 +173,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -187,7 +215,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -233,7 +261,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -241,7 +269,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "whiteboard_shard",
+              "id": "agenda_scroll",
               "count": 1
             }
           ],
@@ -259,29 +287,38 @@
           {
             "enemies": [
               {
-                "enemyId": "whiteboard_elemental",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "projector_specter",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "action_item_swarm",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite",
+          "start_blockers:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2430,
-          "gems": 0,
+          "gold": 3646,
+          "gems": 5,
           "items": [
             {
               "id": "whiteboard_shard",
-              "count": 1
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -311,7 +348,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -319,7 +356,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "whiteboard_shard",
+              "id": "agenda_scroll",
               "count": 1
             }
           ],
@@ -347,7 +384,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -355,7 +392,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "whiteboard_shard",
+              "id": "agenda_scroll",
               "count": 1
             }
           ],
@@ -397,9 +434,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_blockers:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "ch14_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -407,7 +446,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "agenda_scroll",
+              "id": "whiteboard_shard",
               "count": 2
             }
           ],
@@ -451,7 +490,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -501,9 +540,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_blockers:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -529,39 +570,47 @@
           {
             "enemies": [
               {
+                "enemyId": "projector_specter",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
+              },
+              {
                 "enemyId": "standup_gargoyle",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           },
           {
             "enemies": [
               {
-                "enemyId": "calendar_imp",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
+                "enemyId": "boss_org_chart",
+                "hpMult": 2.5,
+                "atkMult": 2.5,
                 "countdownOverride": -1
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 3254,
-          "gems": 0,
+          "gold": 4880,
+          "gems": 5,
           "items": [
             {
-              "id": "whiteboard_shard",
-              "count": 2
+              "id": "action_item",
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -601,7 +650,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -609,7 +658,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "whiteboard_shard",
+              "id": "agenda_scroll",
               "count": 2
             }
           ],
@@ -657,17 +706,19 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_blockers:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch14_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3528,
           "gems": 5,
           "items": [
             {
-              "id": "agenda_scroll",
+              "id": "action_item",
               "count": 2
             }
           ],
@@ -705,7 +756,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -713,7 +764,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "action_item",
+              "id": "agenda_scroll",
               "count": 2
             }
           ],
@@ -755,9 +806,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_blockers:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -809,15 +862,15 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "resolutionsStar": 19,
+        "dialogueBefore": "ch14_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3940,
           "gems": 10,
           "items": [
             {
-              "id": "whiteboard_shard",
+              "id": "agenda_scroll",
               "count": 2
             }
           ],
@@ -867,7 +920,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -875,7 +928,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "action_item",
+              "id": "whiteboard_shard",
               "count": 2
             }
           ],
@@ -935,7 +988,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "resolutionsStar": 24,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -943,7 +996,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "action_item",
+              "id": "whiteboard_shard",
               "count": 3
             }
           ],
@@ -961,55 +1014,38 @@
           {
             "enemies": [
               {
-                "enemyId": "action_item_swarm",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "agenda_zombie",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "calendar_imp",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "projector_specter",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "calendar_imp",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "action_item_swarm",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite",
+          "move_time_minus:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 4351,
-          "gems": 0,
+          "gold": 6527,
+          "gems": 5,
           "items": [
             {
-              "id": "whiteboard_shard",
-              "count": 3
+              "id": "agenda_scroll",
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1053,9 +1089,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "move_time_minus:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1063,7 +1101,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "agenda_scroll",
+              "id": "whiteboard_shard",
               "count": 3
             }
           ],
@@ -1117,7 +1155,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "resolutionsStar": 24,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1125,7 +1163,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "action_item",
+              "id": "whiteboard_shard",
               "count": 3
             }
           ],
@@ -1137,7 +1175,7 @@
         "id": "ch14_st24",
         "stageNumber": 24,
         "name": "EOD Approaches",
-        "kind": "normal",
+        "kind": "story",
         "background": "meetings_c",
         "waves": [
           {
@@ -1175,15 +1213,15 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "resolutionsStar": 21,
+        "dialogueBefore": "ch14_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 4763,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
-              "id": "action_item",
+              "id": "agenda_scroll",
               "count": 3
             }
           ],
@@ -1217,6 +1255,22 @@
           {
             "enemies": [
               {
+                "enemyId": "standup_gargoyle",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "standup_gargoyle",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
                 "enemyId": "boss_recurring",
                 "hpMult": 1,
                 "atkMult": 1,
@@ -1225,9 +1279,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_blockers:1"
+        ],
         "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "resolutionsStar": 25,
         "dialogueBefore": "ch14_boss_before",
         "dialogueAfter": "ch14_boss_after",
         "rewards": {

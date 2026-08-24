@@ -97,6 +97,87 @@
           "text": "Two chapters left, hero. The trail of quotas leads UP. Past the org chart. Past EVERYTHING. To the Spreadsheet Dimension."
         }
       ]
+    },
+    {
+      "id": "ch18_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "By the water cooler, the Eternal Intern reads a rice-paper pamphlet. Their eyes widen, possibly for the first time in millennia."
+        },
+        {
+          "speaker": "Eternal Intern",
+          "portrait": "enemy_intern_phantom",
+          "side": "right",
+          "text": "It says here... \"exposure\" is not... a currency?"
+        },
+        {
+          "speaker": "Fenris",
+          "portrait": "enemy_boss_wolf_rep",
+          "side": "left",
+          "text": "Local ∞ — the Interns' Union. Founding demand: existing counts as experience."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "He's IN the Department of Doom itself. The wolf has no fear. Only bylaws."
+        }
+      ]
+    },
+    {
+      "id": "ch18_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A grinding hum fills the corridor. Confetti drifts from a vent. The confetti was somebody's destiny."
+        },
+        {
+          "speaker": "The Shredder of Fates",
+          "portrait": "enemy_boss_shredder",
+          "side": "right",
+          "text": "FEED ME YOUR FILE. EVERYONE'S FILE ENDS HERE. CROSS-CUT. NO APPEALS."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Our file has twenty chapters of victories in it."
+        },
+        {
+          "speaker": "The Shredder of Fates",
+          "portrait": "enemy_boss_shredder",
+          "side": "right",
+          "text": "THICK FILES ARE MY FAVORITE."
+        }
+      ]
+    },
+    {
+      "id": "ch18_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The stairs to the seventeenth sub-basement. Each step is labeled with a year. The bottom steps have no numbers, only apologies."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Whoever runs the Department is down there. Every clipboard, every queue, every \"please hold\" — it all started with THEM."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Then that's where it ends."
+        }
+      ]
     }
   ]
 }

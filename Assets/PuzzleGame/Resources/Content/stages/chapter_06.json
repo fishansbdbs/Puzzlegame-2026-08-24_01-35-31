@@ -4,6 +4,34 @@
     "title": "The Haunted Suburbs",
     "theme": "suburbs",
     "blurb": "Every house is haunted. Every lawn is perfect. The Homeowners Association demands both.",
+    "mechanicNote": "Poison boards: spores and grievances everywhere.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 75,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 150,
+        "items": [
+          {
+            "id": "ecto_form",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 300,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 2
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch06_st01",
@@ -30,8 +58,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 13,
         "dialogueBefore": "ch06_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -39,7 +67,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "casserole_dish",
+              "id": "ecto_form",
               "count": 1
             }
           ],
@@ -72,8 +100,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -114,8 +142,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -123,7 +151,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "lawn_trophy",
+              "id": "casserole_dish",
               "count": 1
             }
           ],
@@ -150,8 +178,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -159,7 +187,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "casserole_dish",
+              "id": "ecto_form",
               "count": 1
             }
           ],
@@ -196,8 +224,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -205,7 +233,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "lawn_trophy",
+              "id": "ecto_form",
               "count": 1
             }
           ],
@@ -238,8 +266,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -247,7 +275,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "lawn_trophy",
+              "id": "ecto_form",
               "count": 1
             }
           ],
@@ -265,45 +293,38 @@
           {
             "enemies": [
               {
-                "enemyId": "gnome_patrol",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "lawn_ghost",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "casserole_specter",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
                 "enemyId": "mailbox_mimic",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
+        "modifiers": [
+          "elite",
+          "start_poison:3"
+        ],
+        "hpThresholdStar": 0.4,
         "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1240,
-          "gems": 0,
+          "gold": 1860,
+          "gems": 5,
           "items": [
             {
-              "id": "ecto_form",
-              "count": 1
+              "id": "lawn_trophy",
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -325,9 +346,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "modifiers": [
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -383,9 +406,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "modifiers": [
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -393,7 +418,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "ecto_form",
+              "id": "lawn_trophy",
               "count": 1
             }
           ],
@@ -436,8 +461,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 19,
         "dialogueBefore": "ch06_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -445,7 +470,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "casserole_dish",
+              "id": "ecto_form",
               "count": 2
             }
           ],
@@ -487,9 +512,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "modifiers": [
+          "start_poison:3"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -497,7 +524,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "ecto_form",
+              "id": "casserole_dish",
               "count": 2
             }
           ],
@@ -545,9 +572,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "start_poison:3"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -555,7 +584,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "ecto_form",
+              "id": "casserole_dish",
               "count": 2
             }
           ],
@@ -573,45 +602,38 @@
           {
             "enemies": [
               {
-                "enemyId": "lawn_ghost",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "hedge_wraith",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "casserole_specter",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "mailbox_mimic",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "lawn_ghost",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
+        "modifiers": [
+          "elite",
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.45,
         "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1660,
-          "gems": 0,
+          "gold": 2490,
+          "gems": 5,
           "items": [
             {
               "id": "casserole_dish",
-              "count": 2
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -650,8 +672,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -659,7 +681,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "lawn_trophy",
+              "id": "casserole_dish",
               "count": 2
             }
           ],
@@ -701,10 +723,12 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_poison:3"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch06_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 1800,
@@ -754,8 +778,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -763,7 +787,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "casserole_dish",
+              "id": "ecto_form",
               "count": 2
             }
           ],
@@ -799,9 +823,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "modifiers": [
+          "start_poison:3"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -852,16 +878,16 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
+        "dialogueBefore": "ch06_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2010,
           "gems": 10,
           "items": [
             {
-              "id": "casserole_dish",
+              "id": "ecto_form",
               "count": 2
             }
           ],
@@ -909,9 +935,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "modifiers": [
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -972,8 +1000,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 26,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -981,7 +1009,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "lawn_trophy",
+              "id": "ecto_form",
               "count": 3
             }
           ],
@@ -999,55 +1027,38 @@
           {
             "enemies": [
               {
-                "enemyId": "hedge_wraith",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "hedge_wraith",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "casserole_specter",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "mailbox_mimic",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "gnome_patrol",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "sprinkler_spirit",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "modifiers": [
+          "elite",
+          "start_poison:3"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2220,
-          "gems": 0,
+          "gold": 3330,
+          "gems": 5,
           "items": [
             {
-              "id": "ecto_form",
-              "count": 3
+              "id": "lawn_trophy",
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1085,9 +1096,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "start_poison:3"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1143,9 +1156,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "start_poison:2"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1165,7 +1180,7 @@
         "id": "ch06_st24",
         "stageNumber": 24,
         "name": "Homeowners' Eternal Dues",
-        "kind": "normal",
+        "kind": "story",
         "background": "suburbs_c",
         "waves": [
           {
@@ -1202,13 +1217,13 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 23,
+        "dialogueBefore": "ch06_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2430,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
               "id": "lawn_trophy",
@@ -1253,9 +1268,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "modifiers": [
+          "start_poison:3"
+        ],
+        "hpThresholdStar": 0.35,
+        "resolutionsStar": 23,
         "dialogueBefore": "ch06_boss_before",
         "dialogueAfter": "ch06_boss_after",
         "rewards": {
@@ -1263,7 +1280,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "ecto_form",
+              "id": "casserole_dish",
               "count": 3
             }
           ],

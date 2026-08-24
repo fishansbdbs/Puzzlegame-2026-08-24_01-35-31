@@ -4,6 +4,34 @@
     "title": "Crystal Cavern HR",
     "theme": "crystalhr",
     "blurb": "A cavern of living gemstones running the kingdom's Human Resources. None of them are human. All of them are resources.",
+    "mechanicNote": "Binds and screening locks.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 70,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 140,
+        "items": [
+          {
+            "id": "facet_file",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 280,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 2
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch05_st01",
@@ -30,8 +58,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 13,
         "dialogueBefore": "ch05_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -39,7 +67,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "morale_shard",
+              "id": "onboarding_geode",
               "count": 1
             }
           ],
@@ -72,8 +100,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -81,7 +109,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "onboarding_geode",
+              "id": "morale_shard",
               "count": 1
             }
           ],
@@ -114,8 +142,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -123,7 +151,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "onboarding_geode",
+              "id": "facet_file",
               "count": 1
             }
           ],
@@ -160,8 +188,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -169,7 +197,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "onboarding_geode",
+              "id": "morale_shard",
               "count": 1
             }
           ],
@@ -202,8 +230,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -211,7 +239,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "facet_file",
+              "id": "onboarding_geode",
               "count": 1
             }
           ],
@@ -254,8 +282,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -281,45 +309,38 @@
           {
             "enemies": [
               {
-                "enemyId": "stalag_mite",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
                 "enemyId": "onboarding_bat",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "quartz_screener",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "crystal_clerk",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
+        "modifiers": [
+          "elite",
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.45,
         "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1091,
-          "gems": 0,
+          "gold": 1637,
+          "gems": 5,
           "items": [
             {
               "id": "facet_file",
-              "count": 1
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -357,9 +378,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -393,9 +416,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -403,7 +428,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "facet_file",
+              "id": "onboarding_geode",
               "count": 1
             }
           ],
@@ -446,8 +471,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 19,
         "dialogueBefore": "ch05_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -455,7 +480,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "morale_shard",
+              "id": "onboarding_geode",
               "count": 2
             }
           ],
@@ -498,8 +523,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -507,7 +532,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "morale_shard",
+              "id": "facet_file",
               "count": 2
             }
           ],
@@ -549,9 +574,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -559,7 +586,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "facet_file",
+              "id": "onboarding_geode",
               "count": 2
             }
           ],
@@ -578,50 +605,36 @@
             "enemies": [
               {
                 "enemyId": "onboarding_bat",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "crystal_clerk",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "stalag_mite",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "crystal_clerk",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "onboarding_bat",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
+        "modifiers": [
+          "elite"
+        ],
+        "hpThresholdStar": 0.45,
         "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1461,
-          "gems": 0,
+          "gold": 2191,
+          "gems": 5,
           "items": [
             {
               "id": "onboarding_geode",
-              "count": 2
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -654,8 +667,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -663,7 +676,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "morale_shard",
+              "id": "facet_file",
               "count": 2
             }
           ],
@@ -706,9 +719,9 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch05_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 1584,
@@ -757,9 +770,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -767,7 +782,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "facet_file",
+              "id": "morale_shard",
               "count": 2
             }
           ],
@@ -815,9 +830,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -825,7 +842,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "facet_file",
+              "id": "morale_shard",
               "count": 2
             }
           ],
@@ -867,17 +884,19 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
+        "dialogueBefore": "ch05_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 1769,
           "gems": 10,
           "items": [
             {
-              "id": "facet_file",
+              "id": "onboarding_geode",
               "count": 2
             }
           ],
@@ -942,8 +961,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 21,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 25,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -951,7 +970,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "onboarding_geode",
+              "id": "facet_file",
               "count": 2
             }
           ],
@@ -1015,9 +1034,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 26,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1025,7 +1046,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "facet_file",
+              "id": "onboarding_geode",
               "count": 3
             }
           ],
@@ -1043,51 +1064,48 @@
           {
             "enemies": [
               {
-                "enemyId": "stalag_mite",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "morale_moth",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "onboarding_bat",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "quartz_screener",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           },
           {
             "enemies": [
               {
-                "enemyId": "morale_moth",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "gem_recruiter",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
+                "enemyId": "boss_ranger_doreen",
+                "hpMult": 2,
+                "atkMult": 2,
                 "countdownOverride": -1
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "elite",
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 25,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1954,
-          "gems": 0,
+          "gold": 2930,
+          "gems": 5,
           "items": [
             {
-              "id": "facet_file",
-              "count": 3
+              "id": "morale_shard",
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1131,9 +1149,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1141,7 +1161,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "facet_file",
+              "id": "morale_shard",
               "count": 3
             }
           ],
@@ -1183,9 +1203,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1193,7 +1215,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "facet_file",
+              "id": "morale_shard",
               "count": 3
             }
           ],
@@ -1205,7 +1227,7 @@
         "id": "ch05_st24",
         "stageNumber": 24,
         "name": "Quarterly Quartz",
-        "kind": "normal",
+        "kind": "story",
         "background": "crystalhr_c",
         "waves": [
           {
@@ -1258,16 +1280,16 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 23,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 27,
+        "dialogueBefore": "ch05_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2138,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
-              "id": "morale_shard",
+              "id": "facet_file",
               "count": 3
             }
           ],
@@ -1309,9 +1331,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "modifiers": [
+          "healing_reduced"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 23,
         "dialogueBefore": "ch05_boss_before",
         "dialogueAfter": "ch05_boss_after",
         "rewards": {
@@ -1319,7 +1343,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "facet_file",
+              "id": "onboarding_geode",
               "count": 3
             }
           ],

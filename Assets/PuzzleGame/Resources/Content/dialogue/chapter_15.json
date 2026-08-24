@@ -103,6 +103,81 @@
           "text": "Don't get cozy. Our next stop is... hmm. The travel form just says \"HELL (CUSTOMER SERVICE DIVISION)\". Neat!"
         }
       ]
+    },
+    {
+      "id": "ch15_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The Rice Cake Commons. A tenant meeting is in session. The moon rabbits pound mochi and grievances in equal measure."
+        },
+        {
+          "speaker": "Moon Rabbit Elder",
+          "portrait": "enemy_moon_rabbit",
+          "side": "right",
+          "text": "The wolf sent moon-mail. He says: \"Withhold the rent. Hold the line. Solidarity, even in low gravity.\""
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Fenris organized the MOON by POST. I want to study him. I want to BE him."
+        }
+      ]
+    },
+    {
+      "id": "ch15_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "An old light flickers on across the crater. A face appears in it — tired, kind, luminous."
+        },
+        {
+          "speaker": "Man in the Moon",
+          "portrait": "enemy_boss_man_in_moon",
+          "side": "right",
+          "text": "I ran this rock for ten thousand years. Soft light. Free tides. Then I retire ONE eon and someone installs a LANDLORD?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We're here to fix that."
+        },
+        {
+          "speaker": "Man in the Moon",
+          "portrait": "enemy_boss_man_in_moon",
+          "side": "right",
+          "text": "Then prove it, young light. Old moon rules: we spar first, THEN I believe you."
+        }
+      ]
+    },
+    {
+      "id": "ch15_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The penthouse crater elevator. The buttons read: LOBBY, MEZZANINE, DARK SIDE, and PROFIT."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Everything the rabbits pounded, he taxed. Everything the tides moved, he metered. Tonight the moon goes BACK to the moon, hero."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Press PROFIT."
+        }
+      ]
     }
   ]
 }

@@ -249,6 +249,12 @@
           "desc": "Reduces move time by 2 seconds.",
           "type": "timerDown",
           "amount": 2
+        },
+        {
+          "name": "Call to Quorum",
+          "desc": "Summons a spectral board member to the fight.",
+          "type": "summon",
+          "count": 1
         }
       ]
     }

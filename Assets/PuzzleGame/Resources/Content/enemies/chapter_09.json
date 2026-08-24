@@ -249,6 +249,12 @@
           "type": "convert",
           "count": 3,
           "color": "fire"
+        },
+        {
+          "name": "Geothermal Rewards Program",
+          "desc": "Absorbs Fire damage this rotation. Loyalty pays.",
+          "type": "absorb",
+          "color": "fire"
         }
       ]
     }

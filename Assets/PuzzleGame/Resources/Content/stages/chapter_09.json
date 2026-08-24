@@ -4,6 +4,34 @@
     "title": "The Volcano Spa & Resort",
     "theme": "volcanospa",
     "blurb": "Five stars. Zero survivors of the deep-tissue massage. The lava pool is \"invigorating\".",
+    "mechanicNote": "Fire conversion and enemy self-healing.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 90,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 180,
+        "items": [
+          {
+            "id": "spa_voucher",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 360,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 2
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch09_st01",
@@ -25,7 +53,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "ch09_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -33,7 +61,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "pumice_stone",
+              "id": "spa_voucher",
               "count": 1
             }
           ],
@@ -61,7 +89,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -69,7 +97,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "cucumber_slice",
+              "id": "pumice_stone",
               "count": 1
             }
           ],
@@ -103,7 +131,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -111,7 +139,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "spa_voucher",
+              "id": "cucumber_slice",
               "count": 1
             }
           ],
@@ -155,7 +183,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -163,7 +191,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "spa_voucher",
+              "id": "pumice_stone",
               "count": 1
             }
           ],
@@ -191,7 +219,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -199,7 +227,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "spa_voucher",
+              "id": "cucumber_slice",
               "count": 1
             }
           ],
@@ -237,7 +265,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -263,51 +291,38 @@
           {
             "enemies": [
               {
-                "enemyId": "mud_mask_golem",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "masseuse_magmite",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "sauna_imp",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "cucumber_horror",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "cucumber_horror",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "masseuse_magmite",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite",
+          "element_bonus:water"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1686,
-          "gems": 0,
+          "gold": 2530,
+          "gems": 5,
           "items": [
             {
-              "id": "spa_voucher",
-              "count": 1
+              "id": "pumice_stone",
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -347,7 +362,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -399,7 +414,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -407,7 +422,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "pumice_stone",
+              "id": "cucumber_slice",
               "count": 1
             }
           ],
@@ -449,9 +464,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "ch09_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -459,7 +476,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "spa_voucher",
+              "id": "cucumber_slice",
               "count": 2
             }
           ],
@@ -509,7 +526,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -517,7 +534,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "cucumber_slice",
+              "id": "spa_voucher",
               "count": 2
             }
           ],
@@ -561,7 +578,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -569,7 +586,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "cucumber_slice",
+              "id": "pumice_stone",
               "count": 2
             }
           ],
@@ -587,45 +604,38 @@
           {
             "enemies": [
               {
-                "enemyId": "sauna_imp",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
                 "enemyId": "mud_mask_golem",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "cucumber_horror",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "sauna_imp",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite",
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2258,
-          "gems": 0,
+          "gold": 3386,
+          "gems": 5,
           "items": [
             {
-              "id": "cucumber_slice",
-              "count": 2
+              "id": "pumice_stone",
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -659,7 +669,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -667,7 +677,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "pumice_stone",
+              "id": "cucumber_slice",
               "count": 2
             }
           ],
@@ -709,10 +719,12 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "element_bonus:water"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch09_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2448,
@@ -763,7 +775,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -771,7 +783,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "pumice_stone",
+              "id": "cucumber_slice",
               "count": 2
             }
           ],
@@ -809,7 +821,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -859,17 +871,19 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "element_bonus:water"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "resolutionsStar": 19,
+        "dialogueBefore": "ch09_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2734,
           "gems": 10,
           "items": [
             {
-              "id": "spa_voucher",
+              "id": "cucumber_slice",
               "count": 2
             }
           ],
@@ -911,9 +925,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -921,7 +937,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "pumice_stone",
+              "id": "cucumber_slice",
               "count": 2
             }
           ],
@@ -963,9 +979,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "element_bonus:water"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -973,7 +991,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "spa_voucher",
+              "id": "pumice_stone",
               "count": 3
             }
           ],
@@ -991,45 +1009,37 @@
           {
             "enemies": [
               {
-                "enemyId": "zen_salamander",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "masseuse_magmite",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "cucumber_horror",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "mud_mask_golem",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "zen_salamander",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 3019,
-          "gems": 0,
+          "gold": 4529,
+          "gems": 5,
           "items": [
             {
-              "id": "cucumber_slice",
-              "count": 3
+              "id": "spa_voucher",
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1091,7 +1101,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "resolutionsStar": 24,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1153,7 +1163,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "resolutionsStar": 24,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1173,7 +1183,7 @@
         "id": "ch09_st24",
         "stageNumber": 24,
         "name": "Minibar of the Ancients",
-        "kind": "normal",
+        "kind": "story",
         "background": "volcanospa_c",
         "waves": [
           {
@@ -1227,15 +1237,15 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 23,
-        "dialogueBefore": "",
+        "resolutionsStar": 25,
+        "dialogueBefore": "ch09_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3305,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
-              "id": "pumice_stone",
+              "id": "cucumber_slice",
               "count": 3
             }
           ],
@@ -1277,9 +1287,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "element_bonus:water"
+        ],
         "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "resolutionsStar": 21,
         "dialogueBefore": "ch09_boss_before",
         "dialogueAfter": "ch09_boss_after",
         "rewards": {
@@ -1287,7 +1299,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "spa_voucher",
+              "id": "pumice_stone",
               "count": 3
             }
           ],

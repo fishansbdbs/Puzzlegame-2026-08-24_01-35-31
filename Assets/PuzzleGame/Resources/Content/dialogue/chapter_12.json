@@ -97,6 +97,81 @@
           "text": "Prettiest snow I've ever seen."
         }
       ]
+    },
+    {
+      "id": "ch12_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "On the slopes below, a green shape in seven scarves carves elegant turns. A tie flutters from each scarf."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Is that... GERALD? On VACATION?"
+        },
+        {
+          "speaker": "Gerald (distant)",
+          "portrait": "enemy_boss_gerald",
+          "side": "right",
+          "text": "PTO IS A RIGHT, NOT A GIFT! Also I'm expensing this! WHEEEEE—"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "I'm glad he's doing well. I'm also afraid."
+        }
+      ]
+    },
+    {
+      "id": "ch12_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Eight arms surface from the fjord. Each holds a pen. Each pen is uncapped. This is a closing."
+        },
+        {
+          "speaker": "Karkinos",
+          "portrait": "enemy_boss_closer_kraken",
+          "side": "right",
+          "text": "I sense hesitation. Hesitation is just a signature that hasn't happened yet."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "GUARD YOUR INITIALS, HERO."
+        }
+      ]
+    },
+    {
+      "id": "ch12_preboss",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Foreman Flintbeard was here selling his FORGE as a timeshare. His own forge! Fractional ownership of an anvil!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Did anyone buy in?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Fourteen penguins and, devastatingly, me. We close on Tuesday. ANYWAY — Permafrost's office. Mittens on. Sign NOTHING."
+        }
+      ]
     }
   ]
 }

@@ -244,6 +244,12 @@
           "type": "convert",
           "count": 3,
           "color": "dark"
+        },
+        {
+          "name": "Market Manipulation",
+          "desc": "Combo shield: only 4+ combos pierce his portfolio.",
+          "type": "comboShield",
+          "count": 4
         }
       ]
     }

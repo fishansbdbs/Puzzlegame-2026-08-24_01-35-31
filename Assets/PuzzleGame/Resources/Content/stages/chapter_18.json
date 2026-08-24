@@ -4,6 +4,34 @@
     "title": "Bureaucracy Prime",
     "theme": "bureauprime",
     "blurb": "The headquarters of the Department of Doom. A dimension made of hallways, waiting rooms, and load-bearing filing cabinets.",
+    "mechanicNote": "Full bureaucratic suite: locks and binds.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 135,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 270,
+        "items": [
+          {
+            "id": "prime_form",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 540,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch18_st01",
@@ -30,8 +58,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
         "dialogueBefore": "ch18_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -66,8 +94,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 10,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -102,8 +130,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 10,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -111,7 +139,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "carbon_copy",
+              "id": "prime_form",
               "count": 1
             }
           ],
@@ -144,8 +172,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -202,8 +230,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -211,7 +239,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "prime_form",
+              "id": "doom_stapler",
               "count": 1
             }
           ],
@@ -254,8 +282,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -263,7 +291,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "doom_stapler",
+              "id": "prime_form",
               "count": 1
             }
           ],
@@ -281,29 +309,37 @@
           {
             "enemies": [
               {
-                "enemyId": "notary_gorgon",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "binder_beast",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "intern_phantom",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "modifiers": [
+          "elite"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 3026,
-          "gems": 0,
+          "gold": 4538,
+          "gems": 5,
           "items": [
             {
-              "id": "doom_stapler",
-              "count": 1
+              "id": "prime_form",
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -335,9 +371,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -345,7 +383,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "prime_form",
+              "id": "carbon_copy",
               "count": 1
             }
           ],
@@ -371,9 +409,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -381,7 +421,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "prime_form",
+              "id": "doom_stapler",
               "count": 1
             }
           ],
@@ -424,8 +464,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 16,
         "dialogueBefore": "ch18_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -433,7 +473,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "carbon_copy",
+              "id": "prime_form",
               "count": 2
             }
           ],
@@ -476,8 +516,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -522,8 +562,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -531,7 +571,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "carbon_copy",
+              "id": "doom_stapler",
               "count": 2
             }
           ],
@@ -550,44 +590,47 @@
             "enemies": [
               {
                 "enemyId": "form_elemental",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "rubber_stamp_ogre",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "form_elemental",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           },
           {
             "enemies": [
               {
-                "enemyId": "form_elemental",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
+                "enemyId": "boss_registrar",
+                "hpMult": 1.7,
+                "atkMult": 1.7,
                 "countdownOverride": -1
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "elite",
+          "start_blockers:1"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 4050,
-          "gems": 0,
+          "gold": 6076,
+          "gems": 5,
           "items": [
             {
               "id": "doom_stapler",
-              "count": 2
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -632,8 +675,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -641,7 +684,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "carbon_copy",
+              "id": "doom_stapler",
               "count": 2
             }
           ],
@@ -684,16 +727,16 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
+        "dialogueBefore": "ch18_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 4392,
           "gems": 5,
           "items": [
             {
-              "id": "doom_stapler",
+              "id": "carbon_copy",
               "count": 2
             }
           ],
@@ -742,8 +785,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -787,9 +830,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "modifiers": [
+          "start_blockers:1"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -797,7 +842,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "prime_form",
+              "id": "carbon_copy",
               "count": 2
             }
           ],
@@ -839,17 +884,19 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch18_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 4904,
           "gems": 10,
           "items": [
             {
-              "id": "prime_form",
+              "id": "doom_stapler",
               "count": 2
             }
           ],
@@ -886,8 +933,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -895,7 +942,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "carbon_copy",
+              "id": "doom_stapler",
               "count": 2
             }
           ],
@@ -954,8 +1001,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 23,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -982,44 +1029,37 @@
             "enemies": [
               {
                 "enemyId": "rubber_stamp_ogre",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "notary_gorgon",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
                 "enemyId": "red_tape_serpent",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "elite",
+          "start_blockers:1"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 5417,
-          "gems": 0,
+          "gold": 8125,
+          "gems": 5,
           "items": [
             {
-              "id": "doom_stapler",
-              "count": 3
+              "id": "prime_form",
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1058,8 +1098,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1115,9 +1155,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1125,7 +1167,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "doom_stapler",
+              "id": "prime_form",
               "count": 3
             }
           ],
@@ -1137,7 +1179,7 @@
         "id": "ch18_st24",
         "stageNumber": 24,
         "name": "Process Improvement Pit",
-        "kind": "normal",
+        "kind": "story",
         "background": "bureauprime_c",
         "waves": [
           {
@@ -1167,17 +1209,19 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch18_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 5929,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
-              "id": "prime_form",
+              "id": "doom_stapler",
               "count": 3
             }
           ],
@@ -1211,6 +1255,22 @@
           {
             "enemies": [
               {
+                "enemyId": "notary_gorgon",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "notary_gorgon",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
                 "enemyId": "boss_undersecretary",
                 "hpMult": 1,
                 "atkMult": 1,
@@ -1219,9 +1279,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 24,
         "dialogueBefore": "ch18_boss_before",
         "dialogueAfter": "ch18_boss_after",
         "rewards": {
@@ -1229,7 +1291,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "carbon_copy",
+              "id": "prime_form",
               "count": 3
             }
           ],

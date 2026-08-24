@@ -97,6 +97,93 @@
           "text": "On to the source, hero. The Department of Doom itself. Bring EVERY form we own."
         }
       ]
+    },
+    {
+      "id": "ch17_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "At the front desk, a familiar knight scans membership cards. His armor bears no logos. It looks... naked."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "The sponsors dropped me. CrunchQuest. PermitPal. Even the granola people's granola people. Turns out I was never... the product."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "You were never the product, Prestige. You were just a guy who could have been decent."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "...could have?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Could still."
+        }
+      ]
+    },
+    {
+      "id": "ch17_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The free-weights nebula parts. Something primordial racks its dumbbells — moons, mostly — and turns."
+        },
+        {
+          "speaker": "Titan of Gainz",
+          "portrait": "enemy_boss_gainz_titan",
+          "side": "right",
+          "text": "YOU LIFT?"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Emotionally."
+        },
+        {
+          "speaker": "Titan of Gainz",
+          "portrait": "enemy_boss_gainz_titan",
+          "side": "right",
+          "text": "RESPECT. NOW DIE ANYWAY. IT'S ARM DAY."
+        }
+      ]
+    },
+    {
+      "id": "ch17_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The contract vault. A voice memo from Chad Emberstorm plays on loop: \"You got this. Cancel my membership. Feel the burn. The LEGAL burn.\""
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "For Chad. For the Guild treasury. For everyone who ever tried to cancel anything."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "One more rep."
+        }
+      ]
     }
   ]
 }

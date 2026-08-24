@@ -254,6 +254,12 @@
           "desc": "Reduces move time by 2 seconds.",
           "type": "timerDown",
           "amount": 2
+        },
+        {
+          "name": "Take a Number",
+          "desc": "Combo shield: 3+ combos required to reach the window.",
+          "type": "comboShield",
+          "count": 3
         }
       ]
     }

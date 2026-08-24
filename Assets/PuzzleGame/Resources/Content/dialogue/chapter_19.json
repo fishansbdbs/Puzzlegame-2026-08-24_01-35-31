@@ -97,6 +97,87 @@
           "text": "One chapter left. Whoever runs ALL of this... is expecting us."
         }
       ]
+    },
+    {
+      "id": "ch19_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Row 7. The party finds a highlighted range: HERO, PIP, PARTY(3). Formula: =JOURNEY(A1:NOW())."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "It's us, hero. Our whole adventure, calculated. Look — chapter one is just \"=SLIME(1)\". We were so young."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "What's the formula outputting now?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "#GROWING. It's not an error, hero. It's a compliment."
+        }
+      ]
+    },
+    {
+      "id": "ch19_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The lights die. In the darkness, a soft, terrible question forms."
+        },
+        {
+          "speaker": "Ghost of Unsaved Work",
+          "portrait": "enemy_boss_autosave",
+          "side": "right",
+          "text": "did you save"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "WE SAVE CONSTANTLY. WE SAVE AFTER EVERY STAGE. TELL IT, HERO."
+        },
+        {
+          "speaker": "Ghost of Unsaved Work",
+          "portrait": "enemy_boss_autosave",
+          "side": "right",
+          "text": "that is what they all believed"
+        }
+      ]
+    },
+    {
+      "id": "ch19_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The formula bar stretches over the horizon, glowing with the First Formula. Beneath it, a sticky note in Pip's handwriting: \"Almost finale. Box time soon. — P.\""
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Past-me strikes again! She KNEW, hero. Whatever's in that box, it matters for what comes next."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "One dimension at a time. First: the math."
+        }
+      ]
     }
   ]
 }

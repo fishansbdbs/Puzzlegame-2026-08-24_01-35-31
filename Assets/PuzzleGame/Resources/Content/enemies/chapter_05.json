@@ -244,6 +244,12 @@
           "type": "convert",
           "count": 3,
           "color": "light"
+        },
+        {
+          "name": "Vibe Threshold",
+          "desc": "Combo shield: 3+ combos required. Match the energy.",
+          "type": "comboShield",
+          "count": 3
         }
       ]
     }

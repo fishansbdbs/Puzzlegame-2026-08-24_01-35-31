@@ -5,7 +5,7 @@
       "name": "Meadow Veterans",
       "kind": "featured",
       "desc": "Sir Reginald and Grandpa Oakbeard: the frontline that never dries out and never hurries.",
-      "packArt": "pack_feat_meadow_veterans",
+      "packArt": "pack_standard",
       "featured": [
         "water_reginald",
         "nature_oakbeard"
@@ -31,7 +31,7 @@
       "name": "Disco Dawn",
       "kind": "featured",
       "desc": "Disco Oracle Yolanda saw this banner coming. It was, of course, a Friday.",
-      "packArt": "pack_feat_disco_dawn",
+      "packArt": "pack_standard",
       "featured": [
         "light_yolanda",
         "fire_cindra"
@@ -57,7 +57,7 @@
       "name": "Two Swords, One Banner",
       "kind": "featured",
       "desc": "Edgelord Kevin II and Admiral Bathtub. One broods. One floats. Both carry.",
-      "packArt": "pack_feat_two_swords",
+      "packArt": "pack_standard",
       "featured": [
         "dark_kevin2",
         "water_bathtub"
@@ -83,7 +83,7 @@
       "name": "Garden Party (Armed)",
       "kind": "featured",
       "desc": "Barbara Thornwood and Queen Cindra host. RSVP is mandatory and so is the violence.",
-      "packArt": "pack_feat_garden_party",
+      "packArt": "pack_standard",
       "featured": [
         "nature_barbara",
         "fire_cindra"
@@ -109,7 +109,7 @@
       "name": "Midwinter Keys",
       "kind": "featured",
       "desc": "Saint Brightbeard finds your keys, your hope, and the featured 5★ slot.",
-      "packArt": "pack_feat_midwinter_keys",
+      "packArt": "pack_standard",
       "featured": [
         "light_brightbeard",
         "dark_bedtime"
@@ -135,7 +135,7 @@
       "name": "New Year, New Gains",
       "kind": "featured",
       "desc": "Chad Emberstorm's resolution: everyone gets swole. Including you. Especially you.",
-      "packArt": "pack_feat_new_year_gains",
+      "packArt": "pack_standard",
       "featured": [
         "fire_chad",
         "water_reginald"
@@ -161,7 +161,7 @@
       "name": "Nap Appreciation Week",
       "kind": "featured",
       "desc": "Baron Von Bedtime declares a realm-wide lie-down. Attendance horizontal.",
-      "packArt": "pack_feat_nap_appreciation",
+      "packArt": "pack_standard",
       "featured": [
         "dark_bedtime",
         "nature_oakbeard"
@@ -187,7 +187,7 @@
       "name": "Spring Tide",
       "kind": "featured",
       "desc": "Admiral Bathtub leads the spring flotilla. All ducks on deck.",
-      "packArt": "pack_feat_spring_tide",
+      "packArt": "pack_standard",
       "featured": [
         "water_bathtub",
         "nature_barbara"
@@ -213,7 +213,7 @@
       "name": "A Very Royal Banner",
       "kind": "featured",
       "desc": "Queen Cindra and Baron Von Bedtime. Two crowns, zero shared agenda.",
-      "packArt": "pack_feat_double_royalty",
+      "packArt": "pack_standard",
       "featured": [
         "fire_cindra",
         "dark_bedtime"
@@ -239,7 +239,7 @@
       "name": "Lights Out",
       "kind": "featured",
       "desc": "Yolanda and Kevin II: the brightest light, the edgiest dark, one confusing playlist.",
-      "packArt": "pack_feat_lights_out",
+      "packArt": "pack_standard",
       "featured": [
         "light_yolanda",
         "dark_kevin2"
@@ -265,7 +265,7 @@
       "name": "Old Growth Festival",
       "kind": "featured",
       "desc": "Grandpa Oakbeard's birthday (est. age: 4,000). Gifts accepted in summons.",
-      "packArt": "pack_feat_old_growth",
+      "packArt": "pack_standard",
       "featured": [
         "nature_oakbeard",
         "light_brightbeard"
@@ -291,7 +291,7 @@
       "name": "Rites of the Order of Moist",
       "kind": "featured",
       "desc": "Sir Reginald's knighting anniversary. The ceremony is damp and DEEPLY moving.",
-      "packArt": "pack_feat_moist_order",
+      "packArt": "pack_standard",
       "featured": [
         "water_reginald",
         "light_brightbeard"
@@ -317,7 +317,7 @@
       "name": "Guild of Gains Recruitment",
       "kind": "featured",
       "desc": "Fire-forward fitness fanatics. Cardio optional, courage mandatory.",
-      "packArt": "pack_fac_guild_gains",
+      "packArt": "pack_fire",
       "featured": [
         "fire_chad"
       ],
@@ -344,7 +344,7 @@
       "name": "Order of Moist Enlistment",
       "kind": "featured",
       "desc": "Take the damp vow. Towels forbidden.",
-      "packArt": "pack_fac_order_moist",
+      "packArt": "pack_water",
       "featured": [
         "water_reginald"
       ],
@@ -371,7 +371,7 @@
       "name": "Root Authority Hiring Drive",
       "kind": "featured",
       "desc": "The forest is unionizing and it needs organizers.",
-      "packArt": "pack_fac_root_authority",
+      "packArt": "pack_nature",
       "featured": [
         "nature_barbara"
       ],
@@ -398,7 +398,7 @@
       "name": "Bright Bureau Open House",
       "kind": "featured",
       "desc": "The department of Light. Lost items found while you wait.",
-      "packArt": "pack_fac_bright_bureau",
+      "packArt": "pack_light",
       "featured": [
         "light_brightbeard"
       ],
@@ -425,7 +425,7 @@
       "name": "Nap Dynasty Census",
       "kind": "featured",
       "desc": "The sleepiest royal line in history is counting subjects. Slowly.",
-      "packArt": "pack_fac_nap_dynasty",
+      "packArt": "pack_dark",
       "featured": [
         "dark_bedtime"
       ],
@@ -452,7 +452,7 @@
       "name": "Glimmerdale Gather-In: Third Rotation",
       "kind": "gatherIn",
       "desc": "The steps return with Barbara Thornwood. Final step guarantees a 5★.",
-      "packArt": "pack_gatherin_glimmer_r3",
+      "packArt": "pack_gatherin",
       "featured": [
         "nature_barbara"
       ],
@@ -518,7 +518,7 @@
       "name": "Glimmerdale Gather-In: Fourth Rotation",
       "kind": "gatherIn",
       "desc": "Rotation four guarantees the featured 5★: Disco Oracle Yolanda.",
-      "packArt": "pack_gatherin_glimmer_r4",
+      "packArt": "pack_gatherin",
       "featured": [
         "light_yolanda"
       ],
@@ -584,7 +584,7 @@
       "name": "Glimmerdale Gather-In: Fifth Rotation",
       "kind": "gatherIn",
       "desc": "Rotation five features Chad Emberstorm. The steps ARE the workout.",
-      "packArt": "pack_gatherin_glimmer_r5",
+      "packArt": "pack_gatherin",
       "featured": [
         "fire_chad"
       ],
@@ -650,7 +650,7 @@
       "name": "Glimmerdale Gather-In: Sixth Rotation",
       "kind": "gatherIn",
       "desc": "Rotation six guarantees the featured 5★: Edgelord Kevin II. He asked us to say it louder.",
-      "packArt": "pack_gatherin_glimmer_r6",
+      "packArt": "pack_gatherin",
       "featured": [
         "dark_kevin2"
       ],
@@ -716,7 +716,7 @@
       "name": "Object Lesson Step-Up",
       "kind": "stepUp",
       "desc": "Sentient objects only: rocks, cups, socks, stoves. They have feelings AND stat lines.",
-      "packArt": "pack_stepup_object_lesson",
+      "packArt": "pack_comedy",
       "featured": [],
       "singleCost": 150,
       "multiCost": 1500,
@@ -762,7 +762,7 @@
       "name": "Union Drive Step-Up",
       "kind": "stepUp",
       "desc": "Solidarity summons. Union members at negotiated rates.",
-      "packArt": "pack_stepup_union_drive",
+      "packArt": "pack_comedy",
       "featured": [],
       "singleCost": 150,
       "multiCost": 1500,
@@ -809,7 +809,7 @@
       "name": "Royal Treatment Step-Up",
       "kind": "stepUp",
       "desc": "Royalty and Knights at escalating pomp. Trumpets included at step 3.",
-      "packArt": "pack_stepup_royal_treatment",
+      "packArt": "pack_anniversary",
       "featured": [
         "fire_cindra"
       ],
@@ -858,7 +858,7 @@
       "name": "The Spooky Season Banner",
       "kind": "featured",
       "desc": "Dark and Mystery units at their most powerful. The Ominous Sock is watching.",
-      "packArt": "pack_seasonal_spooky",
+      "packArt": "pack_dark",
       "featured": [
         "dark_bedtime",
         "dark_kevin2"
@@ -889,7 +889,7 @@
       "name": "The Great Harvest Banner",
       "kind": "featured",
       "desc": "Nature celebrates the harvest. The Aggressive Shrub celebrates aggressively.",
-      "packArt": "pack_seasonal_harvest",
+      "packArt": "pack_nature",
       "featured": [
         "nature_oakbeard",
         "nature_barbara"
@@ -920,7 +920,7 @@
       "name": "Midwinter Lights Banner",
       "kind": "featured",
       "desc": "Light units shine longest on the longest night.",
-      "packArt": "pack_seasonal_midwinter",
+      "packArt": "pack_light",
       "featured": [
         "light_brightbeard",
         "light_yolanda"
@@ -951,7 +951,7 @@
       "name": "Lunar Cooperative New Year",
       "kind": "featured",
       "desc": "The moon rabbits' first new year as owners. Rice cakes and rate-ups for all.",
-      "packArt": "pack_seasonal_lunar_new_year",
+      "packArt": "pack_comedy",
       "featured": [
         "water_bathtub",
         "fire_cindra"
@@ -970,6 +970,102 @@
       "steps": [],
       "rotationIndex": 0,
       "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "newplayer_first_steps",
+      "name": "First Steps Summon",
+      "kind": "stepUp",
+      "desc": "A one-time welcome for new adventurers. Two discounted steps, then you're one of us.",
+      "packArt": "pack_beginner",
+      "featured": [
+        "water_reginald"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "One-time steps: step 1 guarantees a 4★, step 2 guarantees a 5★.",
+      "steps": [
+        {
+          "gemCost": 750,
+          "pullCount": 10,
+          "guarantee": "4★ guaranteed (half price)"
+        },
+        {
+          "gemCost": 1500,
+          "pullCount": 10,
+          "guarantee": "5★ GUARANTEED"
+        }
+      ],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "revival_hall_of_legends",
+      "name": "Hall of Legends Revival",
+      "kind": "featured",
+      "desc": "Every previously-featured 5★, back for one encore. The nostalgia is complimentary.",
+      "packArt": "pack_revival",
+      "featured": [
+        "fire_chad",
+        "nature_barbara",
+        "dark_bedtime",
+        "light_brightbeard"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 80
+      },
+      "guarantee": "10-pulls always contain at least one 4★. Featured legends take 80% of 5★ results.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [],
+      "minPoolRarity": 1
+    },
+    {
+      "id": "villain_appreciation",
+      "name": "Department of Doom Appreciation Week",
+      "kind": "featured",
+      "desc": "Official merchandise of the defeated. The packs file a complaint when torn. Dark and Bureau units boosted.",
+      "packArt": "pack_villain",
+      "featured": [
+        "dark_kevin2",
+        "dark_bedtime"
+      ],
+      "singleCost": 150,
+      "multiCost": 1500,
+      "rates": {
+        "fiveStar": 4,
+        "fourStar": 16,
+        "threeStar": 40,
+        "twoStar": 25,
+        "oneStar": 15,
+        "featuredShareOfFiveStar": 50
+      },
+      "guarantee": "10-pulls always contain at least one 4★.",
+      "steps": [],
+      "rotationIndex": 0,
+      "poolTags": [
+        "Nap Dynasty",
+        "Bureau",
+        "Mystery",
+        "Object",
+        "Mercenary"
+      ],
       "minPoolRarity": 1
     }
   ]

@@ -255,6 +255,12 @@
           "desc": "Binds a party member indefinitely.",
           "type": "bind",
           "count": 1
+        },
+        {
+          "name": "Delegate Downward",
+          "desc": "Summons a subordinate. There is ALWAYS a subordinate.",
+          "type": "summon",
+          "count": 1
         }
       ]
     }

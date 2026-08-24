@@ -103,6 +103,93 @@
           "text": "Onward to Mount Grumble! I hear the dwarves are on strike, so mining permits are — oh no. Oh NO. They're free. Something is very wrong."
         }
       ]
+    },
+    {
+      "id": "ch02_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A fanfare sounds. A knight in gleaming, logo-covered armor descends on a rope held by interns."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "Fear not, citizens! Sir Prestige has arrived — proudly partnered with PermitPal™, the only permit app with a five-crown rating!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We already cleared this section."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "And I already took credit! Teamwork! #blessed #DarkwoodCleared"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "I despise him and I have downloaded the app."
+        }
+      ]
+    },
+    {
+      "id": "ch02_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A machine hums in the clearing. Warm. Patient. Glossy."
+        },
+        {
+          "speaker": "The Laminator",
+          "portrait": "enemy_boss_laminator",
+          "side": "right",
+          "text": "YOUR DOCUMENTS ARE FRAGILE. YOUR BONES ARE FRAGILE. I CAN FIX BOTH."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "We just need to get past you."
+        },
+        {
+          "speaker": "The Laminator",
+          "portrait": "enemy_boss_laminator",
+          "side": "right",
+          "text": "EVERYTHING PASSES THROUGH ME. ONCE. FLATLY."
+        }
+      ]
+    },
+    {
+      "id": "ch02_preboss",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero, look at this rejected permit. The watermark... that's not the forest's seal. \"DEPARTMENT OF DOOM — FIELD OFFICE 7.\""
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "The clipboard goblins had the same stamp."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Someone is franchising bureaucracy, hero. And Barkimedes is just the branch manager. Come on — the Director's office is past this grove."
+        }
+      ]
     }
   ]
 }

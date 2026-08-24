@@ -243,6 +243,12 @@
           "desc": "Heals itself with unsold inventory.",
           "type": "heal",
           "amount": 9000
+        },
+        {
+          "name": "Store Policy",
+          "desc": "Absorbs Dark damage this rotation. No returns.",
+          "type": "absorb",
+          "color": "dark"
         }
       ]
     }

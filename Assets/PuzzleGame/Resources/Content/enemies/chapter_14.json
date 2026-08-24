@@ -242,6 +242,11 @@
           "desc": "Locks 5 orbs in the invite.",
           "type": "lock",
           "count": 5
+        },
+        {
+          "name": "Mandatory Attendance",
+          "desc": "TAUNTS: you cannot target anything else. You are IN the meeting.",
+          "type": "taunt"
         }
       ]
     }

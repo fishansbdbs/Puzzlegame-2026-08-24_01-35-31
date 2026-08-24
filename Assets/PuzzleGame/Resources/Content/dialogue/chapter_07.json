@@ -97,6 +97,87 @@
           "text": "The party sings. The cake weeps buttercream. Somewhere, a wizard fixes a typo, four hundred years too late."
         }
       ]
+    },
+    {
+      "id": "ch07_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Under a lukewarm milk oasis palm, a knight melts in full armor."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "Sir Prestige here, LIVE from the Great Dessert, fueled by CrunchQuest Granola — the official granola of destiny!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Your armor is full of custard."
+        },
+        {
+          "speaker": "Sir Prestige",
+          "portrait": "npc_prestige",
+          "side": "right",
+          "text": "It's called a COLLAB, peasant."
+        }
+      ]
+    },
+    {
+      "id": "ch07_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The ground jiggles. Then the horizon jiggles. Then, concerningly, YOU jiggle."
+        },
+        {
+          "speaker": "The Flanbeast",
+          "portrait": "enemy_boss_flanbeast",
+          "side": "right",
+          "text": "*resonant, threatening wobble*"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "It's speaking in pure texture, hero. Hold formation. HOLD. FORMATION."
+        }
+      ]
+    },
+    {
+      "id": "ch07_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Ten thousand candles gutter in the sugar wind. Each one is a wish nobody made."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Gateau declared itself a wedding cake and nobody ever came. Four hundred years, hero. Even the frosting is lonely."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Then we fight it... and then we sing to it."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The two-phase strategy. Classic."
+        }
+      ]
     }
   ]
 }

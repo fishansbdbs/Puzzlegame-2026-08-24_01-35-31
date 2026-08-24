@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using PuzzleGame.Presentation.Content;
 using PuzzleGame.Presentation.VFX;
 
 namespace PuzzleGame.Presentation.UI.Summon
@@ -47,9 +48,18 @@ namespace PuzzleGame.Presentation.UI.Summon
             public bool Revealing;
         }
 
+        readonly PackThemeDto _theme;
+
         public PackOpeningScreen(SummonSession session)
         {
             _session = session;
+            // Theme metadata is data-driven per banner (Content/packs); the
+            // fallback keeps unknown keys presentable.
+            string themeId = session.Banner != null ? session.Banner.PackArtRef : "pack_standard";
+            if (!ContentDb.Instance.PackThemes.TryGetValue(themeId ?? "", out _theme))
+            {
+                _theme = new PackThemeDto { id = themeId ?? "pack_standard", name = "Pack" };
+            }
             // Deterministic presentation seed from the (pre-generated) results.
             int seed = 17;
             foreach (var card in session.Cards)
@@ -58,11 +68,32 @@ namespace PuzzleGame.Presentation.UI.Summon
             }
             _teaseSeed = seed < 0 ? -seed : seed;
             // Fake-out: strong pack that first presents as a plain one.
-            _fakeOutPending = session.MaxRarity >= 4 && _teaseSeed % 10 < 3 && !MotionSettings.ReducedMotion;
+            _fakeOutPending = _theme.fakeOutAllowed && session.MaxRarity >= 4
+                              && _teaseSeed % 10 < 3 && !MotionSettings.ReducedMotion;
         }
 
-        int TeaseTier => _session.MaxRarity >= 5 ? 2 : (_session.Cards.Count > 1 ? 1 : 0);
-        int ShownTier => _fakeOutPending && !_fakeOutDone ? 0 : TeaseTier;
+        int TeaseTier => Mathf.Max(_theme.baseTier,
+            _session.MaxRarity >= 5 ? 2 : (_session.Cards.Count > 1 ? 1 : 0));
+        int ShownTier => _fakeOutPending && !_fakeOutDone ? _theme.baseTier : TeaseTier;
+        float TeaseAmp => _theme.teaseStyle == "dramatic" ? 1.5f : 1f;
+
+        Color AccentColor
+        {
+            get
+            {
+                switch ((_theme.accent ?? "gold").ToLowerInvariant())
+                {
+                    case "fire": return Theme.Fire;
+                    case "water": return Theme.Water;
+                    case "nature": return Theme.Nature;
+                    case "light": return Theme.Light;
+                    case "dark": return Theme.Dark;
+                    case "heart": return Theme.Heart;
+                    case "mint": return Theme.Accent;
+                    default: return Theme.Rarity5;
+                }
+            }
+        }
 
         protected override void Build(VisualElement root)
         {
@@ -166,7 +197,7 @@ namespace PuzzleGame.Presentation.UI.Summon
             if (MotionSettings.ReducedMotion || _ripped) return;
             // The richer the pack, the more it trembles with anticipation.
             int tier = ShownTier;
-            float amp = 1.5f + tier * 2f;
+            float amp = (1.5f + tier * 2f) * TeaseAmp;
             _pack.experimental.animation.Start(0f, 1f, 1400, (e, t) =>
             {
                 if (_ripped || _ripping) return;
@@ -180,7 +211,7 @@ namespace PuzzleGame.Presentation.UI.Summon
             if (tier >= 2)
             {
                 var center = _fxLayer.WorldToLocal(_pack.worldBound.center);
-                UiFx.Burst(_fxLayer, center, Theme.Rarity5, 5, 60f);
+                UiFx.Burst(_fxLayer, center, AccentColor, 5, 60f);
             }
         }
 
@@ -260,7 +291,7 @@ namespace PuzzleGame.Presentation.UI.Summon
 
         void SpawnCrack(int stage)
         {
-            Color glow = ShownTier >= 2 ? Theme.Rarity5 : ShownTier == 1 ? Theme.Rarity4 : Color.white;
+            Color glow = ShownTier >= 2 ? Theme.Rarity5 : Color.Lerp(AccentColor, Color.white, 0.35f);
             var crack = new VisualElement();
             crack.pickingMode = PickingMode.Ignore;
             crack.style.position = Position.Absolute;
@@ -279,7 +310,7 @@ namespace PuzzleGame.Presentation.UI.Summon
         {
             _hint.text = "";
             var center = _fxLayer.WorldToLocal(_pack.worldBound.center);
-            Color glow = ShownTier >= 2 ? Theme.Rarity5 : ShownTier == 1 ? Theme.Rarity4 : Theme.Accent;
+            Color glow = ShownTier >= 2 ? Theme.Rarity5 : AccentColor;
             UiFx.Burst(_fxLayer, center, glow, 26, 140f);
             UiFx.Flash(Root, glow, ShownTier >= 2 ? 0.5f : 0.3f, 350);
             UiFx.Shake(Root, 6f + ShownTier * 2f, 320);
@@ -411,7 +442,8 @@ namespace PuzzleGame.Presentation.UI.Summon
 
             if (rarity >= 5)
             {
-                // Dramatic build-up: the card resists, glows, shakes... then erupts.
+                // Dramatic build-up: the card resists, glows, shakes... then
+                // erupts against the theme's 5★ backdrop.
                 int buildMs = MotionSettings.Ms(1000);
                 UiKit.Border(slot.Root, Theme.Rarity5, 3f);
                 UiFx.Shake(slot.Root, 5f, buildMs);
@@ -419,10 +451,13 @@ namespace PuzzleGame.Presentation.UI.Summon
                 UiFx.Burst(_fxLayer, center, Theme.Rarity5, 14, 70f);
                 Root.schedule.Execute(() =>
                 {
+                    ShowFiveStarBackdrop();
                     UiFx.Flash(Root, Theme.Rarity5, 0.55f, 400);
                     UiFx.Shake(Root, 9f, 350);
                     WorldFx.Instance.HitStop(0.05f);
                     UiFx.Burst(_fxLayer, _fxLayer.WorldToLocal(slot.Root.worldBound.center), Theme.Rarity6, 30, 150f);
+                    UiFx.Burst(_fxLayer, _fxLayer.WorldToLocal(slot.Root.worldBound.center), AccentColor, 16, 110f);
+                    // revealStingRef is an audio hook for core/audio integration.
                     FlipCard(slot);
                 }).ExecuteLater(buildMs);
             }
@@ -437,6 +472,26 @@ namespace PuzzleGame.Presentation.UI.Summon
             {
                 FlipCard(slot);
             }
+        }
+
+        /// <summary>Theme-defined full-screen backdrop pulse behind a 5★ reveal.</summary>
+        void ShowFiveStarBackdrop()
+        {
+            if (string.IsNullOrEmpty(_theme.fiveStarBackdrop) || MotionSettings.ReducedMotion) return;
+            var backdrop = new VisualElement();
+            backdrop.pickingMode = PickingMode.Ignore;
+            backdrop.style.position = Position.Absolute;
+            backdrop.style.left = 0; backdrop.style.right = 0;
+            backdrop.style.top = 0; backdrop.style.bottom = 0;
+            backdrop.style.backgroundImage = new StyleBackground(
+                PlaceholderArt.Background(_theme.fiveStarBackdrop));
+            backdrop.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+            backdrop.style.opacity = 0f;
+            Root.Insert(0, backdrop);
+            backdrop.experimental.animation.Start(0f, 1f, MotionSettings.Ms(1600), (e, t) =>
+            {
+                e.style.opacity = t < 0.2f ? t / 0.2f * 0.55f : Mathf.Lerp(0.55f, 0f, (t - 0.2f) / 0.8f);
+            }).OnCompleted(() => backdrop.RemoveFromHierarchy());
         }
 
         void FlipCard(CardSlot slot)
@@ -522,6 +577,14 @@ namespace PuzzleGame.Presentation.UI.Summon
             var name = UiKit.Text(character.DisplayName, 12f, true);
             name.style.unityTextAlign = TextAnchor.MiddleCenter;
             bottom.Add(name);
+            // High-rarity cards carry their title — part of the 5★ identity.
+            if (character.BaseRarity >= 5 && !string.IsNullOrEmpty(character.Epithet))
+            {
+                var epithet = UiKit.Text("“" + character.Epithet + "”", 9f, false, Theme.Rarity5);
+                epithet.style.unityTextAlign = TextAnchor.MiddleCenter;
+                epithet.style.whiteSpace = WhiteSpace.Normal;
+                bottom.Add(epithet);
+            }
             bottom.Add(UiKit.Stars(character.BaseRarity, character.Awakened, 11f));
             card.Add(bottom);
         }

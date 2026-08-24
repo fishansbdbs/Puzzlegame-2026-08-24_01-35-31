@@ -97,6 +97,87 @@
           "text": "I kept the slippers."
         }
       ]
+    },
+    {
+      "id": "ch09_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "In the treatment room, a line of magmites waits reverently. On the heated table: a familiar rock."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Warm Rock has been hired as the resort's master hot-stone therapist. He has a waiting list. He has a TITLE."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "He's the best of us."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "He's asked for five minutes at the end of the chapter to just... be warm. Granted, obviously."
+        }
+      ]
+    },
+    {
+      "id": "ch09_mini2",
+      "lines": [
+        {
+          "speaker": "Bikram",
+          "portrait": "enemy_boss_yoga_dragon",
+          "side": "right",
+          "text": "WELCOME TO MY 104-DEGREE DOMAIN. WE BEGIN IN CHILD'S POSE. WE END IN DRAGON'S POSE. THERE IS NO SAVASANA."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "No corpse pose?!"
+        },
+        {
+          "speaker": "Bikram",
+          "portrait": "enemy_boss_yoga_dragon",
+          "side": "right",
+          "text": "THE CORPSE POSE IS EARNED."
+        }
+      ]
+    },
+    {
+      "id": "ch09_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The penthouse elevator plays lava-lamp music. The floor indicator says: TOP. Then: TOO FAR. Then: MANAGER."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Remember: we are CHECKING OUT. Not negotiating. Not upgrading. If he offers the eruption package, the answer is no."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "What if it's complimentary?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "NOTHING HERE IS COMPLIMENTARY. WE LEARNED THAT AT THE MINIBAR."
+        }
+      ]
     }
   ]
 }

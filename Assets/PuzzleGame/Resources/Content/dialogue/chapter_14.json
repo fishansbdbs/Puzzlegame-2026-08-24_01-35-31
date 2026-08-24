@@ -109,6 +109,87 @@
           "text": "A LEGEND. YOU'RE A LEGEND."
         }
       ]
+    },
+    {
+      "id": "ch14_mid",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Org Chart followed us from the Crystal Caverns. It attends EVERY meeting now. It has no agenda. It IS an agenda."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "It waved at me during wave two."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Do not wave back. That's how you get a dotted line."
+        }
+      ]
+    },
+    {
+      "id": "ch14_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The temperature drops. A frost elemental materializes holding a beach ball with questions written on it."
+        },
+        {
+          "speaker": "The Icebreaker",
+          "portrait": "enemy_boss_icebreaker",
+          "side": "right",
+          "text": "BEFORE WE FIGHT: name, role, and a FUN FACT about yourself."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "No."
+        },
+        {
+          "speaker": "The Icebreaker",
+          "portrait": "enemy_boss_icebreaker",
+          "side": "right",
+          "text": "\"No\" is not a fun fact. I will now assign you one. YOUR FUN FACT IS FEAR."
+        }
+      ]
+    },
+    {
+      "id": "ch14_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The final conference room. On the ancient agenda, a single item, written before language: [YOU]."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The Recurring Meeting has no end date, hero. If we lose, we're agenda items FOREVER."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Then let's table it. Permanently."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "That's the most beautiful thing you've ever said."
+        }
+      ]
     }
   ]
 }

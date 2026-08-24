@@ -244,6 +244,11 @@
           "desc": "Heals itself. Attempt 3 of ∞.",
           "type": "heal",
           "amount": 9000
+        },
+        {
+          "name": "Third Attempt",
+          "desc": "ENRAGES below half strength. There is no fourth attempt.",
+          "type": "enrage"
         }
       ]
     }

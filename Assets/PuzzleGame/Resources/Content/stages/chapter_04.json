@@ -4,6 +4,34 @@
     "title": "The Soggy Depths",
     "theme": "depths",
     "blurb": "An underwater kingdom that outsourced everything to itself. Your call is important to them.",
+    "mechanicNote": "Timer pressure: hold music eats your move time.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 65,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 130,
+        "items": [
+          {
+            "id": "brine_ticket",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 260,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 2
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch04_st01",
@@ -24,8 +52,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 13,
         "dialogueBefore": "ch04_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -66,8 +94,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -75,7 +103,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "kelp_cable",
+              "id": "pearl_button",
               "count": 1
             }
           ],
@@ -102,8 +130,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -111,7 +139,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "brine_ticket",
+              "id": "kelp_cable",
               "count": 1
             }
           ],
@@ -144,8 +172,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -153,7 +181,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "pearl_button",
+              "id": "kelp_cable",
               "count": 1
             }
           ],
@@ -186,8 +214,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -237,9 +265,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "modifiers": [
+          "move_time_minus:1"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -265,35 +295,38 @@
           {
             "enemies": [
               {
-                "enemyId": "squid_operator",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "complaint_clam",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "bubble_intern",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "hold_jelly",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "modifiers": [
+          "elite",
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 942,
-          "gems": 0,
+          "gold": 1414,
+          "gems": 5,
           "items": [
             {
-              "id": "brine_ticket",
-              "count": 1
+              "id": "kelp_cable",
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -322,8 +355,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -368,8 +401,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -377,7 +410,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "pearl_button",
+              "id": "brine_ticket",
               "count": 1
             }
           ],
@@ -420,8 +453,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 19,
         "dialogueBefore": "ch04_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -429,7 +462,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "kelp_cable",
+              "id": "pearl_button",
               "count": 2
             }
           ],
@@ -466,8 +499,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -523,9 +556,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -533,7 +568,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "brine_ticket",
+              "id": "kelp_cable",
               "count": 2
             }
           ],
@@ -551,45 +586,38 @@
           {
             "enemies": [
               {
-                "enemyId": "complaint_clam",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "squid_operator",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
                 "enemyId": "complaint_clam",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "bubble_intern",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
+        "modifiers": [
+          "elite",
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.4,
         "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1262,
-          "gems": 0,
+          "gold": 1892,
+          "gems": 5,
           "items": [
             {
               "id": "kelp_cable",
-              "count": 2
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -634,8 +662,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -692,16 +720,16 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch04_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 1368,
           "gems": 5,
           "items": [
             {
-              "id": "pearl_button",
+              "id": "kelp_cable",
               "count": 2
             }
           ],
@@ -750,8 +778,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -808,8 +836,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -859,17 +887,19 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "modifiers": [
+          "move_time_minus:1"
+        ],
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
+        "dialogueBefore": "ch04_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 1528,
           "gems": 10,
           "items": [
             {
-              "id": "pearl_button",
+              "id": "kelp_cable",
               "count": 2
             }
           ],
@@ -912,8 +942,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -973,9 +1003,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "modifiers": [
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 26,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1002,50 +1034,37 @@
             "enemies": [
               {
                 "enemyId": "crab_supervisor",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "crab_supervisor",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "squid_operator",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "phone_eel",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "hold_jelly",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
+        "modifiers": [
+          "elite",
+          "move_time_minus:1"
+        ],
+        "hpThresholdStar": 0.45,
         "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1687,
-          "gems": 0,
+          "gold": 2531,
+          "gems": 5,
           "items": [
             {
               "id": "brine_ticket",
-              "count": 3
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1106,8 +1125,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 26,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1168,8 +1187,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "hpThresholdStar": 0.4,
+        "resolutionsStar": 26,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1177,7 +1196,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "kelp_cable",
+              "id": "brine_ticket",
               "count": 3
             }
           ],
@@ -1189,7 +1208,7 @@
         "id": "ch04_st24",
         "stageNumber": 24,
         "name": "Voicemail Vortex",
-        "kind": "normal",
+        "kind": "story",
         "background": "depths_c",
         "waves": [
           {
@@ -1214,16 +1233,16 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 23,
+        "dialogueBefore": "ch04_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 1847,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
-              "id": "kelp_cable",
+              "id": "pearl_button",
               "count": 3
             }
           ],
@@ -1265,9 +1284,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "modifiers": [
+          "move_time_minus:2"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 23,
         "dialogueBefore": "ch04_boss_before",
         "dialogueAfter": "ch04_boss_after",
         "rewards": {

@@ -174,12 +174,24 @@ namespace PuzzleGame.Presentation.Content
     }
 
     [Serializable]
+    public class StarMilestoneDto
+    {
+        /// <summary>Total chapter stars required (max 75 = 25 stages × 3).</summary>
+        public int stars;
+        public int gems;
+        public List<RewardItemDto> items = new List<RewardItemDto>();
+    }
+
+    [Serializable]
     public class ChapterDto
     {
         public int chapterNumber;
         public string title;
         public string theme;            // background/enemy theme key
         public string blurb;            // silly chapter tagline
+        /// <summary>Short description of the chapter's mechanical identity.</summary>
+        public string mechanicNote;
+        public List<StarMilestoneDto> starMilestones = new List<StarMilestoneDto>();
         public List<StageDto> stages = new List<StageDto>();
     }
 
@@ -284,6 +296,61 @@ namespace PuzzleGame.Presentation.Content
     public class EventFileDto
     {
         public List<EventDto> events = new List<EventDto>();
+    }
+
+    // ------------------------------ Items ---------------------------------
+
+    [Serializable]
+    public class ItemDto
+    {
+        public string id;
+        public string name;
+        public string desc;
+        /// <summary>material | awakening | token | trophy | enhance</summary>
+        public string category = "material";
+        public int rarity = 1;
+        public string icon = "◆";
+    }
+
+    [Serializable]
+    public class ItemFileDto
+    {
+        public List<ItemDto> items = new List<ItemDto>();
+    }
+
+    // ---------------------------- Pack themes ------------------------------
+
+    /// <summary>
+    /// Presentation metadata for the summon pack-rip flow. Banners point at
+    /// a theme via packArt; the reveal reads these knobs instead of
+    /// hardcoding per-banner behavior. Purely presentational — never
+    /// touches summon logic or RNG.
+    /// </summary>
+    [Serializable]
+    public class PackThemeDto
+    {
+        public string id;
+        public string name;
+        public string desc;
+        /// <summary>none | classic | prismatic | obsidian</summary>
+        public string foilStyle = "classic";
+        /// <summary>Accent for bursts/rims: fire|water|nature|light|dark|heart|gold|mint</summary>
+        public string accent = "gold";
+        /// <summary>Baseline pack richness 0..2 before rarity teasing.</summary>
+        public int baseTier = 0;
+        /// <summary>subtle | dramatic — scales idle tremble and crack glow.</summary>
+        public string teaseStyle = "subtle";
+        public bool fakeOutAllowed = true;
+        /// <summary>Backdrop art key flashed on 5★ reveals.</summary>
+        public string fiveStarBackdrop = "";
+        /// <summary>Optional audio sting id for high-rarity reveals (hook only).</summary>
+        public string revealStingRef = "";
+    }
+
+    [Serializable]
+    public class PackThemeFileDto
+    {
+        public List<PackThemeDto> themes = new List<PackThemeDto>();
     }
 
     // ------------------------------ Rewards -------------------------------

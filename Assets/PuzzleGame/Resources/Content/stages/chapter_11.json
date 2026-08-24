@@ -4,6 +4,34 @@
     "title": "The Enchanted Mall",
     "theme": "mall",
     "blurb": "A thousand-year-old shopping labyrinth. The food court is cursed. The pretzels are ALSO cursed, but worth it.",
+    "mechanicNote": "Mixed disruption: retail is chaos.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 100,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 200,
+        "items": [
+          {
+            "id": "gift_card",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 400,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch11_st01",
@@ -31,7 +59,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "ch11_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -39,7 +67,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "gift_card",
+              "id": "kiosk_key",
               "count": 1
             }
           ],
@@ -73,7 +101,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -115,7 +143,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -123,7 +151,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "gift_card",
+              "id": "kiosk_key",
               "count": 1
             }
           ],
@@ -167,7 +195,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -175,7 +203,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "gift_card",
+              "id": "kiosk_key",
               "count": 1
             }
           ],
@@ -203,7 +231,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -211,7 +239,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "kiosk_key",
+              "id": "gift_card",
               "count": 1
             }
           ],
@@ -247,9 +275,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_poison:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -257,7 +287,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "gift_card",
+              "id": "kiosk_key",
               "count": 1
             }
           ],
@@ -275,29 +305,37 @@
           {
             "enemies": [
               {
+                "enemyId": "mannequin_stalker",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
+              },
+              {
                 "enemyId": "fountain_nymph",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1984,
-          "gems": 0,
+          "gold": 2976,
+          "gems": 5,
           "items": [
             {
               "id": "pretzel_salt",
-              "count": 1
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -327,7 +365,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -335,7 +373,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "kiosk_key",
+              "id": "pretzel_salt",
               "count": 1
             }
           ],
@@ -363,7 +401,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -415,7 +453,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "ch11_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -423,7 +461,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "kiosk_key",
+              "id": "pretzel_salt",
               "count": 2
             }
           ],
@@ -473,7 +511,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -481,7 +519,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "pretzel_salt",
+              "id": "kiosk_key",
               "count": 2
             }
           ],
@@ -531,7 +569,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -557,51 +595,47 @@
           {
             "enemies": [
               {
-                "enemyId": "mannequin_stalker",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "escalator_serpent",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
                 "enemyId": "mannequin_stalker",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           },
           {
             "enemies": [
               {
-                "enemyId": "perfume_banshee",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "mannequin_stalker",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
+                "enemyId": "boss_laminator",
+                "hpMult": 4,
+                "atkMult": 4,
                 "countdownOverride": -1
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2656,
-          "gems": 0,
+          "gold": 3984,
+          "gems": 5,
           "items": [
             {
               "id": "gift_card",
-              "count": 2
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -635,7 +669,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -643,7 +677,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "pretzel_salt",
+              "id": "kiosk_key",
               "count": 2
             }
           ],
@@ -685,10 +719,12 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_poison:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch11_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 2880,
@@ -739,7 +775,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -747,7 +783,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "kiosk_key",
+              "id": "gift_card",
               "count": 2
             }
           ],
@@ -785,7 +821,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -793,7 +829,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "pretzel_salt",
+              "id": "kiosk_key",
               "count": 2
             }
           ],
@@ -835,17 +871,19 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "move_time_minus:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "resolutionsStar": 19,
+        "dialogueBefore": "ch11_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3216,
           "gems": 10,
           "items": [
             {
-              "id": "gift_card",
+              "id": "kiosk_key",
               "count": 2
             }
           ],
@@ -887,9 +925,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "move_time_minus:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -945,7 +985,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "resolutionsStar": 24,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -971,55 +1011,38 @@
           {
             "enemies": [
               {
-                "enemyId": "perfume_banshee",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "kiosk_goblin",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
                 "enemyId": "escalator_serpent",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "mannequin_stalker",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "fountain_nymph",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite",
+          "start_poison:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 3552,
-          "gems": 0,
+          "gold": 5328,
+          "gems": 5,
           "items": [
             {
               "id": "kiosk_key",
-              "count": 3
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1069,7 +1092,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "resolutionsStar": 24,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1077,7 +1100,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "kiosk_key",
+              "id": "pretzel_salt",
               "count": 3
             }
           ],
@@ -1121,7 +1144,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1129,7 +1152,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "pretzel_salt",
+              "id": "kiosk_key",
               "count": 3
             }
           ],
@@ -1141,7 +1164,7 @@
         "id": "ch11_st24",
         "stageNumber": 24,
         "name": "The Anchor's Shadow",
-        "kind": "normal",
+        "kind": "story",
         "background": "mall_c",
         "waves": [
           {
@@ -1195,15 +1218,15 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 23,
-        "dialogueBefore": "",
+        "resolutionsStar": 25,
+        "dialogueBefore": "ch11_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3888,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
-              "id": "pretzel_salt",
+              "id": "kiosk_key",
               "count": 3
             }
           ],
@@ -1237,6 +1260,22 @@
           {
             "enemies": [
               {
+                "enemyId": "perfume_banshee",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "pretzel_elemental",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
                 "enemyId": "boss_mall_heart",
                 "hpMult": 1,
                 "atkMult": 1,
@@ -1245,9 +1284,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "move_time_minus:1"
+        ],
         "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "resolutionsStar": 25,
         "dialogueBefore": "ch11_boss_before",
         "dialogueAfter": "ch11_boss_after",
         "rewards": {
@@ -1255,7 +1296,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "pretzel_salt",
+              "id": "gift_card",
               "count": 3
             }
           ],

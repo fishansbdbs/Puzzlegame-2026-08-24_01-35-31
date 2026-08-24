@@ -251,6 +251,11 @@
           "type": "convert",
           "count": 3,
           "color": "water"
+        },
+        {
+          "name": "Cold Snap",
+          "desc": "ENRAGES below half strength. The handshake tightens.",
+          "type": "enrage"
         }
       ]
     }

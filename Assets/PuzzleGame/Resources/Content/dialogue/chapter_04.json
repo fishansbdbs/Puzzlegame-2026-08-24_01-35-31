@@ -97,6 +97,87 @@
           "text": "Five stars. Would battle again."
         }
       ]
+    },
+    {
+      "id": "ch04_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "At desk 4,401, a green slime wearing a tiny tie answers three phones at once."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Hero. HERO. The tie. The TIE."
+        },
+        {
+          "speaker": "Tie Slime",
+          "portrait": "enemy_slime_green",
+          "side": "right",
+          "text": "Thank you for holding! This is Gerald's cousin, Blerald. Gerald says hi. Gerald says you cost him a promotion. Gerald is FINE about it."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "That sounds like Gerald is not fine about it."
+        }
+      ]
+    },
+    {
+      "id": "ch04_mini2",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The water darkens. Something ancient rises, holding a receipt from before receipts existed."
+        },
+        {
+          "speaker": "The Abyssal Complainant",
+          "portrait": "enemy_boss_deep_karen",
+          "side": "right",
+          "text": "I HAVE WAITED NINE EONS TO SPEAK TO A MANAGER. YOU... ARE SHAPED LIKE A MANAGER."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "I'm really not."
+        },
+        {
+          "speaker": "The Abyssal Complainant",
+          "portrait": "enemy_boss_deep_karen",
+          "side": "right",
+          "text": "ALL WHO DENY BEING MANAGERS ARE MANAGERS. IT IS KNOWN."
+        }
+      ]
+    },
+    {
+      "id": "ch04_preboss",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "The hold music is getting louder. That means we're close to the front of the queue. Or the queue is close to the front of US."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "How do you fight a queue?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Form E-A-R, hero: Engage, Advance, RESOLVE. I just made it up. It's already policy. That's how confident I am."
+        }
+      ]
     }
   ]
 }

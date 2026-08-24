@@ -250,6 +250,12 @@
           "type": "convert",
           "count": 3,
           "color": "dark"
+        },
+        {
+          "name": "Dark Side Holdings",
+          "desc": "Absorbs Dark damage this rotation. He owns that too.",
+          "type": "absorb",
+          "color": "dark"
         }
       ]
     }

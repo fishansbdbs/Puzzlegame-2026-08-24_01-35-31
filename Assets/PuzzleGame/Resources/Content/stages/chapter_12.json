@@ -4,6 +4,34 @@
     "title": "Frostbite Fjord Timeshares",
     "theme": "fjord",
     "blurb": "Ice giants discovered real estate. Attend one (1) presentation and win a free hero-sized ice sculpture. Of you.",
+    "mechanicNote": "Frozen orbs and closing windows.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 105,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 210,
+        "items": [
+          {
+            "id": "glacier_deed",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 420,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch12_st01",
@@ -31,7 +59,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "ch12_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -67,7 +95,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -75,7 +103,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frost_brochure",
+              "id": "icicle_pen",
               "count": 1
             }
           ],
@@ -109,7 +137,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -117,7 +145,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "icicle_pen",
+              "id": "frost_brochure",
               "count": 1
             }
           ],
@@ -161,7 +189,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -169,7 +197,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "glacier_deed",
+              "id": "frost_brochure",
               "count": 1
             }
           ],
@@ -213,7 +241,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -265,7 +293,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -291,35 +319,38 @@
           {
             "enemies": [
               {
-                "enemyId": "penguin_notary",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "ice_slime",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "walrus_hoa",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "sales_yeti",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite",
+          "move_time_minus:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2133,
-          "gems": 0,
+          "gold": 3199,
+          "gems": 5,
           "items": [
             {
               "id": "frost_brochure",
-              "count": 1
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -359,7 +390,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -367,7 +398,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frost_brochure",
+              "id": "glacier_deed",
               "count": 1
             }
           ],
@@ -395,7 +426,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -403,7 +434,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frost_brochure",
+              "id": "icicle_pen",
               "count": 1
             }
           ],
@@ -447,7 +478,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "ch12_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -455,7 +486,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "icicle_pen",
+              "id": "glacier_deed",
               "count": 2
             }
           ],
@@ -499,7 +530,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -551,7 +582,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -559,7 +590,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frost_brochure",
+              "id": "icicle_pen",
               "count": 2
             }
           ],
@@ -577,45 +608,37 @@
           {
             "enemies": [
               {
-                "enemyId": "penguin_notary",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "sales_yeti",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "walrus_hoa",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "aurora_moth",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "penguin_notary",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2855,
-          "gems": 0,
+          "gold": 4283,
+          "gems": 5,
           "items": [
             {
               "id": "icicle_pen",
-              "count": 2
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -655,7 +678,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -713,15 +736,15 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch12_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3096,
           "gems": 5,
           "items": [
             {
-              "id": "frost_brochure",
+              "id": "icicle_pen",
               "count": 2
             }
           ],
@@ -771,7 +794,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -779,7 +802,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frost_brochure",
+              "id": "icicle_pen",
               "count": 2
             }
           ],
@@ -827,9 +850,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:3"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -837,7 +862,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "glacier_deed",
+              "id": "icicle_pen",
               "count": 2
             }
           ],
@@ -881,8 +906,8 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "resolutionsStar": 19,
+        "dialogueBefore": "ch12_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3457,
@@ -931,9 +956,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "move_time_minus:1"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -941,7 +968,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frost_brochure",
+              "id": "icicle_pen",
               "count": 2
             }
           ],
@@ -983,9 +1010,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:3"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1011,45 +1040,47 @@
           {
             "enemies": [
               {
-                "enemyId": "walrus_hoa",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "aurora_moth",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "aurora_moth",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           },
           {
             "enemies": [
               {
-                "enemyId": "frost_wolf",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "penguin_notary",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
+                "enemyId": "boss_flintbeard",
+                "hpMult": 3.2,
+                "atkMult": 3.2,
                 "countdownOverride": -1
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 23,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 3818,
-          "gems": 0,
+          "gold": 5728,
+          "gems": 5,
           "items": [
             {
-              "id": "icicle_pen",
-              "count": 3
+              "id": "glacier_deed",
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1095,7 +1126,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1147,7 +1178,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1155,7 +1186,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "frost_brochure",
+              "id": "glacier_deed",
               "count": 3
             }
           ],
@@ -1167,7 +1198,7 @@
         "id": "ch12_st24",
         "stageNumber": 24,
         "name": "The Long Handshake",
-        "kind": "normal",
+        "kind": "story",
         "background": "fjord_c",
         "waves": [
           {
@@ -1203,14 +1234,16 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:3"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "resolutionsStar": 21,
+        "dialogueBefore": "ch12_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 4180,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
               "id": "frost_brochure",
@@ -1247,6 +1280,22 @@
           {
             "enemies": [
               {
+                "enemyId": "sales_yeti",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "ice_slime",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
                 "enemyId": "boss_glacier_ceo",
                 "hpMult": 1,
                 "atkMult": 1,
@@ -1255,9 +1304,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "move_time_minus:1"
+        ],
         "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "resolutionsStar": 25,
         "dialogueBefore": "ch12_boss_before",
         "dialogueAfter": "ch12_boss_after",
         "rewards": {
@@ -1265,7 +1316,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "glacier_deed",
+              "id": "frost_brochure",
               "count": 3
             }
           ],

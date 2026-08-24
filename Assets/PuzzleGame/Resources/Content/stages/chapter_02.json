@@ -4,6 +4,34 @@
     "title": "The Darkwood Permit Office",
     "theme": "darkwood",
     "blurb": "An ancient forest. To walk beneath its boughs you will need Form MT-7, Form MT-8, and a pen that works.",
+    "mechanicNote": "Lock pressure: permits hold your orbs hostage.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 55,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 110,
+        "items": [
+          {
+            "id": "bark_form",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 220,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 2
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch02_st01",
@@ -24,8 +52,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 15,
         "dialogueBefore": "ch02_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -33,7 +61,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "permit_stub",
+              "id": "bark_form",
               "count": 1
             }
           ],
@@ -60,8 +88,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -69,7 +97,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "sap_ink",
+              "id": "permit_stub",
               "count": 1
             }
           ],
@@ -96,8 +124,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -105,7 +133,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "bark_form",
+              "id": "sap_ink",
               "count": 1
             }
           ],
@@ -148,8 +176,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -157,7 +185,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "sap_ink",
+              "id": "bark_form",
               "count": 1
             }
           ],
@@ -200,8 +228,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -209,7 +237,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "sap_ink",
+              "id": "permit_stub",
               "count": 1
             }
           ],
@@ -246,8 +274,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -273,35 +301,37 @@
           {
             "enemies": [
               {
-                "enemyId": "file_fungus",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "owl_auditor",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
                 "enemyId": "treant_clerk",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "modifiers": [
+          "elite"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 645,
-          "gems": 0,
+          "gold": 967,
+          "gems": 5,
           "items": [
             {
               "id": "bark_form",
-              "count": 1
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -330,8 +360,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -339,7 +369,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "sap_ink",
+              "id": "permit_stub",
               "count": 1
             }
           ],
@@ -382,8 +412,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -433,9 +463,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 21,
         "dialogueBefore": "ch02_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -480,8 +512,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 21,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -489,7 +521,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "sap_ink",
+              "id": "permit_stub",
               "count": 2
             }
           ],
@@ -532,8 +564,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -560,50 +592,37 @@
             "enemies": [
               {
                 "enemyId": "permit_sprite",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "bramble_lawyer",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "bramble_lawyer",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "bramble_lawyer",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "permit_sprite",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "elite",
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 863,
-          "gems": 0,
+          "gold": 1295,
+          "gems": 5,
           "items": [
             {
               "id": "sap_ink",
-              "count": 2
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -641,9 +660,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -651,7 +672,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "sap_ink",
+              "id": "permit_stub",
               "count": 2
             }
           ],
@@ -699,10 +720,12 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 22,
+        "dialogueBefore": "ch02_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 936,
@@ -757,9 +780,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 23,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -767,7 +792,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "bark_form",
+              "id": "sap_ink",
               "count": 2
             }
           ],
@@ -810,8 +835,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 23,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -861,17 +886,19 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 23,
+        "dialogueBefore": "ch02_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 1045,
           "gems": 10,
           "items": [
             {
-              "id": "sap_ink",
+              "id": "bark_form",
               "count": 2
             }
           ],
@@ -935,9 +962,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 21,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 27,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -945,7 +974,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "bark_form",
+              "id": "sap_ink",
               "count": 2
             }
           ],
@@ -981,9 +1010,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "start_locks:2"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 24,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -991,7 +1022,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "bark_form",
+              "id": "permit_stub",
               "count": 3
             }
           ],
@@ -1009,39 +1040,38 @@
           {
             "enemies": [
               {
-                "enemyId": "treant_clerk",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
+                "enemyId": "stamp_beetle",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              },
               {
-                "enemyId": "permit_sprite",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "stamp_beetle",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "elite",
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 1154,
-          "gems": 0,
+          "gold": 1732,
+          "gems": 5,
           "items": [
             {
-              "id": "sap_ink",
-              "count": 3
+              "id": "bark_form",
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1090,8 +1120,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 28,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1099,7 +1129,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "permit_stub",
+              "id": "bark_form",
               "count": 3
             }
           ],
@@ -1152,8 +1182,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 28,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1161,7 +1191,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "permit_stub",
+              "id": "bark_form",
               "count": 3
             }
           ],
@@ -1173,7 +1203,7 @@
         "id": "ch02_st24",
         "stageNumber": 24,
         "name": "Twigs in Triplicate",
-        "kind": "normal",
+        "kind": "story",
         "background": "darkwood_c",
         "waves": [
           {
@@ -1198,16 +1228,16 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.3,
+        "resolutionsStar": 25,
+        "dialogueBefore": "ch02_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 1264,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
-              "id": "sap_ink",
+              "id": "bark_form",
               "count": 3
             }
           ],
@@ -1249,9 +1279,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "modifiers": [
+          "start_locks:3"
+        ],
+        "hpThresholdStar": 0.25,
+        "resolutionsStar": 25,
         "dialogueBefore": "ch02_boss_before",
         "dialogueAfter": "ch02_boss_after",
         "rewards": {
@@ -1259,7 +1291,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "bark_form",
+              "id": "sap_ink",
               "count": 3
             }
           ],

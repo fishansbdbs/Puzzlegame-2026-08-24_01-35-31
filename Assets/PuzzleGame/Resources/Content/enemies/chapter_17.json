@@ -206,6 +206,11 @@
           "desc": "Heals itself. It always has one more set.",
           "type": "heal",
           "amount": 6000
+        },
+        {
+          "name": "Pre-Workout Kicks In",
+          "desc": "ENRAGES below half strength. Do not ask what is in it.",
+          "type": "enrage"
         }
       ]
     },
@@ -243,6 +248,12 @@
           "desc": "Locks 5 orbs in subsection (d)(4)(iii).",
           "type": "lock",
           "count": 5
+        },
+        {
+          "name": "Clause 4.4",
+          "desc": "Combo shield: 4+ combos, per the agreement you signed.",
+          "type": "comboShield",
+          "count": 4
         }
       ]
     }

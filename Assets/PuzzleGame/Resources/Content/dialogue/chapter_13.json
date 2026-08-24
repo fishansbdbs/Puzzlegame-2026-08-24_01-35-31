@@ -97,6 +97,75 @@
           "text": "Hero. There's one for you. It's from the slimes. It says \"good hustle\". I'm crying."
         }
       ]
+    },
+    {
+      "id": "ch13_mid",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A sorting tray rattles. One letter has worked itself loose. The address, in careful goo-print: TO THE HERO. THE MEADOW. YOU KNOW THE ONE."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "It's from the slimes, hero. It's been in the system since chapter one. It's trying to REACH you."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "...we get that letter out of here. Whatever it takes."
+        }
+      ]
+    },
+    {
+      "id": "ch13_mini2",
+      "lines": [
+        {
+          "speaker": "The Chain Letter",
+          "portrait": "enemy_boss_chain_letter",
+          "side": "right",
+          "text": "FORWARD ME TO TEN FRIENDS OR SUFFER MISFORTUNE. YOUR GRANDMOTHER FORWARDED ME. YOUR KING FORWARDED ME. BE LIKE THEM."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "I have five friends and they're all in this party."
+        },
+        {
+          "speaker": "The Chain Letter",
+          "portrait": "enemy_boss_chain_letter",
+          "side": "right",
+          "text": "THEN THE MISFORTUNE IS DOUBLED AND SHARED. HOW EFFICIENT."
+        }
+      ]
+    },
+    {
+      "id": "ch13_preboss",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The antechamber of the Dead Letter King. Millions of pigeonholes. In each: an apology, a confession, a birthday card with the money still inside."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Every unsaid thing in the kingdom, hero. Filed. Hoarded. He thinks he's protecting people."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Words don't expire. Let's go deliver them."
+        }
+      ]
     }
   ]
 }

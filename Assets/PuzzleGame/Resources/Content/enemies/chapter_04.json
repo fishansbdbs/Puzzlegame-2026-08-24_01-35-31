@@ -168,6 +168,11 @@
           "desc": "Locks 3 orbs. A fix is coming in a future release.",
           "type": "lock",
           "count": 3
+        },
+        {
+          "name": "Escalation Frenzy",
+          "desc": "ENRAGES below half strength. Smells unresolved tickets.",
+          "type": "enrage"
         }
       ]
     },
@@ -236,6 +241,12 @@
           "desc": "Heals herself. Thank you for your patience.",
           "type": "heal",
           "amount": 10000
+        },
+        {
+          "name": "One With The Queue",
+          "desc": "Absorbs Water damage this rotation. She IS the water.",
+          "type": "absorb",
+          "color": "water"
         }
       ]
     }

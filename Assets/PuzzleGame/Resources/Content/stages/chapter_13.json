@@ -4,6 +4,34 @@
     "title": "The Royal Post Office",
     "theme": "royalpost",
     "blurb": "Older than the crown itself. The mail moves through rain, snow, dragons, and — slowest of all — internal review.",
+    "mechanicNote": "Binds: signatures required mid-battle.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 110,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 220,
+        "items": [
+          {
+            "id": "first_class_seal",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 440,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch13_st01",
@@ -25,7 +53,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "ch13_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -67,7 +95,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -75,7 +103,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "undeliverable_letter",
+              "id": "wax_blob",
               "count": 1
             }
           ],
@@ -103,7 +131,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -111,7 +139,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "undeliverable_letter",
+              "id": "first_class_seal",
               "count": 1
             }
           ],
@@ -145,7 +173,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -153,7 +181,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "first_class_seal",
+              "id": "wax_blob",
               "count": 1
             }
           ],
@@ -181,7 +209,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -189,7 +217,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "first_class_seal",
+              "id": "wax_blob",
               "count": 1
             }
           ],
@@ -217,7 +245,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -225,7 +253,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "wax_blob",
+              "id": "first_class_seal",
               "count": 1
             }
           ],
@@ -244,44 +272,37 @@
             "enemies": [
               {
                 "enemyId": "mail_golem",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "parcel_hound",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "stamp_sprite",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "envelope_wraith",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite",
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2282,
-          "gems": 0,
+          "gold": 3422,
+          "gems": 5,
           "items": [
             {
-              "id": "wax_blob",
-              "count": 1
+              "id": "undeliverable_letter",
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -311,7 +332,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -319,7 +340,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "wax_blob",
+              "id": "undeliverable_letter",
               "count": 1
             }
           ],
@@ -353,7 +374,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -361,7 +382,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "undeliverable_letter",
+              "id": "wax_blob",
               "count": 1
             }
           ],
@@ -403,9 +424,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "healing_reduced"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "ch13_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -463,7 +486,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -471,7 +494,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "wax_blob",
+              "id": "undeliverable_letter",
               "count": 2
             }
           ],
@@ -515,7 +538,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -542,44 +565,36 @@
             "enemies": [
               {
                 "enemyId": "stamp_sprite",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "registered_owlbear",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "registered_owlbear",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 14,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 3054,
-          "gems": 0,
+          "gold": 4582,
+          "gems": 5,
           "items": [
             {
               "id": "undeliverable_letter",
-              "count": 2
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -613,7 +628,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -621,7 +636,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "undeliverable_letter",
+              "id": "wax_blob",
               "count": 2
             }
           ],
@@ -665,15 +680,15 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch13_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3312,
           "gems": 5,
           "items": [
             {
-              "id": "wax_blob",
+              "id": "undeliverable_letter",
               "count": 2
             }
           ],
@@ -715,9 +730,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "healing_reduced"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -725,7 +742,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "first_class_seal",
+              "id": "wax_blob",
               "count": 2
             }
           ],
@@ -767,9 +784,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "healing_reduced"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -819,10 +838,12 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "resolutionsStar": 19,
+        "dialogueBefore": "ch13_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3698,
@@ -867,7 +888,7 @@
         ],
         "modifiers": [],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -923,9 +944,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -933,7 +956,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "first_class_seal",
+              "id": "wax_blob",
               "count": 3
             }
           ],
@@ -951,51 +974,38 @@
           {
             "enemies": [
               {
-                "enemyId": "mail_golem",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "parcel_hound",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "parcel_hound",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              },
-              {
                 "enemyId": "envelope_wraith",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
+              },
+              {
+                "enemyId": "stamp_sprite",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "elite",
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 4085,
-          "gems": 0,
+          "gold": 6127,
+          "gems": 5,
           "items": [
             {
               "id": "first_class_seal",
-              "count": 3
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1033,9 +1043,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1043,7 +1055,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "wax_blob",
+              "id": "undeliverable_letter",
               "count": 3
             }
           ],
@@ -1085,9 +1097,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "resolutionsStar": 20,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1095,7 +1109,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "wax_blob",
+              "id": "undeliverable_letter",
               "count": 3
             }
           ],
@@ -1107,7 +1121,7 @@
         "id": "ch13_st24",
         "stageNumber": 24,
         "name": "Outgoing (Never)",
-        "kind": "normal",
+        "kind": "story",
         "background": "royalpost_c",
         "waves": [
           {
@@ -1137,17 +1151,19 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "resolutionsStar": 21,
+        "dialogueBefore": "ch13_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 4471,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
-              "id": "first_class_seal",
+              "id": "undeliverable_letter",
               "count": 3
             }
           ],
@@ -1181,6 +1197,22 @@
           {
             "enemies": [
               {
+                "enemyId": "mail_golem",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "mail_golem",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
                 "enemyId": "boss_dead_letter",
                 "hpMult": 1,
                 "atkMult": 1,
@@ -1189,9 +1221,11 @@
             ]
           }
         ],
-        "modifiers": [],
+        "modifiers": [
+          "start_locks:2"
+        ],
         "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "resolutionsStar": 25,
         "dialogueBefore": "ch13_boss_before",
         "dialogueAfter": "ch13_boss_after",
         "rewards": {
@@ -1199,7 +1233,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "first_class_seal",
+              "id": "wax_blob",
               "count": 3
             }
           ],

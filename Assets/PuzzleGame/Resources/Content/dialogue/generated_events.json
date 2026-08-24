@@ -1,0 +1,159 @@
+{
+  "scenes": [
+    {
+      "id": "evlh_s01",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "A coast with no lighthouse. Louie left this posting years ago. He never says why."
+        },
+        {
+          "speaker": "Lampwick Louie",
+          "portrait": "char_light_louie",
+          "side": "right",
+          "text": "Forty years I lit this water. Then one night the storm was faster than my wick. A mail ship went down. Every letter aboard... lost."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "The Dead Letter King released everything. Louie... some of those letters might have made it after all."
+        },
+        {
+          "speaker": "Lampwick Louie",
+          "portrait": "char_light_louie",
+          "side": "right",
+          "text": "...then light me up, hero. One last shift. Let's go find out."
+        }
+      ]
+    },
+    {
+      "id": "evlh_s06_after",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "The storm clears. On the rocks: a mailbag, sea-worn but sealed. Postmarked the night the light went out."
+        },
+        {
+          "speaker": "Lampwick Louie",
+          "portrait": "char_light_louie",
+          "side": "right",
+          "text": "They wrote back. All those years... the ship's crew wrote back. \"The light held long enough. We made the far shore. Thank you, keeper.\""
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "...I'm not crying. It's sea spray. It's EMOTIONAL sea spray."
+        },
+        {
+          "speaker": "Lampwick Louie",
+          "portrait": "char_light_louie",
+          "side": "right",
+          "text": "Freelance rates apply from tomorrow. Tonight, the light's on the house."
+        }
+      ]
+    },
+    {
+      "id": "evwr_s01",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Warm Rock Appreciation Day! The kingdom's first holiday ratified by unanimous vote, three abstentions (all pebbles, jealous)."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "What are the festival activities?"
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Holding the rock. Appreciating the rock. There is also a raffle. The prize is proximity to the rock."
+        }
+      ]
+    },
+    {
+      "id": "evwr_s05_after",
+      "lines": [
+        {
+          "speaker": "",
+          "portrait": "",
+          "side": "left",
+          "text": "Monday retreats, defeated by a holiday it could not cancel. The crowd holds Warm Rock aloft. Warm Rock radiates quiet, perfect warmth."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Somewhere, Spooky Pebble is watching. Maybe next year, cousin. Maybe next year."
+        }
+      ]
+    },
+    {
+      "id": "evob_s01",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Welcome to Onboarding! Grab an orb, drag it anywhere — every orb you cross swaps places with it. You have ten seconds per move. Make them count!"
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "Three of the same color in a line. Got it."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "And SEPARATE matches mean SEPARATE attacks! Two Fire matches? Your Fire heroes swing TWICE. It's in the handbook. I wrote the handbook."
+        }
+      ]
+    },
+    {
+      "id": "evob_s03",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Pink Heart orbs heal your party — match them when your HP dips. And when the board settles, new orbs fall. Chain those cascades for bonus combos!"
+        }
+      ]
+    },
+    {
+      "id": "evob_s05",
+      "lines": [
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "See the number on the enemy? That's its countdown. Every move you finish ticks it down — at zero, it acts! Fire beats Nature, Nature beats Water, Water beats Fire. Light and Dark? They beat each OTHER."
+        },
+        {
+          "speaker": "Hero",
+          "portrait": "npc_hero",
+          "side": "left",
+          "text": "And skills charge from matching my element."
+        },
+        {
+          "speaker": "Pip",
+          "portrait": "npc_pip",
+          "side": "left",
+          "text": "Look at you! Tap a glowing portrait when the skill is READY. Your leader's skill is always on — build your team around it!"
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,34 @@
     "title": "The Moon (Rented)",
     "theme": "moonrent",
     "blurb": "The moon has a landlord. The rabbits who live there would like a word. The word is \"unionize\".",
+    "mechanicNote": "Blockers: property disputes on the board.",
+    "starMilestones": [
+      {
+        "stars": 25,
+        "gems": 120,
+        "items": []
+      },
+      {
+        "stars": 50,
+        "gems": 240,
+        "items": [
+          {
+            "id": "moon_lease",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "stars": 75,
+        "gems": 480,
+        "items": [
+          {
+            "id": "radiant_core",
+            "count": 3
+          }
+        ]
+      }
+    ],
     "stages": [
       {
         "id": "ch15_st01",
@@ -24,8 +52,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
         "dialogueBefore": "ch15_intro",
         "dialogueAfter": "",
         "rewards": {
@@ -33,7 +61,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "moon_lease",
+              "id": "crater_chalk",
               "count": 1
             }
           ],
@@ -66,8 +94,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -75,7 +103,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "moon_lease",
+              "id": "rabbit_pamphlet",
               "count": 1
             }
           ],
@@ -102,8 +130,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 9,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 10,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -111,7 +139,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "crater_chalk",
+              "id": "moon_lease",
               "count": 1
             }
           ],
@@ -148,8 +176,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -157,7 +185,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "moon_lease",
+              "id": "crater_chalk",
               "count": 1
             }
           ],
@@ -190,8 +218,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 10,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -199,7 +227,7 @@
           "gems": 5,
           "items": [
             {
-              "id": "moon_lease",
+              "id": "crater_chalk",
               "count": 1
             }
           ],
@@ -242,8 +270,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -251,7 +279,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "rabbit_pamphlet",
+              "id": "crater_chalk",
               "count": 1
             }
           ],
@@ -269,51 +297,38 @@
           {
             "enemies": [
               {
-                "enemyId": "moon_rabbit",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
-              },
-              {
-                "enemyId": "satellite_pigeon",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "crater_hermit",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "enemyId": "dust_bunny",
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               },
               {
                 "enemyId": "dust_bunny",
-                "hpMult": 1.2,
-                "atkMult": 1.2,
-                "countdownOverride": -1
+                "hpMult": 1.32,
+                "atkMult": 1.32,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 14,
+        "modifiers": [
+          "elite",
+          "start_blockers:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 11,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 2579,
-          "gems": 0,
+          "gold": 3869,
+          "gems": 5,
           "items": [
             {
-              "id": "crater_chalk",
-              "count": 1
+              "id": "moon_lease",
+              "count": 2
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -336,8 +351,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 11,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 12,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -345,7 +360,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "moon_lease",
+              "id": "rabbit_pamphlet",
               "count": 1
             }
           ],
@@ -394,8 +409,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -445,9 +460,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "modifiers": [
+          "start_blockers:1"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 16,
         "dialogueBefore": "ch15_mini1",
         "dialogueAfter": "",
         "rewards": {
@@ -455,7 +472,7 @@
           "gems": 10,
           "items": [
             {
-              "id": "moon_lease",
+              "id": "crater_chalk",
               "count": 2
             }
           ],
@@ -492,8 +509,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 15,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 16,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -538,8 +555,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -565,45 +582,38 @@
           {
             "enemies": [
               {
-                "enemyId": "satellite_pigeon",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "satellite_pigeon",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "cheese_prospector",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "dust_bunny",
-                "hpMult": 1.4,
-                "atkMult": 1.4,
-                "countdownOverride": -1
+                "enemyId": "satellite_pigeon",
+                "hpMult": 1.54,
+                "atkMult": 1.54,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "elite",
+          "start_blockers:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 13,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 3453,
-          "gems": 0,
+          "gold": 5179,
+          "gems": 5,
           "items": [
             {
               "id": "moon_lease",
-              "count": 2
+              "count": 4
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -641,9 +651,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
+        "modifiers": [
+          "start_blockers:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -651,7 +663,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "moon_lease",
+              "id": "rabbit_pamphlet",
               "count": 2
             }
           ],
@@ -693,17 +705,19 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 16,
-        "dialogueBefore": "",
+        "modifiers": [
+          "start_blockers:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 17,
+        "dialogueBefore": "ch15_mid",
         "dialogueAfter": "",
         "rewards": {
           "gold": 3744,
           "gems": 5,
           "items": [
             {
-              "id": "moon_lease",
+              "id": "crater_chalk",
               "count": 2
             }
           ],
@@ -746,8 +760,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -755,7 +769,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "crater_chalk",
+              "id": "rabbit_pamphlet",
               "count": 2
             }
           ],
@@ -798,8 +812,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 18,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -807,7 +821,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "rabbit_pamphlet",
+              "id": "crater_chalk",
               "count": 2
             }
           ],
@@ -850,16 +864,16 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 17,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 18,
+        "dialogueBefore": "ch15_mini2",
         "dialogueAfter": "",
         "rewards": {
           "gold": 4181,
           "gems": 10,
           "items": [
             {
-              "id": "crater_chalk",
+              "id": "rabbit_pamphlet",
               "count": 2
             }
           ],
@@ -912,8 +926,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 21,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 22,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -964,8 +978,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -973,7 +987,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "crater_chalk",
+              "id": "moon_lease",
               "count": 3
             }
           ],
@@ -991,45 +1005,38 @@
           {
             "enemies": [
               {
-                "enemyId": "tide_manager",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "satellite_pigeon",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               },
               {
-                "enemyId": "tide_manager",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
-              }
-            ]
-          },
-          {
-            "enemies": [
-              {
-                "enemyId": "tide_manager",
-                "hpMult": 1.67,
-                "atkMult": 1.67,
-                "countdownOverride": -1
+                "enemyId": "dust_bunny",
+                "hpMult": 1.84,
+                "atkMult": 1.84,
+                "countdownOverride": 2
               }
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "modifiers": [
+          "elite",
+          "start_blockers:2"
+        ],
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 15,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
-          "gold": 4618,
-          "gems": 0,
+          "gold": 6926,
+          "gems": 5,
           "items": [
             {
-              "id": "moon_lease",
-              "count": 3
+              "id": "rabbit_pamphlet",
+              "count": 6
             }
           ],
-          "firstClearBonus": ""
+          "firstClearBonus": "50 Gems"
         },
         "staminaCost": 0
       },
@@ -1068,8 +1075,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 18,
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 19,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1077,7 +1084,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "rabbit_pamphlet",
+              "id": "crater_chalk",
               "count": 3
             }
           ],
@@ -1129,9 +1136,11 @@
             ]
           }
         ],
-        "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 22,
+        "modifiers": [
+          "start_blockers:2"
+        ],
+        "hpThresholdStar": 0.6,
+        "resolutionsStar": 23,
         "dialogueBefore": "",
         "dialogueAfter": "",
         "rewards": {
@@ -1139,7 +1148,7 @@
           "gems": 0,
           "items": [
             {
-              "id": "rabbit_pamphlet",
+              "id": "moon_lease",
               "count": 3
             }
           ],
@@ -1151,7 +1160,7 @@
         "id": "ch15_st24",
         "stageNumber": 24,
         "name": "One Small Step (Fee Applies)",
-        "kind": "normal",
+        "kind": "story",
         "background": "moonrent_c",
         "waves": [
           {
@@ -1182,16 +1191,16 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.5,
-        "resolutionsStar": 19,
-        "dialogueBefore": "",
+        "hpThresholdStar": 0.55,
+        "resolutionsStar": 20,
+        "dialogueBefore": "ch15_preboss",
         "dialogueAfter": "",
         "rewards": {
           "gold": 5054,
-          "gems": 0,
+          "gems": 5,
           "items": [
             {
-              "id": "rabbit_pamphlet",
+              "id": "crater_chalk",
               "count": 3
             }
           ],
@@ -1225,6 +1234,22 @@
           {
             "enemies": [
               {
+                "enemyId": "moon_rabbit",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              },
+              {
+                "enemyId": "moon_rabbit",
+                "hpMult": 1.8,
+                "atkMult": 1.8,
+                "countdownOverride": -1
+              }
+            ]
+          },
+          {
+            "enemies": [
+              {
                 "enemyId": "boss_moonlord",
                 "hpMult": 1,
                 "atkMult": 1,
@@ -1234,8 +1259,8 @@
           }
         ],
         "modifiers": [],
-        "hpThresholdStar": 0.4,
-        "resolutionsStar": 19,
+        "hpThresholdStar": 0.45,
+        "resolutionsStar": 24,
         "dialogueBefore": "ch15_boss_before",
         "dialogueAfter": "ch15_boss_after",
         "rewards": {
@@ -1243,7 +1268,7 @@
           "gems": 30,
           "items": [
             {
-              "id": "moon_lease",
+              "id": "rabbit_pamphlet",
               "count": 3
             }
           ],
