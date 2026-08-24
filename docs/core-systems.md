@@ -48,9 +48,9 @@ The board is always 6 columns by 5 rows. `BoardGenerator` rejects invalid RNG ou
 
 `PlayableBattleController` processes a move in this order:
 
-1. Press maps to a cell, starts `DragSession`, and emits the initial `TimerChanged` value.
+1. Press maps to a cell and starts `DragSession`. Positive-duration moves emit the initial `TimerChanged` value; zero-duration moves proceed directly to completion.
 2. Movement traverses every crossed grid boundary, so a fast pointer jump performs each adjacent swap and refreshes the board after each swap.
-3. Release or exact unscaled timeout ends the drag once and emits timer zero. Later releases/time advances are ignored.
+3. Release or exact unscaled timeout ends the drag once. `CompleteDrag` is the sole terminal-zero emitter and notifies only after the authoritative board, battle, count, and stage state commit; later releases/time advances are ignored.
 4. `BoardResolver` completes the entire deterministic resolution and `StageSession` commits the battle turn.
 5. For each cascade layer, the view displays `PreClearBoard`, emits `MatchGroupsResolved` and `CascadeLayerResolved`, then displays `PostRefillBoard`.
 6. The view settles on the authoritative `BattleContext.Board` even when presentation events are consumed synchronously.
@@ -160,7 +160,7 @@ Invoke-PuzzleGameTests EditMode 'PuzzleGame.Tests.EditMode'
 Invoke-PuzzleGameTests PlayMode 'PuzzleGame.Tests.PlayMode'
 ```
 
-At the core-owned boss-lifecycle review fix, the Unity EditMode suite contains 294 passing cases and PlayMode contains 45 passing cases. The command reports the process exit code through failure, validates that result XML exists, and rejects a non-passing XML result. Retain and inspect the printed log paths when diagnosing compiler errors, exceptions, failed assertions, or unexpected `Debug.Log*` output.
+At the core-owned boss-lifecycle review fix, the Unity EditMode suite contains 294 passing cases and PlayMode contains 48 passing cases. The command reports the process exit code through failure, validates that result XML exists, and rejects a non-passing XML result. Retain and inspect the printed log paths when diagnosing compiler errors, exceptions, failed assertions, or unexpected `Debug.Log*` output.
 
 ## Known limitations
 

@@ -171,8 +171,12 @@ namespace PuzzleGame.Unity.Battle
                 throw new ArgumentOutOfRangeException("unscaledDeltaTime");
             if (dragSession == null || resolving) return;
             dragElapsedSeconds = Mathf.Min(dragDurationSeconds, dragElapsedSeconds + unscaledDeltaTime);
-            EmitTimer(Mathf.Max(0f, dragDurationSeconds - dragElapsedSeconds));
-            if (dragElapsedSeconds >= dragDurationSeconds) CompleteDrag();
+            if (dragElapsedSeconds >= dragDurationSeconds)
+            {
+                CompleteDrag();
+                return;
+            }
+            EmitTimer(dragDurationSeconds - dragElapsedSeconds);
         }
 
         private void Update()
@@ -248,8 +252,8 @@ namespace PuzzleGame.Unity.Battle
             dragDurationSeconds = battleContext.MoveTimeSeconds;
             dragElapsedSeconds = 0f;
             dragSession = new DragSession(currentBoard, dragPosition, dragDurationSeconds);
-            EmitTimer(dragDurationSeconds);
             if (dragDurationSeconds <= 0f) CompleteDrag();
+            else EmitTimer(dragDurationSeconds);
         }
 
         private void OnPointerMoved(Vector2 screenPosition)

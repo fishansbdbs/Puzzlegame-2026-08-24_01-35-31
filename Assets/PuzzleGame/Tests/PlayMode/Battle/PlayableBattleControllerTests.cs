@@ -91,7 +91,134 @@ namespace PuzzleGame.Tests.PlayMode.Battle
                 fixture.Controller.AdvanceTime(1f);
 
                 Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
-                Assert.That(timers.Last(), Is.EqualTo(0f));
+                CollectionAssert.AreEqual(new[] { 10f, 1f, 0f }, timers);
+            }
+        }
+
+        [Test]
+        public void Throwing_timeout_zero_observer_cannot_prevent_committed_threshold_action_count_or_retry()
+        {
+            using (var fixture = PlayableBattleFixture.Create(BoardPattern.WithFireAndHeartMatches(), enemyHp: 1000,
+                       enemyCountdown: 1, thresholdTriggers: new[] { Threshold("enrage", 75f, 2f, 2) }, actionDamage: 10))
+            {
+                fixture.Context.Enemy.ApplyDamage(300);
+                var initialBoard = fixture.Context.Board;
+                var terminalZeros = 0;
+                fixture.Controller.TimerChanged += item =>
+                {
+                    if (item.RemainingSeconds != 0f) return;
+                    terminalZeros++;
+                    throw new InvalidOperationException("timer observer");
+                };
+                fixture.Input.Press(fixture.CellCenter(5, 4));
+                fixture.Controller.AdvanceTime(9f);
+
+                Assert.That(() => fixture.Controller.AdvanceTime(1f),
+                    Throws.TypeOf<InvalidOperationException>().With.Message.EqualTo("timer observer"));
+                Assert.That(terminalZeros, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CurrentBoard, Is.SameAs(fixture.Context.Board));
+                Assert.That(fixture.Context.Board, Is.Not.SameAs(initialBoard));
+                Assert.That(MatchDetector.FindGroups(fixture.Context.Board), Is.Empty);
+                Assert.That(fixture.Context.Enemy.CurrentHp, Is.EqualTo(675));
+                Assert.That(fixture.Context.Enemy.AttackMultiplier, Is.EqualTo(2f));
+                Assert.That(fixture.Context.Enemy.EnrageTurns, Is.EqualTo(2));
+                Assert.That(fixture.Context.Enemy.Countdown, Is.EqualTo(2));
+                Assert.That(fixture.Party.CurrentHp, Is.EqualTo(80));
+                Assert.That(fixture.Session.BoardResolutionCount, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
+                Assert.That(fixture.Session.IsCompleted, Is.False);
+                Assert.That(fixture.Controller.IsDragging, Is.False);
+                Assert.That(fixture.Controller.IsResolving, Is.False);
+
+                var committedBoard = fixture.Context.Board;
+                Assert.That(() => fixture.Controller.AdvanceTime(20f), Throws.Nothing);
+
+                Assert.That(terminalZeros, Is.EqualTo(1));
+                Assert.That(fixture.Context.Board, Is.SameAs(committedBoard));
+                Assert.That(fixture.Context.Enemy.CurrentHp, Is.EqualTo(675));
+                Assert.That(fixture.Context.Enemy.Countdown, Is.EqualTo(2));
+                Assert.That(fixture.Party.CurrentHp, Is.EqualTo(80));
+                Assert.That(fixture.Session.BoardResolutionCount, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
+            }
+        }
+
+        [Test]
+        public void Throwing_timeout_zero_observer_cannot_prevent_stage_completion_or_duplicate_on_retry()
+        {
+            using (var fixture = PlayableBattleFixture.Create(BoardPattern.WithFireAndHeartMatches(), enemyHp: 1))
+            {
+                var terminalZeros = 0;
+                fixture.Controller.TimerChanged += item =>
+                {
+                    if (item.RemainingSeconds != 0f) return;
+                    terminalZeros++;
+                    throw new InvalidOperationException("timer observer");
+                };
+                fixture.Input.Press(fixture.CellCenter(5, 4));
+
+                Assert.That(() => fixture.Controller.AdvanceTime(10f),
+                    Throws.TypeOf<InvalidOperationException>().With.Message.EqualTo("timer observer"));
+                Assert.That(terminalZeros, Is.EqualTo(1));
+                Assert.That(fixture.Context.Enemy.IsDefeated, Is.True);
+                Assert.That(fixture.Session.IsCompleted, Is.True);
+                Assert.That(fixture.Session.BoardResolutionCount, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
+                Assert.That(fixture.Controller.IsDragging, Is.False);
+                Assert.That(fixture.Controller.IsResolving, Is.False);
+
+                var committedBoard = fixture.Context.Board;
+                Assert.That(() => fixture.Controller.AdvanceTime(20f), Throws.Nothing);
+
+                Assert.That(terminalZeros, Is.EqualTo(1));
+                Assert.That(fixture.Context.Board, Is.SameAs(committedBoard));
+                Assert.That(fixture.Session.IsCompleted, Is.True);
+                Assert.That(fixture.Session.BoardResolutionCount, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
+            }
+        }
+
+        [Test]
+        public void Zero_duration_throwing_zero_observer_commits_once_before_propagating()
+        {
+            using (var fixture = PlayableBattleFixture.Create(BoardPattern.WithFireAndHeartMatches(), enemyHp: 1000,
+                       enemyCountdown: 1, thresholdTriggers: new[] { Threshold("enrage", 75f, 2f, 2) }, actionDamage: 10,
+                       moveTimeSeconds: 0f))
+            {
+                fixture.Context.Enemy.ApplyDamage(300);
+                var initialBoard = fixture.Context.Board;
+                var terminalZeros = 0;
+                fixture.Controller.TimerChanged += item =>
+                {
+                    if (item.RemainingSeconds != 0f) return;
+                    terminalZeros++;
+                    throw new InvalidOperationException("timer observer");
+                };
+
+                Assert.That(() => fixture.Input.Press(fixture.CellCenter(5, 4)),
+                    Throws.TypeOf<InvalidOperationException>().With.Message.EqualTo("timer observer"));
+                Assert.That(terminalZeros, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CurrentBoard, Is.SameAs(fixture.Context.Board));
+                Assert.That(fixture.Context.Board, Is.Not.SameAs(initialBoard));
+                Assert.That(MatchDetector.FindGroups(fixture.Context.Board), Is.Empty);
+                Assert.That(fixture.Context.Enemy.CurrentHp, Is.EqualTo(675));
+                Assert.That(fixture.Context.Enemy.AttackMultiplier, Is.EqualTo(2f));
+                Assert.That(fixture.Context.Enemy.EnrageTurns, Is.EqualTo(2));
+                Assert.That(fixture.Context.Enemy.Countdown, Is.EqualTo(2));
+                Assert.That(fixture.Party.CurrentHp, Is.EqualTo(80));
+                Assert.That(fixture.Session.BoardResolutionCount, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
+                Assert.That(fixture.Session.IsCompleted, Is.False);
+                Assert.That(fixture.Controller.IsDragging, Is.False);
+                Assert.That(fixture.Controller.IsResolving, Is.False);
+
+                var committedBoard = fixture.Context.Board;
+                Assert.That(() => fixture.Controller.AdvanceTime(20f), Throws.Nothing);
+
+                Assert.That(terminalZeros, Is.EqualTo(1));
+                Assert.That(fixture.Context.Board, Is.SameAs(committedBoard));
+                Assert.That(fixture.Session.BoardResolutionCount, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
             }
         }
 
@@ -765,7 +892,8 @@ namespace PuzzleGame.Tests.PlayMode.Battle
         internal BattleContext Context { get; private set; }
 
         internal static PlayableBattleFixture Create(BoardState board = null, int enemyHp = 1000, int enemyCountdown = 2,
-            bool damageParty = false, EnemyThresholdTriggerData[] thresholdTriggers = null, int actionDamage = 1)
+            bool damageParty = false, EnemyThresholdTriggerData[] thresholdTriggers = null, int actionDamage = 1,
+            float moveTimeSeconds = BoardState.DefaultDragDurationSeconds)
         {
             var fixture = new PlayableBattleFixture();
             fixture.Root = new GameObject("PlayableBattleFixture");
@@ -805,7 +933,7 @@ namespace PuzzleGame.Tests.PlayMode.Battle
             };
             fixture.Session = new StageSession(stage, new[] { enemyData });
             var enemy = fixture.Session.CurrentEnemies[0];
-            fixture.Context = new BattleContext(board, fixture.Party, enemy);
+            fixture.Context = new BattleContext(board, fixture.Party, enemy, moveTimeSeconds);
             fixture.View.Initialize(board);
             fixture.Controller.Initialize(fixture.Input, fixture.View, new Rect(0f, 0f, 600f, 500f), board,
                 new CyclingOrbSource(), fixture.Party, enemy, fixture.Session, fixture.Context, stage);
