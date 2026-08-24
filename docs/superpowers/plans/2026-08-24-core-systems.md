@@ -647,4 +647,3 @@ Verify every new asset has a unique `.meta`, no existing scene/prefab/content as
 git add -- Assets/PuzzleGame docs/AI/UnityProjectContext.md docs/core-systems.md
 git commit -m "feat: complete playable core systems vertical slice"
 ```
-
