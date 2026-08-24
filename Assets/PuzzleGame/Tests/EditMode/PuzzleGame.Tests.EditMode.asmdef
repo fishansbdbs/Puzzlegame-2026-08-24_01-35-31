@@ -2,7 +2,8 @@
   "name": "PuzzleGame.Tests.EditMode",
   "rootNamespace": "PuzzleGame.Tests.EditMode",
   "references": [
-    "PuzzleGame.Core"
+    "PuzzleGame.Core",
+    "PuzzleGame.Unity"
   ],
   "includePlatforms": [
     "Editor"
