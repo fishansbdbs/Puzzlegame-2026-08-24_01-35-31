@@ -327,16 +327,38 @@ namespace PuzzleGame.Tests.EditMode.Contracts
             Assert.That(ContractValidation.Validate(data), Is.Empty);
         }
 
+        [Test]
+        public void Contract_validation_rejects_undefined_nested_enums_and_event_references()
+        {
+            var skill = new SkillData
+            {
+                Id = "bad-skill", ChargeElement = (ElementType)99, ChargeRequired = 1,
+                Effects = new[] { new SkillEffectData { Type = (SkillEffectType)99, Payload = new EffectPayloadData() } }
+            };
+            Assert.That(ContractValidation.Validate(skill), Is.Not.Empty);
+
+            var enemy = new EnemyData
+            {
+                Id = "bad-enemy", Element = (ElementType)99, BaseStats = new StatBlock(), InitialCountdown = 1,
+                Actions = new[] { new EnemyActionData { Id = "act", ResetCountdown = 1, Effects = new[] { new EnemyEffectData { Type = (EnemyEffectType)99, Payload = new EffectPayloadData() } } } },
+                ThresholdTriggers = Array.Empty<EnemyThresholdTriggerData>()
+            };
+            Assert.That(ContractValidation.Validate(enemy), Is.Not.Empty);
+
+            var eventData = new EventData { Id = "event", StageIds = new[] { "", "stage", "stage" }, MilestoneRewards = new[] { new RewardData { Id = "reward", Type = (RewardType)99, Amount = 1 } } };
+            Assert.That(ContractValidation.Validate(eventData), Is.Not.Empty);
+        }
+
         private static StageData ValidStage()
         {
             return new StageData
             {
                 Id = "stage-1",
-                Waves = new[] { new WaveData { Id = "wave-1" } },
+                Waves = new[] { new WaveData { Id = "wave-1", EnemyIds = new[] { "enemy-1" } } },
                 StarObjectives = new[]
                 {
                     new StarObjectiveData { Type = StarObjectiveType.Clear },
-                    new StarObjectiveData { Type = StarObjectiveType.FinishAboveHpThreshold, HpThresholdPercent = 50f },
+                    new StarObjectiveData { Type = StarObjectiveType.FinishAboveHpThreshold, HpThresholdPercent = .5f },
                     new StarObjectiveData { Type = StarObjectiveType.ClearWithinBoardResolutionCount, MaximumBoardResolutionCount = 5 }
                 }
             };

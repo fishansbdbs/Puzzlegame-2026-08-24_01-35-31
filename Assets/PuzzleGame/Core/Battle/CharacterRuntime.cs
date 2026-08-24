@@ -10,13 +10,16 @@ namespace PuzzleGame.Core.Battle
         private readonly SkillData activeSkill;
         private readonly LeaderSkillData leaderSkill;
         private readonly SkillEffectData[] passiveEffects;
+        private readonly int effectiveRarity;
+        private readonly VisualReferenceSet visuals;
         private object bindIdentity = new object();
 
         public CharacterRuntime(CharacterData data, SkillData activeSkill = null, LeaderSkillData leaderSkill = null,
-            SkillEffectData[] passiveEffects = null)
+            SkillEffectData[] passiveEffects = null, int effectiveRarity = 0, VisualReferenceSet visuals = null)
         {
             if (data == null) throw new ArgumentNullException("data");
             ValidateCharacterData(data);
+            ValidateStableIds(data, activeSkill, leaderSkill);
             if (activeSkill != null) ValidateSkill(activeSkill);
             if (leaderSkill != null) ValidateEffects(leaderSkill.Effects, "leaderSkill");
             ValidateEffects(passiveEffects ?? new SkillEffectData[0], "passiveEffects");
@@ -24,12 +27,18 @@ namespace PuzzleGame.Core.Battle
             this.activeSkill = AuthoredDataSnapshot.Clone(activeSkill);
             this.leaderSkill = AuthoredDataSnapshot.Clone(leaderSkill);
             this.passiveEffects = AuthoredDataSnapshot.Clone(passiveEffects ?? new SkillEffectData[0]);
+            this.effectiveRarity = effectiveRarity == 0 ? data.BaseRarity : effectiveRarity;
+            if (this.effectiveRarity < (int)Rarity.One || this.effectiveRarity > (int)Rarity.Awakened)
+                throw new ArgumentOutOfRangeException("effectiveRarity");
+            this.visuals = AuthoredDataSnapshot.Clone(visuals ?? data.BaseVisuals);
         }
 
         public CharacterData Data { get { return AuthoredDataSnapshot.Clone(data); } }
         public SkillData ActiveSkill { get { return AuthoredDataSnapshot.Clone(activeSkill); } }
         public LeaderSkillData LeaderSkill { get { return AuthoredDataSnapshot.Clone(leaderSkill); } }
         public IReadOnlyList<SkillEffectData> PassiveEffects { get { return Array.AsReadOnly(AuthoredDataSnapshot.Clone(passiveEffects)); } }
+        public int EffectiveRarity { get { return effectiveRarity; } }
+        public VisualReferenceSet Visuals { get { return AuthoredDataSnapshot.Clone(visuals); } }
         public int CurrentCharge { get; private set; }
         public int BindTurns { get; private set; }
         public bool IsBound { get { return BindTurns > 0; } }
@@ -100,6 +109,18 @@ namespace PuzzleGame.Core.Battle
                 throw new ArgumentException("Character element must be a non-Heart defined element.", "data");
             if (data.BaseStats == null || data.BaseStats.Hp < 0 || data.BaseStats.Attack < 0 || data.BaseStats.Recovery < 0)
                 throw new ArgumentException("Character stats cannot be null or negative.", "data");
+        }
+
+        private static void ValidateStableIds(CharacterData data, SkillData activeSkill, LeaderSkillData leaderSkill)
+        {
+            if (string.IsNullOrWhiteSpace(data.ActiveSkillId) != (activeSkill == null))
+                throw new ArgumentException("Character active skill ID and active skill must either both be present or both be absent.", "activeSkill");
+            if (activeSkill != null && !string.Equals(data.ActiveSkillId, activeSkill.Id, StringComparison.Ordinal))
+                throw new ArgumentException("Active skill ID must match the character active skill ID.", "activeSkill");
+            if (string.IsNullOrWhiteSpace(data.LeaderSkillId) != (leaderSkill == null))
+                throw new ArgumentException("Character leader skill ID and leader skill must either both be present or both be absent.", "leaderSkill");
+            if (leaderSkill != null && !string.Equals(data.LeaderSkillId, leaderSkill.Id, StringComparison.Ordinal))
+                throw new ArgumentException("Leader skill ID must match the character leader skill ID.", "leaderSkill");
         }
 
         private static void ValidateSkill(SkillData skill)
@@ -211,7 +232,7 @@ namespace PuzzleGame.Core.Battle
 
         private static string[] Clone(string[] source) { return source == null ? null : (string[])source.Clone(); }
         private static StatBlock Clone(StatBlock source) { return source == null ? null : new StatBlock { Hp = source.Hp, Attack = source.Attack, Recovery = source.Recovery }; }
-        private static VisualReferenceSet Clone(VisualReferenceSet source) { return source == null ? null : new VisualReferenceSet { PortraitKey = source.PortraitKey, CardArtKey = source.CardArtKey, ModelKey = source.ModelKey, VfxKey = source.VfxKey }; }
+        internal static VisualReferenceSet Clone(VisualReferenceSet source) { return source == null ? null : new VisualReferenceSet { PortraitKey = source.PortraitKey, CardArtKey = source.CardArtKey, ModelKey = source.ModelKey, VfxKey = source.VfxKey }; }
 
         private static ProgressionCurveData Clone(ProgressionCurveData source)
         {

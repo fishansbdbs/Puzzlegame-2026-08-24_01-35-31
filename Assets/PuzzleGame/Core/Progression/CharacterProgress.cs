@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PuzzleGame.Core.Battle;
 using PuzzleGame.Core.Contracts;
 
 namespace PuzzleGame.Core.Progression
@@ -8,6 +9,7 @@ namespace PuzzleGame.Core.Progression
     {
         private readonly CharacterData data;
         private readonly SkillSnapshot activeSkill;
+        private readonly SkillEffectData[] activeSkillEffects;
         private int level;
         private int totalExperience;
         private int ascension;
@@ -21,6 +23,7 @@ namespace PuzzleGame.Core.Progression
             ValidateActiveSkill(data, activeSkill);
             this.data = ProgressionDataSnapshot.Clone(data);
             this.activeSkill = new SkillSnapshot(activeSkill.Id, activeSkill.DisplayName, activeSkill.ChargeElement, activeSkill.ChargeRequired);
+            activeSkillEffects = AuthoredDataSnapshot.Clone(activeSkill.Effects);
             level = 1;
         }
 
@@ -41,6 +44,15 @@ namespace PuzzleGame.Core.Progression
                 return new SkillSnapshot(activeSkill.Id, activeSkill.DisplayName, activeSkill.ChargeElement, (int)charge);
             }
         }
+        public IReadOnlyList<SkillEffectSnapshot> EffectiveActiveSkillEffects
+        {
+            get
+            {
+                var results = new SkillEffectSnapshot[activeSkillEffects.Length];
+                for (var index = 0; index < results.Length; index++) results[index] = new SkillEffectSnapshot(activeSkillEffects[index]);
+                return Array.AsReadOnly(results);
+            }
+        }
         public VisualSnapshot CurrentVisuals { get { return ProgressionDataSnapshot.Snapshot(awakened ? data.AwakenedVisuals : data.BaseVisuals); } }
 
         internal CharacterData Data { get { return data; } }
@@ -51,7 +63,8 @@ namespace PuzzleGame.Core.Progression
                 Id = activeSkill.Id,
                 DisplayName = activeSkill.DisplayName,
                 ChargeElement = activeSkill.ChargeElement,
-                ChargeRequired = activeSkill.ChargeRequired
+                ChargeRequired = activeSkill.ChargeRequired,
+                Effects = AuthoredDataSnapshot.Clone(activeSkillEffects)
             });
             snapshot.SetExperience(totalExperience, level);
             snapshot.SetAscension(ascension);
@@ -61,6 +74,15 @@ namespace PuzzleGame.Core.Progression
         internal void SetExperience(int value, int newLevel) { totalExperience = value; level = newLevel; }
         internal void SetAscension(int value) { ascension = value; }
         internal void SetAwakened() { awakened = true; }
+        internal SkillData CreateEffectiveActiveSkillData()
+        {
+            var effective = new SkillData
+            {
+                Id = activeSkill.Id, DisplayName = activeSkill.DisplayName, ChargeElement = activeSkill.ChargeElement,
+                ChargeRequired = EffectiveActiveSkill.ChargeRequired, Effects = AuthoredDataSnapshot.Clone(activeSkillEffects)
+            };
+            return effective;
+        }
 
         private static void ValidateActiveSkill(CharacterData data, SkillData activeSkill)
         {
@@ -92,6 +114,30 @@ namespace PuzzleGame.Core.Progression
         public string DisplayName { get; private set; }
         public ElementType ChargeElement { get; private set; }
         public int ChargeRequired { get; private set; }
+    }
+
+    public sealed class SkillEffectSnapshot
+    {
+        internal SkillEffectSnapshot(SkillEffectData source)
+        {
+            Type = source.Type;
+            Payload = new EffectPayloadSnapshot(source.Payload);
+        }
+        public SkillEffectType Type { get; private set; }
+        public EffectPayloadSnapshot Payload { get; private set; }
+    }
+
+    public sealed class EffectPayloadSnapshot
+    {
+        internal EffectPayloadSnapshot(EffectPayloadData source)
+        {
+            Amount = source.Amount; Multiplier = source.Multiplier; DurationSeconds = source.DurationSeconds;
+            TurnCount = source.TurnCount; ComboCount = source.ComboCount; SourceOrb = source.SourceOrb; TargetOrb = source.TargetOrb;
+            TargetId = source.TargetId; Tags = Array.AsReadOnly(source.Tags == null ? new string[0] : (string[])source.Tags.Clone());
+        }
+        public int Amount { get; private set; } public float Multiplier { get; private set; } public float DurationSeconds { get; private set; }
+        public int TurnCount { get; private set; } public int ComboCount { get; private set; } public OrbType SourceOrb { get; private set; } public OrbType TargetOrb { get; private set; }
+        public string TargetId { get; private set; } public IReadOnlyList<string> Tags { get; private set; }
     }
 
     public sealed class VisualSnapshot

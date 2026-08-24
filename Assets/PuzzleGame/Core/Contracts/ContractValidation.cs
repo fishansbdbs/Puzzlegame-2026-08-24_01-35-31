@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PuzzleGame.Core.Battle;
 using PuzzleGame.Core.Progression;
 
 namespace PuzzleGame.Core.Contracts
@@ -31,14 +32,14 @@ namespace PuzzleGame.Core.Contracts
             var skill = data as SkillData;
             if (skill != null)
             {
-                ValidateSkill(skill.ChargeRequired, skill.Effects, errors);
+                ValidateSkill(skill.ChargeElement, skill.ChargeRequired, skill.Effects, errors);
                 return errors;
             }
 
             var leaderSkill = data as LeaderSkillData;
             if (leaderSkill != null)
             {
-                ValidateSkill(0, leaderSkill.Effects, errors);
+                ValidateSkill(ElementType.Fire, 0, leaderSkill.Effects, errors);
                 return errors;
             }
 
@@ -70,6 +71,13 @@ namespace PuzzleGame.Core.Contracts
                 return errors;
             }
 
+            var eventData = data as EventData;
+            if (eventData != null)
+            {
+                ValidateEvent(eventData, errors);
+                return errors;
+            }
+
             var reward = data as RewardData;
             if (reward != null)
             {
@@ -84,8 +92,9 @@ namespace PuzzleGame.Core.Contracts
             errors.AddRange(ProgressionValidation.Validate(data));
         }
 
-        private static void ValidateSkill(int chargeRequired, SkillEffectData[] effects, List<string> errors)
+        private static void ValidateSkill(ElementType chargeElement, int chargeRequired, SkillEffectData[] effects, List<string> errors)
         {
+            if (!Enum.IsDefined(typeof(ElementType), chargeElement)) errors.Add("Skill charge element is invalid.");
             if (chargeRequired < 0)
             {
                 errors.Add("Skill charge requirement cannot be negative.");
@@ -95,33 +104,13 @@ namespace PuzzleGame.Core.Contracts
             {
                 errors.Add("Skill must define at least one effect.");
             }
+            else for (var index = 0; index < effects.Length; index++) ValidateSkillEffect(effects[index], errors);
         }
 
         private static void ValidateEnemy(EnemyData data, List<string> errors)
         {
-            if (data.InitialCountdown < 1)
-            {
-                errors.Add("Enemy initial countdown must be at least 1.");
-            }
-
-            if (data.Actions == null || data.Actions.Length == 0)
-            {
-                errors.Add("Enemy must define at least one action.");
-                return;
-            }
-
-            for (var index = 0; index < data.Actions.Length; index++)
-            {
-                var action = data.Actions[index];
-                if (action == null || string.IsNullOrWhiteSpace(action.Id))
-                {
-                    errors.Add("Enemy action ID is required.");
-                }
-                else if (action.ResetCountdown < 1)
-                {
-                    errors.Add("Enemy action reset countdown must be at least 1.");
-                }
-            }
+            try { EnemyDataValidation.Validate(data); }
+            catch (ArgumentException exception) { errors.Add(exception.Message); }
         }
 
         private static void ValidateStage(StageData data, List<string> errors)
@@ -132,6 +121,7 @@ namespace PuzzleGame.Core.Contracts
             }
             else
             {
+                var ids = new HashSet<string>(StringComparer.Ordinal);
                 for (var index = 0; index < data.Waves.Length; index++)
                 {
                     var wave = data.Waves[index];
@@ -139,17 +129,22 @@ namespace PuzzleGame.Core.Contracts
                     {
                         errors.Add("Wave ID is required.");
                     }
+                    else if (!ids.Add(wave.Id)) errors.Add("Wave IDs must be unique within a stage.");
+                    if (wave != null && (wave.EnemyIds == null || wave.EnemyIds.Length == 0)) errors.Add("Wave must define at least one enemy.");
+                    else if (wave != null) for (var enemy = 0; enemy < wave.EnemyIds.Length; enemy++) if (string.IsNullOrWhiteSpace(wave.EnemyIds[enemy])) errors.Add("Wave enemy ID is required.");
                 }
             }
-
             if (data.StarObjectives == null || data.StarObjectives.Length != 3)
             {
                 errors.Add("Stage must define exactly three star objectives.");
             }
+            else for (var index = 0; index < data.StarObjectives.Length; index++) ValidateObjective(data.StarObjectives[index], errors);
+            ValidateRewards(data.ClearRewards, errors);
         }
 
         private static void ValidateBanner(BannerData data, List<string> errors)
         {
+            if (!Enum.IsDefined(typeof(BannerType), data.Type)) errors.Add("Banner type is invalid.");
             var requiresSteps = data.Type == BannerType.GatherIn || data.Type == BannerType.StepUp;
 
             if (data.Characters == null || data.Characters.Length == 0)
@@ -158,6 +153,7 @@ namespace PuzzleGame.Core.Contracts
             }
             else
             {
+                var ids = new HashSet<string>(StringComparer.Ordinal);
                 for (var index = 0; index < data.Characters.Length; index++)
                 {
                     var character = data.Characters[index];
@@ -169,6 +165,7 @@ namespace PuzzleGame.Core.Contracts
                     {
                         errors.Add("Banner character weight must be positive.");
                     }
+                    else if (!ids.Add(character.CharacterId)) errors.Add("Banner character IDs must be unique.");
                 }
             }
 
@@ -277,6 +274,7 @@ namespace PuzzleGame.Core.Contracts
 
         private static void ValidateReward(RewardData data, List<string> errors)
         {
+            if (!Enum.IsDefined(typeof(RewardType), data.Type)) errors.Add("Reward type is invalid.");
             if (data.Amount <= 0)
             {
                 errors.Add("Reward amount must be positive.");
@@ -287,6 +285,53 @@ namespace PuzzleGame.Core.Contracts
             {
                 errors.Add("Reward item ID is required for this reward type.");
             }
+        }
+
+        private static void ValidateEvent(EventData data, List<string> errors)
+        {
+            if (data.StageIds == null || data.StageIds.Length == 0) errors.Add("Event must define stage IDs.");
+            else
+            {
+                var ids = new HashSet<string>(StringComparer.Ordinal);
+                for (var index = 0; index < data.StageIds.Length; index++)
+                    if (string.IsNullOrWhiteSpace(data.StageIds[index])) errors.Add("Event stage ID is required.");
+                    else if (!ids.Add(data.StageIds[index])) errors.Add("Event stage IDs must be unique.");
+            }
+            ValidateRewards(data.MilestoneRewards, errors);
+        }
+
+        private static void ValidateRewards(RewardData[] rewards, List<string> errors)
+        {
+            if (rewards == null) { errors.Add("Rewards cannot be null."); return; }
+            var ids = new HashSet<string>(StringComparer.Ordinal);
+            for (var index = 0; index < rewards.Length; index++)
+            {
+                var reward = rewards[index];
+                if (reward == null || string.IsNullOrWhiteSpace(reward.Id)) errors.Add("Reward ID is required.");
+                else if (!ids.Add(reward.Id)) errors.Add("Reward IDs must be unique.");
+                if (reward != null) ValidateReward(reward, errors);
+            }
+        }
+
+        private static void ValidateObjective(StarObjectiveData objective, List<string> errors)
+        {
+            if (objective == null) { errors.Add("Star objectives cannot be null."); return; }
+            if (!Enum.IsDefined(typeof(StarObjectiveType), objective.Type)) errors.Add("Star objective type is invalid.");
+            if (objective.Type == StarObjectiveType.FinishAboveHpThreshold && (float.IsNaN(objective.HpThresholdPercent) || float.IsInfinity(objective.HpThresholdPercent) || objective.HpThresholdPercent < 0f || objective.HpThresholdPercent > 1f)) errors.Add("HP objective threshold must be between zero and one.");
+            if (objective.Type == StarObjectiveType.ClearWithinBoardResolutionCount && objective.MaximumBoardResolutionCount < 0) errors.Add("Board resolution objective limit cannot be negative.");
+        }
+
+        private static void ValidateSkillEffect(SkillEffectData effect, List<string> errors)
+        {
+            if (effect == null || effect.Payload == null) { errors.Add("Skill effects and payloads cannot be null."); return; }
+            if (!Enum.IsDefined(typeof(SkillEffectType), effect.Type)) { errors.Add("Skill effect type is invalid."); return; }
+            var payload = effect.Payload;
+            if (payload.TurnCount < 0) errors.Add("Skill effect turn count cannot be negative.");
+            if (float.IsNaN(payload.Multiplier) || float.IsInfinity(payload.Multiplier) || float.IsNaN(payload.DurationSeconds) || float.IsInfinity(payload.DurationSeconds)) errors.Add("Skill effect numeric payloads must be finite.");
+            if ((effect.Type == SkillEffectType.ConvertOrbs || effect.Type == SkillEffectType.RemoveOrbs) && (!Enum.IsDefined(typeof(OrbType), payload.SourceOrb) || !Enum.IsDefined(typeof(OrbType), payload.TargetOrb))) errors.Add("Skill effect orb type is invalid.");
+            if (effect.Type == SkillEffectType.CreateOrbs && (!Enum.IsDefined(typeof(OrbType), payload.TargetOrb) || payload.Amount < 0)) errors.Add("Create orb effect is invalid.");
+            if ((effect.Type == SkillEffectType.Heal || effect.Type == SkillEffectType.DirectDamage) && payload.Amount < 0) errors.Add("Skill effect amount cannot be negative.");
+            if ((effect.Type == SkillEffectType.AttackBoost || effect.Type == SkillEffectType.Shield) && (payload.Multiplier < 0f || (effect.Type == SkillEffectType.Shield && payload.Multiplier > 1f))) errors.Add("Skill effect multiplier is invalid.");
         }
     }
 }

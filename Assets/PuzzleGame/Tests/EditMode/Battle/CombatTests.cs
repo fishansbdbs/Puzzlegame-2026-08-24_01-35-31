@@ -213,7 +213,9 @@ namespace PuzzleGame.Tests.EditMode.Battle
                 Id = "snapshot",
                 Element = ElementType.Fire,
                 BaseRarity = 1,
-                BaseStats = new StatBlock { Hp = 10, Attack = 10, Recovery = 2 }
+                BaseStats = new StatBlock { Hp = 10, Attack = 10, Recovery = 2 },
+                ActiveSkillId = "heal",
+                LeaderSkillId = "leader"
             };
             var skill = new SkillData
             {
@@ -267,7 +269,9 @@ namespace PuzzleGame.Tests.EditMode.Battle
                 Id = id,
                 Element = element,
                 BaseRarity = 1,
-                BaseStats = new StatBlock { Hp = hp, Attack = attack, Recovery = recovery }
+                BaseStats = new StatBlock { Hp = hp, Attack = attack, Recovery = recovery },
+                ActiveSkillId = skill == null ? string.Empty : skill.Id,
+                LeaderSkillId = leader == null ? string.Empty : leader.Id
             }, skill, leader, passive);
         }
 

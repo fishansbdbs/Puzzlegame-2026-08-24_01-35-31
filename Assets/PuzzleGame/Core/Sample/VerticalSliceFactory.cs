@@ -427,8 +427,8 @@ namespace PuzzleGame.Core.Sample
         {
             var members = new CharacterRuntime[characters.Length];
             for (var index = 0; index < members.Length; index++)
-                members[index] = new CharacterRuntime(characters[index], skills[index], index == 0 ? leader : null,
-                    index == 0 ? passive : null);
+                members[index] = CharacterBattleFactory.Create(new CharacterProgress(characters[index], skills[index]), skills[index],
+                    index == 0 ? leader : null, index == 0 ? passive : null);
             return new PartyState(members);
         }
 
