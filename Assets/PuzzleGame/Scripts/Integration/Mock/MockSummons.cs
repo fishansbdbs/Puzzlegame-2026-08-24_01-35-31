@@ -125,7 +125,8 @@ namespace PuzzleGame.Presentation.Mock
 
             var session = NewSession(vm, dto, count, cost);
             // Ten-pulls guarantee at least a 4★ in the standard/featured pattern.
-            if (multi && session.Cards.All(c => c.Character.BaseRarity < 4))
+            // Cards only carry ids until Finish() resolves them, so check DTOs.
+            if (multi && session.Cards.All(c => RarityOf(c.CharacterId) < 4))
             {
                 ReplaceLast(session, dto, 4);
             }
@@ -153,7 +154,7 @@ namespace PuzzleGame.Presentation.Mock
                 {
                     ReplaceLastWith(session, dto.featured[0]);
                 }
-                else if (session.Cards.All(c => c.Character.BaseRarity < 5))
+                else if (session.Cards.All(c => RarityOf(c.CharacterId) < 5))
                 {
                     ReplaceLast(session, dto, 5);
                 }
@@ -177,6 +178,11 @@ namespace PuzzleGame.Presentation.Mock
                 session.Cards.Add(new SummonCardResult { CharacterId = picked.id });
             }
             return session;
+        }
+
+        int RarityOf(string characterId)
+        {
+            return _db.Characters.TryGetValue(characterId ?? "", out var c) ? c.rarity : 1;
         }
 
         void ReplaceLast(SummonSession session, BannerDto dto, int minRarity)
