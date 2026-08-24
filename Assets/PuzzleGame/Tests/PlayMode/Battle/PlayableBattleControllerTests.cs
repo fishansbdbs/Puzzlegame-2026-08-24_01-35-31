@@ -655,13 +655,18 @@ namespace PuzzleGame.Tests.PlayMode.Battle
             var elements = new[] { ElementType.Fire, ElementType.Water, ElementType.Nature, ElementType.Light, ElementType.Dark };
             var members = new CharacterRuntime[5];
             for (var index = 0; index < members.Length; index++)
-                members[index] = new CharacterRuntime(new CharacterData
+            {
+                var skill = new SkillData
                 {
-                    Id = "hero-" + index,
-                    Element = elements[index],
-                    BaseRarity = 1,
-                    BaseStats = new StatBlock { Hp = 20, Attack = 10, Recovery = 10 }
-                });
+                    Id = "hero-" + index + "-active", ChargeElement = ElementType.Heart, ChargeRequired = int.MaxValue,
+                    Effects = new[] { new SkillEffectData { Type = SkillEffectType.Heal, Payload = new EffectPayloadData { Amount = 0 } } }
+                };
+                var data = CharacterData.CreateForTests("hero-" + index, elements[index], 1);
+                data.BaseStats = new StatBlock { Hp = 20, Attack = 10, Recovery = 10 };
+                data.LevelCurve.StatsByLevel[0] = new StatBlock { Hp = 20, Attack = 10, Recovery = 10 };
+                data.ActiveSkillId = skill.Id;
+                members[index] = new CharacterRuntime(data, skill);
+            }
             return new PartyState(members);
         }
     }

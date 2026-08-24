@@ -217,6 +217,7 @@ namespace PuzzleGame.Tests.EditMode.Battle
                 ActiveSkillId = "heal",
                 LeaderSkillId = "leader"
             };
+            BattleFixtures.CompleteCharacterData(characterData);
             var skill = new SkillData
             {
                 Id = "heal",
@@ -266,16 +267,37 @@ namespace PuzzleGame.Tests.EditMode.Battle
         internal static CharacterRuntime Character(string id, ElementType element, int hp = 10, int attack = 10, int recovery = 2,
             SkillData skill = null, LeaderSkillData leader = null, SkillEffectData[] passive = null)
         {
-            return new CharacterRuntime(new CharacterData
-            {
-                Id = id,
-                Element = element,
-                BaseRarity = 1,
-                BaseStats = new StatBlock { Hp = hp, Attack = attack, Recovery = recovery },
-                ActiveSkillId = skill == null ? string.Empty : skill.Id,
-                LeaderSkillId = leader == null ? string.Empty : leader.Id,
-                PassiveId = passive == null ? string.Empty : id + "-passive"
-            }, skill, leader, passive == null ? null : new PassiveData { Id = id + "-passive", Effects = passive });
+            if (skill == null) skill = DefaultSkill(id);
+            var data = CharacterData.CreateForTests(id, element, 1);
+            data.BaseStats = new StatBlock { Hp = hp, Attack = attack, Recovery = recovery };
+            data.LevelCurve.StatsByLevel[0] = new StatBlock { Hp = hp, Attack = attack, Recovery = recovery };
+            data.ActiveSkillId = skill.Id;
+            data.LeaderSkillId = leader == null ? string.Empty : leader.Id;
+            data.PassiveId = passive == null ? string.Empty : id + "-passive";
+            return new CharacterRuntime(data, skill, leader, passive == null ? null : new PassiveData { Id = id + "-passive", Effects = passive });
+        }
+
+        internal static CharacterData CompleteCharacterData(CharacterData data)
+        {
+            var complete = CharacterData.CreateForTests(data.Id, data.Element, data.BaseRarity);
+            complete.DisplayName = data.DisplayName;
+            complete.BaseStats = data.BaseStats;
+            complete.LevelCurve.StatsByLevel[0] = new StatBlock { Hp = data.BaseStats.Hp, Attack = data.BaseStats.Attack, Recovery = data.BaseStats.Recovery };
+            complete.ActiveSkillId = data.ActiveSkillId;
+            complete.LeaderSkillId = data.LeaderSkillId;
+            complete.PassiveId = data.PassiveId;
+            data.LevelCurve = complete.LevelCurve;
+            data.Ascension = complete.Ascension;
+            data.Awakening = complete.Awakening;
+            data.BaseVisuals = complete.BaseVisuals;
+            data.AwakenedVisuals = complete.AwakenedVisuals;
+            return data;
+        }
+
+        private static SkillData DefaultSkill(string id)
+        {
+            return new SkillData { Id = id + "-active", ChargeElement = ElementType.Heart, ChargeRequired = int.MaxValue,
+                Effects = new[] { Effect(SkillEffectType.Heal, amount: 0) } };
         }
 
         internal static PartyState Party(int hp = 10, int attack = 10, int recovery = 2)

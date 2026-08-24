@@ -402,11 +402,8 @@ namespace PuzzleGame.Tests.EditMode.Stages
         {
             var members = new CharacterRuntime[5];
             var elements = new[] { ElementType.Fire, ElementType.Water, ElementType.Nature, ElementType.Light, ElementType.Dark };
-            for (var index = 0; index < members.Length; index++) members[index] = new CharacterRuntime(new CharacterData
-            {
-                Id = "character-" + index, Element = elements[index], BaseRarity = 1,
-                BaseStats = new StatBlock { Hp = partyHp, Attack = 10, Recovery = 0 }
-            });
+            for (var index = 0; index < members.Length; index++)
+                members[index] = PuzzleGame.Tests.EditMode.Battle.BattleFixtures.Character("character-" + index, elements[index], partyHp, 10, 0);
             return new BattleContext(StableBoard(), new PartyState(members), enemy);
         }
 

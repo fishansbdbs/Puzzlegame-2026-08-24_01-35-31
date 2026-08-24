@@ -1,13 +1,24 @@
+using System.Linq;
 using NUnit.Framework;
 using PuzzleGame.Core.Battle;
 using PuzzleGame.Core.Contracts;
 using PuzzleGame.Core.Economy;
+using PuzzleGame.Core.Gacha;
 using PuzzleGame.Core.Progression;
 
 namespace PuzzleGame.Tests.EditMode.Battle
 {
     public sealed class ProgressionBattleTests
     {
+        [Test]
+        public void Runtime_rejects_a_character_with_an_invalid_progression_curve_before_binding()
+        {
+            var data = ProgressionBattleFixtures.Character();
+            data.LevelCurve.ExperienceRequiredByLevel = new int[0];
+
+            Assert.That(() => new CharacterRuntime(data, ProgressionBattleFixtures.Skill()), Throws.TypeOf<System.ArgumentException>());
+        }
+
         [Test]
         public void Factory_materializes_level_and_duplicate_stats_with_effective_skill_charge()
         {
@@ -57,8 +68,8 @@ namespace PuzzleGame.Tests.EditMode.Battle
             var skill = ProgressionBattleFixtures.Skill();
             skill.Effects = new[]
             {
-                new SkillEffectData { Type = SkillEffectType.Heal, Payload = new EffectPayloadData { Amount = 1 } },
-                new SkillEffectData { Type = SkillEffectType.AttackBoost, Payload = new EffectPayloadData { Multiplier = 1f, TurnCount = 1 } }
+                new SkillEffectData { Type = SkillEffectType.Heal, Payload = new EffectPayloadData { Amount = 5 } },
+                new SkillEffectData { Type = SkillEffectType.AttackBoost, Payload = new EffectPayloadData { Multiplier = 2f, TurnCount = 1 } }
             };
             var progress = new CharacterProgress(data, skill);
             ProgressionService.ApplyDuplicate(progress, new Wallet());
@@ -69,12 +80,19 @@ namespace PuzzleGame.Tests.EditMode.Battle
             runtime.AddCharge(1);
             var members = BattleFixtures.StandardMembers();
             members[0] = runtime;
+            var party = new PartyState(members);
+            party.ApplyDamage(5);
+            var group = BattleFixtures.OneGroup(OrbType.Fire, 3);
+            var before = new CombatCalculator().Resolve(group, party, BattleFixtures.Enemy(ElementType.Fire)).Attacks.Sum(item => item.CalculatedDamage);
             var resolution = new SkillEngine().Activate(runtime,
-                new BattleContext(BattleFixtures.StableBoard(), new PartyState(members), BattleFixtures.Enemy(ElementType.Fire)));
+                new BattleContext(BattleFixtures.StableBoard(), party, BattleFixtures.Enemy(ElementType.Fire)));
+            var after = new CombatCalculator().Resolve(group, party, BattleFixtures.Enemy(ElementType.Fire)).Attacks.Sum(item => item.CalculatedDamage);
 
             Assert.That(runtime.ActiveSkill.ChargeRequired, Is.EqualTo(8));
             Assert.That(resolution.Succeeded, Is.True);
             Assert.That(resolution.Events, Has.Count.EqualTo(2));
+            Assert.That(resolution.Events[0].Amount, Is.EqualTo(5));
+            Assert.That(after, Is.GreaterThan(before));
         }
 
         [Test]
@@ -123,6 +141,60 @@ namespace PuzzleGame.Tests.EditMode.Battle
             Assert.That(() => CharacterBattleFactory.Create(progress, ProgressionBattleFixtures.Skill(), null, wrongPassive), Throws.TypeOf<System.ArgumentException>());
             Assert.That(progress.CurrentStats.Hp, Is.EqualTo(beforeStats.Hp));
             Assert.That(progress.AuthoredData.BaseStats.Hp, Is.EqualTo(beforeData.BaseStats.Hp));
+        }
+
+        [Test]
+        public void Public_runtime_progress_and_summon_construction_reject_the_same_invalid_character_curve()
+        {
+            var data = ProgressionBattleFixtures.Character();
+            data.LevelCurve.ExperienceRequiredByLevel = new int[0];
+            var skill = ProgressionBattleFixtures.Skill();
+
+            Assert.That(ContractValidation.Validate(data), Is.Not.Empty);
+            Assert.That(() => new CharacterRuntime(data, skill), Throws.TypeOf<System.ArgumentException>());
+            Assert.That(() => new CharacterProgress(data, skill), Throws.TypeOf<System.ArgumentException>());
+            Assert.That(() => new SummonCharacterDefinition(data, skill), Throws.TypeOf<System.ArgumentException>());
+        }
+
+        [Test]
+        public void Public_runtime_progress_and_summon_construction_reject_the_same_invalid_ascension()
+        {
+            var data = ProgressionBattleFixtures.Character();
+            data.Ascension.Ranks[0].ActiveSkillChargeReduction = 0;
+            var skill = ProgressionBattleFixtures.Skill();
+
+            Assert.That(ContractValidation.Validate(data), Is.Not.Empty);
+            Assert.That(() => new CharacterRuntime(data, skill), Throws.TypeOf<System.ArgumentException>());
+            Assert.That(() => new CharacterProgress(data, skill), Throws.TypeOf<System.ArgumentException>());
+            Assert.That(() => new SummonCharacterDefinition(data, skill), Throws.TypeOf<System.ArgumentException>());
+        }
+
+        [Test]
+        public void Public_runtime_progress_and_summon_construction_reject_the_same_invalid_awakening()
+        {
+            var data = ProgressionBattleFixtures.Character();
+            data.Awakening.GoldCost = 0;
+            var skill = ProgressionBattleFixtures.Skill();
+
+            Assert.That(ContractValidation.Validate(data), Is.Not.Empty);
+            Assert.That(() => new CharacterRuntime(data, skill), Throws.TypeOf<System.ArgumentException>());
+            Assert.That(() => new CharacterProgress(data, skill), Throws.TypeOf<System.ArgumentException>());
+            Assert.That(() => new SummonCharacterDefinition(data, skill), Throws.TypeOf<System.ArgumentException>());
+        }
+
+        [Test]
+        public void Runtime_snapshot_mutation_cannot_change_later_progress_materialization()
+        {
+            var progress = new CharacterProgress(ProgressionBattleFixtures.Character(), ProgressionBattleFixtures.Skill());
+            var first = CharacterBattleFactory.Create(progress, ProgressionBattleFixtures.Skill());
+            first.Data.BaseStats.Attack = 999;
+            first.ActiveSkill.Effects[0].Payload.Amount = 999;
+            first.Visuals.PortraitKey = "tampered";
+
+            var second = CharacterBattleFactory.Create(progress, ProgressionBattleFixtures.Skill());
+            Assert.That(second.Data.BaseStats.Attack, Is.EqualTo(20));
+            Assert.That(second.ActiveSkill.Effects[0].Payload.Amount, Is.EqualTo(1));
+            Assert.That(second.Visuals.PortraitKey, Is.EqualTo("base"));
         }
     }
 

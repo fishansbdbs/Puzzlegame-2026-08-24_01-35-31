@@ -19,6 +19,7 @@ namespace PuzzleGame.Core.Battle
         {
             if (data == null) throw new ArgumentNullException("data");
             ValidateCharacterData(data);
+            ValidateBound(data, "data");
             ValidateStableIds(data, activeSkill, leaderSkill, passive);
             ValidateBound(activeSkill, "activeSkill");
             ValidateBound(leaderSkill, "leaderSkill");

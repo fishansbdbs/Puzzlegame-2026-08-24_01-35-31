@@ -6,6 +6,7 @@ using PuzzleGame.Core.Contracts;
 using PuzzleGame.Core.Gacha;
 using PuzzleGame.Core.Persistence;
 using PuzzleGame.Core.Sample;
+using PuzzleGame.Core.Progression;
 
 namespace PuzzleGame.Tests.EditMode.Integration
 {
@@ -94,6 +95,39 @@ namespace PuzzleGame.Tests.EditMode.Integration
                 Assert.That(sample.BossMechanicExample, Has.Count.EqualTo(1));
                 Assert.That(sample.BossMechanicExample[0].Type, Is.EqualTo(EnemyEffectType.Enrage));
             }
+        }
+
+        [Test]
+        public void Sample_materializes_the_exact_owned_progression_into_damage_and_charge_behavior()
+        {
+            var sample = VerticalSliceFactory.Create(24082026);
+            var owned = sample.OwnedCharacters.GetProgress(sample.FeaturedCharacterId);
+            var skill = sample.SkillCatalog[0];
+            var leader = sample.LeaderSkill;
+            var passive = sample.Passive;
+            var progressed = CharacterBattleFactory.Create(owned, skill, leader, passive);
+            var unprogressed = CharacterBattleFactory.Create(new CharacterProgress(sample.CharacterCatalog[0], skill), skill, leader, passive);
+
+            Assert.That(owned.Level, Is.EqualTo(2));
+            Assert.That(owned.Ascension, Is.EqualTo(1));
+            Assert.That(sample.Party.Leader.Data.BaseStats.Attack, Is.EqualTo(owned.CurrentStats.Attack));
+            Assert.That(sample.Party.Leader.ActiveSkill.ChargeRequired, Is.EqualTo(owned.EffectiveActiveSkill.ChargeRequired));
+
+            var group = PuzzleGame.Tests.EditMode.Battle.BattleFixtures.OneGroup(OrbType.Fire, 3);
+            var progressedMembers = PuzzleGame.Tests.EditMode.Battle.BattleFixtures.StandardMembers();
+            var unprogressedMembers = PuzzleGame.Tests.EditMode.Battle.BattleFixtures.StandardMembers();
+            progressedMembers[0] = progressed;
+            unprogressedMembers[0] = unprogressed;
+            var progressedParty = new PartyState(progressedMembers);
+            var unprogressedParty = new PartyState(unprogressedMembers);
+            var progressedDamage = new CombatCalculator().Resolve(group, progressedParty, PuzzleGame.Tests.EditMode.Battle.BattleFixtures.Enemy(ElementType.Fire)).Attacks[0].CalculatedDamage;
+            var unprogressedDamage = new CombatCalculator().Resolve(group, unprogressedParty, PuzzleGame.Tests.EditMode.Battle.BattleFixtures.Enemy(ElementType.Fire)).Attacks[0].CalculatedDamage;
+
+            var engine = new SkillEngine();
+            var progressedResolutions = ChargeUntilReady(engine, group, progressedParty, progressed);
+            var unprogressedResolutions = ChargeUntilReady(engine, group, unprogressedParty, unprogressed);
+            Assert.That(progressedDamage, Is.GreaterThan(unprogressedDamage));
+            Assert.That(progressedResolutions, Is.LessThan(unprogressedResolutions));
         }
 
         [Test]
@@ -207,6 +241,18 @@ namespace PuzzleGame.Tests.EditMode.Integration
             for (var y = 0; y < BoardState.Rows; y++)
             for (var x = 0; x < BoardState.Columns; x++)
                 Assert.That(second.Get(x, y), Is.EqualTo(first.Get(x, y)), "cell " + x + "," + y);
+        }
+
+        private static int ChargeUntilReady(SkillEngine engine, BoardResolution resolution, PartyState party, CharacterRuntime character)
+        {
+            var count = 0;
+            while (!engine.CanActivate(character))
+            {
+                engine.ChargeFrom(resolution, party);
+                count++;
+                if (count > 10) Assert.Fail("Matching resolutions did not charge the active skill.");
+            }
+            return count;
         }
 
         private static void AssertSnapshotEqualsBoard(BoardSnapshot snapshot, BoardState board)
