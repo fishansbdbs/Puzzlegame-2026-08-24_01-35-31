@@ -34,13 +34,23 @@ namespace PuzzleGame.Core.Progression
             if (previous == MaximumAscension)
             {
                 var overflow = progress.Data.Ascension.OverflowUniversalResourceAmount;
+                var result = new DuplicateApplicationResult(
+                    previous,
+                    previous,
+                    overflow,
+                    ProgressionCalculation.DeriveEffects(progress.Data, previous));
                 wallet.Add(WalletCurrencies.UniversalDuplicateResource, overflow);
-                return new DuplicateApplicationResult(previous, previous, overflow, ProgressionCalculation.DeriveEffects(progress.Data, previous));
+                return result;
             }
 
             var next = previous + 1;
+            var nextResult = new DuplicateApplicationResult(
+                previous,
+                next,
+                0,
+                ProgressionCalculation.DeriveEffects(progress.Data, next));
             progress.SetAscension(next);
-            return new DuplicateApplicationResult(previous, next, 0, ProgressionCalculation.DeriveEffects(progress.Data, next));
+            return nextResult;
         }
 
         public static bool CanAwaken(CharacterProgress progress, Wallet wallet, MaterialInventory materials)

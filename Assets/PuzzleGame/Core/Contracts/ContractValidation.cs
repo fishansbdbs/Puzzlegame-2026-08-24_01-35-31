@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PuzzleGame.Core.Progression;
 
 namespace PuzzleGame.Core.Contracts
 {
@@ -80,15 +81,7 @@ namespace PuzzleGame.Core.Contracts
 
         private static void ValidateCharacter(CharacterData data, List<string> errors)
         {
-            if (data.Element == ElementType.Heart)
-            {
-                errors.Add("Character element cannot be Heart.");
-            }
-
-            if (data.BaseRarity < (int)Rarity.One || data.BaseRarity > (int)Rarity.Five)
-            {
-                errors.Add("Character base rarity must be between 1 and 5.");
-            }
+            errors.AddRange(ProgressionValidation.Validate(data));
         }
 
         private static void ValidateSkill(int chargeRequired, SkillEffectData[] effects, List<string> errors)

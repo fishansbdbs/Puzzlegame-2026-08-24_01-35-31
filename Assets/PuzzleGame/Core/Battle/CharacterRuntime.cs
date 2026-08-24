@@ -233,8 +233,7 @@ namespace PuzzleGame.Core.Battle
                     ranks[index] = rank == null ? null : new AscensionRankData
                     {
                         Rank = rank.Rank,
-                        ActiveSkillPerformanceBonus = rank.ActiveSkillPerformanceBonus,
-                        PassivePerformanceBonus = rank.PassivePerformanceBonus,
+                        ActiveSkillChargeReduction = rank.ActiveSkillChargeReduction,
                         StatBonus = Clone(rank.StatBonus)
                     };
                 }

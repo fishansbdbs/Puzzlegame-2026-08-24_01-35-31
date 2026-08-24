@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 using PuzzleGame.Core.Contracts;
+using PuzzleGame.Core.Progression;
 
 namespace PuzzleGame.Tests.EditMode.Contracts
 {
@@ -59,6 +60,30 @@ namespace PuzzleGame.Tests.EditMode.Contracts
             CollectionAssert.Contains(
                 ContractValidation.Validate(data),
                 "Character base rarity must be between 1 and 5.");
+        }
+
+        [Test]
+        public void Character_progression_contract_validation_matches_runtime_semantics()
+        {
+            var data = CharacterData.CreateForTests("progression-invalid", ElementType.Fire, 3);
+            data.LevelCurve.ExperienceRequiredByLevel = new[] { 10, 10 };
+
+            CollectionAssert.Contains(
+                ContractValidation.Validate(data),
+                "Progression experience thresholds must be strictly increasing positive totals.");
+            Assert.That(() => new CharacterProgress(data, TestActiveSkill(data.ActiveSkillId)), Throws.TypeOf<ArgumentException>());
+        }
+
+        [Test]
+        public void Character_contract_rejects_missing_visuals_and_an_empty_later_ascension_rank()
+        {
+            var missingVisuals = CharacterData.CreateForTests("missing-visuals", ElementType.Fire, 3);
+            missingVisuals.BaseVisuals = null;
+            CollectionAssert.Contains(ContractValidation.Validate(missingVisuals), "Character visuals cannot be null.");
+
+            var emptyLaterRank = CharacterData.CreateForTests("empty-later-rank", ElementType.Fire, 3);
+            emptyLaterRank.Ascension.Ranks[2].StatBonus = null;
+            CollectionAssert.Contains(ContractValidation.Validate(emptyLaterRank), "Ascension ranks 3 through 5 must each grant a positive stat bonus.");
         }
 
         [Test]
@@ -338,6 +363,17 @@ namespace PuzzleGame.Tests.EditMode.Contracts
                 StartMinuteOfDay = 0,
                 EndMinuteOfDay = 1439,
                 RecurringWeekdays = new[] { 0 }
+            };
+        }
+
+        private static SkillData TestActiveSkill(string id)
+        {
+            return new SkillData
+            {
+                Id = id,
+                ChargeElement = ElementType.Fire,
+                ChargeRequired = 1,
+                Effects = new[] { new SkillEffectData { Type = SkillEffectType.Heal, Payload = new EffectPayloadData() } }
             };
         }
     }

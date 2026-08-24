@@ -33,7 +33,27 @@ namespace PuzzleGame.Core.Contracts
             {
                 Id = id,
                 Element = element,
-                BaseRarity = baseRarity
+                BaseRarity = baseRarity,
+                BaseStats = new StatBlock(),
+                ActiveSkillId = "test-active-skill",
+                LevelCurve = new ProgressionCurveData
+                {
+                    MaxLevel = 1,
+                    ExperienceRequiredByLevel = Array.Empty<int>(),
+                    StatsByLevel = new[] { new StatBlock() }
+                },
+                Ascension = new AscensionConfigurationData
+                {
+                    OverflowUniversalResourceAmount = 1,
+                    Ranks = new[]
+                    {
+                        new AscensionRankData { Rank = 1, ActiveSkillChargeReduction = 1 },
+                        new AscensionRankData { Rank = 2, ActiveSkillChargeReduction = 1 },
+                        new AscensionRankData { Rank = 3, StatBonus = new StatBlock { Hp = 1 } },
+                        new AscensionRankData { Rank = 4, StatBonus = new StatBlock { Attack = 1 } },
+                        new AscensionRankData { Rank = 5, StatBonus = new StatBlock { Recovery = 1 } }
+                    }
+                }
             };
         }
     }
@@ -57,8 +77,7 @@ namespace PuzzleGame.Core.Contracts
     public sealed class AscensionRankData
     {
         public int Rank;
-        public int ActiveSkillPerformanceBonus;
-        public int PassivePerformanceBonus;
+        public int ActiveSkillChargeReduction;
         public StatBlock StatBonus;
     }
 
