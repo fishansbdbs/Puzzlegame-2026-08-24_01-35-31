@@ -187,6 +187,89 @@ namespace PuzzleGame.Tests.PlayMode.Battle
         }
 
         [Test]
+        public void Throwing_zero_timer_observer_cannot_prevent_committed_board_threshold_action_and_count()
+        {
+            using (var fixture = PlayableBattleFixture.Create(BoardPattern.WithFireAndHeartMatches(), enemyHp: 1000,
+                       enemyCountdown: 1, thresholdTriggers: new[] { Threshold("enrage", 75f, 2f, 2) }, actionDamage: 10))
+            {
+                fixture.Context.Enemy.ApplyDamage(300);
+                var initialBoard = fixture.Context.Board;
+                fixture.Controller.TimerChanged += item =>
+                {
+                    if (item.RemainingSeconds == 0f) throw new InvalidOperationException("timer observer");
+                };
+                fixture.Input.Press(fixture.CellCenter(5, 4));
+
+                Assert.That(() => fixture.Input.Release(fixture.CellCenter(5, 4)),
+                    Throws.TypeOf<InvalidOperationException>().With.Message.EqualTo("timer observer"));
+                Assert.That(fixture.Controller.CurrentBoard, Is.SameAs(fixture.Context.Board));
+                Assert.That(fixture.Context.Board, Is.Not.SameAs(initialBoard));
+                Assert.That(MatchDetector.FindGroups(fixture.Context.Board), Is.Empty);
+                Assert.That(fixture.Context.Enemy.CurrentHp, Is.EqualTo(675));
+                Assert.That(fixture.Context.Enemy.AttackMultiplier, Is.EqualTo(2f));
+                Assert.That(fixture.Context.Enemy.EnrageTurns, Is.EqualTo(2));
+                Assert.That(fixture.Context.Enemy.Countdown, Is.EqualTo(2));
+                Assert.That(fixture.Party.CurrentHp, Is.EqualTo(80));
+                Assert.That(fixture.Session.BoardResolutionCount, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
+                Assert.That(fixture.Session.IsCompleted, Is.False);
+                Assert.That(fixture.Controller.IsDragging, Is.False);
+                Assert.That(fixture.Controller.IsResolving, Is.False);
+                Assert.That(fixture.Context.Enemy.EvaluateThresholds(), Is.Empty);
+
+                var committedBoard = fixture.Context.Board;
+                Assert.That(() => fixture.Input.Release(fixture.CellCenter(5, 4)), Throws.Nothing);
+                fixture.Controller.AdvanceTime(20f);
+
+                Assert.That(fixture.Context.Board, Is.SameAs(committedBoard));
+                Assert.That(fixture.Context.Enemy.CurrentHp, Is.EqualTo(675));
+                Assert.That(fixture.Context.Enemy.Countdown, Is.EqualTo(2));
+                Assert.That(fixture.Party.CurrentHp, Is.EqualTo(80));
+                Assert.That(fixture.Session.BoardResolutionCount, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
+            }
+        }
+
+        [Test]
+        public void Throwing_zero_timer_observer_cannot_prevent_committed_stage_completion_or_duplicate_on_retry()
+        {
+            using (var fixture = PlayableBattleFixture.Create(BoardPattern.WithFireAndHeartMatches(), enemyHp: 1))
+            {
+                var completionEvents = 0;
+                var starEvents = 0;
+                fixture.Controller.TimerChanged += item =>
+                {
+                    if (item.RemainingSeconds == 0f) throw new InvalidOperationException("timer observer");
+                };
+                fixture.Controller.StageCompleted += delegate { completionEvents++; };
+                fixture.Controller.StarResultsReady += delegate { starEvents++; };
+                fixture.Input.Press(fixture.CellCenter(5, 4));
+
+                Assert.That(() => fixture.Input.Release(fixture.CellCenter(5, 4)),
+                    Throws.TypeOf<InvalidOperationException>().With.Message.EqualTo("timer observer"));
+                Assert.That(fixture.Context.Enemy.IsDefeated, Is.True);
+                Assert.That(fixture.Session.IsCompleted, Is.True);
+                Assert.That(fixture.Session.BoardResolutionCount, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
+                Assert.That(fixture.Controller.IsDragging, Is.False);
+                Assert.That(fixture.Controller.IsResolving, Is.False);
+                Assert.That(completionEvents, Is.Zero);
+                Assert.That(starEvents, Is.Zero);
+
+                var committedBoard = fixture.Context.Board;
+                Assert.That(() => fixture.Input.Release(fixture.CellCenter(5, 4)), Throws.Nothing);
+                fixture.Controller.AdvanceTime(20f);
+
+                Assert.That(fixture.Context.Board, Is.SameAs(committedBoard));
+                Assert.That(fixture.Session.IsCompleted, Is.True);
+                Assert.That(fixture.Session.BoardResolutionCount, Is.EqualTo(1));
+                Assert.That(fixture.Controller.CompletedBoardResolutions, Is.EqualTo(1));
+                Assert.That(completionEvents, Is.Zero);
+                Assert.That(starEvents, Is.Zero);
+            }
+        }
+
+        [Test]
         public void Multiwave_and_multienemy_sessions_are_rejected_before_controller_ownership()
         {
             var first = InitializerFixture.EnemyData("first");

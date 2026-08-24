@@ -73,7 +73,7 @@ Dependency direction is `Contracts/Core <- Unity adapters/presentation`. Product
 ## Testing and validation
 
 - Unity EditMode: 294/294 passing with Unity 6000.5.8f1.
-- Unity PlayMode: 43/43 passing.
+- Unity PlayMode: 45/45 passing.
 - PlayMode smoke proves 30 cells, ten-second moves, adjacent traversal of fast crossed cells, release/timeout exactly once, two cascade layers ending on the authoritative board, separate attacks, Heart healing, core-owned once-only boss thresholds before due actions, stable mechanic event forwarding, observer-exception state safety, stage completion/stars, command-line and flagless `InitTestScene` suppression, one-time normal callback registration, scene-reload idempotence, composition-failure atomicity, and component/root render-event cleanup.
 - Task 5 mouse/touch Input Test Framework cases remain the direct backend proof; Task 10 uses a deterministic pointer seam rather than OS cursor automation.
 - CI is not configured in this repository. Official Unity Test Framework batch commands for a clean checkout are documented in `docs/core-systems.md`.

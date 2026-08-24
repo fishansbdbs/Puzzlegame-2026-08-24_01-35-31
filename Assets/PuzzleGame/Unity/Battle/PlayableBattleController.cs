@@ -277,7 +277,6 @@ namespace PuzzleGame.Unity.Battle
                 var completedDrag = dragSession;
                 dragSession = null;
                 completedDrag.End();
-                EmitTimer(0f);
                 var boardResolution = boardResolver.Resolve(currentBoard, orbSource);
                 var turnResolution = stageSession.CompleteBoardResolution(battleEngine, boardResolution, battleContext);
                 currentBoard = battleContext.Board;
@@ -296,6 +295,7 @@ namespace PuzzleGame.Unity.Battle
                     }
                 }
 
+                EmitTimer(0f);
                 EmitResolutionEvents(boardResolution, turnResolution);
                 var countHandler = BoardResolutionCountChanged;
                 if (countHandler != null) countHandler(stageSession.BoardResolutionCount);

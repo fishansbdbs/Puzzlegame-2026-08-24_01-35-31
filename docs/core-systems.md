@@ -160,7 +160,7 @@ Invoke-PuzzleGameTests EditMode 'PuzzleGame.Tests.EditMode'
 Invoke-PuzzleGameTests PlayMode 'PuzzleGame.Tests.PlayMode'
 ```
 
-At the core-owned boss-lifecycle review fix, the Unity EditMode suite contains 294 passing cases and PlayMode contains 43 passing cases. The command reports the process exit code through failure, validates that result XML exists, and rejects a non-passing XML result. Retain and inspect the printed log paths when diagnosing compiler errors, exceptions, failed assertions, or unexpected `Debug.Log*` output.
+At the core-owned boss-lifecycle review fix, the Unity EditMode suite contains 294 passing cases and PlayMode contains 45 passing cases. The command reports the process exit code through failure, validates that result XML exists, and rejects a non-passing XML result. Retain and inspect the printed log paths when diagnosing compiler errors, exceptions, failed assertions, or unexpected `Debug.Log*` output.
 
 ## Known limitations
 
