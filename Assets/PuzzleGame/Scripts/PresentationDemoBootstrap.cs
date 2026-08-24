@@ -19,6 +19,9 @@ namespace PuzzleGame.Presentation
     {
         UiRouter _router;
 
+        /// <summary>Exposed for automation/tests and future core boot code.</summary>
+        public UiRouter Router => _router;
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void AutoStart()
         {

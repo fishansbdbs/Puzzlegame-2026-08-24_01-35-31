@@ -186,6 +186,22 @@ namespace PuzzleGame.Presentation.UI.Summon
 
         // ------------------------------ Ripping ---------------------------------
 
+        /// <summary>Automation hook: skip the manual rip (tests, demo replays).</summary>
+        public void AutoOpenForAutomation()
+        {
+            if (_ripped || _pack == null) return;
+            _ripped = true;
+            _ripProgress = 1f;
+            TearOpen();
+        }
+
+        /// <summary>Automation hook: reveal every card (tests, demo replays).</summary>
+        public void AutoRevealForAutomation()
+        {
+            if (_cards.Count == 0) return;
+            RevealAllSequentially();
+        }
+
         void OnRipStart(PointerDownEvent evt)
         {
             if (_ripped) return;
