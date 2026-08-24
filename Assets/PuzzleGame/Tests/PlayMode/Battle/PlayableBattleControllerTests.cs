@@ -217,6 +217,29 @@ namespace PuzzleGame.Tests.PlayMode.Battle
         }
 
         [Test]
+        public void Multiwave_session_cannot_be_masked_by_a_separate_single_wave_stage_argument()
+        {
+            var first = InitializerFixture.EnemyData("first");
+            var second = InitializerFixture.EnemyData("second");
+            var sessionStage = InitializerFixture.Stage(new[]
+            {
+                new WaveData { Id = "wave-1", EnemyIds = new[] { first.Id } },
+                new WaveData { Id = "wave-2", EnemyIds = new[] { second.Id } }
+            });
+            var adapterStage = InitializerFixture.Stage(new[]
+            {
+                new WaveData { Id = "wave-1", EnemyIds = new[] { first.Id } }
+            });
+            using (var fixture = InitializerFixture.Create(sessionStage, new[] { first, second }))
+            {
+                Assert.That(() => fixture.Initialize(fixture.Input, adapterStage), Throws.TypeOf<ArgumentException>());
+                Assert.That(fixture.Input.SubscriptionCount, Is.Zero);
+                Assert.That(fixture.Session.CurrentWaveIndex, Is.Zero);
+                Assert.That(fixture.Session.BoardResolutionCount, Is.Zero);
+            }
+        }
+
+        [Test]
         public void Failed_subscription_setup_rolls_back_and_initialization_can_be_retried()
         {
             var enemy = InitializerFixture.EnemyData("enemy");
@@ -518,8 +541,13 @@ namespace PuzzleGame.Tests.PlayMode.Battle
 
         internal void Initialize(IBoardPointerSource source)
         {
+            Initialize(source, stage);
+        }
+
+        internal void Initialize(IBoardPointerSource source, StageData objectiveStage)
+        {
             Controller.Initialize(source, View, new Rect(0f, 0f, 600f, 500f), board, new CyclingOrbSource(),
-                party, enemy, Session, context, stage);
+                party, enemy, Session, context, objectiveStage);
         }
 
         internal static EnemyData EnemyData(string id)

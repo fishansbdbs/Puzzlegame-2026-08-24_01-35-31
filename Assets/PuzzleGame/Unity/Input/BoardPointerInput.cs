@@ -61,7 +61,7 @@ namespace PuzzleGame.Unity.Input
             {
                 if (lockedPointer == LockedPointer.None)
                 {
-                    if (!TryEmitBufferedTap()) TryBeginPointer();
+                    if (!TryBeginBufferedPointer()) TryBeginPointer();
                     return;
                 }
 
@@ -179,16 +179,16 @@ namespace PuzzleGame.Unity.Input
             }
         }
 
-        private bool TryEmitBufferedTap()
+        private bool TryBeginBufferedPointer()
         {
-            if (bufferedTouchPress && bufferedTouchRelease)
+            if (bufferedTouchPress)
             {
                 lockedPointer = LockedPointer.Touch;
                 lockedTouchId = bufferedTouchId;
                 lastPosition = bufferedTouchPressPosition;
                 var touchPressed = PointerPressed;
                 if (touchPressed != null) touchPressed(bufferedTouchPressPosition);
-                ReleaseLockedPointer(bufferedTouchReleasePosition);
+                if (bufferedTouchRelease) ReleaseLockedPointer(bufferedTouchReleasePosition);
                 return true;
             }
 

@@ -6,6 +6,40 @@ using PuzzleGame.Core.Contracts;
 
 namespace PuzzleGame.Core.Stages
 {
+    public sealed class StageStructure
+    {
+        private readonly string[][] waveEnemyIds;
+
+        internal StageStructure(StageData stage)
+        {
+            waveEnemyIds = new string[stage.Waves.Length][];
+            for (var waveIndex = 0; waveIndex < stage.Waves.Length; waveIndex++)
+                waveEnemyIds[waveIndex] = (string[])stage.Waves[waveIndex].EnemyIds.Clone();
+        }
+
+        public int WaveCount { get { return waveEnemyIds.Length; } }
+
+        public int GetEnemyCount(int waveIndex)
+        {
+            ValidateWaveIndex(waveIndex);
+            return waveEnemyIds[waveIndex].Length;
+        }
+
+        public string GetEnemyId(int waveIndex, int enemyIndex)
+        {
+            ValidateWaveIndex(waveIndex);
+            if (enemyIndex < 0 || enemyIndex >= waveEnemyIds[waveIndex].Length)
+                throw new ArgumentOutOfRangeException("enemyIndex");
+            return waveEnemyIds[waveIndex][enemyIndex];
+        }
+
+        private void ValidateWaveIndex(int waveIndex)
+        {
+            if (waveIndex < 0 || waveIndex >= waveEnemyIds.Length)
+                throw new ArgumentOutOfRangeException("waveIndex");
+        }
+    }
+
     public sealed class StageSession
     {
         private readonly StageData stage;
@@ -26,6 +60,7 @@ namespace PuzzleGame.Core.Stages
             }
             StageValidation.ValidateStage(stageData, enemyTemplates);
             stage = StageDataSnapshot.Clone(stageData);
+            AuthoredStructure = new StageStructure(stage);
         }
 
         public int CurrentWaveIndex { get; private set; }
@@ -33,6 +68,7 @@ namespace PuzzleGame.Core.Stages
         public bool IsCompleted { get; private set; }
         public bool HasLoadedCurrentWave { get { return currentEnemies != null; } }
         public bool ConsumesStamina { get { return !stage.IsPermanentStory; } }
+        public StageStructure AuthoredStructure { get; private set; }
 
         public WaveData CurrentWave
         {

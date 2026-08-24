@@ -147,5 +147,35 @@ namespace PuzzleGame.Tests.PlayMode.Input
 
             CollectionAssert.AreEqual(new[] { "press:(140.00, 150.00)", "release:(140.00, 150.00)" }, events);
         }
+
+        [UnityTest]
+        public IEnumerator Sustained_primary_touch_beats_a_complete_mouse_tap_from_the_same_update()
+        {
+            var mouse = InputSystem.AddDevice<Mouse>();
+            InputSystem.AddDevice<Touchscreen>();
+            var pressed = new List<Vector2>();
+            var moved = new List<Vector2>();
+            var released = new List<Vector2>();
+            input.PointerPressed += pressed.Add;
+            input.PointerMoved += moved.Add;
+            input.PointerReleased += released.Add;
+
+            Move(mouse.position, new Vector2(40f, 50f));
+            Press(mouse.leftButton);
+            Release(mouse.leftButton);
+            BeginTouch(9, new Vector2(140f, 150f));
+            yield return null;
+
+            CollectionAssert.AreEqual(new[] { new Vector2(140f, 150f) }, pressed);
+            Assert.That(released, Is.Empty);
+
+            MoveTouch(9, new Vector2(160f, 170f));
+            yield return null;
+            EndTouch(9, new Vector2(180f, 190f));
+            yield return null;
+
+            CollectionAssert.AreEqual(new[] { new Vector2(160f, 170f), new Vector2(180f, 190f) }, moved);
+            CollectionAssert.AreEqual(new[] { new Vector2(180f, 190f) }, released);
+        }
     }
 }

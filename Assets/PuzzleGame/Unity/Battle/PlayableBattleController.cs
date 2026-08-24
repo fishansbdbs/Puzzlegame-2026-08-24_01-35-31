@@ -421,6 +421,11 @@ namespace PuzzleGame.Unity.Battle
                 throw new ArgumentException("Playable battle requires exactly one wave with exactly one enemy.", "stageData");
             if (!string.Equals(stageData.Waves[0].EnemyIds[0], enemyState.Data.Id, StringComparison.Ordinal))
                 throw new ArgumentException("Playable battle enemy must match the authored stage enemy.", "enemyState");
+            var structure = session.AuthoredStructure;
+            if (structure.WaveCount != 1 || structure.GetEnemyCount(0) != 1)
+                throw new ArgumentException("Playable battle session must originate from exactly one wave with exactly one enemy.", "session");
+            if (!string.Equals(structure.GetEnemyId(0, 0), enemyState.Data.Id, StringComparison.Ordinal))
+                throw new ArgumentException("Playable battle enemy must match the session's authored enemy.", "enemyState");
             var currentEnemies = session.CurrentEnemies;
             if (currentEnemies.Count != 1 || !object.ReferenceEquals(currentEnemies[0], enemyState))
                 throw new ArgumentException("Playable battle session must expose exactly the supplied enemy.", "session");
