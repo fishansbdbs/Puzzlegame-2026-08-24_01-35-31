@@ -74,7 +74,7 @@ namespace PuzzleGame.Core.Battle
             if (enemy.IsDefeated) return new EnemyTurnResolution(actions, events);
 
             var pendingAction = enemy.PeekNextAction();
-            ValidateAction(pendingAction);
+            EnemyDataValidation.ValidateAction(pendingAction);
             var nextCountdown = enemy.Countdown > 0 ? enemy.Countdown - 1 : 0;
             if (nextCountdown > 0)
             {
@@ -89,51 +89,6 @@ namespace PuzzleGame.Core.Battle
             for (var index = 0; index < action.Effects.Length; index++)
                 events.Add(Apply(action.Effects[index], action.Id, enemy, context));
             return new EnemyTurnResolution(actions, events);
-        }
-
-        private static void ValidateAction(EnemyActionData action)
-        {
-            for (var index = 0; index < action.Effects.Length; index++) ValidateEffect(action.Effects[index]);
-        }
-
-        private static void ValidateEffect(EnemyEffectData effect)
-        {
-            var payload = effect.Payload;
-            SkillEngine.NonNegative(payload.TurnCount);
-            switch (effect.Type)
-            {
-                case EnemyEffectType.Damage:
-                case EnemyEffectType.Poison:
-                case EnemyEffectType.Hazard:
-                case EnemyEffectType.Blocker:
-                case EnemyEffectType.Bind:
-                    SkillEngine.NonNegative(payload.Amount);
-                    break;
-                case EnemyEffectType.ConvertOrbs:
-                    SkillEngine.ValidateOrb(payload.SourceOrb);
-                    SkillEngine.ValidateOrb(payload.TargetOrb);
-                    break;
-                case EnemyEffectType.LockOrbs:
-                    SkillEngine.ValidateOrb(payload.SourceOrb);
-                    break;
-                case EnemyEffectType.ReduceMoveTime:
-                    SkillEngine.Seconds(payload);
-                    break;
-                case EnemyEffectType.DamageAbsorb:
-                    SkillEngine.ValidateOrb(payload.SourceOrb);
-                    if (payload.SourceOrb == OrbType.Heart) throw new InvalidOperationException("Heart cannot be a damage absorb element.");
-                    break;
-                case EnemyEffectType.ComboShield:
-                    SkillEngine.NonNegative(payload.Amount != 0 ? payload.Amount : payload.ComboCount);
-                    break;
-                case EnemyEffectType.Enrage:
-                    SkillEngine.PositiveMultiplier(payload.Multiplier);
-                    break;
-                case EnemyEffectType.ManipulateCountdown:
-                    break;
-                default:
-                    throw new InvalidOperationException("Unsupported enemy effect type.");
-            }
         }
 
         private static BattleEffectEvent Apply(EnemyEffectData effect, string sourceId, EnemyRuntime enemy, BattleContext context)

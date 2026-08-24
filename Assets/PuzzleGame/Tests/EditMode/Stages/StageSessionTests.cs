@@ -39,14 +39,50 @@ namespace PuzzleGame.Tests.EditMode.Stages
             duplicateWave.Waves[1].Id = duplicateWave.Waves[0].Id;
             var invalidObjective = StageFixtures.Stage("two", enemy.Id);
             invalidObjective.StarObjectives[1].HpThresholdPercent = 1.01f;
-            var invalidThreshold = StageFixtures.Enemy("bad-threshold", actions: new[] { new EnemyActionData { Id = "enrage", ResetCountdown = 1, Effects = new[]
-            {
-                new EnemyEffectData { Type = EnemyEffectType.Enrage, Payload = new EffectPayloadData { Amount = -1, Multiplier = 2f, TurnCount = 1 } }
-            }} });
 
             Assert.That(() => new StageCatalog(new[] { duplicateWave }, new[] { enemy }), Throws.TypeOf<ArgumentException>());
             Assert.That(() => new StageCatalog(new[] { invalidObjective }, new[] { enemy }), Throws.TypeOf<ArgumentException>());
-            Assert.That(() => new StageCatalog(new[] { StageFixtures.Stage("three", invalidThreshold.Id) }, new[] { invalidThreshold }), Throws.TypeOf<ArgumentException>());
+        }
+
+        [Test]
+        public void Catalog_rejects_blank_duplicate_and_out_of_range_threshold_trigger_schema()
+        {
+            var blank = StageFixtures.EnrageBossData();
+            blank.ThresholdTriggers[0].Id = " ";
+            var duplicate = StageFixtures.EnrageBossData();
+            duplicate.ThresholdTriggers = new[] { duplicate.ThresholdTriggers[0], StageFixtures.ThresholdTrigger("enrage", 25) };
+            var percent = StageFixtures.EnrageBossData();
+            percent.ThresholdTriggers[0].HpThresholdPercent = 101f;
+
+            Assert.That(() => new StageCatalog(new[] { StageFixtures.Stage("blank", blank.Id) }, new[] { blank }), Throws.TypeOf<ArgumentException>());
+            Assert.That(() => new StageCatalog(new[] { StageFixtures.Stage("duplicate", duplicate.Id) }, new[] { duplicate }), Throws.TypeOf<ArgumentException>());
+            Assert.That(() => new StageCatalog(new[] { StageFixtures.Stage("percent", percent.Id) }, new[] { percent }), Throws.TypeOf<ArgumentException>());
+        }
+
+        [Test]
+        public void Catalog_rejects_malformed_payloads_for_every_enemy_effect_family()
+        {
+            var invalidEffects = new[]
+            {
+                new EnemyEffectData { Type = EnemyEffectType.Damage, Payload = new EffectPayloadData { Amount = -1 } },
+                new EnemyEffectData { Type = EnemyEffectType.ConvertOrbs, Payload = new EffectPayloadData { SourceOrb = (OrbType)99, TargetOrb = OrbType.Fire } },
+                new EnemyEffectData { Type = EnemyEffectType.LockOrbs, Payload = new EffectPayloadData { SourceOrb = (OrbType)99 } },
+                new EnemyEffectData { Type = EnemyEffectType.Poison, Payload = new EffectPayloadData { Amount = -1 } },
+                new EnemyEffectData { Type = EnemyEffectType.Hazard, Payload = new EffectPayloadData { Amount = -1 } },
+                new EnemyEffectData { Type = EnemyEffectType.Blocker, Payload = new EffectPayloadData { Amount = -1 } },
+                new EnemyEffectData { Type = EnemyEffectType.Bind, Payload = new EffectPayloadData { Amount = -1 } },
+                new EnemyEffectData { Type = EnemyEffectType.ReduceMoveTime, Payload = new EffectPayloadData { DurationSeconds = float.NaN } },
+                new EnemyEffectData { Type = EnemyEffectType.DamageAbsorb, Payload = new EffectPayloadData { SourceOrb = OrbType.Heart } },
+                new EnemyEffectData { Type = EnemyEffectType.ComboShield, Payload = new EffectPayloadData { Amount = -1 } },
+                new EnemyEffectData { Type = EnemyEffectType.ComboShield, Payload = new EffectPayloadData { ComboCount = -1 } },
+                new EnemyEffectData { Type = EnemyEffectType.Enrage, Payload = new EffectPayloadData { Amount = 0, Multiplier = float.NaN, TurnCount = -1 } },
+                new EnemyEffectData { Type = EnemyEffectType.ManipulateCountdown, Payload = new EffectPayloadData { TurnCount = -1 } }
+            };
+            for (var index = 0; index < invalidEffects.Length; index++)
+            {
+                var enemy = StageFixtures.Enemy("invalid-" + index, actions: new[] { new EnemyActionData { Id = "bad", ResetCountdown = 1, Effects = new[] { invalidEffects[index] } } });
+                Assert.That(() => new StageCatalog(new[] { StageFixtures.Stage("stage-" + index, enemy.Id) }, new[] { enemy }), Throws.TypeOf<ArgumentException>());
+            }
         }
 
         [Test]
@@ -180,7 +216,7 @@ namespace PuzzleGame.Tests.EditMode.Stages
         public void Boss_enrages_once_when_hp_crosses_configured_threshold_and_preserves_a_stronger_state()
         {
             var boss = StageFixtures.EnrageBoss(thresholdPercent: 50, multiplier: 2f, turns: 3);
-            boss.SetEnrage(4f, 1);
+            boss.SetEnrage(4f, 5);
             boss.ApplyDamage(boss.MaxHp / 2 + 1);
             var mechanic = new BossMechanicEngine();
 
@@ -190,7 +226,66 @@ namespace PuzzleGame.Tests.EditMode.Stages
             Assert.That(first.Single().Type, Is.EqualTo(EnemyEffectType.Enrage));
             Assert.That(repeated, Is.Empty);
             Assert.That(boss.AttackMultiplier, Is.EqualTo(4f));
+            Assert.That(boss.EnrageTurns, Is.EqualTo(5));
+        }
+
+        [Test]
+        public void Threshold_triggers_do_not_run_from_countdown_actions_at_full_hp()
+        {
+            var boss = StageFixtures.EnrageBoss();
+            var context = StageFixtures.Context(boss, partyHp: 10);
+
+            var actionResult = new EnemyActionEngine().AdvanceAfterBoardResolution(boss, context);
+            var thresholdResult = new BossMechanicEngine().Evaluate(boss);
+
+            Assert.That(actionResult.Events.Any(item => item.Kind == BattleEffectKind.Enrage), Is.False);
+            Assert.That(thresholdResult, Is.Empty);
+            Assert.That(boss.AttackMultiplier, Is.EqualTo(1f));
+        }
+
+        [Test]
+        public void Threshold_crossing_is_consumed_by_the_runtime_across_fresh_mechanic_engines()
+        {
+            var boss = StageFixtures.EnrageBoss();
+            boss.ApplyDamage(51);
+
+            var first = new BossMechanicEngine().Evaluate(boss);
+            var second = new BossMechanicEngine().Evaluate(boss);
+
+            Assert.That(first, Has.Count.EqualTo(1));
+            Assert.That(second, Is.Empty);
+        }
+
+        [Test]
+        public void Threshold_trigger_data_is_snapshotted_before_source_mutation()
+        {
+            var source = StageFixtures.EnrageBossData();
+            var boss = new EnemyRuntime(source);
+            source.ThresholdTriggers[0].HpThresholdPercent = 1f;
+            source.ThresholdTriggers[0].Effect.Payload.Multiplier = 99f;
+            boss.Data.ThresholdTriggers[0].HpThresholdPercent = 1f;
+            boss.ApplyDamage(51);
+
+            new BossMechanicEngine().Evaluate(boss);
+
+            Assert.That(boss.AttackMultiplier, Is.EqualTo(2f));
             Assert.That(boss.EnrageTurns, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void Ordinary_enrage_action_with_nonzero_amount_is_not_a_threshold_trigger()
+        {
+            var boss = StageFixtures.Enemy("ordinary", actions: new[] { new EnemyActionData { Id = "ordinary-enrage", ResetCountdown = 1, Effects = new[]
+            {
+                new EnemyEffectData { Type = EnemyEffectType.Enrage, Payload = new EffectPayloadData { Amount = 75, Multiplier = 3f, TurnCount = 2 } }
+            }} });
+            var runtime = new EnemyRuntime(boss);
+
+            Assert.That(new BossMechanicEngine().Evaluate(runtime), Is.Empty);
+            new EnemyActionEngine().AdvanceAfterBoardResolution(runtime, StageFixtures.Context(runtime, partyHp: 10));
+
+            Assert.That(runtime.AttackMultiplier, Is.EqualTo(3f));
+            Assert.That(runtime.EnrageTurns, Is.EqualTo(2));
         }
 
         [Test]
@@ -271,12 +366,27 @@ namespace PuzzleGame.Tests.EditMode.Stages
             };
         }
 
-        internal static EnemyRuntime EnrageBoss(int thresholdPercent, float multiplier = 2f, int turns = 3)
+        internal static EnemyRuntime EnrageBoss(int thresholdPercent = 50, float multiplier = 2f, int turns = 3)
         {
-            return new EnemyRuntime(Enemy("boss", actions: new[] { new EnemyActionData { Id = "enrage-threshold", ResetCountdown = 1, Effects = new[]
+            var enemy = EnrageBossData(thresholdPercent, multiplier, turns);
+            return new EnemyRuntime(enemy);
+        }
+
+        internal static EnemyData EnrageBossData(int thresholdPercent = 50, float multiplier = 2f, int turns = 3)
+        {
+            var enemy = Enemy("boss");
+            enemy.ThresholdTriggers = new[] { ThresholdTrigger("enrage", thresholdPercent, multiplier, turns) };
+            return enemy;
+        }
+
+        internal static EnemyThresholdTriggerData ThresholdTrigger(string id, int thresholdPercent, float multiplier = 2f, int turns = 3)
+        {
+            return new EnemyThresholdTriggerData
             {
-                new EnemyEffectData { Type = EnemyEffectType.Enrage, Payload = new EffectPayloadData { Amount = thresholdPercent, Multiplier = multiplier, TurnCount = turns } }
-            }} }));
+                Id = id,
+                HpThresholdPercent = thresholdPercent,
+                Effect = new EnemyEffectData { Type = EnemyEffectType.Enrage, Payload = new EffectPayloadData { Multiplier = multiplier, TurnCount = turns } }
+            };
         }
 
         internal static BattleContext Context(EnemyRuntime enemy, int partyHp)

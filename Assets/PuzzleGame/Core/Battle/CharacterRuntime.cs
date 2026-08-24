@@ -170,11 +170,18 @@ namespace PuzzleGame.Core.Battle
             if (source == null) return null;
             var actions = new EnemyActionData[source.Actions.Length];
             for (var index = 0; index < actions.Length; index++) actions[index] = Clone(source.Actions[index]);
+            var triggers = source.ThresholdTriggers == null ? null : new EnemyThresholdTriggerData[source.ThresholdTriggers.Length];
+            if (triggers != null) for (var index = 0; index < triggers.Length; index++) triggers[index] = Clone(source.ThresholdTriggers[index]);
             return new EnemyData
             {
                 Id = source.Id, DisplayName = source.DisplayName, Element = source.Element, BaseStats = Clone(source.BaseStats),
-                InitialCountdown = source.InitialCountdown, Actions = actions, Visuals = Clone(source.Visuals)
+                InitialCountdown = source.InitialCountdown, Actions = actions, ThresholdTriggers = triggers, Visuals = Clone(source.Visuals)
             };
+        }
+
+        internal static EnemyThresholdTriggerData Clone(EnemyThresholdTriggerData source)
+        {
+            return source == null ? null : new EnemyThresholdTriggerData { Id = source.Id, HpThresholdPercent = source.HpThresholdPercent, Effect = Clone(source.Effect) };
         }
 
         internal static EnemyActionData Clone(EnemyActionData source)
@@ -183,6 +190,11 @@ namespace PuzzleGame.Core.Battle
             var effects = new EnemyEffectData[source.Effects.Length];
             for (var index = 0; index < effects.Length; index++) effects[index] = new EnemyEffectData { Type = source.Effects[index].Type, Payload = Clone(source.Effects[index].Payload) };
             return new EnemyActionData { Id = source.Id, ResetCountdown = source.ResetCountdown, Effects = effects };
+        }
+
+        internal static EnemyEffectData Clone(EnemyEffectData source)
+        {
+            return source == null ? null : new EnemyEffectData { Type = source.Type, Payload = Clone(source.Payload) };
         }
 
         internal static EffectPayloadData Clone(EffectPayloadData source)

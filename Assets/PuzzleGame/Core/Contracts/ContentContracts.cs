@@ -104,6 +104,7 @@ namespace PuzzleGame.Core.Contracts
         public StatBlock BaseStats = new StatBlock();
         public int InitialCountdown = 1;
         public EnemyActionData[] Actions = Array.Empty<EnemyActionData>();
+        public EnemyThresholdTriggerData[] ThresholdTriggers = Array.Empty<EnemyThresholdTriggerData>();
         public VisualReferenceSet Visuals = new VisualReferenceSet();
 
         string IIdentifiedData.Id => Id;
@@ -115,6 +116,14 @@ namespace PuzzleGame.Core.Contracts
         public string Id;
         public int ResetCountdown = 1;
         public EnemyEffectData[] Effects = Array.Empty<EnemyEffectData>();
+    }
+
+    [Serializable]
+    public sealed class EnemyThresholdTriggerData
+    {
+        public string Id;
+        public float HpThresholdPercent;
+        public EnemyEffectData Effect = new EnemyEffectData();
     }
 
     [Serializable]

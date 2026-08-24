@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using PuzzleGame.Core.Contracts;
 
 namespace PuzzleGame.Core.Battle
@@ -10,6 +11,7 @@ namespace PuzzleGame.Core.Battle
         private object absorbIdentity = new object();
         private object comboShieldIdentity = new object();
         private object enrageIdentity = new object();
+        private readonly HashSet<string> consumedThresholdTriggerIds = new HashSet<string>(StringComparer.Ordinal);
 
         public EnemyRuntime(EnemyData data)
         {
@@ -66,6 +68,12 @@ namespace PuzzleGame.Core.Battle
         }
 
         internal EnemyActionData PeekNextAction() { return data.Actions[nextActionIndex]; }
+
+        internal bool TryConsumeThresholdTrigger(string triggerId)
+        {
+            if (string.IsNullOrWhiteSpace(triggerId)) throw new ArgumentException("Threshold trigger ID is required.", "triggerId");
+            return consumedThresholdTriggerIds.Add(triggerId);
+        }
 
         internal EnemyActionData CommitNextAction()
         {
@@ -166,24 +174,7 @@ namespace PuzzleGame.Core.Battle
 
         private static void Validate(EnemyData data)
         {
-            if (string.IsNullOrWhiteSpace(data.Id)) throw new ArgumentException("Enemy ID is required.", "data");
-            ValidateCombatElement(data.Element, "data");
-            if (data.BaseStats == null || data.BaseStats.Hp < 0 || data.BaseStats.Attack < 0 || data.BaseStats.Recovery < 0)
-                throw new ArgumentException("Enemy stats cannot be null or negative.", "data");
-            if (data.InitialCountdown < 1) throw new ArgumentException("Enemy countdown must be at least one.", "data");
-            if (data.Actions == null || data.Actions.Length == 0) throw new ArgumentException("Enemy must define actions.", "data");
-            for (var actionIndex = 0; actionIndex < data.Actions.Length; actionIndex++)
-            {
-                var action = data.Actions[actionIndex];
-                if (action == null || string.IsNullOrWhiteSpace(action.Id) || action.ResetCountdown < 1 || action.Effects == null)
-                    throw new ArgumentException("Enemy actions must be identified, reset to at least one, and define effects.", "data");
-                for (var effectIndex = 0; effectIndex < action.Effects.Length; effectIndex++)
-                {
-                    var effect = action.Effects[effectIndex];
-                    if (effect == null || effect.Payload == null || effect.Type < EnemyEffectType.Damage || effect.Type > EnemyEffectType.ManipulateCountdown)
-                        throw new ArgumentException("Enemy effects and payloads must be valid.", "data");
-                }
-            }
+            EnemyDataValidation.Validate(data);
         }
 
         internal static void ValidateCombatElement(ElementType element, string name)

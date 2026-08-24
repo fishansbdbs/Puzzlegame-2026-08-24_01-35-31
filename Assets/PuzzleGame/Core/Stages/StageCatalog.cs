@@ -90,27 +90,7 @@ namespace PuzzleGame.Core.Stages
 
         internal static void ValidateEnemy(EnemyData enemy)
         {
-            if (enemy == null) throw new ArgumentNullException("enemy");
-            if (string.IsNullOrWhiteSpace(enemy.Id)) throw new ArgumentException("Enemy ID is required.", "enemy");
-            if (enemy.BaseStats == null || enemy.BaseStats.Hp < 0 || enemy.BaseStats.Attack < 0 || enemy.BaseStats.Recovery < 0)
-                throw new ArgumentException("Enemy stats cannot be null or negative.", "enemy");
-            if (enemy.Element < ElementType.Fire || enemy.Element > ElementType.Dark || enemy.InitialCountdown < 1 || enemy.Actions == null || enemy.Actions.Length == 0)
-                throw new ArgumentException("Enemy data is invalid.", "enemy");
-            for (var actionIndex = 0; actionIndex < enemy.Actions.Length; actionIndex++)
-            {
-                var action = enemy.Actions[actionIndex];
-                if (action == null || string.IsNullOrWhiteSpace(action.Id) || action.ResetCountdown < 1 || action.Effects == null)
-                    throw new ArgumentException("Enemy action data is invalid.", "enemy");
-                for (var effectIndex = 0; effectIndex < action.Effects.Length; effectIndex++)
-                {
-                    var effect = action.Effects[effectIndex];
-                    if (effect == null || effect.Payload == null || effect.Type < EnemyEffectType.Damage || effect.Type > EnemyEffectType.ManipulateCountdown)
-                        throw new ArgumentException("Enemy effect data is invalid.", "enemy");
-                    if (effect.Type == EnemyEffectType.Enrage && effect.Payload.Amount != 0 &&
-                        (effect.Payload.Amount < 1 || effect.Payload.Amount > 100 || effect.Payload.TurnCount < 1 || float.IsNaN(effect.Payload.Multiplier) || float.IsInfinity(effect.Payload.Multiplier) || effect.Payload.Multiplier < 0f))
-                        throw new ArgumentException("Threshold enrage data is invalid.", "enemy");
-                }
-            }
+            EnemyDataValidation.Validate(enemy);
         }
     }
 
@@ -132,9 +112,11 @@ namespace PuzzleGame.Core.Stages
             if (source == null) return null;
             var actions = source.Actions == null ? null : new EnemyActionData[source.Actions.Length];
             if (actions != null) for (var index = 0; index < actions.Length; index++) actions[index] = Clone(source.Actions[index]);
+            var triggers = source.ThresholdTriggers == null ? null : new EnemyThresholdTriggerData[source.ThresholdTriggers.Length];
+            if (triggers != null) for (var index = 0; index < triggers.Length; index++) triggers[index] = Clone(source.ThresholdTriggers[index]);
             return new EnemyData { Id = source.Id, DisplayName = source.DisplayName, Element = source.Element,
                 BaseStats = source.BaseStats == null ? null : new StatBlock { Hp = source.BaseStats.Hp, Attack = source.BaseStats.Attack, Recovery = source.BaseStats.Recovery },
-                InitialCountdown = source.InitialCountdown, Actions = actions, Visuals = source.Visuals == null ? null : new VisualReferenceSet { PortraitKey = source.Visuals.PortraitKey, CardArtKey = source.Visuals.CardArtKey, ModelKey = source.Visuals.ModelKey, VfxKey = source.Visuals.VfxKey } };
+                InitialCountdown = source.InitialCountdown, Actions = actions, ThresholdTriggers = triggers, Visuals = source.Visuals == null ? null : new VisualReferenceSet { PortraitKey = source.Visuals.PortraitKey, CardArtKey = source.Visuals.CardArtKey, ModelKey = source.Visuals.ModelKey, VfxKey = source.Visuals.VfxKey } };
         }
 
         internal static WaveData Clone(WaveData source)
@@ -159,6 +141,11 @@ namespace PuzzleGame.Core.Stages
         private static EnemyEffectData Clone(EnemyEffectData source)
         {
             return source == null ? null : new EnemyEffectData { Type = source.Type, Payload = Clone(source.Payload) };
+        }
+
+        private static EnemyThresholdTriggerData Clone(EnemyThresholdTriggerData source)
+        {
+            return source == null ? null : new EnemyThresholdTriggerData { Id = source.Id, HpThresholdPercent = source.HpThresholdPercent, Effect = Clone(source.Effect) };
         }
 
         private static EffectPayloadData Clone(EffectPayloadData source)

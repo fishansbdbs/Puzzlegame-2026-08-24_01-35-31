@@ -362,35 +362,21 @@ namespace PuzzleGame.Tests.EditMode.Battle
         }
 
         [Test]
-        public void Enemy_action_prevalidates_all_payloads_before_countdown_index_or_state_changes()
+        public void Enemy_runtime_rejects_semantically_malformed_actions_before_turn_execution()
         {
             var malformed = Action("malformed", 3,
                 EnemyEffect(EnemyEffectType.Damage, amount: 7),
                 EnemyEffect(EnemyEffectType.Enrage, multiplier: float.NaN, turns: 2));
-            var enemy = BattleFixtures.Enemy(ElementType.Fire, countdown: 1, actions: new[] { malformed });
-            var party = BattleFixtures.Party();
-
-            Assert.That(() => new EnemyActionEngine().AdvanceAfterBoardResolution(enemy, Context(party: party, enemy: enemy)), Throws.Exception);
-            Assert.That(enemy.Countdown, Is.EqualTo(1));
-            Assert.That(enemy.CurrentActionIndex, Is.Zero);
-            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp));
-            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(() => BattleFixtures.Enemy(ElementType.Fire, countdown: 1, actions: new[] { malformed }), Throws.TypeOf<ArgumentException>());
         }
 
         [Test]
-        public void Malformed_next_action_does_not_decrement_a_countdown_greater_than_one()
+        public void Enemy_runtime_rejects_malformed_actions_even_when_their_countdown_is_not_due()
         {
             var malformed = Action("malformed", 3,
                 EnemyEffect(EnemyEffectType.Damage, amount: 7),
                 EnemyEffect(EnemyEffectType.Enrage, multiplier: float.NaN, turns: 2));
-            var enemy = BattleFixtures.Enemy(ElementType.Fire, countdown: 3, actions: new[] { malformed });
-            var party = BattleFixtures.Party();
-
-            Assert.That(() => new EnemyActionEngine().AdvanceAfterBoardResolution(enemy, Context(party: party, enemy: enemy)), Throws.Exception);
-            Assert.That(enemy.Countdown, Is.EqualTo(3));
-            Assert.That(enemy.CurrentActionIndex, Is.Zero);
-            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp));
-            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(() => BattleFixtures.Enemy(ElementType.Fire, countdown: 3, actions: new[] { malformed }), Throws.TypeOf<ArgumentException>());
         }
 
         [Test]
