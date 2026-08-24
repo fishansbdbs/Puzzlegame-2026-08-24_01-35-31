@@ -55,6 +55,7 @@ namespace PuzzleGame.Presentation.UI.Battle
             public VisualElement Portrait;
             public VisualElement ChargeBar;
             public Label ChargeLabel;
+            public bool WasReady;
         }
 
         public BattleScreen(IBattleEventSource source, Action<float> pump, ChapterDto chapter, StageDto stage)
@@ -82,6 +83,15 @@ namespace PuzzleGame.Presentation.UI.Battle
             _waveLabel = UiKit.Dim("", 13f);
             top.Add(_waveLabel);
             top.Add(UiKit.Spacer());
+            // Active stage modifiers surface in the HUD so rules stay visible.
+            if (_stage != null && _stage.modifiers != null)
+            {
+                foreach (var mod in _stage.modifiers)
+                {
+                    if (mod == "elite") continue;
+                    top.Add(ModifierDisplay.Chip(mod, 11f));
+                }
+            }
             _resolutionsLabel = UiKit.Dim("", 12f);
             top.Add(_resolutionsLabel);
             root.Add(top);
@@ -574,6 +584,19 @@ namespace PuzzleGame.Presentation.UI.Battle
                     UiKit.SetBar(w.ChargeBar, frac, skill.Ready ? Theme.Accent : Theme.ElementColor(member.Character.Element));
                     w.ChargeLabel.text = skill.Ready ? "READY!" : skill.Charge + "/" + skill.ChargeMax;
                     w.ChargeLabel.style.color = skill.Ready ? Theme.Accent : Theme.TextDim;
+                    // Skill-ready moment gets a visible pop + glowing frame.
+                    if (skill.Ready && !w.WasReady)
+                    {
+                        UiKit.Border(w.Portrait, Theme.Accent, 3f);
+                        UiFx.Punch(w.Portrait, 1.18f, 260);
+                        UiFx.Punch(w.ChargeLabel, 1.3f, 260);
+                    }
+                    else if (!skill.Ready && w.WasReady)
+                    {
+                        UiKit.Border(w.Portrait, Theme.RarityColor(member.Character.CurrentRarity),
+                            member.Character.Awakened ? 3f : 2f);
+                    }
+                    w.WasReady = skill.Ready;
                 }
                 w.Portrait.style.opacity = member.Bound ? 0.35f : 1f;
             }

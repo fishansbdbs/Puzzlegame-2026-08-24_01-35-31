@@ -25,7 +25,32 @@ namespace PuzzleGame.Presentation.Mock
         readonly ContentDb _db;
         readonly MockEconomy _economy;
 
-        public int AwakeningMaterials = 12;   // mock farmable material stock
+        public int AwakeningMaterials = 12;   // mock Radiant Core stock
+        public int ElementCores = 8;          // mock element-core stock (shared for demo)
+
+        static string CoreItemFor(ElementId element)
+        {
+            switch (element)
+            {
+                case ElementId.Fire: return "ember_core";
+                case ElementId.Water: return "tide_core";
+                case ElementId.Nature: return "bloom_core";
+                case ElementId.Light: return "dawn_core";
+                default: return "dusk_core";
+            }
+        }
+
+        static string CoreDayFor(ElementId element)
+        {
+            switch (element)
+            {
+                case ElementId.Fire: return "Mondays";
+                case ElementId.Water: return "Tuesdays";
+                case ElementId.Nature: return "Wednesdays";
+                case ElementId.Light: return "Thursdays";
+                default: return "Fridays";
+            }
+        }
 
         public event Action RosterChanged;
 
@@ -124,8 +149,9 @@ namespace PuzzleGame.Presentation.Mock
             if (!_owned.TryGetValue(characterId, out var state)) return false;
             if (!_db.Characters.TryGetValue(characterId, out var dto)) return false;
             if (state.Awakened || !dto.HasAwakenedForm) return false;
-            if (dto.rarity < 5 || state.Level < dto.maxLevel || AwakeningMaterials < 10) return false;
+            if (dto.rarity < 5 || state.Level < dto.maxLevel || AwakeningMaterials < 10 || ElementCores < 5) return false;
             AwakeningMaterials -= 10;
+            ElementCores -= 5;
             state.Awakened = true;
             RosterChanged?.Invoke();
             return true;
@@ -148,10 +174,15 @@ namespace PuzzleGame.Presentation.Mock
             }
             bool levelOk = state.Level >= dto.maxLevel;
             bool matsOk = AwakeningMaterials >= 10;
+            bool coresOk = ElementCores >= 5;
+            var element = ContentDb.ParseElement(dto.element);
+            string coreName = _db.Items.TryGetValue(CoreItemFor(element), out var core)
+                ? core.name : element + " Core";
             outLines.Add((levelOk ? "✓" : "✗") + " Reach level " + dto.maxLevel + " (now " + state.Level + ")");
             outLines.Add((matsOk ? "✓" : "✗") + " 10× Radiant Cores (have " + AwakeningMaterials + ")");
+            outLines.Add((coresOk ? "✓" : "✗") + " 5× " + coreName + "s — farm them " + CoreDayFor(element) + " (have " + ElementCores + ")");
             outLines.Add("Duplicates are NOT required for Awakening.");
-            return levelOk && matsOk;
+            return levelOk && matsOk && coresOk;
         }
     }
 }

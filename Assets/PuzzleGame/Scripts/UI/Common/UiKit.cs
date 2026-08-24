@@ -131,6 +131,9 @@ namespace PuzzleGame.Presentation.UI
             btn.style.paddingRight = 14f;
             btn.style.paddingTop = 7f;
             btn.style.paddingBottom = 7f;
+            // Touch-friendly minimum hit target for mobile landscape.
+            btn.style.minHeight = 34f;
+            btn.style.minWidth = 44f;
             btn.style.marginLeft = 0;
             btn.style.marginRight = 0;
             btn.style.marginTop = 0;
@@ -138,6 +141,13 @@ namespace PuzzleGame.Presentation.UI
             var baseColor = primary ? Theme.Accent : Theme.PanelRaised;
             btn.RegisterCallback<PointerEnterEvent>(_ => btn.style.backgroundColor = Color.Lerp(baseColor, Color.white, 0.12f));
             btn.RegisterCallback<PointerLeaveEvent>(_ => btn.style.backgroundColor = baseColor);
+            // Press feedback: quick squash so taps read instantly on touch.
+            btn.RegisterCallback<PointerDownEvent>(_ =>
+            {
+                if (!MotionSettings.ReducedMotion) btn.style.scale = new Scale(new Vector2(0.95f, 0.95f));
+            }, TrickleDown.TrickleDown);
+            btn.RegisterCallback<PointerUpEvent>(_ => btn.style.scale = new Scale(Vector2.one));
+            btn.RegisterCallback<PointerLeaveEvent>(_ => btn.style.scale = new Scale(Vector2.one));
             return btn;
         }
 

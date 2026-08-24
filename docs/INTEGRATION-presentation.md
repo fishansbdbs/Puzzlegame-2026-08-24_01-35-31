@@ -34,14 +34,52 @@ countdown ticks → `EnemyActed`; board reads only on `BoardChanged`).
 ## Content
 
 JSON under `Assets/PuzzleGame/Resources/Content/` (see the README there
-for schemas): 40 characters, 194 enemies, 20 chapters × 25 stages, 89
-dialogue scenes, 34 banners, 18 events, 18 reward tables, 52 schedule
-entries. These are draft schemas mirroring the design spec's contract
-list — when core schemas land, migrate the files (mapping is ~1:1)
-rather than forking vocabulary. Chapters 2-20, generated banners/events
-and their schedule windows are produced by `node
-Tools/content-gen/generate.js` from authored tables; regenerate instead
-of hand-editing `*generated*`/`chapter_02+` files.
+for schemas): 60 characters, 194 enemies, 20 chapters × 25 stages, 159
+dialogue scenes, 40 banners, 29 events, 29 reward tables, 86 items, 16
+pack themes, 69 schedule entries. These are draft schemas mirroring the
+design spec's contract list — when core schemas land, migrate the files
+(mapping is ~1:1) rather than forking vocabulary. Chapters 2-20,
+generated banners/events and their schedule windows are produced by
+`node Tools/content-gen/generate.js` from authored tables; regenerate
+instead of hand-editing `*generated*`/`chapter_02+` files. `node
+Tools/content-gen/audit.js` runs a deep whole-bank audit (duplicates,
+references, empty files) without Unity.
+
+### Stage modifiers (core interpretation needed)
+
+Stages carry data-driven `modifiers` strings that presentation displays
+as chips but core must implement mechanically:
+`elite`, `start_locks:N`, `start_poison:N`, `start_blockers:N`,
+`move_time_minus:N`, `combo_shield:N`, `enemy_haste`, `no_heart_orbs`,
+`mono_element_only`, `element_bonus:<element>`, `healing_reduced`.
+The validator enforces this vocabulary; extend it in ContentValidator +
+ModifierDisplay together when adding new modifiers.
+
+### Enemy action types
+
+`damage, bigDamage, convert, lock, poison, block, bind, timerDown,
+absorb, comboShield, enrage, heal, summon, taunt` — bosses use
+absorb/comboShield/enrage/taunt/summon as signature behaviors. The demo
+simulator treats summon/taunt as display-only; core should implement
+them fully.
+
+### Pack themes & items
+
+`Content/packs/` defines per-banner summon presentation metadata (foil,
+accent, base tier, tease style, fake-out permission, 5★ backdrop,
+`revealStingRef` audio hook — audio system not yet present, hook only).
+`Content/items/` is the item registry (names/categories/rarity/icons);
+all reward, drop and token ids validate against it. Chapters define
+`starMilestones` (25/50/75 stars) and a `mechanicNote`.
+
+### Intentionally NOT implemented (avoid conflicts)
+
+- Login/daily-bonus reward calendars (no schedule kind for it yet — add
+  to core scheduler if wanted; presentation will render it).
+- Stamina (story stages are stamina-free per spec; `staminaCost` field
+  exists for future paid-entry content).
+- Audio (sting refs are string hooks).
+- Real gacha pity counters beyond the documented guarantees.
 
 ## Validation (all runnable headless)
 

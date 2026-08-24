@@ -733,7 +733,17 @@ namespace PuzzleGame.Presentation.Mock
                 {
                     if (_stage.rewards.gold > 0) lines.Add("◆ " + _stage.rewards.gold + " Gold");
                     if (_stage.rewards.gems > 0) lines.Add("❖ " + _stage.rewards.gems + " Gems");
-                    foreach (var item in _stage.rewards.items) lines.Add(item.count + "× " + item.id);
+                    foreach (var item in _stage.rewards.items)
+                    {
+                        // Player-facing item names/icons come from the registry.
+                        lines.Add(_db.Items.TryGetValue(item.id, out var def)
+                            ? def.icon + " " + item.count + "× " + def.name
+                            : item.count + "× " + item.id);
+                    }
+                    if (!string.IsNullOrEmpty(_stage.rewards.firstClearBonus))
+                    {
+                        lines.Add("First clear: " + _stage.rewards.firstClearBonus);
+                    }
                 }
             }
             Schedule(0.6f, () => BattleEnded?.Invoke(new BattleEndEvent

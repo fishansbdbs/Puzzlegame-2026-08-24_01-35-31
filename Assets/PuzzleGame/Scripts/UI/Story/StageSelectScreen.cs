@@ -85,8 +85,35 @@ namespace PuzzleGame.Presentation.UI.Story
                 return;
             }
             _chapterTitle.text = "Chapter " + chapter.chapterNumber + ": " + chapter.title;
-            _chapterBlurb.text = chapter.blurb;
+            _chapterBlurb.text = chapter.blurb
+                + (string.IsNullOrEmpty(chapter.mechanicNote) ? "" : "\n⚙ " + chapter.mechanicNote);
             RebuildChapters();
+
+            // Chapter star milestones strip.
+            if (chapter.starMilestones.Count > 0)
+            {
+                var strip = UiKit.Row(10f);
+                strip.style.marginBottom = 4f;
+                strip.Add(UiKit.Text("★ Milestones:", 12f, true, Theme.Rarity5));
+                foreach (var milestone in chapter.starMilestones)
+                {
+                    string rewardText = "❖" + milestone.gems;
+                    foreach (var item in milestone.items)
+                    {
+                        var db2 = ContentDb.Instance;
+                        string label = db2.Items.TryGetValue(item.id, out var def)
+                            ? def.icon + " " + def.name : item.id;
+                        rewardText += "  " + item.count + "× " + label;
+                    }
+                    var chip = UiKit.Dim(milestone.stars + "★ → " + rewardText, 11f);
+                    chip.style.backgroundColor = Theme.BgDeep;
+                    UiKit.Round(chip, 5f);
+                    chip.style.paddingLeft = 6f; chip.style.paddingRight = 6f;
+                    chip.style.paddingTop = 2f; chip.style.paddingBottom = 2f;
+                    strip.Add(chip);
+                }
+                _stageList.Add(strip);
+            }
 
             foreach (var stage in chapter.stages.OrderBy(s => s.stageNumber))
             {
@@ -103,12 +130,14 @@ namespace PuzzleGame.Presentation.UI.Story
             if (stage.kind == "boss") UiKit.Border(card, Theme.Danger, 2f);
             else if (stage.kind == "miniboss") UiKit.Border(card, Theme.AccentWarm, 1.5f);
 
+            bool elite = stage.modifiers.Contains("elite");
             var head = UiKit.Row(6f);
             head.Add(UiKit.Text(stage.stageNumber.ToString(), 17f, true,
-                stage.kind == "boss" ? Theme.Danger : Theme.Accent));
+                stage.kind == "boss" ? Theme.Danger : elite ? Theme.AccentWarm : Theme.Accent));
             string marker = stage.kind == "boss" ? "☠ BOSS"
                 : stage.kind == "miniboss" ? "⚔ MINIBOSS"
-                : stage.kind == "story" ? "✦ STORY" : "";
+                : stage.kind == "story" ? "✦ STORY"
+                : elite ? "☆ ELITE" : "";
             if (marker != "")
             {
                 head.Add(UiKit.Text(marker, 10f, true,
@@ -119,6 +148,16 @@ namespace PuzzleGame.Presentation.UI.Story
             card.Add(name);
             card.Add(UiKit.Dim(stage.waves.Count + " wave" + (stage.waves.Count == 1 ? "" : "s") +
                                " • ★ under " + stage.resolutionsStar + " moves", 10f));
+            // Data-driven modifier warnings so the player can plan a team.
+            var mods = stage.modifiers.FindAll(m => m != "elite");
+            if (mods.Count > 0)
+            {
+                var modRow = UiKit.Row(4f);
+                modRow.style.flexWrap = Wrap.Wrap;
+                modRow.style.marginTop = 2f;
+                foreach (var mod in mods) modRow.Add(ModifierDisplay.Chip(mod));
+                card.Add(modRow);
+            }
             if (stage.rewards != null && (stage.rewards.gold > 0 || stage.rewards.gems > 0))
             {
                 card.Add(UiKit.Dim("◆" + stage.rewards.gold + (stage.rewards.gems > 0 ? "  ❖" + stage.rewards.gems : ""), 10f));
