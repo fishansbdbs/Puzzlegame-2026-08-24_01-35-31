@@ -103,6 +103,8 @@ namespace PuzzleGame.Unity.Battle
         private bool resolving;
         private bool hasPendingBoardScreenRect;
         private Rect pendingBoardScreenRect;
+        private Func<Rect?> boardLayoutProvider;
+        private Rect? acceptedBoardScreenRect;
 
         public event Action<MoveTimerEvent> TimerChanged;
         public event Action<MatchGroupsEvent> MatchGroupsResolved;
@@ -121,10 +123,11 @@ namespace PuzzleGame.Unity.Battle
         public bool IsResolving { get { return resolving; } }
         public BoardState CurrentBoard { get { return currentBoard; } }
         public Rect BoardScreenRect { get { return boardScreenRect; } }
+        public Rect? AcceptedBoardScreenRect { get { return acceptedBoardScreenRect; } }
 
         public void Initialize(IBoardPointerSource input, BoardView view, Rect screenRect, BoardState board,
             IOrbSource source, PartyState partyState, EnemyRuntime enemyState, StageSession session,
-            BattleContext context, StageData stageData)
+            BattleContext context, StageData stageData, Func<Rect?> layoutProvider = null)
         {
             if (initialized) throw new InvalidOperationException("PlayableBattleController is already initialized.");
             if (input == null) throw new ArgumentNullException("input");
@@ -136,7 +139,7 @@ namespace PuzzleGame.Unity.Battle
             if (session == null) throw new ArgumentNullException("session");
             if (context == null) throw new ArgumentNullException("context");
             if (stageData == null) throw new ArgumentNullException("stageData");
-            if (!BoardLayout.IsValidRect(screenRect))
+            if (layoutProvider == null && !BoardLayout.IsValidRect(screenRect))
                 throw new ArgumentOutOfRangeException("screenRect");
             if (!object.ReferenceEquals(context.Board, board)) throw new ArgumentException("Battle context must reference the supplied board.", "context");
             if (!object.ReferenceEquals(context.Party, partyState)) throw new ArgumentException("Battle context must reference the supplied party.", "context");
@@ -148,6 +151,8 @@ namespace PuzzleGame.Unity.Battle
             pointerSource = input;
             boardView = view;
             boardScreenRect = screenRect;
+            acceptedBoardScreenRect = layoutProvider == null ? screenRect : (Rect?)null;
+            boardLayoutProvider = layoutProvider;
             currentBoard = board;
             orbSource = source;
             party = partyState;
@@ -158,8 +163,9 @@ namespace PuzzleGame.Unity.Battle
             try
             {
                 boardView.Initialize(currentBoard);
-                if (isActiveAndEnabled) Subscribe();
                 initialized = true;
+                if (boardLayoutProvider != null) TryRefreshBoardScreenRect();
+                if (isActiveAndEnabled) Subscribe();
             }
             catch
             {
@@ -198,7 +204,34 @@ namespace PuzzleGame.Unity.Battle
             }
 
             boardScreenRect = screenRect;
+            acceptedBoardScreenRect = screenRect;
             hasPendingBoardScreenRect = false;
+        }
+
+        /// <summary>
+        /// Refreshes the currently accepted idle mapping from the optional provider.
+        /// An unavailable or invalid provider value invalidates idle input. Active drags
+        /// retain their accepted rectangle until completion.
+        /// </summary>
+        public bool TryRefreshBoardScreenRect()
+        {
+            if (!initialized) throw new InvalidOperationException("PlayableBattleController is not initialized.");
+            if (dragSession != null || resolving) return acceptedBoardScreenRect.HasValue;
+            if (boardLayoutProvider == null) return acceptedBoardScreenRect.HasValue;
+
+            var candidate = boardLayoutProvider();
+            if (!candidate.HasValue || !BoardLayout.IsValidRect(candidate.Value))
+            {
+                boardScreenRect = default(Rect);
+                acceptedBoardScreenRect = null;
+                hasPendingBoardScreenRect = false;
+                return false;
+            }
+
+            boardScreenRect = candidate.Value;
+            acceptedBoardScreenRect = candidate.Value;
+            hasPendingBoardScreenRect = false;
+            return true;
         }
 
         private void Update()
@@ -265,7 +298,9 @@ namespace PuzzleGame.Unity.Battle
 
         private void OnPointerPressed(Vector2 screenPosition)
         {
-            if (resolving || dragSession != null || party.CurrentHp == 0 || enemy.IsDefeated || stageSession.IsCompleted) return;
+            if (resolving || dragSession != null) return;
+            if (!TryRefreshBoardScreenRect()) return;
+            if (party.CurrentHp == 0 || enemy.IsDefeated || stageSession.IsCompleted) return;
             var cell = BoardLayout.ScreenToCell(screenPosition, boardScreenRect);
             if (!cell.HasValue) return;
             currentBoard = battleContext.Board;
@@ -345,6 +380,7 @@ namespace PuzzleGame.Unity.Battle
         {
             if (!hasPendingBoardScreenRect || dragSession != null || resolving) return;
             boardScreenRect = pendingBoardScreenRect;
+            acceptedBoardScreenRect = pendingBoardScreenRect;
             hasPendingBoardScreenRect = false;
         }
 
@@ -483,6 +519,8 @@ namespace PuzzleGame.Unity.Battle
             stageSession = null;
             battleContext = null;
             objectiveStage = null;
+            boardLayoutProvider = null;
+            acceptedBoardScreenRect = null;
             hasPendingBoardScreenRect = false;
             pendingBoardScreenRect = default(Rect);
             initialized = false;

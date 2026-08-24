@@ -24,13 +24,9 @@ namespace PuzzleGame.Unity.Bootstrap
         private bool initialized;
         private bool forwardingEvents;
         private Func<int, VerticalSliceSample> sampleFactory;
-        private bool hasBoardMappingState;
-        private int mappedScreenWidth;
-        private int mappedScreenHeight;
-        private Rect mappedCameraPixelRect;
-        private Matrix4x4 mappedProjectionMatrix;
-        private Matrix4x4 mappedWorldToCameraMatrix;
-        private Bounds mappedWorldBounds;
+        private Camera injectedGameplayCamera;
+        private bool hasInjectedCameraPolicy;
+        private Camera[] cameraBuffer = new Camera[4];
 
         public event Action<MoveTimerEvent> TimerChanged;
         public event Action<MatchGroupsEvent> MatchGroupsResolved;
@@ -163,17 +159,20 @@ namespace PuzzleGame.Unity.Bootstrap
 
         public void PressCell(BoardPosition position)
         {
-            RequireTestDriver().Press(CellCenter(position));
+            Vector2 center;
+            if (TryCellCenter(position, true, out center)) RequireTestDriver().Press(center);
         }
 
         public void MoveToCell(BoardPosition position)
         {
-            RequireTestDriver().Move(CellCenter(position));
+            Vector2 center;
+            if (TryCellCenter(position, false, out center)) RequireTestDriver().Move(center);
         }
 
         public void ReleaseCell(BoardPosition position)
         {
-            RequireTestDriver().Release(CellCenter(position));
+            Vector2 center;
+            if (TryCellCenter(position, false, out center)) RequireTestDriver().Release(center);
         }
 
         public void AdvanceUnscaledTime(float seconds)
@@ -222,11 +221,13 @@ namespace PuzzleGame.Unity.Bootstrap
                 }
 
                 View.Initialize(Sample.CurrentBoard);
-                GameplayCamera = ResolveGameplayCamera(runtimeRoot, gameplayCamera, useDeterministicPointer);
-                var boardScreenRect = ProjectWorldBoundsToScreen(GameplayCamera, View.WorldBounds);
-                Controller.Initialize(pointerSource, View, boardScreenRect, Sample.CurrentBoard, Sample.OrbSource,
-                    Sample.Party, Sample.Enemy, Sample.StageSession, Sample.BattleContext, Sample.Stage);
-                CaptureBoardMappingState(View.WorldBounds);
+                injectedGameplayCamera = gameplayCamera;
+                hasInjectedCameraPolicy = useDeterministicPointer;
+                if (useDeterministicPointer && injectedGameplayCamera == null)
+                    injectedGameplayCamera = CreateDeterministicGameplayCamera(runtimeRoot);
+                Controller.Initialize(pointerSource, View, default(Rect), Sample.CurrentBoard, Sample.OrbSource,
+                    Sample.Party, Sample.Enemy, Sample.StageSession, Sample.BattleContext, Sample.Stage,
+                    TryGetCurrentBoardScreenRect);
                 StartForwardingEvents();
                 initialized = true;
             }
@@ -242,11 +243,8 @@ namespace PuzzleGame.Unity.Bootstrap
 
         private void Update()
         {
-            if (!initialized || Controller == null || View == null || GameplayCamera == null) return;
-            var bounds = View.WorldBounds;
-            if (!HasBoardMappingChanged(bounds)) return;
-            Controller.UpdateBoardScreenRect(ProjectWorldBoundsToScreen(GameplayCamera, bounds));
-            CaptureBoardMappingState(bounds);
+            if (!initialized || Controller == null || Controller.IsDragging || Controller.IsResolving) return;
+            Controller.TryRefreshBoardScreenRect();
         }
 
         private void OnDestroy()
@@ -317,34 +315,24 @@ namespace PuzzleGame.Unity.Bootstrap
             return PointerDriver;
         }
 
-        private Vector2 CellCenter(BoardPosition position)
+        private bool TryCellCenter(BoardPosition position, bool refreshIdleMapping, out Vector2 center)
         {
             if (Sample == null) throw new InvalidOperationException("The vertical slice is not initialized.");
             Sample.CurrentBoard.Get(position);
-            if (GameplayCamera == null) throw new InvalidOperationException("The vertical slice has no gameplay camera.");
-            var projected = GameplayCamera.WorldToScreenPoint(View.GetCellWorldCenter(position));
-            if (!IsFinite(projected.x) || !IsFinite(projected.y) || !IsFinite(projected.z) || projected.z <= 0f)
-                throw new InvalidOperationException("The rendered board cell is not visible to the gameplay camera.");
-            return new Vector2(projected.x, projected.y);
+            center = default(Vector2);
+            if (Controller == null) return false;
+            if (refreshIdleMapping && !Controller.IsDragging && !Controller.TryRefreshBoardScreenRect()) return false;
+            var accepted = Controller.AcceptedBoardScreenRect;
+            if (!accepted.HasValue) return false;
+            var rect = accepted.Value;
+            center = new Vector2(
+                rect.xMin + (position.X + .5f) * rect.width / BoardState.Columns,
+                rect.yMin + (position.Y + .5f) * rect.height / BoardState.Rows);
+            return true;
         }
 
-        private static Camera ResolveGameplayCamera(GameObject runtimeRoot, Camera provided, bool explicitTestComposition)
+        private static Camera CreateDeterministicGameplayCamera(GameObject runtimeRoot)
         {
-            if (provided != null)
-            {
-                if (!provided.isActiveAndEnabled)
-                    throw new ArgumentException("The provided gameplay camera must be active and enabled.", "provided");
-                return provided;
-            }
-
-            if (!explicitTestComposition)
-            {
-                var main = Camera.main;
-                if (main == null || !main.isActiveAndEnabled)
-                    throw new InvalidOperationException("Runtime composition requires an active Camera tagged MainCamera.");
-                return main;
-            }
-
             var cameraObject = new GameObject("Deterministic Gameplay Camera");
             cameraObject.hideFlags = HideFlags.DontSave;
             cameraObject.transform.SetParent(runtimeRoot.transform, false);
@@ -355,54 +343,67 @@ namespace PuzzleGame.Unity.Bootstrap
             return camera;
         }
 
-        private static Rect ProjectWorldBoundsToScreen(Camera camera, Bounds bounds)
+        private Rect? TryGetCurrentBoardScreenRect()
         {
-            if (camera == null || !camera.isActiveAndEnabled)
-                throw new InvalidOperationException("An active gameplay camera is required for board mapping.");
+            var camera = ResolveCurrentGameplayCamera();
+            GameplayCamera = camera;
+            if (camera == null || View == null) return null;
+            Rect result;
+            return TryProjectWorldBoundsToScreen(camera, View.WorldBounds, out result) ? result : (Rect?)null;
+        }
+
+        private Camera ResolveCurrentGameplayCamera()
+        {
+            if (hasInjectedCameraPolicy)
+                return IsUsableCamera(injectedGameplayCamera) ? injectedGameplayCamera : null;
+
+            var count = Camera.allCamerasCount;
+            if (cameraBuffer == null || cameraBuffer.Length < count)
+                cameraBuffer = new Camera[Mathf.Max(count, cameraBuffer == null ? 4 : cameraBuffer.Length * 2)];
+            var written = Camera.GetAllCameras(cameraBuffer);
+            Camera selected = null;
+            var ambiguous = false;
+            for (var index = 0; index < written; index++)
+            {
+                var candidate = cameraBuffer[index];
+                cameraBuffer[index] = null;
+                if (!IsUsableCamera(candidate) || !candidate.CompareTag("MainCamera")) continue;
+                if (selected == null) selected = candidate;
+                else ambiguous = true;
+            }
+            return ambiguous ? null : selected;
+        }
+
+        private static bool IsUsableCamera(Camera camera)
+        {
+            return camera != null && camera.isActiveAndEnabled && camera.targetDisplay == 0;
+        }
+
+        private static bool TryProjectWorldBoundsToScreen(Camera camera, Bounds bounds, out Rect result)
+        {
+            result = default(Rect);
+            if (!IsUsableCamera(camera)) return false;
             if (!IsFinite(bounds.min.x) || !IsFinite(bounds.min.y) || !IsFinite(bounds.max.x) || !IsFinite(bounds.max.y) ||
                 bounds.size.x <= 0f || bounds.size.y <= 0f)
-                throw new ArgumentOutOfRangeException("bounds");
+                return false;
 
             var first = camera.WorldToScreenPoint(new Vector3(bounds.min.x, bounds.min.y, bounds.center.z));
             var second = camera.WorldToScreenPoint(new Vector3(bounds.max.x, bounds.min.y, bounds.center.z));
             var third = camera.WorldToScreenPoint(new Vector3(bounds.min.x, bounds.max.y, bounds.center.z));
             var fourth = camera.WorldToScreenPoint(new Vector3(bounds.max.x, bounds.max.y, bounds.center.z));
-            ValidateProjectedCorner(first);
-            ValidateProjectedCorner(second);
-            ValidateProjectedCorner(third);
-            ValidateProjectedCorner(fourth);
+            if (!IsVisibleProjectedCorner(first) || !IsVisibleProjectedCorner(second) ||
+                !IsVisibleProjectedCorner(third) || !IsVisibleProjectedCorner(fourth)) return false;
             var minX = Mathf.Min(Mathf.Min(first.x, second.x), Mathf.Min(third.x, fourth.x));
             var maxX = Mathf.Max(Mathf.Max(first.x, second.x), Mathf.Max(third.x, fourth.x));
             var minY = Mathf.Min(Mathf.Min(first.y, second.y), Mathf.Min(third.y, fourth.y));
             var maxY = Mathf.Max(Mathf.Max(first.y, second.y), Mathf.Max(third.y, fourth.y));
-            var result = Rect.MinMaxRect(minX, minY, maxX, maxY);
-            if (!BoardLayout.IsValidRect(result)) throw new InvalidOperationException("Projected board bounds are invalid.");
-            return result;
+            result = Rect.MinMaxRect(minX, minY, maxX, maxY);
+            return BoardLayout.IsValidRect(result);
         }
 
-        private static void ValidateProjectedCorner(Vector3 value)
+        private static bool IsVisibleProjectedCorner(Vector3 value)
         {
-            if (!IsFinite(value.x) || !IsFinite(value.y) || !IsFinite(value.z) || value.z <= 0f)
-                throw new InvalidOperationException("The rendered board bounds are not visible to the gameplay camera.");
-        }
-
-        private bool HasBoardMappingChanged(Bounds bounds)
-        {
-            return !hasBoardMappingState || mappedScreenWidth != Screen.width || mappedScreenHeight != Screen.height ||
-                   mappedCameraPixelRect != GameplayCamera.pixelRect || mappedProjectionMatrix != GameplayCamera.projectionMatrix ||
-                   mappedWorldToCameraMatrix != GameplayCamera.worldToCameraMatrix ||
-                   mappedWorldBounds.center != bounds.center || mappedWorldBounds.size != bounds.size;
-        }
-
-        private void CaptureBoardMappingState(Bounds bounds)
-        {
-            mappedScreenWidth = Screen.width;
-            mappedScreenHeight = Screen.height;
-            mappedCameraPixelRect = GameplayCamera.pixelRect;
-            mappedProjectionMatrix = GameplayCamera.projectionMatrix;
-            mappedWorldToCameraMatrix = GameplayCamera.worldToCameraMatrix;
-            mappedWorldBounds = bounds;
-            hasBoardMappingState = true;
+            return IsFinite(value.x) && IsFinite(value.y) && IsFinite(value.z) && value.z > 0f;
         }
 
         private static bool IsFinite(float value)
@@ -427,8 +428,9 @@ namespace PuzzleGame.Unity.Bootstrap
             PointerInput = null;
             PointerDriver = null;
             GameplayCamera = null;
+            injectedGameplayCamera = null;
+            hasInjectedCameraPolicy = false;
             sampleFactory = null;
-            hasBoardMappingState = false;
             initialized = false;
         }
 

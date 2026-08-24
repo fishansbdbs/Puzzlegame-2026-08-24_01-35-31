@@ -124,6 +124,71 @@ namespace PuzzleGame.Tests.PlayMode.Integration
             AssertEveryProjectedCenterMaps(camera, bootstrap);
         }
 
+        [Test]
+        public void Viewport_change_immediately_before_press_uses_the_synchronous_controller_mapping()
+        {
+            var camera = CreateCamera(new Rect(0f, 0f, 1600f, 900f), false);
+            var bootstrap = Track(VerticalSliceBootstrap.CreateForTests(24082026, camera));
+            var original = bootstrap.Controller.AcceptedBoardScreenRect;
+            var pressed = new List<Vector2>();
+            bootstrap.PointerDriver.PointerPressed += pressed.Add;
+
+            camera.pixelRect = new Rect(100f, 50f, 800f, 600f);
+            bootstrap.PressCell(new BoardPosition(2, 3));
+
+            var accepted = bootstrap.Controller.AcceptedBoardScreenRect;
+            Assert.That(accepted.HasValue, Is.True);
+            Assert.That(accepted, Is.Not.EqualTo(original));
+            Assert.That(pressed, Has.Count.EqualTo(1));
+            Assert.That(pressed[0], Is.EqualTo(CellCenter(accepted.Value, 2, 3)));
+            Assert.That(bootstrap.Controller.IsDragging, Is.True);
+        }
+
+        [Test]
+        public void Camera_change_during_drag_keeps_the_accepted_mapping_frozen_until_release()
+        {
+            var camera = CreateCamera(new Rect(0f, 0f, 1600f, 900f), false);
+            var bootstrap = Track(VerticalSliceBootstrap.CreateForTests(24082026, camera));
+            var originalFirst = bootstrap.Controller.CurrentBoard.Get(0, 0);
+            var originalSecond = bootstrap.Controller.CurrentBoard.Get(1, 0);
+
+            bootstrap.PressCell(new BoardPosition(0, 0));
+            var frozen = bootstrap.Controller.AcceptedBoardScreenRect;
+            camera.pixelRect = new Rect(100f, 50f, 800f, 600f);
+            bootstrap.MoveToCell(new BoardPosition(1, 0));
+
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect, Is.EqualTo(frozen));
+            Assert.That(bootstrap.Controller.CurrentBoard.Get(0, 0), Is.EqualTo(originalSecond));
+            Assert.That(bootstrap.Controller.CurrentBoard.Get(1, 0), Is.EqualTo(originalFirst));
+
+            bootstrap.ReleaseCell(new BoardPosition(1, 0));
+            bootstrap.PressCell(new BoardPosition(2, 0));
+
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect, Is.Not.EqualTo(frozen));
+            Assert.That(bootstrap.Controller.IsDragging, Is.True);
+        }
+
+        [Test]
+        public void Unavailable_explicit_camera_rejects_deterministic_presses_without_stale_mapping_and_recovers()
+        {
+            var camera = CreateCamera(new Rect(0f, 0f, 1600f, 900f), false);
+            var bootstrap = Track(VerticalSliceBootstrap.CreateForTests(24082026, camera));
+            camera.enabled = false;
+
+            bootstrap.PressCell(new BoardPosition(0, 0));
+
+            Assert.That(bootstrap.Controller.IsDragging, Is.False);
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect, Is.Null);
+            Assert.That(bootstrap.GameplayCamera, Is.Null);
+
+            camera.enabled = true;
+            bootstrap.PressCell(new BoardPosition(0, 0));
+
+            Assert.That(bootstrap.Controller.IsDragging, Is.True);
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect.HasValue, Is.True);
+            Assert.That(bootstrap.GameplayCamera, Is.SameAs(camera));
+        }
+
         [UnityTest]
         public IEnumerator Bootstrap_owns_only_its_explicit_test_fallback_camera()
         {
@@ -350,24 +415,91 @@ namespace PuzzleGame.Tests.PlayMode.Integration
         }
 
         [UnityTest]
-        public IEnumerator Runtime_composition_requires_an_active_main_camera_and_cleans_failed_root()
+        public IEnumerator Runtime_mapping_recovers_after_main_camera_is_destroyed_and_replaced()
         {
             var mainCamera = Camera.main;
             Assert.That(mainCamera, Is.Not.Null);
-            mainCamera.gameObject.SetActive(false);
+            var bootstrap = Track(VerticalSliceBootstrap.EnsureRuntimeBootstrap());
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect.HasValue, Is.True);
 
-            try
-            {
-                Assert.That(() => VerticalSliceBootstrap.EnsureRuntimeBootstrap(),
-                    Throws.TypeOf<System.InvalidOperationException>());
-            }
-            finally
-            {
-                mainCamera.gameObject.SetActive(true);
-            }
+            Object.DestroyImmediate(mainCamera.gameObject);
+            Assert.That(bootstrap.Controller.TryRefreshBoardScreenRect(), Is.False);
+            Assert.That(bootstrap.GameplayCamera, Is.Null);
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect, Is.Null);
 
+            var replacement = CreateCamera(new Rect(50f, 25f, 1200f, 800f), true);
             yield return null;
-            Assert.That(FindBootstraps(), Is.Empty);
+
+            Assert.That(bootstrap.GameplayCamera, Is.SameAs(replacement));
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect.HasValue, Is.True);
+            AssertEveryProjectedCenterMaps(replacement, bootstrap);
+        }
+
+        [UnityTest]
+        public IEnumerator Runtime_mapping_rejects_a_disabled_main_camera_then_recovers_when_restored()
+        {
+            var camera = Camera.main;
+            camera.enabled = false;
+            var bootstrap = Track(VerticalSliceBootstrap.EnsureRuntimeBootstrap());
+
+            Assert.That(bootstrap.GameplayCamera, Is.Null);
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect, Is.Null);
+
+            camera.enabled = true;
+            yield return null;
+
+            Assert.That(bootstrap.GameplayCamera, Is.SameAs(camera));
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect.HasValue, Is.True);
+        }
+
+        [UnityTest]
+        public IEnumerator Runtime_mapping_rejects_a_camera_behind_the_board_then_recovers_when_restored()
+        {
+            var camera = Camera.main;
+            camera.transform.position = new Vector3(0f, 0f, 10f);
+            var bootstrap = Track(VerticalSliceBootstrap.EnsureRuntimeBootstrap());
+
+            Assert.That(bootstrap.GameplayCamera, Is.SameAs(camera));
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect, Is.Null);
+
+            camera.transform.position = new Vector3(0f, 0f, -10f);
+            yield return null;
+
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect.HasValue, Is.True);
+        }
+
+        [UnityTest]
+        public IEnumerator Runtime_mapping_rejects_multiple_display_zero_main_cameras_then_recovers()
+        {
+            var first = Camera.main;
+            var second = CreateCamera(new Rect(0f, 0f, 1600f, 900f), true);
+            var bootstrap = Track(VerticalSliceBootstrap.EnsureRuntimeBootstrap());
+
+            Assert.That(bootstrap.GameplayCamera, Is.Null);
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect, Is.Null);
+
+            second.enabled = false;
+            yield return null;
+
+            Assert.That(bootstrap.GameplayCamera, Is.SameAs(first));
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect.HasValue, Is.True);
+        }
+
+        [UnityTest]
+        public IEnumerator Runtime_mapping_rejects_a_secondary_display_main_camera_then_recovers_on_display_zero()
+        {
+            var camera = Camera.main;
+            camera.targetDisplay = 1;
+            var bootstrap = Track(VerticalSliceBootstrap.EnsureRuntimeBootstrap());
+
+            Assert.That(bootstrap.GameplayCamera, Is.Null);
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect, Is.Null);
+
+            camera.targetDisplay = 0;
+            yield return null;
+
+            Assert.That(bootstrap.GameplayCamera, Is.SameAs(camera));
+            Assert.That(bootstrap.Controller.AcceptedBoardScreenRect.HasValue, Is.True);
         }
 
         [UnityTest]
@@ -540,6 +672,13 @@ namespace PuzzleGame.Tests.PlayMode.Integration
                 Assert.That(BoardLayout.ScreenToCell(new Vector2(projected.x, projected.y), bootstrap.BoardScreenRect),
                     Is.EqualTo(position), "cell " + x + "," + y);
             }
+        }
+
+        private static Vector2 CellCenter(Rect rect, int x, int y)
+        {
+            return new Vector2(
+                rect.xMin + (x + .5f) * rect.width / BoardState.Columns,
+                rect.yMin + (y + .5f) * rect.height / BoardState.Rows);
         }
 
         private static VerticalSliceBootstrap[] FindBootstraps()

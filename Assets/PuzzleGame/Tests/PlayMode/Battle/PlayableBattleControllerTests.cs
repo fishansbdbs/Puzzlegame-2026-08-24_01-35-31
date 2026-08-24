@@ -78,6 +78,66 @@ namespace PuzzleGame.Tests.PlayMode.Battle
                 Assert.That(fixture.Controller.BoardScreenRect, Is.EqualTo(updated));
             }
         }
+
+        [Test]
+        public void Layout_provider_is_authoritative_on_each_idle_press_and_invalidates_stale_mapping()
+        {
+            var first = new Rect(0f, 0f, 600f, 500f);
+            var second = new Rect(100f, 200f, 1200f, 1000f);
+            Rect? current = first;
+            using (var fixture = PlayableBattleFixture.Create(layoutProvider: () => current))
+            {
+                Assert.That(fixture.Controller.AcceptedBoardScreenRect, Is.EqualTo(first));
+
+                current = null;
+                fixture.Input.Press(Center(first, 0, 0));
+                Assert.That(fixture.Controller.IsDragging, Is.False);
+                Assert.That(fixture.Controller.AcceptedBoardScreenRect, Is.Null);
+
+                current = new Rect(0f, 0f, 0f, 1f);
+                fixture.Input.Press(Center(first, 0, 0));
+                Assert.That(fixture.Controller.IsDragging, Is.False);
+                Assert.That(fixture.Controller.AcceptedBoardScreenRect, Is.Null);
+
+                current = second;
+                fixture.Input.Press(Center(second, 0, 0));
+                Assert.That(fixture.Controller.IsDragging, Is.True);
+                Assert.That(fixture.Controller.AcceptedBoardScreenRect, Is.EqualTo(second));
+            }
+        }
+
+        [Test]
+        public void Active_drag_freezes_the_provider_mapping_until_completion()
+        {
+            var first = new Rect(0f, 0f, 600f, 500f);
+            var second = new Rect(100f, 200f, 1200f, 1000f);
+            Rect? current = first;
+            using (var fixture = PlayableBattleFixture.Create(layoutProvider: () => current))
+            {
+                var originalFirst = fixture.Controller.CurrentBoard.Get(0, 0);
+                var originalSecond = fixture.Controller.CurrentBoard.Get(1, 0);
+                fixture.Input.Press(Center(first, 0, 0));
+                current = second;
+                fixture.Input.Move(Center(first, 1, 0));
+
+                Assert.That(fixture.Controller.AcceptedBoardScreenRect, Is.EqualTo(first));
+                Assert.That(fixture.Controller.CurrentBoard.Get(0, 0), Is.EqualTo(originalSecond));
+                Assert.That(fixture.Controller.CurrentBoard.Get(1, 0), Is.EqualTo(originalFirst));
+
+                fixture.Input.Release(Center(first, 1, 0));
+                fixture.Input.Press(Center(second, 0, 0));
+
+                Assert.That(fixture.Controller.AcceptedBoardScreenRect, Is.EqualTo(second));
+                Assert.That(fixture.Controller.IsDragging, Is.True);
+            }
+        }
+
+        private static Vector2 Center(Rect rect, int x, int y)
+        {
+            return new Vector2(
+                rect.xMin + (x + .5f) * rect.width / BoardState.Columns,
+                rect.yMin + (y + .5f) * rect.height / BoardState.Rows);
+        }
     }
 
     public sealed class PlayableBattleControllerTests
@@ -914,7 +974,7 @@ namespace PuzzleGame.Tests.PlayMode.Battle
 
         internal static PlayableBattleFixture Create(BoardState board = null, int enemyHp = 1000, int enemyCountdown = 2,
             bool damageParty = false, EnemyThresholdTriggerData[] thresholdTriggers = null, int actionDamage = 1,
-            float moveTimeSeconds = BoardState.DefaultDragDurationSeconds)
+            float moveTimeSeconds = BoardState.DefaultDragDurationSeconds, Func<Rect?> layoutProvider = null)
         {
             var fixture = new PlayableBattleFixture();
             fixture.Root = new GameObject("PlayableBattleFixture");
@@ -956,8 +1016,9 @@ namespace PuzzleGame.Tests.PlayMode.Battle
             var enemy = fixture.Session.CurrentEnemies[0];
             fixture.Context = new BattleContext(board, fixture.Party, enemy, moveTimeSeconds);
             fixture.View.Initialize(board);
-            fixture.Controller.Initialize(fixture.Input, fixture.View, new Rect(0f, 0f, 600f, 500f), board,
-                new CyclingOrbSource(), fixture.Party, enemy, fixture.Session, fixture.Context, stage);
+            fixture.Controller.Initialize(fixture.Input, fixture.View,
+                layoutProvider == null ? new Rect(0f, 0f, 600f, 500f) : default(Rect), board,
+                new CyclingOrbSource(), fixture.Party, enemy, fixture.Session, fixture.Context, stage, layoutProvider);
             return fixture;
         }
 
