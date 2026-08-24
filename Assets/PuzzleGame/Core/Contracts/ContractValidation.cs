@@ -231,6 +231,16 @@ namespace PuzzleGame.Core.Contracts
                 errors.Add("Schedule content ID is required.");
             }
 
+            if (!Enum.IsDefined(typeof(ContentType), data.ContentType))
+            {
+                errors.Add("Schedule content type is invalid.");
+            }
+
+            if (data.Priority < 0)
+            {
+                errors.Add("Schedule priority cannot be negative.");
+            }
+
             if (data.End <= data.Start)
             {
                 errors.Add("Schedule end must be after schedule start.");
@@ -248,11 +258,18 @@ namespace PuzzleGame.Core.Contracts
                 return;
             }
 
+            var weekdays = new HashSet<int>();
             for (var index = 0; index < data.RecurringWeekdays.Length; index++)
             {
                 if (data.RecurringWeekdays[index] < 0 || data.RecurringWeekdays[index] > 6)
                 {
                     errors.Add("Schedule weekday must be between 0 and 6.");
+                    break;
+                }
+
+                if (!weekdays.Add(data.RecurringWeekdays[index]))
+                {
+                    errors.Add("Schedule recurring weekdays cannot contain duplicates.");
                     break;
                 }
             }
