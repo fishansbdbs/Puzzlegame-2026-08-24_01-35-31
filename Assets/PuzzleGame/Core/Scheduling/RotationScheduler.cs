@@ -144,7 +144,7 @@ namespace PuzzleGame.Core.Scheduling
                 }
 
                 DateTimeOffset candidateStart;
-                if (!TryAtMinute(startDate, schedule.StartMinuteOfDay, localNow, out candidateStart))
+                if (!TryAtMinute(startDate, schedule.StartMinuteOfDay, schedule.Start.Offset, out candidateStart))
                 {
                     continue;
                 }
@@ -159,7 +159,7 @@ namespace PuzzleGame.Core.Scheduling
                     startDate,
                     schedule.StartMinuteOfDay,
                     schedule.EndMinuteOfDay,
-                    localNow,
+                    schedule.Start.Offset,
                     schedule.End,
                     out candidateEnd) || now >= candidateEnd)
                 {
@@ -208,13 +208,13 @@ namespace PuzzleGame.Core.Scheduling
             DateTime startDate,
             int startMinute,
             int endMinute,
-            DateTimeOffset localNow,
+            TimeSpan offset,
             DateTimeOffset outerEnd,
             out DateTimeOffset candidateEnd)
         {
             if (startMinute < endMinute)
             {
-                if (!TryAtMinute(startDate, endMinute, localNow, out candidateEnd))
+                if (!TryAtMinute(startDate, endMinute, offset, out candidateEnd))
                 {
                     candidateEnd = outerEnd;
                 }
@@ -225,7 +225,7 @@ namespace PuzzleGame.Core.Scheduling
             DateTime endDate;
             if (TryAddDays(startDate, 1, out endDate))
             {
-                if (!TryAtMinute(endDate, endMinute, localNow, out candidateEnd))
+                if (!TryAtMinute(endDate, endMinute, offset, out candidateEnd))
                 {
                     candidateEnd = outerEnd;
                 }
@@ -242,33 +242,22 @@ namespace PuzzleGame.Core.Scheduling
         private static bool TryAtMinute(
             DateTime date,
             int minuteOfDay,
-            DateTimeOffset localAnchor,
+            TimeSpan offset,
             out DateTimeOffset candidate)
         {
             candidate = default(DateTimeOffset);
-            var dayDifference = date.Subtract(localAnchor.Date).Days;
-            DateTimeOffset dateAnchor;
-            if (!TryAddTicks(localAnchor, (long)dayDifference * TimeSpan.TicksPerDay, out dateAnchor))
+            var hour = minuteOfDay / 60;
+            var minute = minuteOfDay % 60;
+            try
             {
+                candidate = new DateTimeOffset(date.Year, date.Month, date.Day, hour, minute, 0, offset);
+                return true;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                candidate = default(DateTimeOffset);
                 return false;
             }
-
-            var targetTicks = (long)minuteOfDay * TimeSpan.TicksPerMinute;
-            return TryAddTicks(dateAnchor, targetTicks - dateAnchor.TimeOfDay.Ticks, out candidate);
-        }
-
-        private static bool TryAddTicks(DateTimeOffset value, long ticks, out DateTimeOffset result)
-        {
-            var utcTicks = value.UtcDateTime.Ticks;
-            if ((ticks > 0 && utcTicks > DateTime.MaxValue.Ticks - ticks) ||
-                (ticks < 0 && utcTicks < DateTime.MinValue.Ticks - ticks))
-            {
-                result = default(DateTimeOffset);
-                return false;
-            }
-
-            result = value.AddTicks(ticks);
-            return true;
         }
 
         private static bool TryAddDays(DateTime date, int days, out DateTime result)

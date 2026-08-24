@@ -269,6 +269,49 @@ namespace PuzzleGame.Tests.EditMode.Scheduling
             Assert.That(active[0].ActiveEnd, Is.EqualTo(schedule.End));
         }
 
+        [Test]
+        public void Year_one_positive_offset_uses_a_legal_previous_day_overnight_start()
+        {
+            var offset = TimeSpan.FromHours(14);
+            var startDate = new DateTime(1, 1, 1);
+            var schedule = ConfiguredRecurring(
+                "year-one-previous-day",
+                new DateTimeOffset(1, 1, 1, 14, 0, 0, offset),
+                new DateTimeOffset(1, 1, 2, 1, 0, 0, offset),
+                startDate.DayOfWeek,
+                14 * 60,
+                60);
+
+            var active = new RotationScheduler(new FakeClock(new DateTimeOffset(1, 1, 2, 0, 30, 0, offset)))
+                .GetActive(new[] { schedule });
+
+            Assert.That(active, Has.Count.EqualTo(1));
+            Assert.That(active[0].ActiveStart, Is.EqualTo(schedule.Start));
+            Assert.That(active[0].ActiveEnd, Is.EqualTo(schedule.End));
+        }
+
+        [Test]
+        public void Year_9999_negative_offset_uses_a_legal_next_day_end_before_outer_end()
+        {
+            var offset = TimeSpan.FromHours(-14);
+            var startDate = new DateTime(9999, 12, 30);
+            var schedule = ConfiguredRecurring(
+                "year-max-next-day",
+                new DateTimeOffset(9999, 12, 30, 23, 0, 0, offset),
+                new DateTimeOffset(9999, 12, 31, 9, 0, 0, offset),
+                startDate.DayOfWeek,
+                23 * 60,
+                0);
+            var expectedEnd = new DateTimeOffset(9999, 12, 31, 0, 0, 0, offset);
+
+            var active = new RotationScheduler(new FakeClock(new DateTimeOffset(9999, 12, 30, 23, 0, 0, offset)))
+                .GetActive(new[] { schedule });
+
+            Assert.That(active, Has.Count.EqualTo(1));
+            Assert.That(active[0].ActiveStart, Is.EqualTo(schedule.Start));
+            Assert.That(active[0].ActiveEnd, Is.EqualTo(expectedEnd));
+        }
+
         [TestCase(2026, 1, 31, 23 * 60, 60, 2026, 2, 1, 0, 30)]
         [TestCase(2026, 12, 31, 23 * 60, 60, 2027, 1, 1, 0, 30)]
         [TestCase(2028, 2, 29, 23 * 60, 60, 2028, 3, 1, 0, 30)]
