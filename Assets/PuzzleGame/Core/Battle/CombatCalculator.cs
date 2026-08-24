@@ -111,7 +111,7 @@ namespace PuzzleGame.Core.Battle
             var attacks = new List<AttackEvent>();
             var heals = new List<HealEvent>();
             var modifiers = new List<CombatModifierEvent>();
-            var passiveMultipliers = new float[party.Members.Count];
+            var passiveMultipliers = new double[party.Members.Count];
             var passiveEvaluated = new bool[party.Members.Count];
             var leaderMultiplier = GetLeaderMultiplier(party, comboCount, modifiers);
             if (party.AttackMultiplier != 1f)
@@ -134,23 +134,24 @@ namespace PuzzleGame.Core.Battle
                     for (var slot = 0; slot < party.Members.Count; slot++)
                     {
                         var character = party.Members[slot];
-                        if (character.IsBound || character.Data.Element != matchElement) continue;
+                        if (character.IsBound || character.Element != matchElement) continue;
                         if (!passiveEvaluated[slot])
                         {
                             passiveMultipliers[slot] = GetPassiveMultiplier(character, modifiers);
                             passiveEvaluated[slot] = true;
                         }
                         var passiveMultiplier = passiveMultipliers[slot];
-                        var multiplier = leaderMultiplier * party.AttackMultiplier * passiveMultiplier *
-                                         GetAffinityMultiplier(character.Data.Element, enemy.Data.Element);
-                        var calculated = CalculateScaled(character.Data.BaseStats.Attack, group.Cells.Count, comboCount, multiplier);
+                        var multiplier = MultiplySaturating(leaderMultiplier, party.AttackMultiplier);
+                        multiplier = MultiplySaturating(multiplier, passiveMultiplier);
+                        multiplier = MultiplySaturating(multiplier, GetAffinityMultiplier(character.Element, enemy.Element));
+                        var calculated = CalculateScaled(character.Attack, group.Cells.Count, comboCount, multiplier);
                         var blocked = enemy.ComboShieldMinimum > 0 && comboCount <= enemy.ComboShieldMinimum;
-                        var absorbed = !blocked && enemy.AbsorbedElement.HasValue && enemy.AbsorbedElement.Value == character.Data.Element;
+                        var absorbed = !blocked && enemy.AbsorbedElement.HasValue && enemy.AbsorbedElement.Value == character.Element;
                         var damage = 0;
                         var absorbedHealing = 0;
                         if (absorbed) absorbedHealing = enemy.Heal(calculated);
                         else if (!blocked) damage = enemy.ApplyDamage(calculated);
-                        attacks.Add(new AttackEvent(slot, character.Data.Id, character.Data.Element, layerIndex, group.Id,
+                        attacks.Add(new AttackEvent(slot, character.Id, character.Element, layerIndex, group.Id,
                             group.Cells.Count, comboCount, calculated, damage, absorbed, blocked, absorbedHealing));
                     }
                 }
@@ -189,25 +190,30 @@ namespace PuzzleGame.Core.Battle
             return total >= int.MaxValue ? int.MaxValue : (int)total;
         }
 
-        private static int CalculateScaled(int baseValue, int orbCount, int comboCount, float additionalMultiplier)
+        private static int CalculateScaled(int baseValue, int orbCount, int comboCount, double additionalMultiplier)
         {
+            if (baseValue == 0 || additionalMultiplier == 0d) return 0;
             var matchScale = 1d + 0.25d * Math.Max(0, orbCount - BoardState.MinimumMatchSize);
             var comboScale = 1d + 0.25d * Math.Max(0, comboCount - 1);
-            return RoundToStateInt(baseValue * matchScale * comboScale * additionalMultiplier);
+            var value = MultiplySaturating(baseValue, matchScale);
+            value = MultiplySaturating(value, comboScale);
+            value = MultiplySaturating(value, additionalMultiplier);
+            return RoundToStateInt(value);
         }
 
-        private static float GetLeaderMultiplier(PartyState party, int comboCount, List<CombatModifierEvent> events)
+        private static double GetLeaderMultiplier(PartyState party, int comboCount, List<CombatModifierEvent> events)
         {
             var leader = party.Leader;
-            var data = leader.LeaderSkill;
+            if (leader.IsBound) return 1d;
+            var data = leader.LeaderSkillState;
             if (data == null || !LeaderRequirementsMet(data, party, comboCount)) return 1f;
-            var multiplier = 1f;
+            var multiplier = 1d;
             for (var index = 0; index < data.Effects.Length; index++)
             {
                 var effect = data.Effects[index];
                 if (effect.Type != SkillEffectType.AttackBoost) continue;
                 var value = RequirePositiveMultiplier(effect.Payload.Multiplier);
-                multiplier *= value;
+                multiplier = MultiplySaturating(multiplier, value);
                 events.Add(new CombatModifierEvent(CombatModifierSource.Leader, data.Id, value));
             }
             return multiplier;
@@ -221,7 +227,7 @@ namespace PuzzleGame.Core.Battle
             {
                 var found = false;
                 for (var memberIndex = 0; memberIndex < party.Members.Count; memberIndex++)
-                    if (party.Members[memberIndex].Data.Element == requiredElements[requiredIndex]) found = true;
+                    if (party.Members[memberIndex].Element == requiredElements[requiredIndex]) found = true;
                 if (!found) return false;
             }
             var tags = data.RequiredTags ?? new string[0];
@@ -230,25 +236,23 @@ namespace PuzzleGame.Core.Battle
                 var found = false;
                 for (var memberIndex = 0; memberIndex < party.Members.Count; memberIndex++)
                 {
-                    var memberTags = party.Members[memberIndex].Data.Tags ?? new string[0];
-                    for (var tagIndex = 0; tagIndex < memberTags.Length; tagIndex++)
-                        if (string.Equals(memberTags[tagIndex], tags[requiredIndex], StringComparison.Ordinal)) found = true;
+                    if (party.Members[memberIndex].HasTag(tags[requiredIndex])) found = true;
                 }
                 if (!found) return false;
             }
             return true;
         }
 
-        private static float GetPassiveMultiplier(CharacterRuntime character, List<CombatModifierEvent> events)
+        private static double GetPassiveMultiplier(CharacterRuntime character, List<CombatModifierEvent> events)
         {
-            var multiplier = 1f;
-            for (var index = 0; index < character.PassiveEffects.Count; index++)
+            var multiplier = 1d;
+            for (var index = 0; index < character.PassiveEffectState.Length; index++)
             {
-                var effect = character.PassiveEffects[index];
+                var effect = character.PassiveEffectState[index];
                 if (effect.Type != SkillEffectType.AttackBoost) continue;
                 var value = RequirePositiveMultiplier(effect.Payload.Multiplier);
-                multiplier *= value;
-                events.Add(new CombatModifierEvent(CombatModifierSource.Passive, character.Data.PassiveId ?? character.Data.Id, value));
+                multiplier = MultiplySaturating(multiplier, value);
+                events.Add(new CombatModifierEvent(CombatModifierSource.Passive, character.PassiveId ?? character.Id, value));
             }
             return multiplier;
         }
@@ -258,6 +262,13 @@ namespace PuzzleGame.Core.Battle
             if (float.IsNaN(multiplier) || float.IsInfinity(multiplier) || multiplier < 0f)
                 throw new InvalidOperationException("Combat multiplier must be finite and non-negative.");
             return multiplier;
+        }
+
+        private static double MultiplySaturating(double left, double right)
+        {
+            if (left == 0d || right == 0d) return 0d;
+            var product = left * right;
+            return double.IsPositiveInfinity(product) || product >= double.MaxValue ? double.MaxValue : product;
         }
     }
 }

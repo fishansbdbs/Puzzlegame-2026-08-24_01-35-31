@@ -132,6 +132,125 @@ namespace PuzzleGame.Tests.EditMode.Battle
         }
 
         [Test]
+        public void Multi_effect_skill_prevalidates_all_effects_before_any_mutation_or_charge_loss()
+        {
+            var effects = new[]
+            {
+                BattleFixtures.Effect(SkillEffectType.ConvertOrbs, source: OrbType.Fire, target: OrbType.Water),
+                BattleFixtures.Effect(SkillEffectType.Heal, amount: 5),
+                BattleFixtures.Effect(SkillEffectType.Shield, multiplier: 2f, turns: 1)
+            };
+            var caster = ChargedCaster(effects);
+            var party = PartyWithCaster(caster);
+            party.ApplyDamage(10);
+            var board = BattleFixtures.StableBoard();
+            board.Set(0, 0, OrbType.Fire);
+            var enemy = BattleFixtures.Enemy(ElementType.Fire);
+            var context = Context(board, party, enemy);
+
+            Assert.That(() => new SkillEngine().Activate(caster, context), Throws.Exception);
+            Assert.That(board.Get(0, 0), Is.EqualTo(OrbType.Fire));
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 10));
+            Assert.That(party.DamageTakenMultiplier, Is.EqualTo(1f));
+            Assert.That(enemy.CurrentHp, Is.EqualTo(enemy.MaxHp));
+            Assert.That(caster.CurrentCharge, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Zero_turn_effects_do_not_activate_and_one_turn_effects_clear_on_tick()
+        {
+            var party = BattleFixtures.Party();
+            var character = party.Members[0];
+            var enemy = BattleFixtures.Enemy(ElementType.Fire);
+            var context = Context(party: party, enemy: enemy);
+
+            party.ApplyAttackBoost(2f, 0, "zero");
+            party.ApplyShield(0.5f, 0);
+            character.Bind(0);
+            enemy.SetDamageAbsorb(ElementType.Fire, 0);
+            enemy.SetComboShield(3, 0);
+            enemy.SetEnrage(2f, 0);
+            context.BoardEffects.Lock(OrbType.Fire, 0);
+            context.BoardEffects.AddPoison(2, 0);
+            context.BoardEffects.AddHazard(2, 0);
+            context.BoardEffects.AddBlocker(2, 0);
+            context.ModifyMoveTime(3f, 0);
+
+            Assert.That(party.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(party.DamageTakenMultiplier, Is.EqualTo(1f));
+            Assert.That(character.IsBound, Is.False);
+            Assert.That(enemy.AbsorbedElement, Is.Null);
+            Assert.That(enemy.ComboShieldMinimum, Is.Zero);
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(context.BoardEffects.IsLocked(OrbType.Fire), Is.False);
+            Assert.That(context.BoardEffects.PoisonCount + context.BoardEffects.HazardCount + context.BoardEffects.BlockerCount, Is.Zero);
+            Assert.That(context.MoveTimeSeconds, Is.EqualTo(10f));
+
+            party.ApplyAttackBoost(2f, 1, "one");
+            party.ApplyShield(0.5f, 1);
+            character.Bind(1);
+            enemy.SetDamageAbsorb(ElementType.Fire, 1);
+            enemy.SetComboShield(3, 1);
+            enemy.SetEnrage(2f, 1);
+            context.BoardEffects.Lock(OrbType.Fire, 1);
+            context.BoardEffects.AddPoison(2, 1);
+            context.BoardEffects.AddHazard(2, 1);
+            context.BoardEffects.AddBlocker(2, 1);
+            context.ModifyMoveTime(3f, 1);
+
+            party.TickTimedEffects();
+            character.TickBind();
+            enemy.TickTimedEffects();
+            context.BoardEffects.TickTimedEffects();
+            context.TickMoveTimeEffect();
+
+            Assert.That(party.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(party.DamageTakenMultiplier, Is.EqualTo(1f));
+            Assert.That(character.IsBound, Is.False);
+            Assert.That(enemy.AbsorbedElement, Is.Null);
+            Assert.That(enemy.ComboShieldMinimum, Is.Zero);
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(context.BoardEffects.IsLocked(OrbType.Fire), Is.False);
+            Assert.That(context.BoardEffects.PoisonCount + context.BoardEffects.HazardCount + context.BoardEffects.BlockerCount, Is.Zero);
+            Assert.That(context.MoveTimeSeconds, Is.EqualTo(10f));
+        }
+
+        [Test]
+        public void Clear_apis_remove_all_timed_effects_immediately()
+        {
+            var party = BattleFixtures.Party();
+            var character = party.Members[0];
+            var enemy = BattleFixtures.Enemy(ElementType.Fire);
+            var context = Context(party: party, enemy: enemy);
+            party.ApplyAttackBoost(2f, 2, "clear");
+            party.ApplyShield(0.5f, 2);
+            character.Bind(2);
+            enemy.SetDamageAbsorb(ElementType.Fire, 2);
+            enemy.SetComboShield(3, 2);
+            enemy.SetEnrage(2f, 2);
+            context.BoardEffects.Lock(OrbType.Fire, 2);
+            context.BoardEffects.AddPoison(2, 2);
+            context.BoardEffects.AddHazard(2, 2);
+            context.BoardEffects.AddBlocker(2, 2);
+            context.ModifyMoveTime(3f, 2);
+
+            party.ClearTimedEffects();
+            character.ClearBind();
+            enemy.ClearTimedEffects();
+            context.BoardEffects.ClearTimedEffects();
+            context.ClearMoveTimeEffect();
+
+            Assert.That(party.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(party.DamageTakenMultiplier, Is.EqualTo(1f));
+            Assert.That(character.IsBound, Is.False);
+            Assert.That(enemy.AbsorbedElement, Is.Null);
+            Assert.That(enemy.ComboShieldMinimum, Is.Zero);
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(context.BoardEffects.PoisonCount + context.BoardEffects.HazardCount + context.BoardEffects.BlockerCount, Is.Zero);
+            Assert.That(context.MoveTimeSeconds, Is.EqualTo(10f));
+        }
+
+        [Test]
         public void Countdown_one_executes_then_resets_after_one_completed_resolution()
         {
             var action = Action("hit", 3, EnemyEffect(EnemyEffectType.Damage, amount: 7));
@@ -243,6 +362,121 @@ namespace PuzzleGame.Tests.EditMode.Battle
         }
 
         [Test]
+        public void Enemy_action_prevalidates_all_payloads_before_countdown_index_or_state_changes()
+        {
+            var malformed = Action("malformed", 3,
+                EnemyEffect(EnemyEffectType.Damage, amount: 7),
+                EnemyEffect(EnemyEffectType.Enrage, multiplier: float.NaN, turns: 2));
+            var enemy = BattleFixtures.Enemy(ElementType.Fire, countdown: 1, actions: new[] { malformed });
+            var party = BattleFixtures.Party();
+
+            Assert.That(() => new EnemyActionEngine().AdvanceAfterBoardResolution(enemy, Context(party: party, enemy: enemy)), Throws.Exception);
+            Assert.That(enemy.Countdown, Is.EqualTo(1));
+            Assert.That(enemy.CurrentActionIndex, Is.Zero);
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp));
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
+        }
+
+        [Test]
+        public void Enemy_runtime_and_action_results_do_not_alias_mutable_authored_data()
+        {
+            var action = Action("snapshot-action", 3, EnemyEffect(EnemyEffectType.Damage, amount: 7));
+            var data = new EnemyData
+            {
+                Id = "snapshot-enemy",
+                Element = ElementType.Fire,
+                BaseStats = new StatBlock { Hp = 100, Attack = 10 },
+                InitialCountdown = 1,
+                Actions = new[] { action }
+            };
+            var enemy = new EnemyRuntime(data);
+            data.Element = ElementType.Water;
+            data.BaseStats.Hp = 1;
+            action.Id = "mutated-before";
+            action.ResetCountdown = 9;
+            action.Effects[0].Payload.Amount = 99;
+            enemy.Data.Actions[0].Effects[0].Payload.Amount = 88;
+            var party = BattleFixtures.Party();
+
+            var outcome = new EnemyActionEngine().AdvanceAfterBoardResolution(enemy, Context(party: party, enemy: enemy));
+            action.Id = "mutated-after";
+            action.Effects[0].Payload.Amount = 77;
+
+            Assert.That(enemy.Data.Element, Is.EqualTo(ElementType.Fire));
+            Assert.That(enemy.MaxHp, Is.EqualTo(100));
+            Assert.That(party.CurrentHp, Is.EqualTo(party.MaxHp - 7));
+            Assert.That(enemy.Countdown, Is.EqualTo(3));
+            Assert.That(outcome.ExecutedActions[0].Id, Is.EqualTo("snapshot-action"));
+            Assert.That(outcome.ExecutedActions[0].Effects[0].Amount, Is.EqualTo(7));
+        }
+
+        [Test]
+        public void Completed_resolution_ticks_old_effects_then_keeps_new_enemy_effects_at_full_duration()
+        {
+            var poison = EnemyEffect(EnemyEffectType.Poison, amount: 2, turns: 1);
+            var enemy = BattleFixtures.Enemy(ElementType.Light, countdown: 1, actions: new[] { Action("poison", 3, poison) });
+            enemy.SetEnrage(2f, 1);
+            var party = BattleFixtures.Party();
+            party.ApplyAttackBoost(2f, 1, "old");
+            var context = Context(party: party, enemy: enemy);
+            context.BoardEffects.AddHazard(2, 1);
+            context.ModifyMoveTime(3f, 1);
+
+            var result = new BattleEngine().CompleteBoardResolution(BattleFixtures.OneGroup(OrbType.Fire, 3), context);
+
+            Assert.That(result.Combat.Attacks.Single().CalculatedDamage, Is.EqualTo(20));
+            Assert.That(party.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(enemy.AttackMultiplier, Is.EqualTo(1f));
+            Assert.That(context.BoardEffects.HazardCount, Is.Zero);
+            Assert.That(context.MoveTimeSeconds, Is.EqualTo(10f));
+            Assert.That(context.BoardEffects.PoisonCount, Is.EqualTo(2));
+            Assert.That(context.BoardEffects.PoisonTurns, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Enemy_conversion_uses_the_installed_final_board_not_the_stale_context_board()
+        {
+            var action = Action("convert", 3, EnemyEffect(EnemyEffectType.ConvertOrbs, source: OrbType.Light, target: OrbType.Dark));
+            var enemy = BattleFixtures.Enemy(ElementType.Fire, countdown: 1, actions: new[] { action });
+            var resolution = BattleFixtures.OneGroup(OrbType.Fire, 3);
+            var stale = BattleFixtures.StableBoard();
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++) stale.Set(x, y, OrbType.Heart);
+            var context = Context(stale, BattleFixtures.Party(), enemy);
+            Assert.That(CountOrbs(resolution.FinalBoard, OrbType.Light), Is.GreaterThan(0));
+
+            new BattleEngine().CompleteBoardResolution(resolution, context);
+
+            Assert.That(CountOrbs(context.Board, OrbType.Light), Is.Zero);
+            Assert.That(CountOrbs(context.Board, OrbType.Dark), Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void Defeated_party_skips_the_entire_completed_resolution()
+        {
+            var caster = BattleFixtures.Character("caster", ElementType.Fire,
+                skill: Skill("charge", OrbType.Fire, 2, BattleFixtures.Effect(SkillEffectType.Heal, amount: 5)));
+            var party = PartyWithCaster(caster);
+            party.ApplyDamage(int.MaxValue);
+            var enemy = BattleFixtures.Enemy(ElementType.Light, countdown: 2);
+            var stale = BattleFixtures.StableBoard();
+            var original = stale.Get(0, 0);
+            var context = Context(stale, party, enemy);
+
+            var result = new BattleEngine().CompleteBoardResolution(BattleFixtures.TwoFireGroups(), context);
+
+            Assert.That(result.WasSkippedBecausePartyDefeated, Is.True);
+            Assert.That(result.Combat.Attacks, Is.Empty);
+            Assert.That(result.Combat.Heals, Is.Empty);
+            Assert.That(result.Charge.Events, Is.Empty);
+            Assert.That(result.EnemyTurn.ExecutedActions, Is.Empty);
+            Assert.That(party.CurrentHp, Is.Zero);
+            Assert.That(caster.CurrentCharge, Is.Zero);
+            Assert.That(enemy.Countdown, Is.EqualTo(2));
+            Assert.That(context.Board.Get(0, 0), Is.EqualTo(original));
+        }
+
+        [Test]
         public void Absorb_and_combo_shield_change_combat_results_without_negative_hp()
         {
             var enemy = BattleFixtures.Enemy(ElementType.Light, hp: 50);
@@ -330,6 +564,15 @@ namespace PuzzleGame.Tests.EditMode.Battle
         private static BattleContext Context(BoardState board = null, PartyState party = null, EnemyRuntime enemy = null)
         {
             return new BattleContext(board ?? BattleFixtures.StableBoard(), party ?? BattleFixtures.Party(), enemy ?? BattleFixtures.Enemy(ElementType.Fire));
+        }
+
+        private static int CountOrbs(BoardState board, OrbType orbType)
+        {
+            var count = 0;
+            for (var y = 0; y < BoardState.Rows; y++)
+            for (var x = 0; x < BoardState.Columns; x++)
+                if (board.Get(x, y) == orbType) count++;
+            return count;
         }
     }
 }

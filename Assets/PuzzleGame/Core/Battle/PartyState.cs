@@ -22,8 +22,8 @@ namespace PuzzleGame.Core.Battle
             long recovery = 0;
             for (var index = 0; index < copy.Count; index++)
             {
-                hp += copy[index].Data.BaseStats.Hp;
-                recovery += copy[index].Data.BaseStats.Recovery;
+                hp += copy[index].MaxHp;
+                recovery += copy[index].Recovery;
             }
 
             MaxHp = Saturate(hp);
@@ -66,6 +66,7 @@ namespace PuzzleGame.Core.Battle
         {
             ValidateMultiplier(multiplier, "multiplier");
             if (turns < 0) throw new ArgumentOutOfRangeException("turns");
+            if (turns == 0) return;
             AttackMultiplier = multiplier;
             AttackBoostTurns = turns;
             AttackBoostSourceId = sourceId ?? string.Empty;
@@ -76,6 +77,7 @@ namespace PuzzleGame.Core.Battle
             ValidateMultiplier(damageTakenMultiplier, "damageTakenMultiplier");
             if (damageTakenMultiplier > 1f) throw new ArgumentOutOfRangeException("damageTakenMultiplier");
             if (turns < 0) throw new ArgumentOutOfRangeException("turns");
+            if (turns == 0) return;
             DamageTakenMultiplier = damageTakenMultiplier;
             ShieldTurns = turns;
         }
@@ -87,6 +89,25 @@ namespace PuzzleGame.Core.Battle
             var affected = Math.Min(count, members.Count);
             for (var index = 0; index < affected; index++) members[index].Bind(turns);
             return affected;
+        }
+
+        public void TickTimedEffects()
+        {
+            if (AttackBoostTurns > 0 && --AttackBoostTurns == 0)
+            {
+                AttackMultiplier = 1f;
+                AttackBoostSourceId = string.Empty;
+            }
+            if (ShieldTurns > 0 && --ShieldTurns == 0) DamageTakenMultiplier = 1f;
+        }
+
+        public void ClearTimedEffects()
+        {
+            AttackMultiplier = 1f;
+            AttackBoostTurns = 0;
+            AttackBoostSourceId = string.Empty;
+            DamageTakenMultiplier = 1f;
+            ShieldTurns = 0;
         }
 
         private static int Saturate(long value)

@@ -100,21 +100,22 @@ namespace PuzzleGame.Core.Battle
         public bool CanActivate(CharacterRuntime character)
         {
             if (character == null) throw new ArgumentNullException("character");
-            return character.ActiveSkill != null && !character.IsBound && character.CurrentCharge >= character.ActiveSkill.ChargeRequired;
+            return character.ActiveSkillState != null && !character.IsBound && character.CurrentCharge >= character.ActiveSkillState.ChargeRequired;
         }
 
         public SkillResolution Activate(CharacterRuntime character, BattleContext context)
         {
             if (character == null) throw new ArgumentNullException("character");
             if (context == null) throw new ArgumentNullException("context");
-            if (character.ActiveSkill == null) return Failed(SkillActivationFailure.NoSkill);
+            if (character.ActiveSkillState == null) return Failed(SkillActivationFailure.NoSkill);
             if (character.IsBound) return Failed(SkillActivationFailure.Bound);
-            if (character.CurrentCharge < character.ActiveSkill.ChargeRequired) return Failed(SkillActivationFailure.NotCharged);
+            if (character.CurrentCharge < character.ActiveSkillState.ChargeRequired) return Failed(SkillActivationFailure.NotCharged);
 
             var events = new List<BattleEffectEvent>();
-            var effects = character.ActiveSkill.Effects;
+            var effects = character.ActiveSkillState.Effects;
+            for (var index = 0; index < effects.Length; index++) ValidateEffect(effects[index]);
             for (var index = 0; index < effects.Length; index++)
-                events.Add(Apply(effects[index], character.ActiveSkill.Id, context));
+                events.Add(Apply(effects[index], character.ActiveSkillState.Id, context));
             character.ConsumeCharge();
             return new SkillResolution(true, SkillActivationFailure.None, events);
         }
@@ -133,9 +134,9 @@ namespace PuzzleGame.Core.Battle
             for (var slot = 0; slot < party.Members.Count; slot++)
             {
                 var character = party.Members[slot];
-                if (character.ActiveSkill == null || character.IsBound) continue;
-                var amount = character.AddCharge(counts[(int)character.ActiveSkill.ChargeElement]);
-                if (amount > 0) events.Add(new SkillChargeEvent(slot, character.Data.Id, amount));
+                if (character.ActiveSkillState == null || character.IsBound) continue;
+                var amount = character.AddCharge(counts[(int)character.ActiveSkillState.ChargeElement]);
+                if (amount > 0) events.Add(new SkillChargeEvent(slot, character.Id, amount));
             }
             return new SkillChargeResolution(events);
         }
@@ -143,6 +144,45 @@ namespace PuzzleGame.Core.Battle
         private static SkillResolution Failed(SkillActivationFailure reason)
         {
             return new SkillResolution(false, reason, new List<BattleEffectEvent>());
+        }
+
+        private static void ValidateEffect(SkillEffectData effect)
+        {
+            var payload = effect.Payload;
+            NonNegative(payload.TurnCount);
+            switch (effect.Type)
+            {
+                case SkillEffectType.ConvertOrbs:
+                case SkillEffectType.RemoveOrbs:
+                    ValidateOrb(payload.SourceOrb);
+                    ValidateOrb(payload.TargetOrb);
+                    break;
+                case SkillEffectType.CreateOrbs:
+                    ValidateOrb(payload.TargetOrb);
+                    NonNegative(payload.Amount);
+                    break;
+                case SkillEffectType.AttackBoost:
+                    PositiveMultiplier(payload.Multiplier);
+                    break;
+                case SkillEffectType.Heal:
+                case SkillEffectType.DirectDamage:
+                    NonNegative(payload.Amount);
+                    break;
+                case SkillEffectType.ExtendMoveTime:
+                    Seconds(payload);
+                    break;
+                case SkillEffectType.DelayEnemies:
+                    NonNegative(payload.Amount != 0 ? payload.Amount : payload.TurnCount);
+                    break;
+                case SkillEffectType.ManipulateCountdown:
+                    break;
+                case SkillEffectType.Shield:
+                    var multiplier = PositiveMultiplier(payload.Multiplier);
+                    if (multiplier > 1f) throw new InvalidOperationException("Shield damage multiplier cannot exceed one.");
+                    break;
+                default:
+                    throw new InvalidOperationException("Unsupported skill effect type.");
+            }
         }
 
         private static BattleEffectEvent Apply(SkillEffectData effect, string sourceId, BattleContext context)

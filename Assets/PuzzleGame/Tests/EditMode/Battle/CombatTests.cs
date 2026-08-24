@@ -127,6 +127,19 @@ namespace PuzzleGame.Tests.EditMode.Battle
         }
 
         [Test]
+        public void Bound_slot_zero_does_not_supply_a_leader_multiplier()
+        {
+            var members = BattleFixtures.StandardMembers(attack: 10);
+            members[0] = BattleFixtures.Character("bound-leader", ElementType.Fire, attack: 10, leader: BattleFixtures.Leader(3f));
+            members[0].Bind(1);
+
+            var result = BattleFixtures.Resolve(BattleFixtures.OneGroup(OrbType.Fire, 3), new PartyState(members), ElementType.Light);
+
+            Assert.That(result.Attacks, Is.Empty);
+            Assert.That(result.Modifiers.Any(item => item.Source == CombatModifierSource.Leader), Is.False);
+        }
+
+        [Test]
         public void Passive_and_active_attack_boosts_emit_modifier_events_and_change_damage()
         {
             var passive = BattleFixtures.Effect(SkillEffectType.AttackBoost, multiplier: 2f);
@@ -166,6 +179,69 @@ namespace PuzzleGame.Tests.EditMode.Battle
             Assert.That(() => calculator.Resolve(null, party, enemy), Throws.TypeOf<ArgumentNullException>());
             Assert.That(() => calculator.Resolve(resolution, null, enemy), Throws.TypeOf<ArgumentNullException>());
             Assert.That(() => calculator.Resolve(resolution, party, null), Throws.TypeOf<ArgumentNullException>());
+        }
+
+        [Test]
+        public void Extreme_finite_modifier_products_saturate_and_zero_attack_stays_zero()
+        {
+            var huge = BattleFixtures.Effect(SkillEffectType.AttackBoost, multiplier: float.MaxValue);
+            var leader = BattleFixtures.Leader(float.MaxValue);
+            var members = BattleFixtures.StandardMembers(attack: 1);
+            members[0] = BattleFixtures.Character("huge", ElementType.Fire, attack: 1, leader: leader, passive: new[] { huge });
+            var party = new PartyState(members);
+            party.ApplyAttackBoost(float.MaxValue, 1, "huge-active");
+
+            var nonzero = new CombatCalculator().Resolve(BattleFixtures.OneGroup(OrbType.Fire, 3), party,
+                BattleFixtures.Enemy(ElementType.Light, hp: int.MaxValue));
+            Assert.That(nonzero.Attacks.Single().CalculatedDamage, Is.EqualTo(int.MaxValue));
+
+            members = BattleFixtures.StandardMembers(attack: 0);
+            members[0] = BattleFixtures.Character("zero", ElementType.Fire, attack: 0, leader: leader, passive: new[] { huge });
+            party = new PartyState(members);
+            party.ApplyAttackBoost(float.MaxValue, 1, "huge-active");
+
+            var zero = new CombatCalculator().Resolve(BattleFixtures.OneGroup(OrbType.Fire, 3), party,
+                BattleFixtures.Enemy(ElementType.Light, hp: int.MaxValue));
+            Assert.That(zero.Attacks.Single().CalculatedDamage, Is.Zero);
+        }
+
+        [Test]
+        public void Character_runtime_snapshots_character_skill_leader_and_passive_authored_data()
+        {
+            var characterData = new CharacterData
+            {
+                Id = "snapshot",
+                Element = ElementType.Fire,
+                BaseRarity = 1,
+                BaseStats = new StatBlock { Hp = 10, Attack = 10, Recovery = 2 }
+            };
+            var skill = new SkillData
+            {
+                Id = "heal",
+                ChargeElement = ElementType.Fire,
+                ChargeRequired = 0,
+                Effects = new[] { BattleFixtures.Effect(SkillEffectType.Heal, amount: 5) }
+            };
+            var leader = BattleFixtures.Leader(2f);
+            var passive = BattleFixtures.Effect(SkillEffectType.AttackBoost, multiplier: 3f);
+            var runtime = new CharacterRuntime(characterData, skill, leader, new[] { passive });
+
+            characterData.Element = ElementType.Water;
+            characterData.BaseStats.Attack = 999;
+            skill.Effects[0].Payload.Amount = 99;
+            leader.Effects[0].Payload.Multiplier = 9f;
+            passive.Payload.Multiplier = 10f;
+            var exposed = runtime.Data;
+            exposed.BaseStats.Attack = 777;
+            runtime.ActiveSkill.Effects[0].Payload.Amount = 88;
+            runtime.LeaderSkill.Effects[0].Payload.Multiplier = 8f;
+            runtime.PassiveEffects[0].Payload.Multiplier = 7f;
+
+            Assert.That(runtime.Data.Element, Is.EqualTo(ElementType.Fire));
+            Assert.That(runtime.Data.BaseStats.Attack, Is.EqualTo(10));
+            Assert.That(runtime.ActiveSkill.Effects[0].Payload.Amount, Is.EqualTo(5));
+            Assert.That(runtime.LeaderSkill.Effects[0].Payload.Multiplier, Is.EqualTo(2f));
+            Assert.That(runtime.PassiveEffects[0].Payload.Multiplier, Is.EqualTo(3f));
         }
     }
 

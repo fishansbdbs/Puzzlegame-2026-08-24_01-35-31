@@ -5,23 +5,25 @@ namespace PuzzleGame.Core.Battle
 {
     public sealed class EnemyRuntime
     {
+        private readonly EnemyData data;
         private int nextActionIndex;
 
         public EnemyRuntime(EnemyData data)
         {
             if (data == null) throw new ArgumentNullException("data");
             Validate(data);
-            Data = data;
+            this.data = AuthoredDataSnapshot.Clone(data);
             MaxHp = data.BaseStats.Hp;
             CurrentHp = MaxHp;
             Countdown = data.InitialCountdown;
             AttackMultiplier = 1f;
         }
 
-        public EnemyData Data { get; private set; }
+        public EnemyData Data { get { return AuthoredDataSnapshot.Clone(data); } }
         public int MaxHp { get; private set; }
         public int CurrentHp { get; private set; }
         public int Countdown { get; private set; }
+        public int CurrentActionIndex { get { return nextActionIndex; } }
         public ElementType? AbsorbedElement { get; private set; }
         public int AbsorbTurns { get; private set; }
         public int ComboShieldMinimum { get; private set; }
@@ -29,6 +31,7 @@ namespace PuzzleGame.Core.Battle
         public float AttackMultiplier { get; private set; }
         public int EnrageTurns { get; private set; }
         public bool IsDefeated { get { return CurrentHp == 0; } }
+        internal ElementType Element { get { return data.Element; } }
 
         public int ApplyDamage(int amount)
         {
@@ -59,10 +62,12 @@ namespace PuzzleGame.Core.Battle
             Countdown = value;
         }
 
-        public EnemyActionData TakeNextAction()
+        internal EnemyActionData PeekNextAction() { return data.Actions[nextActionIndex]; }
+
+        internal EnemyActionData CommitNextAction()
         {
-            var action = Data.Actions[nextActionIndex];
-            nextActionIndex = (nextActionIndex + 1) % Data.Actions.Length;
+            var action = data.Actions[nextActionIndex];
+            nextActionIndex = (nextActionIndex + 1) % data.Actions.Length;
             return action;
         }
 
@@ -70,6 +75,7 @@ namespace PuzzleGame.Core.Battle
         {
             ValidateCombatElement(element, "element");
             if (turns < 0) throw new ArgumentOutOfRangeException("turns");
+            if (turns == 0) return;
             AbsorbedElement = element;
             AbsorbTurns = turns;
         }
@@ -78,6 +84,7 @@ namespace PuzzleGame.Core.Battle
         {
             if (minimumComboCount < 0) throw new ArgumentOutOfRangeException("minimumComboCount");
             if (turns < 0) throw new ArgumentOutOfRangeException("turns");
+            if (turns == 0) return;
             ComboShieldMinimum = minimumComboCount;
             ComboShieldTurns = turns;
         }
@@ -87,8 +94,26 @@ namespace PuzzleGame.Core.Battle
             if (float.IsNaN(multiplier) || float.IsInfinity(multiplier) || multiplier < 0f)
                 throw new ArgumentOutOfRangeException("multiplier");
             if (turns < 0) throw new ArgumentOutOfRangeException("turns");
+            if (turns == 0) return;
             AttackMultiplier = multiplier;
             EnrageTurns = turns;
+        }
+
+        public void TickTimedEffects()
+        {
+            if (AbsorbTurns > 0 && --AbsorbTurns == 0) { AbsorbedElement = null; }
+            if (ComboShieldTurns > 0 && --ComboShieldTurns == 0) { ComboShieldMinimum = 0; }
+            if (EnrageTurns > 0 && --EnrageTurns == 0) { AttackMultiplier = 1f; }
+        }
+
+        public void ClearTimedEffects()
+        {
+            AbsorbedElement = null;
+            AbsorbTurns = 0;
+            ComboShieldMinimum = 0;
+            ComboShieldTurns = 0;
+            AttackMultiplier = 1f;
+            EnrageTurns = 0;
         }
 
         private static void Validate(EnemyData data)
